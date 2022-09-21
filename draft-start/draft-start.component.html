@@ -1,0 +1,226 @@
+<div class="container">
+  <!-- <form> -->
+    <h1>Draft Options</h1>
+    <p>First, lets set your preferences for this draft.</p>
+    
+    <label for="playerNumberSelect">Number of Players:</label>
+    <select [(ngModel)]="draftService.numberOfPlayers" class="form-select mb-3" id="playerNumberSelect" aria-label="Default select example">
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+      <option value="4" selected>Four</option>
+      <option value="5">Five</option>
+      <option value="6">Six</option>
+      <option value="7">Seven</option>
+    </select>
+
+    <p class='mb-0 mt-3 h5'>Factions to Include:</p>
+    <div class="form-check">
+      <input class="form-check-input" 
+        type="checkbox" 
+        id="humansCheckbox" 
+        (change)="factionChange($event, HolasFaction.Humans)" 
+        checked>
+      <label class="form-check-label" for="flexCheckChecked">
+        Humans
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox"  
+        (change)="factionChange($event, HolasFaction.Orcs)"
+        id="orcsCheckbox" checked>
+      <label class="form-check-label" for="flexCheckChecked">
+        Orcs
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox"
+        (change)="factionChange($event, HolasFaction.Elves)" 
+        id="elvesCheckbox" checked>
+      <label class="form-check-label" for="flexCheckChecked">
+        Elves
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox"  
+        (change)="factionChange($event, HolasFaction.Dwarves)"
+        id="dwarvesCheckbox" checked>
+      <label class="form-check-label" for="flexCheckChecked">
+        Dwarves
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox"  
+      (change)="factionChange($event, HolasFaction.Lionkin)"
+        id="lionkinCheckbox" checked>
+      <label class="form-check-label" for="flexCheckChecked">
+        Lionkin
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" 
+        (change)="factionChange($event, HolasFaction.Undead)" 
+        id="undeadCheckbox" checked>
+      <label class="form-check-label" for="flexCheckChecked">
+        Undead
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox"
+        (change)="factionChange($event, HolasFaction.Goblins)"
+        id="goblinsCheckbox" checked>
+      <label class="form-check-label" for="flexCheckChecked">
+        Goblins
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" 
+        (change)="factionChange($event, HolasFaction.Lizardfolk)"
+        id="lizardfolkCheckbox" checked>
+      <label class="form-check-label" for="flexCheckChecked">
+        Lizardfolk
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" 
+        (change)="factionChange($event, HolasFaction.Birdfolk)" 
+        id="birdfolkCheckbox" checked>
+      <label class="form-check-label" for="flexCheckChecked">
+        Birdfolk
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox"
+        (change)="factionChange($event, HolasFaction.Merfolk)"
+        id="merfolkCheckbox" checked>
+      <label class="form-check-label" for="flexCheckChecked">
+        Merfolk
+      </label>
+    </div>
+
+    <p class='mb-0 mt-3 h5'>Mercenaries to Include:</p>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox"
+        (change)="mercenaryChange($event, Mercenary.Druid)"  
+        id="druidCheckbox" checked>
+      <label class="form-check-label" for="flexCheckChecked">
+        Druid
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox"
+        (change)="mercenaryChange($event, Mercenary.Warlord)" 
+        id="warlordCheckbox" checked>
+      <label class="form-check-label" for="flexCheckChecked">
+        Warlord
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox"
+        (change)="mercenaryChange($event, Mercenary.Harvester)" 
+        id="harvesterCheckbox" checked>
+      <label class="form-check-label" for="flexCheckChecked">
+        Harvester
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox"
+        (change)="mercenaryChange($event, Mercenary.Doppelganger)" 
+        id="doppelgangerCheckbox" checked>
+      <label class="form-check-label" for="flexCheckChecked">
+        Doppelganger
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" 
+        (change)="mercenaryChange($event, Mercenary.HillGiant)"
+        id="hillGiantCheckbox" checked>
+      <label class="form-check-label" for="flexCheckChecked">
+        Hill Giant
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox"
+        (change)="mercenaryChange($event, Mercenary.Gorgon)"
+        id="gorgonCheckbox" checked>
+      <label class="form-check-label" for="flexCheckChecked">
+        Gorgon
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox"
+        (change)="mercenaryChange($event, Mercenary.DemonLord)" 
+        id="demonLordCheckbox" checked>
+      <label class="form-check-label" for="flexCheckChecked">
+        Demon Lord
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" 
+        (change)="mercenaryChange($event, Mercenary.Treant)"
+        id="treantCheckbox" checked>
+      <label class="form-check-label" for="flexCheckChecked">
+        Treant
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" 
+        (change)="mercenaryChange($event, Mercenary.Cultist)"
+        id="cultistCheckbox" checked>
+      <label class="form-check-label" for="flexCheckChecked">
+        Cultist
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" 
+        (change)="mercenaryChange($event, Mercenary.Minotaur)"
+        id="minotaurCheckbox" checked>
+      <label class="form-check-label" for="flexCheckChecked">
+        Minotaur
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox"
+        (change)="mercenaryChange($event, Mercenary.DragonscaleYacht)" 
+        id="dragonscaleYachtCheckbox" checked>
+      <label class="form-check-label" for="flexCheckChecked">
+        Dragonscale Yacht
+      </label>
+    </div>
+    
+    <p class='mb-0 mt-3 h5'>Additional Options:</p>
+    <div class="form-check">
+      <input 
+        [checked]="draftService.randomBuilding"
+        (change)="draftService.randomBuilding = !draftService.randomBuilding" 
+        class="form-check-input" 
+        type="checkbox" 
+        id="randomBuilding">
+      <label class="form-check-label" for="randomBuilding">
+        Random Building
+      </label>
+    </div>
+    <div class="form-check">
+      <input 
+        [checked]="draftService.teamDraft"
+        (change)="draftService.teamDraft = !draftService.teamDraft" 
+        class="form-check-input" 
+        type="checkbox" 
+        id="teamDraft">
+      <label class="form-check-label" for="randomBuilding">
+        Team Draft
+      </label>
+      <div *ngIf="errors.teamDraftWithOddPlayers" class="text-danger">
+        Team draft is only available for even team numbers. Please select 4 or 6 for the number of players to use Team draft.
+      </div>
+    </div>
+
+    <button class="btn btn-primary my-3" (click)="next()">
+      Next
+      <i class="bi bi-arrow-right"></i>
+    </button>
+
+  <!-- </form> -->
+</div>  
+
+

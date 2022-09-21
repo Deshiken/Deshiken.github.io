@@ -1,0 +1,84 @@
+<div class="container">
+  <h1>Player Select</h1>
+  <p>Starting in any order you like, have each play select an icon to represent them in the draft by taping or clicking on it.</p>
+  <p>Remember the icon you chose to represent you!</p>
+
+  <div *ngIf="errors.tooFewIconsSelected" class="alert alert-warning" role="alert">
+    Please make sure all {{draftService.numberOfPlayers}} players have selected an icon.
+  </div>
+
+  <app-draft-icon 
+    *ngIf="draftService.selectedIcons.indexOf('star') < 0" 
+    [size]="IconSize.Medium" 
+    [icon]="'star'"
+    (click)="selectIcon('star')">
+  </app-draft-icon>
+
+  <app-draft-icon 
+    *ngIf="draftService.selectedIcons.indexOf('bug') < 0"
+    [size]="IconSize.Medium" 
+    [icon]="'bug'"
+    (click)="selectIcon('bug')">
+  </app-draft-icon>
+
+  <app-draft-icon 
+    *ngIf="draftService.selectedIcons.indexOf('face') < 0"
+    [size]="IconSize.Medium" 
+    [icon]="'face'"
+    (click)="selectIcon('face')">
+  </app-draft-icon>
+
+  <app-draft-icon
+    *ngIf="draftService.selectedIcons.indexOf('moon') < 0" 
+    [size]="IconSize.Medium" 
+    [icon]="'moon'"
+    (click)="selectIcon('moon')">
+  </app-draft-icon>
+
+  <app-draft-icon 
+    *ngIf="draftService.selectedIcons.indexOf('shield') < 0"
+    [size]="IconSize.Medium" 
+    [icon]="'shield'"
+    (click)="selectIcon('shield')">
+  </app-draft-icon>
+
+  <app-draft-icon 
+    *ngIf="draftService.selectedIcons.indexOf('tree') < 0"
+    [size]="IconSize.Medium" 
+    [icon]="'tree'"
+    (click)="selectIcon('tree')">
+  </app-draft-icon>
+
+  <app-draft-icon 
+    *ngIf="draftService.selectedIcons.indexOf('cloud') < 0"
+    [size]="IconSize.Medium" 
+    [icon]="'cloud'"
+    (click)="selectIcon('cloud')">
+  </app-draft-icon>
+
+  <app-draft-icon 
+    *ngIf="draftService.selectedIcons.indexOf('droplet') < 0"
+    [size]="IconSize.Medium" 
+    [icon]="'droplet'"
+    (click)="selectIcon('droplet')">
+  </app-draft-icon>
+
+  <div *ngIf="draftService.selectedIcons.length" class="row">
+    <h2>Selected Icons</h2>
+    <div *ngFor="let icon of draftService.selectedIcons; let i = index">
+      <app-draft-icon [size]="IconSize.Smallest" [icon]="icon"></app-draft-icon>
+    </div>
+  </div>
+
+  <div>
+    <button class="btn btn-primary m-3" (click)="undo()">
+      Undo
+      <i  class="bi bi-arrow-counterclockwise"></i>
+    </button>
+    <button class="btn btn-primary my-3" (click)="next()">
+      Next
+      <i class="bi bi-arrow-right"></i>
+    </button>
+  </div>
+
+</div>

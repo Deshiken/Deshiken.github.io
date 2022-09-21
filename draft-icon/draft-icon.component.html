@@ -1,0 +1,40 @@
+<i *ngIf="icon === 'tree'" 
+  class="bi m-3 bi-tree-fill" 
+  style="color: rgb(45, 156, 123);"
+  [ngClass]="{'smallest-icon' : size === 'smallest', 'small-icon' : size === 'small', 'medium-icon' : size === 'medium', 'large-icon' : size === 'large'}" >
+</i>
+<i *ngIf="icon === 'shield'"  
+  class="bi m-3 bi-shield-fill" 
+  [ngClass]="{'smallest-icon' : size === 'smallest', 'small-icon' : size === 'small', 'medium-icon' : size === 'medium', 'large-icon' : size === 'large'}"
+  style="color: rgb(156, 45, 45);">
+</i>
+<i *ngIf="icon === 'star'" 
+  class="bi m-3 bi-star-fill" 
+  [ngClass]="{'smallest-icon' : size === 'smallest', 'small-icon' : size === 'small', 'medium-icon' : size === 'medium', 'large-icon' : size === 'large'}"
+  style="color: rgb(45, 84, 156);">
+</i>
+<i *ngIf="icon === 'bug'" 
+  class="bi m-3 bi-bug-fill" 
+  [ngClass]="{'smallest-icon' : size === 'smallest', 'small-icon' : size === 'small', 'medium-icon' : size === 'medium', 'large-icon' : size === 'large'}"
+  style="color: rgb(136, 25, 117);">
+</i>
+<i class="bi m-3 bi-emoji-laughing-fill"
+  *ngIf="icon === 'face'"
+  [ngClass]="{'smallest-icon' : size === 'smallest', 'small-icon' : size === 'small', 'medium-icon' : size === 'medium', 'large-icon' : size === 'large'}"
+  style="color: rgb(29, 99, 12);">
+</i>
+<i class="bi m-3 bi-moon-stars-fill"
+  *ngIf="icon === 'moon'"
+  [ngClass]="{'smallest-icon' : size === 'smallest', 'small-icon' : size === 'small', 'medium-icon' : size === 'medium', 'large-icon' : size === 'large'}"
+  style="color: rgb(69, 45, 156);">
+</i>
+<i class="bi m-3 bi-cloud-lightning-rain-fill" 
+  *ngIf="icon === 'cloud'" 
+  [ngClass]="{'smallest-icon' : size === 'smallest', 'small-icon' : size === 'small', 'medium-icon' : size === 'medium', 'large-icon' : size === 'large'}"
+  style="color: rgb(86, 195, 209);">
+</i>
+<i class="bi m-3 bi-droplet-fill" 
+  *ngIf="icon === 'droplet'" 
+  [ngClass]="{'smallest-icon' : size === 'smallest', 'small-icon' : size === 'small', 'medium-icon' : size === 'medium', 'large-icon' : size === 'large'}"
+  style="color: rgb(209, 86, 143);">
+</i>
