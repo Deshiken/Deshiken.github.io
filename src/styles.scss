@@ -1,1 +1,48 @@
 /* You can add global styles to this file, and also import other style files */
+// @import "../node_modules/bootstrap/scss/functions";
+
+$primary: #0f815f;
+$secondary: #faf1d2;
+$body-bg: #faf4e1;
+$body-color: #075f45;
+
+// $theme-colors: (
+//   "primary": #84329b,
+//   "secondary": #02bceb
+// );
+  
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import "../node_modules/bootstrap-icons/font/bootstrap-icons.css";
+
+// html, body { height: 100%; }
+// body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Utility Classes */
+// .u-flex {
+//   display: flex;
+
+//   &-justify-- {
+//     &end, &flex-end, &fe          { justify-content: flex-end !important; }
+//     &start, &flex-start, &fs      { justify-content: flex-start !important; }
+//     &center, &c                   { justify-content: center !important; }
+//     &space-around, &around, &sa   { justify-content: space-around !important; }
+//     &space-between, &between, &sb { justify-content: space-between !important; }
+//   }
+  
+//   /* Align items */
+//   &-align--, &-align-items-- {
+//     &flex-start, &start, &fs { align-items: flex-start !important; }
+//     &center, &c              { align-items: center !important; }
+//     &flex-end, &end, &fe     { align-items: flex-end !important; }
+//     &stretch, &s             { align-items: stretch !important; }
+//     &baseline, &b            { align-items: baseline !important; }
+//   }
+  
+//   &-dir-- {
+//     &row, &r              { flex-direction: row !important; }
+//     &row-reverse, &rr     { flex-direction: row-reverse !important; }
+//     &column, &c           { flex-direction: column !important; }
+//     &column-reverse, &cr  { flex-direction: column-reverse !important; }
+//   }
+// }
+
