@@ -28,6 +28,8 @@ export class PlayerSelectComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log('available mercenaries', this.draftService.availableMercs);
+    console.log('selected mercenaries', this.draftService.selectedMercs);
   }
 
   public undo() {
@@ -38,7 +40,6 @@ export class PlayerSelectComponent implements OnInit {
     if (this.draftService.selectedIcons.length < this.draftService.numberOfPlayers) {
       this.draftService.selectedIcons.push(selectedIcon);
     }
-    console.log("selected icons: ", this.draftService.selectedIcons);
   }
 
   public next() {
@@ -129,7 +130,7 @@ export class PlayerSelectComponent implements OnInit {
         break;
       }
       //4 player, teams, no mercs
-      case (this.draftService.teamDraft && this.draftService.numberOfPlayers === 4 && this.draftService.selectedMercs.length): {
+      case (this.draftService.teamDraft && this.draftService.numberOfPlayers === 4 && this.draftService.selectedMercs.length === 0): {
         console.log("4 player, teams, no mercs");
         this.draftService.draftSteps = [ 
           new DraftStep(this.draftService.playerMap.get(1)),
@@ -140,24 +141,44 @@ export class PlayerSelectComponent implements OnInit {
         break;
       }
       //free for all, no mercs
-      // case (!this.draftService.teamDraft && !this.draftService.selectedMercs.length): {
-      //   this.draftService.draftSteps = this.randomDraftOrder(this.draftService.numberOfPlayers);
-      //   break;
-      // }
+      case (!this.draftService.teamDraft && this.draftService.selectedMercs.length === 0): {
+        this.draftService.draftSteps = this.randomDraftOrder();
+        break;
+      }
       //free for all, with mercs
-      // case (!this.draftService.teamDraft && !this.draftService.selectedMercs.length): {
-      //   const firstHalf = this.randomDraftOrder(this.draftService.numberOfPlayers)
-      //   this.draftService.draftSteps = firstHalf;
-      //   this.draftService.draftSteps.concat(firstHalf.reverse());
-      //   break;
-      // }
+      case (!this.draftService.teamDraft && this.draftService.selectedMercs.length > 0): {
+        console.log('free for all with mercs');
+        let firstHalf = this.randomDraftOrder();
+        let secondHalf = [...firstHalf];
+        // this.draftService.draftSteps = [...firstHalf, ...firstHalf.reverse()];
+        this.draftService.draftSteps = this.draftService.draftSteps.concat(firstHalf,secondHalf.reverse());
+        break;
+      }
     }
 
     console.log('Ending draft steps: ', this.draftService.draftSteps);
   }
 
-  public randomDraftOrder(numberOfPlayers: number) :Array<number> {
-    return [1,2,4]
+  public randomDraftOrder() :Array<DraftStep> {
+    let availablePlayers: Array<number> = new Array<number>();
+    let draftSteps: Array<DraftStep> = new Array<DraftStep>();
+
+    // build an array of available players to chose from
+    for (let i = 0; i < this.draftService.numberOfPlayers; i++ ) {
+      availablePlayers.push(i + 1)
+    };
+    console.log('array of players: ', availablePlayers)
+
+    //For each player, select a random entry from the available players, add it to the draft steps, then delete that player number from the available players
+    for (let i = 0; i < this.draftService.numberOfPlayers; i++ ) {
+      const playerNumber = this.randomService.getRandomEntryFromArray(availablePlayers);
+      draftSteps.push(new DraftStep(this.draftService.playerMap.get(playerNumber)));
+      console.log('adding player ', this.draftService.playerMap.get(playerNumber), 'to draftStep array')
+      this.randomService.deleteFromArray(availablePlayers, playerNumber);
+    };
+
+    return draftSteps;
   }
+
 
 }

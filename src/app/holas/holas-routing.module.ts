@@ -4,6 +4,7 @@ import { DraftPickComponent } from './holas-draft/draft-pick/draft-pick.componen
 import { DraftStartComponent } from './holas-draft/draft-start/draft-start.component';
 import { DraftSummaryComponent } from './holas-draft/draft-summary/draft-summary.component';
 import { PlayerSelectComponent } from './holas-draft/player-select/player-select.component';
+import { HolasRulesUpdateComponent } from './holas-rules-update/holas-rules-update.component';
 
 import { HolasComponent } from './holas.component';
 
@@ -12,6 +13,9 @@ const routes: Routes = [
   { 
     path: '', 
     component: HolasComponent 
+  },
+  { path: 'holas-rules-update',
+    component: HolasRulesUpdateComponent
   },
   { 
     path: 'holas-draft-start', 

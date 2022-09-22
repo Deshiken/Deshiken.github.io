@@ -1,19 +1,28 @@
 <div class="container">
   <h1>Draft Pick: Step {{draftService.currentDraftStep + 1}} of {{draftService.draftSteps.length}}</h1>
   
-  <p class='h5 mb-0 mt-3'>Currently Picking :</p>
-  <div>
-    <app-draft-icon [size]="IconSize.Medium" [icon]="currentPlayer.icon"></app-draft-icon>
-    <p *ngIf="draftService.teamDraft">Team: {{currentPlayer.team}}</p>
-    <p *ngIf="currentPlayer.mercenaryPick || currentPlayer.factionPick">Previous pick:</p>
-    <p *ngIf="currentPlayer.factionPick">
-      Faction {{currentPlayer.factionPick.faction}} 
-      <span *ngIf="draftService.randomBuilding">with {{currentPlayer.factionPick.building}}</span>
-    </p>
-    <p *ngIf="currentPlayer.mercenaryPick">Mercenary: {{currentPlayer.mercenaryPick}}</p>
+  <p class='h5 mb-1 mt-3'>Currently Picking:</p>
+
+  <div class="card mb-2">
+    <div class="row">
+      <div class="col-4 d-flex align-items-center">
+        <app-draft-icon [size]="IconSize.Medium" [icon]="currentPlayer.icon"></app-draft-icon>
+      </div>
+      <div class="col-8 card-body">
+        <p class="mb-1">Player: {{currentPlayer.playerNumber}}</p>
+        <p class="mb-1" *ngIf="draftService.teamDraft">Team: {{currentPlayer.team}}</p>
+        <p class="mb-0 h6" *ngIf="currentPlayer.mercenaryPick || currentPlayer.factionPick">Previous pick:</p>
+        <p class="mb-1" *ngIf="currentPlayer.factionPick">
+          Faction - {{currentPlayer.factionPick.faction}} 
+          <span *ngIf="draftService.randomBuilding">with {{currentPlayer.factionPick.building}}</span>
+        </p>
+        <p class="mb-1" *ngIf="currentPlayer.mercenaryPick">Mercenary - {{currentPlayer.mercenaryPick}}</p>
+      </div>
+    </div>
   </div>
   
-  <p>Please choose one of the following factions or mercinaries as your pick for this round</p>
+  <p>Please choose one of the following factions or mercinaries as your pick for this round.</p>
+
   <div *ngIf="!currentPlayer.factionPick">
     <p class='h5 mb-0 mt-3'>Available Factions:</p>
     <ul class="list-group" >
@@ -23,7 +32,7 @@
     </ul>
   </div>
   
-  <div *ngIf="!currentPlayer.mercenaryPick">
+  <div *ngIf="!currentPlayer.mercenaryPick && draftService.availableMercs.length">
     <p class='h5 mb-0 mt-3'>Available Mercenaries:</p>
     <ul class="list-group">
       <li class="list-group-item" *ngFor="let merc of draftService.selectedMercs" (click)="chooseMercenary(merc)">
@@ -34,8 +43,8 @@
 
   <div *ngIf="choiceType">
     <p class="h5 mb-0 mt-3">Your pick for this round:</p>
-    <p *ngIf="this.choiceType === 'faction'">Faction: {{factionChoice.faction}} <span *ngIf="draftService.randomBuilding">with {{factionChoice.building}}</span></p>
-    <p *ngIf="this.choiceType === 'mercenary'">Mercenary: {{mercenaryChoice}}</p>
+    <p class="mb-2" *ngIf="this.choiceType === 'faction'">Faction: {{factionChoice.faction}} <span *ngIf="draftService.randomBuilding">with {{factionChoice.building}}</span></p>
+    <p class="mb-2" *ngIf="this.choiceType === 'mercenary'">Mercenary: {{mercenaryChoice}}</p>
   </div>
 
   <div>

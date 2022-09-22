@@ -63,12 +63,12 @@
     (click)="selectIcon('droplet')">
   </app-draft-icon>
 
-  <div *ngIf="draftService.selectedIcons.length" class="row">
+  <ng-container *ngIf="draftService.selectedIcons.length">
     <h2>Selected Icons</h2>
-    <div *ngFor="let icon of draftService.selectedIcons; let i = index">
+    <ng-container *ngFor="let icon of draftService.selectedIcons; let i = index">
       <app-draft-icon [size]="IconSize.Smallest" [icon]="icon"></app-draft-icon>
-    </div>
-  </div>
+    </ng-container>
+  </ng-container>
 
   <div>
     <button class="btn btn-primary m-3" (click)="undo()">

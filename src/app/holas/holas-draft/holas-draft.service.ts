@@ -21,6 +21,7 @@ export class HolasDraftService {
   
   /* Array of all available mercs user seleced through the options page*/
   public availableMercs: Array<Mercenary> = Object.values(Mercenary);
+  // public availableMercs: Array<Mercenary> = Array<Mercenary>();
   /* Array of the randomly selected mercs from the list of all available mercs */
   public selectedMercs: Array<string> = new Array<string>();
   

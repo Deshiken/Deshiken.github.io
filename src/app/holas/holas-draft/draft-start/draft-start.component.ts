@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RandomService } from 'src/app/shared/random/random.service';
+import { IconSize } from '../draft-icon/draft-icon.component';
 import { HolasDraftService, HolasFaction, Mercenary, SelectedFaction } from '../holas-draft.service';
 
 @Component({
@@ -11,6 +12,7 @@ import { HolasDraftService, HolasFaction, Mercenary, SelectedFaction } from '../
 export class DraftStartComponent implements OnInit {
 
   /* Make Enums available to template */
+  public IconSize = IconSize;
   public HolasFaction = HolasFaction;
   public Mercenary = Mercenary;
   
@@ -46,6 +48,14 @@ export class DraftStartComponent implements OnInit {
     }
   }
 
+  public selectAllMercenaries() {
+    this.draftService.availableMercs = Object.values(Mercenary);
+  }
+  
+  public unselectAllMercenaries() {
+    this.draftService.availableMercs = new Array<Mercenary>();
+  }
+
   public next() {
     this.checkForErrors();
     if (this.errorFree) {
@@ -71,8 +81,8 @@ export class DraftStartComponent implements OnInit {
       this.errors.tooFewFactionsSelected = true;
     }
     
-    // Team play is only possible with even numbers of players
-    if (this.draftService.teamDraft && (this.draftService.numberOfPlayers == 3 || this.draftService.numberOfPlayers == 5 || this.draftService.numberOfPlayers == 7)) {
+    // Team play is only possible with 4 or 6 players
+    if (this.draftService.teamDraft && (this.draftService.numberOfPlayers !== 4 && this.draftService.numberOfPlayers !== 6)) {
       this.errorFree = false;
       this.errors.teamDraftWithOddPlayers = true;
     }
@@ -96,10 +106,12 @@ export class DraftStartComponent implements OnInit {
 
   /* Build the array of randomly selected mercenaries from the list of available factions. One per player. */
   public generateMercs() {
-    for (let i = 0; i < this.draftService.numberOfPlayers; i++) {
-      let merc: Mercenary = this.randomService.getRandomEntryFromArray(this.draftService.availableMercs);
-      this.draftService.selectedMercs.push(merc);
-      this.randomService.deleteFromArray(this.draftService.availableMercs, merc);
+    if (this.draftService.availableMercs.length) {
+      for (let i = 0; i < this.draftService.numberOfPlayers; i++) {
+        let merc: Mercenary = this.randomService.getRandomEntryFromArray(this.draftService.availableMercs);
+        this.draftService.selectedMercs.push(merc);
+        this.randomService.deleteFromArray(this.draftService.availableMercs, merc);
+      }
     }
   }
 

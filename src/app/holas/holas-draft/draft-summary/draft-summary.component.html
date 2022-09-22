@@ -1,18 +1,16 @@
 <div class='container'>
   <h1>Draft Summary</h1>
 
-  <div class="card mb-3" style="max-width: 540px;" *ngFor="let player of draftService.playerMap.values()">
-    <div class="row g-0">
-      <div class="col-md-4">
+  <div class="card mb-3" *ngFor="let player of draftService.playerMap.values()">
+    <div class="row">
+      <div class="col-4 d-flex align-items-center">
         <app-draft-icon [size]="IconSize.Medium" [icon]="player.icon"></app-draft-icon>
       </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">Player {{player.playerNumber}}</h5>
-          <p *ngIf="draftService.teamDraft">Team {{player.team}}</p>
-          <p class="card-text mb-1">Faction: {{player.factionPick.faction}} <span *ngIf="draftService.randomBuilding">with {{player.factionPick.building}}</span></p>
-          <p *ngIf="player.mercenaryPick" class="card-text">Mercenary: {{player.mercenaryPick}}</p>
-        </div>
+      <div class="col-8 card-body">
+        <h5 class="card-title">Player {{player.playerNumber}}</h5>
+        <p class="card-text mb-1" *ngIf="draftService.teamDraft">Team {{player.team}}</p>
+        <p class="card-text mb-1">Faction: {{player.factionPick.faction}} <span *ngIf="draftService.randomBuilding">with {{player.factionPick.building}}</span></p>
+        <p class="card-text mb-1" *ngIf="player.mercenaryPick" class="card-text">Mercenary: {{player.mercenaryPick}}</p>
       </div>
     </div>
   </div>

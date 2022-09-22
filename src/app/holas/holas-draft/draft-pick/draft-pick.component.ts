@@ -31,6 +31,7 @@ export class DraftPickComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('draft-pick init');
+    console.log('currentPlayer: ', this.currentPlayer);
   }
 
   public chooseFaction(faction: SelectedFaction) {

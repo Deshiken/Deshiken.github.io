@@ -10,6 +10,7 @@ import { DraftPickComponent } from './holas-draft/draft-pick/draft-pick.componen
 import { DraftIconComponent } from './holas-draft/draft-icon/draft-icon.component';
 import { SharedModule } from '../shared/shared.module';
 import { DraftSummaryComponent } from './holas-draft/draft-summary/draft-summary.component';
+import { HolasRulesUpdateComponent } from './holas-rules-update/holas-rules-update.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { DraftSummaryComponent } from './holas-draft/draft-summary/draft-summary
     PlayerSelectComponent,
     DraftPickComponent,
     DraftIconComponent,
-    DraftSummaryComponent
+    DraftSummaryComponent,
+    HolasRulesUpdateComponent
   ],
   imports: [
     CommonModule,
