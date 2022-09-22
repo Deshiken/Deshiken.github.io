@@ -10,13 +10,13 @@
     
     <label for="playerNumberSelect">Number of Players:</label>
     <select [(ngModel)]="draftService.numberOfPlayers" class="form-select mb-3" id="playerNumberSelect" aria-label="Default select example">
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
-      <option value="4" selected>Four</option>
-      <option value="5">Five</option>
-      <option value="6">Six</option>
-      <option value="7">Seven</option>
+      <option [ngValue]="1">One</option>
+      <option [ngValue]="2">Two</option>
+      <option [ngValue]="3">Three</option>
+      <option [ngValue]="4" selected>Four</option>
+      <option [ngValue]="5">Five</option>
+      <option [ngValue]="6">Six</option>
+      <option [ngValue]="7">Seven</option>
     </select>
 
     <p class='mb-0 mt-3 h5'>Factions to Include:</p>
@@ -243,17 +243,32 @@
     </div>
 
     <p class='mb-0 mt-3 h5'>Additional Options:</p>
-    <div class="form-check">
-      <input 
-        [checked]="draftService.randomBuilding"
-        (change)="draftService.randomBuilding = !draftService.randomBuilding" 
-        class="form-check-input" 
-        type="checkbox" 
-        id="randomBuilding">
-      <label class="form-check-label" for="randomBuilding">
-        Random Building
-      </label>
+    <div class="row">
+      <div class="col">
+        <div class="form-check">
+          <input 
+            [checked]="draftService.randomBuilding"
+            (change)="draftService.randomBuilding = !draftService.randomBuilding" 
+            class="form-check-input" 
+            type="checkbox" 
+            id="randomBuilding">
+          <label class="form-check-label" for="randomBuilding">
+            Random Building
+          </label>
+          <i class="bi m-3 bi-question-circle-fill"  
+            data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          </i>
+        </div>
+      </div>
     </div>
+
+    <div class="collapse" id="collapseExample">
+      <div class="card card-body">
+        Each faction will start with a random building of the five available: Barracks, Mage Tower, Thieves Guild, Shipyard, Aviary (shown from left to right on your player board). 
+        Place a worker from your supply on the building on your faction board to show that it has been built.
+      </div>
+    </div>
+
     <div class="form-check">
       <input 
         [checked]="draftService.teamDraft"
@@ -264,9 +279,27 @@
       <label class="form-check-label" for="randomBuilding">
         Team Draft
       </label>
-      <div *ngIf="errors.teamDraftWithOddPlayers" class="text-danger">
+      <i class="bi m-3 bi-question-circle-fill" 
+        data-bs-toggle="collapse" data-bs-target="#teamCollapse" aria-expanded="false" aria-controls="teamCollapse">
+      </i>
+      <div *ngIf="errors.get('teamDraftWithOddPlayers')" class="text-danger">
         Please select 4 or 6 for the number of players to use Team draft.
       </div>
+    </div>
+
+    <div class="collapse" id="teamCollapse">
+      <div class="card card-body">
+        For 2vs2 or 3vs3 play. When drafting, the draft order will alternate between the two teams when necessary.
+      </div>
+    </div>
+
+    <div *ngIf="errors.get('tooFewFactionsSelected')" class="alert alert-warning" role="alert">
+      Please select at least one faction per player.
+    </div>
+
+    <div *ngIf="errors.get('tooFewMercenariesSelected')" 
+      class="alert alert-warning" role="alert">
+      If you would like to draft with Mercenaries, please select at least one mercenary per player. Otherwise, unselect all mercenaries.
     </div>
 
     <button class="btn btn-primary my-3" (click)="next()">

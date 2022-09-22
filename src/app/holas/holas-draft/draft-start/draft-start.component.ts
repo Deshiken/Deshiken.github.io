@@ -18,10 +18,13 @@ export class DraftStartComponent implements OnInit {
   
 
   public errorFree: boolean = true;
-  public errors = {
-    teamDraftWithOddPlayers : false,
-    tooFewFactionsSelected : false,
-    tooFewMercenariesSelected : false,
+  public errors: Map<string,boolean> = new Map<string, boolean>([
+    ['teamDraftWithOddPlayers',false],
+    ['tooFewFactionsSelected',false],
+    ['tooFewMercenariesSelected',false]
+  ]);
+
+  ngOnInit(): void {
   }
 
   public buildings: Array<string> = ['Barracks', 'Mage Tower', 'Assassin Guild', 'Shipyard', 'Aviary']
@@ -74,24 +77,29 @@ export class DraftStartComponent implements OnInit {
   public checkForErrors() {
     //reset error flag
     this.errorFree = true;
+    //reset all errors
+    for (let error of this.errors.keys()) { 
+      this.errors.set(error, false)
+    };
     
     // The number of available Factions and Mercenaries must be equal to or greater than the number of players.
     if (this.draftService.availableFactions.length < this.draftService.numberOfPlayers) {
       this.errorFree = false;
-      this.errors.tooFewFactionsSelected = true;
+      this.errors.set('tooFewFactionsSelected', true);
     }
 
     // If any mercs are selected, the number of mercs must be equal to or greater than the number of players.
     if (this.draftService.availableMercs.length > 0 && this.draftService.availableMercs.length < this.draftService.numberOfPlayers) {
       this.errorFree = false;
-      this.errors.tooFewFactionsSelected = true;
+      this.errors.set('tooFewMercenariesSelected', true);
     }
     
     // Team play is only possible with 4 or 6 players
-    if (this.draftService.teamDraft && (this.draftService.numberOfPlayers !== 4 && this.draftService.numberOfPlayers !== 6)) {
+    if (this.draftService.teamDraft && (this.draftService.numberOfPlayers !== 6 && this.draftService.numberOfPlayers !== 4)) {
       this.errorFree = false;
-      this.errors.teamDraftWithOddPlayers = true;
+      this.errors.set('teamDraftWithOddPlayers', true);
     }
+
   }
 
   /* Build the array of randomly selected factions from the list of available factions. One per player. */
@@ -119,9 +127,6 @@ export class DraftStartComponent implements OnInit {
         this.randomService.deleteFromArray(this.draftService.availableMercs, merc);
       }
     }
-  }
-
-  ngOnInit(): void {
   }
 
 }
