@@ -51,7 +51,7 @@ export class DraftStartComponent implements OnInit {
   public selectAllMercenaries() {
     this.draftService.availableMercs = Object.values(Mercenary);
   }
-  
+
   public unselectAllMercenaries() {
     this.draftService.availableMercs = new Array<Mercenary>();
   }
@@ -77,6 +77,12 @@ export class DraftStartComponent implements OnInit {
     
     // The number of available Factions and Mercenaries must be equal to or greater than the number of players.
     if (this.draftService.availableFactions.length < this.draftService.numberOfPlayers) {
+      this.errorFree = false;
+      this.errors.tooFewFactionsSelected = true;
+    }
+
+    // If any mercs are selected, the number of mercs must be equal to or greater than the number of players.
+    if (this.draftService.availableMercs.length > 0 && this.draftService.availableMercs.length < this.draftService.numberOfPlayers) {
       this.errorFree = false;
       this.errors.tooFewFactionsSelected = true;
     }
