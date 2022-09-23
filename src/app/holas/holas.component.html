@@ -1,16 +1,66 @@
 <div class="container">
-  <h1>Heroes of Land, Air and Sea Tools</h1>
-  
-  <div class="card mt-3" style="width: 18rem;" (click)="router.navigate(['holas/holas-draft-start'])">
-    <div class="card-body">
-      <h5 class="card-title">Start a Draft</h5>
-      <p class="card-textn mb-0">This tool will randomize the available factions and mercenaries and allow players or teams to draft them.</p>
-      <a class="card-link">Start a draft</a>
+  <h1 class="mt-3 text-center">Heroes of Land, Air and Sea Tools</h1>
+
+  <div class="d-flex align-items-center justify-content-between nav-help">
+    <button class="btn btn-primary btn-lg my-3" (click)="router.navigate(['holas/holas-draft-start'])">
+      Start a Draft
+    </button>
+    <i class="bi m-3 bi-question-circle-fill" style="font-size: 2.4rem;"
+      data-bs-toggle="collapse" data-bs-target="#draftCollapse" aria-expanded="false" aria-controls="draftCollapse">
+    </i>
+  </div>
+  <div class="collapse" id="draftCollapse">
+    <div class="card card-body">
+      This tool will allow you to set which Factions and Mercenaries and the number of players you would like to play with.
+      Then a random Faction and Mercenary will be added to a list and players will be able to draft which Faction and Mercenaries they will use.
     </div>
   </div>
 
+  <div class="d-flex align-items-center justify-content-between nav-help">
+    <button class="btn btn-primary btn-lg my-3" (click)="router.navigate(['holas/holas-rules-update'])">
+      Read Competitive Play Rules
+    </button>
+    <i class="bi m-3 bi-question-circle-fill" style="font-size: 2.4rem;"
+      data-bs-toggle="collapse" data-bs-target="#rulesCollapse" aria-expanded="false" aria-controls="rulesCollapse">
+    </i>
+  </div>
+  <div class="collapse" id="rulesCollapse">
+    <div class="card card-body">
+      For a more competitive 2vs2, 1vs1, or 3vs3 experience, we recomend using these rules modifications.  
+    </div>
+  </div>
+
+  <div class="d-flex align-items-center justify-content-between nav-help">
+    <button class="btn btn-primary btn-lg my-3" (click)="router.navigate(['holas/round-timer'])">
+      Round Timer
+    </button>
+    <i class="bi m-3 bi-question-circle-fill" style="font-size: 2.4rem;"
+      data-bs-toggle="collapse" data-bs-target="#timerCollapse" aria-expanded="false" aria-controls="timerCollapse">
+    </i>
+  </div>
+  <div class="collapse" id="timerCollapse">
+    <div class="card card-body">
+      Keep the pressure on and put your enemies on the clock using this round timer! Set the amount of time a player has to decide
+      the action for thier turn and to play combat cards.
+    </div>
+  </div>
+
+  <div class="d-flex align-items-center justify-content-between nav-help">
+    <button class="btn btn-primary btn-lg my-3" (click)="router.navigate(['holas/alternate-game-modes'])">
+      Alternate Game Modes
+    </button>
+    <i class="bi m-3 bi-question-circle-fill" style="font-size: 2.4rem;"
+      data-bs-toggle="collapse" data-bs-target="#alternateCollapse" aria-expanded="false" aria-controls="alternateCollapse">
+    </i>
+  </div>
+  <div class="collapse" id="alternateCollapse">
+    <div class="card card-body">
+      Add some variety into your gameplay with these alternate game modes.
+    </div>
+  </div>
+  
   <!-- <h1 (click)="router.navigate(['holas/holas-draft-start'])">Draft factions and mercinaries</h1> -->
-  <h1 class="my-3" (click)="router.navigate(['holas/holas-rules-update'])">Rules Updates for 2vs2</h1>
+  <!-- <h1 class="my-3" (click)="router.navigate(['holas/holas-rules-update'])">Rules Updates for 2vs2</h1>
   <h1 class="my-3">Team Round Timer</h1>
-  <h1 class="my-3">Alternate game modes</h1>
+  <h1 class="my-3">Alternate game modes</h1> -->
 </div>

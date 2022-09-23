@@ -16,7 +16,7 @@ export class HolasDraftService {
 
   /* Array of all available factions user seleced through the options page*/
   public availableFactions: Array<HolasFaction> = Object.values(HolasFaction);
-  /* Array of the randomly selected factions from the list of all available mercs */
+  /* Array of the randomly selected factions from the list of all available factions */
   public selectedFactions: Array<SelectedFaction> = new Array<SelectedFaction>();
   
   /* Array of all available mercs user seleced through the options page*/

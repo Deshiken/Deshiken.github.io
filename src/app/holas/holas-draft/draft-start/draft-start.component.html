@@ -2,13 +2,9 @@
   <!-- <form> -->
     <h1>Draft Options</h1>
 
-    <!-- testing -->
-    
-    <!-- testing -->
-
     <p>First, lets set your preferences for this draft.</p>
     
-    <label for="playerNumberSelect">Number of Players:</label>
+    <label class='h6' for="playerNumberSelect">Number of Players:</label>
     <select [(ngModel)]="draftService.numberOfPlayers" class="form-select mb-3" id="playerNumberSelect" aria-label="Default select example">
       <option [ngValue]="1">One</option>
       <option [ngValue]="2">Two</option>
@@ -19,7 +15,7 @@
       <option [ngValue]="7">Seven</option>
     </select>
 
-    <p class='mb-0 mt-3 h5'>Factions to Include:</p>
+    <p class='mb-0 mt-4 h6'>Factions to Include:</p>
 
     <div class="row">
       
@@ -124,7 +120,7 @@
 
     </div>
 
-    <p class='mb-0 mt-3 h5'>Mercenaries to Include:</p>
+    <p class='mb-0 mt-4 h6'>Mercenaries to Include:</p>
 
     <button type="button" class="btn btn-primary btn-sm me-4 my-2"
       (click)="selectAllMercenaries()">
@@ -179,7 +175,7 @@
             [checked]="draftService.availableMercs.indexOf(Mercenary.HillGiant) > -1"  
             id="hillGiantCheckbox">
           <label class="form-check-label" for="flexCheckChecked">
-            Mercenary.HillGiant
+            {{Mercenary.HillGiant}}
           </label>
         </div>
         <div class="form-check">
@@ -242,7 +238,7 @@
       </div> <!-- column end -->
     </div>
 
-    <p class='mb-0 mt-3 h5'>Additional Options:</p>
+    <p class='mb-0 mt-4 h6'>Additional Options:</p>
     <div class="row">
       <div class="col">
         <div class="form-check">

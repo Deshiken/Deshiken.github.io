@@ -11,6 +11,8 @@ import { DraftIconComponent } from './holas-draft/draft-icon/draft-icon.componen
 import { SharedModule } from '../shared/shared.module';
 import { DraftSummaryComponent } from './holas-draft/draft-summary/draft-summary.component';
 import { HolasRulesUpdateComponent } from './holas-rules-update/holas-rules-update.component';
+import { RoundTimerComponent } from './round-timer/round-timer.component';
+import { AlternateGameModesComponent } from './alternate-game-modes/alternate-game-modes.component';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { HolasRulesUpdateComponent } from './holas-rules-update/holas-rules-upda
     DraftPickComponent,
     DraftIconComponent,
     DraftSummaryComponent,
-    HolasRulesUpdateComponent
+    HolasRulesUpdateComponent,
+    RoundTimerComponent,
+    AlternateGameModesComponent
   ],
   imports: [
     CommonModule,
