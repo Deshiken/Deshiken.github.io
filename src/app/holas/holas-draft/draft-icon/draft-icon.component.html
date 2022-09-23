@@ -1,6 +1,11 @@
 <i *ngIf="icon === 'tree'" 
   class="bi m-3 bi-tree-fill" 
-  style="color: rgb(45, 156, 123);"
+  style="color: rgb(6, 110, 49);"
+  [ngClass]="{'smallest-icon' : size === 'smallest', 'small-icon' : size === 'small', 'medium-icon' : size === 'medium', 'large-icon' : size === 'large'}" >
+</i>
+<i *ngIf="icon === 'fire'" 
+  class="bi m-3 bi-fire" 
+  style="color: rgb(173, 163, 10);"
   [ngClass]="{'smallest-icon' : size === 'smallest', 'small-icon' : size === 'small', 'medium-icon' : size === 'medium', 'large-icon' : size === 'large'}" >
 </i>
 <i *ngIf="icon === 'shield'"  
@@ -21,7 +26,7 @@
 <i class="bi m-3 bi-emoji-laughing-fill"
   *ngIf="icon === 'face'"
   [ngClass]="{'smallest-icon' : size === 'smallest', 'small-icon' : size === 'small', 'medium-icon' : size === 'medium', 'large-icon' : size === 'large'}"
-  style="color: rgb(29, 99, 12);">
+  style="color: rgb(76, 99, 12);">
 </i>
 <i class="bi m-3 bi-moon-stars-fill"
   *ngIf="icon === 'moon'"

@@ -63,6 +63,13 @@
     (click)="selectIcon('droplet')">
   </app-draft-icon>
 
+  <app-draft-icon 
+    *ngIf="draftService.selectedIcons.indexOf('fire') < 0"
+    [size]="IconSize.Medium" 
+    [icon]="'fire'"
+    (click)="selectIcon('fire')">
+  </app-draft-icon>
+
   <ng-container *ngIf="draftService.selectedIcons.length">
     <h2>Selected Icons</h2>
     <ng-container *ngFor="let icon of draftService.selectedIcons; let i = index">
