@@ -67,7 +67,7 @@ export class RoundTimerComponent implements OnInit {
   }
 
   timesUp() {
-    clearInterval(this.interval);
+    window.clearInterval(this.interval);
     this.playAudio();
   }
 
