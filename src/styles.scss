@@ -1,48 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
 // @import "../node_modules/bootstrap/scss/functions";
 
+//Theme Light
 $primary: #0b7555;
-$secondary: #faf1d2;
-$body-bg: #faf7ef;
+$secondary: #bb9200;
+$body-bg: #fdfbf5;
 $body-color: #055a41;
 
+//Theme Dark
+// $body-color: #f0f7f5;
+// $primary: #30856b;
+// $secondary: #bb9200;
+// $body-bg: #2c2c2c;
+
 // $theme-colors: (
-//   "primary": #84329b,
-//   "secondary": #02bceb
+//   Theme 1
+//   primary: #0b7555,
+//   secondary: #fdc600,
+//   body-bg: #fdfbf5,
+//   body-color: #055a41
 // );
   
 @import "../node_modules/bootstrap/scss/bootstrap";
 @import "../node_modules/bootstrap-icons/font/bootstrap-icons.css";
 
-// html, body { height: 100%; }
-// body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-/* Utility Classes */
-// .u-flex {
-//   display: flex;
-
-//   &-justify-- {
-//     &end, &flex-end, &fe          { justify-content: flex-end !important; }
-//     &start, &flex-start, &fs      { justify-content: flex-start !important; }
-//     &center, &c                   { justify-content: center !important; }
-//     &space-around, &around, &sa   { justify-content: space-around !important; }
-//     &space-between, &between, &sb { justify-content: space-between !important; }
-//   }
-  
-//   /* Align items */
-//   &-align--, &-align-items-- {
-//     &flex-start, &start, &fs { align-items: flex-start !important; }
-//     &center, &c              { align-items: center !important; }
-//     &flex-end, &end, &fe     { align-items: flex-end !important; }
-//     &stretch, &s             { align-items: stretch !important; }
-//     &baseline, &b            { align-items: baseline !important; }
-//   }
-  
-//   &-dir-- {
-//     &row, &r              { flex-direction: row !important; }
-//     &row-reverse, &rr     { flex-direction: row-reverse !important; }
-//     &column, &c           { flex-direction: column !important; }
-//     &column-reverse, &cr  { flex-direction: column-reverse !important; }
-//   }
-// }
+.med-icon,
+.medium-icon {
+  font-size: 1.5rem;
+}
 

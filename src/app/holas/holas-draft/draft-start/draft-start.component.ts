@@ -24,11 +24,11 @@ export class DraftStartComponent implements OnInit {
     ['tooFewMercenariesSelected',false]
   ]);
 
+  public buildings: Array<string> = ['Barracks', 'Mage Tower', 'Assassin Guild', 'Shipyard', 'Aviary']
+  
   ngOnInit(): void {
   }
-
-  public buildings: Array<string> = ['Barracks', 'Mage Tower', 'Assassin Guild', 'Shipyard', 'Aviary']
-
+  
   constructor(
     public draftService: HolasDraftService,
     public randomService: RandomService,

@@ -1,1 +1,105 @@
-<p>round-timer works!</p>
+<div class="container">
+  <h1 class="text-center mt-2">Action Timer</h1>
+
+  <h2 class="mb-0">Options:</h2>
+  <fieldset>
+    <div (click)="showTimeOptions = !showTimeOptions"
+      class="d-flex align-items-center"
+      data-bs-toggle="collapse" 
+      data-bs-target="#timeColapse">
+      <legend style="width: auto;" class="mb-0 fs-5">Set Timer Length:</legend>
+      <i *ngIf="!showTimeOptions" class="bi ms-3 bi-chevron-down med-icon"></i>
+      <i *ngIf="showTimeOptions" class="bi ms-3 bi-chevron-up med-icon"></i>
+    </div>
+    <div class="collapse" id="timeColapse">
+      <label for="turnTime" class="form-label">Turn Action Time: <span>{{turnActionTime}} seconds</span></label>
+      <input type="range" class="form-range"
+        [(ngModel)]="turnActionTime"
+        min="15" max="120" step="15" 
+        id="turnTime">
+      <label for="combatSpell" class="form-label">Combat Spell Time: <span>{{combatSpellTime}} seconds</span></label>
+      <input type="range" class="form-range"
+        [(ngModel)]="combatSpellTime" 
+        min="15" max="120" step="15" 
+        id="combatSpell">
+      <label for="combatTactic" class="form-label">Combat Tactics Card Time: <span>{{combatTacticTime}} seconds</span></label>
+      <input type="range" class="form-range"
+        [(ngModel)]="combatTacticTime" 
+        min="15" max="120" step="15" 
+        id="combatTactic">
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <div (click)="showAudioOptions = !showAudioOptions"
+      class="d-flex align-items-center"
+      data-bs-toggle="collapse" 
+      data-bs-target="#audioColapse">
+      <legend style="width: auto;" class="mb-0 fs-5">Alarm Sound:</legend>
+      <i *ngIf="!showAudioOptions" class="bi ms-3 bi-chevron-down med-icon"></i>
+      <i *ngIf="showAudioOptions" class="bi ms-3 bi-chevron-up med-icon"></i>
+    </div>
+    <div class="collapse"  id="audioColapse">
+      <div class="form-check radio-with-sample">
+        <input 
+          (change)="setAudioSource(AudioSource.ClassicAlarm)"
+          class="form-check-input" type="radio" name="alarmRadio" id="flexRadioDefault2" checked>
+        <label class="form-check-label" for="flexRadioDefault2">
+          Classic Alarm
+        </label>
+        <i (click)="playSample(AudioSource.ClassicAlarm)" class="bi bi-play-circle-fill"></i>
+      </div>
+      <div class="form-check radio-with-sample">
+        <input class="form-check-input" 
+          (change)="setAudioSource(AudioSource.BattleshipAlarm)"
+          type="radio" name="alarmRadio" id="battleshipAudio">
+        <label class="form-check-label" for="battleshipAudio">
+          Battleship Alarm
+        </label>
+        <i (click)="playSample(AudioSource.BattleshipAlarm)" class="bi bi-play-circle-fill"></i>
+      </div>
+      <div class="form-check radio-with-sample">
+        <input class="form-check-input" 
+          (change)="setAudioSource(AudioSource.DigitalRingAlarm)"
+          type="radio" name="alarmRadio" id="digitalRingAlarm">
+        <label class="form-check-label" for="digitalRingAlarm">
+          Digital Ring Alarm
+        </label>
+        <i (click)="playSample(AudioSource.DigitalRingAlarm)" class="bi bi-play-circle-fill"></i>
+      </div>
+      <div class="form-check radio-with-sample">
+        <input class="form-check-input" 
+          (change)="setAudioSource(AudioSource.DigitalClockAlarm)"
+          type="radio" name="alarmRadio" id="digitalRingClock">
+        <label class="form-check-label" for="digitalRingClock">
+          Digital Clock Alarm
+        </label>
+        <i (click)="playSample(AudioSource.DigitalClockAlarm)" class="bi bi-play-circle-fill"></i>
+      </div>
+    </div>
+  </fieldset>
+
+  <h2 class="mb-0 mt-4">Start a Timer</h2>
+  <button  type="button" 
+    (click)="startTimer(turnActionTime)"
+    class="btn btn-primary mt-2 me-2">
+    Turn Action
+  </button>
+  <button type="button" 
+    (click)="startTimer(combatSpellTime)"
+    class="btn btn-primary mt-2 me-2">
+    Combat Spell
+  </button>
+  <button type="button"
+    (click)="startTimer(combatTacticTime)" 
+    class="btn btn-primary mt-2 me-2">
+    Combat Tactic
+  </button>
+
+  <h2 class="mt-5">
+    Current Timer: 
+  </h2>
+  <p style="font-size: 8rem; line-height: 5rem;" class="text-center" [ngClass]="{'text-danger' : currentTimer < 10}">{{currentTimer}}</p>
+
+
+</div>
