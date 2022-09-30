@@ -1,15 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RandomService } from './random/random.service';
+import { DynamicGrowDirective } from './directives/dynamic-grow-directive';
+import { SmoothHeightComponent } from './components/smooth-height/smooth-height.component';
 
 
 
 @NgModule({
   declarations: [
-    // RandomService
+    DynamicGrowDirective,
+    SmoothHeightComponent
   ],
   exports: [
-    // RandomService
+    DynamicGrowDirective,
+    SmoothHeightComponent
   ],
   imports: [
     CommonModule

@@ -5,7 +5,7 @@
 $primary: #0b7555;
 $secondary: #bb9200;
 $body-bg: #fdfbf5;
-$body-color: #055a41;
+$body-color: #05533c;
 
 //Theme Dark
 // $body-color: #f0f7f5;
@@ -20,12 +20,25 @@ $body-color: #055a41;
 //   body-bg: #fdfbf5,
 //   body-color: #055a41
 // );
-  
+
+//bootstrap imports
 @import "../node_modules/bootstrap/scss/bootstrap";
 @import "../node_modules/bootstrap-icons/font/bootstrap-icons.css";
+
+//global styles imports
+@import "../src/styles/animations.scss";
 
 .med-icon,
 .medium-icon {
   font-size: 1.5rem;
 }
 
+.card {
+  &-shadow {
+    box-shadow: 5px 5px 20px 10px rgba(9, 40, 66, 0.25);
+    
+    &__light {
+      box-shadow: 0 0 20px rgba(9, 40, 66, 0.25);
+    }
+  }
+}

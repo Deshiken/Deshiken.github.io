@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
-import { RandomService } from 'src/app/shared/random/random.service';
+import { RandomService } from 'src/app/shared/services/random.service';
 import { HolasDraftService } from '../holas-draft.service';
 
 import { DraftStartComponent } from './draft-start.component';
@@ -32,13 +32,7 @@ fdescribe('DraftStartComponent', () => {
     })
     .compileComponents();
 
-    // mockDraftService.availableFactions = [];
-    // mockDraftService.availableMercs = [];
     mockDraftService = TestBed.inject(HolasDraftService) as jasmine.SpyObj<HolasDraftService>;
-    // mockDraftService.numberOfPlayers = 4;
-    // mockDraftService.availableFactions = [];
-    // mockDraftService.availableMercs = [];
-    // draftServiceSpy.numberOfPlayers = 4;
   });
 
   beforeEach(() => {

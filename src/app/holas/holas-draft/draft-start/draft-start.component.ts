@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { RandomService } from 'src/app/shared/random/random.service';
+import { RandomService } from 'src/app/shared/services/random.service';
 import { IconSize } from '../draft-icon/draft-icon.component';
 import { HolasDraftService, HolasFaction, Mercenary, SelectedFaction } from '../holas-draft.service';
 

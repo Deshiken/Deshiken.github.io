@@ -1,7 +1,7 @@
 <div class='container'>
   <h1 class="mt-2">Draft Summary</h1>
 
-  <div class="card mb-3" *ngFor="let player of draftService.playerMap.values()">
+  <div class="card mb-4 card-shadow__light" *ngFor="let player of draftService.playerMap.values()">
     <div class="row">
       <div class="col-4 d-flex align-items-center">
         <app-draft-icon [size]="IconSize.Medium" [icon]="player.icon"></app-draft-icon>

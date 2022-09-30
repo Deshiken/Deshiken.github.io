@@ -8,8 +8,11 @@
       data-bs-toggle="collapse" 
       data-bs-target="#timeColapse">
       <legend style="width: auto;" class="mb-0 fs-5">Set Timer Length:</legend>
-      <i *ngIf="!showTimeOptions" class="bi ms-3 bi-chevron-down med-icon"></i>
-      <i *ngIf="showTimeOptions" class="bi ms-3 bi-chevron-up med-icon"></i>
+      <i [ngClass]="{'rotate-clockwise' : showTimeOptions}" 
+        class="bi ms-3 bi-chevron-down med-icon rotate-transition">
+      </i>
+      <!-- <i *ngIf="!showTimeOptions" class="bi ms-3 bi-chevron-down med-icon"></i> -->
+      <!-- <i *ngIf="showTimeOptions" class="bi ms-3 bi-chevron-up med-icon"></i> -->
     </div>
     <div class="collapse" id="timeColapse">
       <label for="turnTime" class="form-label">Turn Action Time: <span>{{turnActionTime}} seconds</span></label>
@@ -36,8 +39,9 @@
       data-bs-toggle="collapse" 
       data-bs-target="#audioColapse">
       <legend style="width: auto;" class="mb-0 fs-5">Alarm Sound:</legend>
-      <i *ngIf="!showAudioOptions" class="bi ms-3 bi-chevron-down med-icon"></i>
-      <i *ngIf="showAudioOptions" class="bi ms-3 bi-chevron-up med-icon"></i>
+      <i [ngClass]="{'rotate-clockwise' : showAudioOptions}" class="bi ms-3 bi-chevron-down med-icon rotate-transition"></i>
+      <!-- <i *ngIf="!showAudioOptions" class="bi ms-3 bi-chevron-down med-icon"></i> -->
+      <!-- <i *ngIf="showAudioOptions" class="bi ms-3 bi-chevron-up med-icon"></i> -->
     </div>
     <div class="collapse"  id="audioColapse">
       <div class="form-check radio-with-sample">
@@ -96,10 +100,7 @@
     Combat Tactic
   </button>
 
-  <h2 class="mt-5">
-    Current Timer: 
-  </h2>
+  <h2 class="mt-5">Current Timer: </h2>
   <p style="font-size: 8rem; line-height: 5rem;" class="text-center" [ngClass]="{'text-danger' : currentTimer < 10}">{{currentTimer}}</p>
-
 
 </div>

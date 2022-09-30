@@ -1,21 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { RandomService } from 'src/app/shared/random/random.service';
+import { RandomService } from 'src/app/shared/services/random.service';
 import { IconSize } from '../draft-icon/draft-icon.component';
 import { HolasDraftService } from '../holas-draft.service';
 import { DraftStep } from '../models/draft-step';
 import { Player } from '../models/player';
+import { animate, state, style, transition, trigger, useAnimation } from '@angular/animations';
+import { FadeInOutAnimation } from 'src/app/shared/animations/fadeInOutAnimation';
 
 @Component({
   selector: 'app-player-select',
   templateUrl: './player-select.component.html',
-  styleUrls: ['./player-select.component.scss']
+  styleUrls: ['./player-select.component.scss'],
+  animations: [
+    FadeInOutAnimation
+  ]
 })
 export class PlayerSelectComponent implements OnInit {
   public showStar: boolean = true;
   public IconSize = IconSize;
   public players: Array<any> = new Array<any>();
-
+  public removeTest: boolean = false;
+  public iconChange: boolean = false;
 
   public errors = {
     tooFewIconsSelected: false
@@ -37,9 +43,11 @@ export class PlayerSelectComponent implements OnInit {
   }
   
   public selectIcon(selectedIcon: string) {
+    this.iconChange = true;
     if (this.draftService.selectedIcons.length < this.draftService.numberOfPlayers) {
       this.draftService.selectedIcons.push(selectedIcon);
     }
+    this.iconChange = false;
   }
 
   public next() {

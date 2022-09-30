@@ -14,18 +14,19 @@
   font-size: 10rem;
 }
 
-.smallest {
-  font-size: 2rem;
+
+.fade-out {
+  animation: fade-out 1s ease-out both;
 }
-.small {
-  font-size: 3rem;
-}
-.medium {
-  font-size: 5rem;
-}
-.large {
-  font-size: 8rem;
-}
-.huge {
-  font-size: 10rem;
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    position: absolute;
+  }
 }
