@@ -14,20 +14,23 @@ import { RoundTimerComponent } from './round-timer/round-timer.component';
 const routes: Routes = [
   { 
     path: '', 
-    component: HolasComponent 
+    component: HolasComponent, 
   },
-  { path: 'round-timer',
-    component: RoundTimerComponent
+  { 
+    path: 'round-timer',
+    component: RoundTimerComponent,
   },
-  { path: 'alternate-game-modes',
-    component: AlternateGameModesComponent
+  { 
+    path: 'alternate-game-modes',
+    component: AlternateGameModesComponent,
   },
-  { path: 'holas-rules-update',
+  { 
+    path: 'holas-rules-update',
     component: HolasRulesUpdateComponent
   },
   { 
     path: 'holas-draft-start', 
-    component: DraftStartComponent 
+    component: DraftStartComponent, 
   },
   { 
     path: 'player-select', 
@@ -38,7 +41,7 @@ const routes: Routes = [
     component: DraftPickComponent 
   },
   { 
-    path: 'draft-summary', 
+    path: 'draft-summary',
     component: DraftSummaryComponent 
   },
 ];

@@ -7,7 +7,7 @@ import { HolasDraftService, HolasFaction, Mercenary, SelectedFaction } from '../
 @Component({
   selector: 'app-draft-start',
   templateUrl: './draft-start.component.html',
-  styleUrls: ['./draft-start.component.scss']
+  styleUrls: ['./draft-start.component.scss'],
 })
 export class DraftStartComponent implements OnInit {
 
