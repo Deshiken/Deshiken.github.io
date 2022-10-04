@@ -6,12 +6,16 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomePageComponent } from './home-page/home-page.component';
 import { DescentComponent } from './descent/descent.component';
+import { PricingComponent } from './pricing/pricing.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
-    DescentComponent
+    DescentComponent,
+    PricingComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

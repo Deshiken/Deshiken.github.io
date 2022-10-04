@@ -28,20 +28,12 @@ export class DynamicGrowDirective implements OnInit, OnChanges {
   constructor(private el: ElementRef) { }
 
   ngOnInit() {
-    console.log('dynamic grow init');
-    // this.el.nativeElement.style.overflow = 'hidden';
     this.el.nativeElement.style.overflow = 'auto';
     this.el.nativeElement.style.transition = `height ${this.animateTime}ms ease 0s`;
   }
 
   /**Opens the container if show is true, otherwise closes it */
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('dynamicGrow change');
-    console.log('scroll height', this.el.nativeElement.scrollHeight);
-    console.log('height', this.el.nativeElement.height);
-
-    // const el = this.expandable.nativeElement;
-
     setTimeout(() => {
       const prevHeight = this.el.nativeElement.style.height;
       this.el.nativeElement.style.height = 'auto';
@@ -53,16 +45,5 @@ export class DynamicGrowDirective implements OnInit, OnChanges {
       }, 50);
     }, 500);
 
-    // if (changes.lockHeight.currentValue) {
-      // this.el.nativeElement.style.height = this.el.nativeElement.scrollHeight + 'px';
-    // } else {
-      // setTimeout(() => {
-      //   this.el.nativeElement.style.height = this.el.nativeElement.scrollHeight + 'px';
-      // }, this.initialTick);
-
-      // setTimeout(() => {
-      //   this.el.nativeElement.style.height = null;
-      // }, this.animateTime + this.initialTick);
-    // }
   }
 }

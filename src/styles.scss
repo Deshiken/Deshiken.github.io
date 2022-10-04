@@ -6,20 +6,13 @@ $primary: #0b7555;
 $secondary: #bb9200;
 $body-bg: #fdfbf5;
 $body-color: #05533c;
+$navbar-dark-toggler-border-color: rgba(255, 255, 255, 0.8);
 
 //Theme Dark
 // $body-color: #f0f7f5;
 // $primary: #30856b;
 // $secondary: #bb9200;
 // $body-bg: #2c2c2c;
-
-// $theme-colors: (
-//   Theme 1
-//   primary: #0b7555,
-//   secondary: #fdc600,
-//   body-bg: #fdfbf5,
-//   body-color: #055a41
-// );
 
 //bootstrap imports
 @import "../node_modules/bootstrap/scss/bootstrap";
