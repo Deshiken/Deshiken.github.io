@@ -9,24 +9,19 @@
 }
 
 .fade-out {
-  animation: fade-out 1s ease-out both;
+  animation: fade-out .4s ease-out both;
 }
 @keyframes fade-out {
   0% {
     opacity: 1;
   }
-  50% {
-    opacity: 0;
-  }
   100% {
     opacity: 0;
-    position: absolute;
-    z-index: -1000;
   }
 }
 
 .fade-in {
-  animation: fade-in .5s ease-in both;
+  animation: fade-in .4s ease-in both;
 }
 @keyframes fade-in {
   0% {

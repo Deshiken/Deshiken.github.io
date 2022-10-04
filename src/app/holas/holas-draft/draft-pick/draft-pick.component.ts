@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { RandomService } from 'src/app/shared/services/random.service';
 import { IconSize } from '../draft-icon/draft-icon.component';
@@ -15,6 +15,7 @@ import { Player } from '../models/player';
 export class DraftPickComponent implements OnInit {
 
   public IconSize = IconSize;
+  @ViewChild('container') container: ElementRef;
 
   public currentPlayer: Player = this.draftService.draftSteps[this.draftService.currentDraftStep].player;
   public currentStep: DraftStep = this.draftService.draftSteps[this.draftService.currentDraftStep];
@@ -26,6 +27,7 @@ export class DraftPickComponent implements OnInit {
   constructor(
     public draftService: HolasDraftService,
     public randomService: RandomService,
+    public renderer: Renderer2,
     public router: Router
   ) { }
 
@@ -55,18 +57,36 @@ export class DraftPickComponent implements OnInit {
 
   public next() {
     if (this.choiceType) {
+      this.renderer.addClass(this.container.nativeElement, 'fade-in');
       this.savePickToPlayer();
       this.removeChoiceFromAvailableList();
       this.clearCurrentStepVariables();
       this.draftService.currentDraftStep ++;
 
       if (this.draftService.currentDraftStep === this.draftService.draftSteps.length) {
+        // we are finished drafting
         this.router.navigate(['/holas/draft-summary']);
       } else {
+        // move to the next player
         this.currentPlayer = this.draftService.draftSteps[this.draftService.currentDraftStep].player;
         this.currentStep = this.draftService.draftSteps[this.draftService.currentDraftStep];
+        
+        // wait the duration of the animation then remove the fade-in class, so animation can be triggered again
+        window.setTimeout(() => {
+          this.renderer.removeClass(this.container.nativeElement, 'fade-in');    
+        },400)
       }
+    }
+  }
 
+  public fadeInOut(state: string) {
+    this.renderer.removeClass(this.container.nativeElement, 'fade-out');
+    if (state === 'in') {
+      this.renderer.addClass(this.container.nativeElement, 'fade-out');
+    }
+    if (state === 'out') {
+      this.renderer.removeClass(this.container.nativeElement, 'fade-in');
+      this.renderer.addClass(this.container.nativeElement, 'fade-in');
     }
   }
 
