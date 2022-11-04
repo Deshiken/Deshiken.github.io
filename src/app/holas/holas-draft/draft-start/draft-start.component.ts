@@ -68,7 +68,7 @@ export class DraftStartComponent implements OnInit {
         console.log('Selected Faction:', faction);
       }
       for (let merc of this.draftService.selectedMercs) {
-        console.log('Selected Mercinary:', merc);
+        console.log('Selected Mercenary:', merc);
       }
       this.router.navigate(['/holas/player-select'])
     }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-round-timer',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./round-timer.component.scss']
 })
 
-export class RoundTimerComponent implements OnInit {
+export class RoundTimerComponent implements OnInit, OnDestroy {
   //Make enums available to template
   AudioSource = AudioSource;
 
@@ -30,6 +30,12 @@ export class RoundTimerComponent implements OnInit {
     this.audio.src = AudioSource.ClassicAlarm;
     this.audio.loop = true;
     this.audio.load();
+  }
+
+  ngOnDestroy(): void {
+    //Remove any audio timers on destruction
+    this.audio.pause();
+    window.clearInterval(this.interval);
   }
 
   setAudioSource(audioSource: AudioSource) {

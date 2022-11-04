@@ -29,6 +29,16 @@ const routes: Routes = [
     loadChildren: () => import('./holas/holas.module').then(m => m.HolasModule) 
   },
   { 
+    path: 'kemet', 
+    data: { animation: 'isRight' }, //can be used to specify routing animation state/transition
+    loadChildren: () => import('./kemet/kemet.module').then(m => m.KemetModule) 
+  },
+  { 
+    path: 'uprising', 
+    data: { animation: 'isRight' }, //can be used to specify routing animation state/transition
+    loadChildren: () => import('./uprising/uprising.module').then(m => m.UprisingModule) 
+  },
+  { 
     path: 'descent', 
     component: DescentComponent
   },

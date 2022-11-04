@@ -1,0 +1,53 @@
+<div class="container">
+  <app-heading-with-back [title]="'Uprising Mercenary Picker'"></app-heading-with-back>
+
+  <label class='h6' for="playerNumberSelect">Number of Players:</label>
+  <select [(ngModel)]="numberOfPlayers" class="form-select mb-3" style="max-width: 400px;"
+    id="playerNumberSelect" aria-label="Select number of Players">
+    <option [ngValue]="1">One</option>
+    <option [ngValue]="2">Two</option>
+    <option [ngValue]="3">Three</option>
+    <option [ngValue]="4">Four</option>
+  </select>
+
+  <p class='mb-0 mt-4 h6'>Mercenaries to Include:</p>
+  <div class="form-check">
+    <input class="form-check-input" 
+      type="checkbox" 
+      id="humansCheckbox" 
+      [checked]="useMercPack1"
+      (change)="useMercPack1 = !useMercPack1"
+      checked>
+    <label class="form-check-label" for="flexCheckChecked">
+      Mercenary Pack 1
+    </label>
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox"  
+      [checked]="useMercPack2"
+      (change)="useMercPack2 = !useMercPack2"
+      id="mercPack2Checkbox">
+    <label class="form-check-label" for="flexCheckChecked">
+      Mercenary Pack 2
+    </label>
+  </div>
+
+  <button class="btn btn-primary mt-4" (click)="generateMercenaries()">Generate Mercenaries</button>
+
+  
+  <ng-container *ngIf="generatedMercenaries.length > 0">
+    <p class='mb-0 mt-4 h6'>Randomly Selected Mercenaries:</p>
+    
+    <ul>
+      <li
+      [@simpleFadeAnimation]="'in'" 
+        *ngFor="let merc of generatedMercenaries">
+        {{merc}}
+    </li>
+    </ul>
+    <!-- <ng-container *ngFor="let merc of generatedMercenaries"> -->
+    <!-- </ng-container> -->
+  </ng-container>
+  
+</div>
