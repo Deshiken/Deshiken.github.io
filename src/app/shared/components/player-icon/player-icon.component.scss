@@ -1,0 +1,32 @@
+.smallest-icon {
+  font-size: 2rem;
+}
+.small-icon {
+  font-size: 3rem;
+}
+.medium-icon {
+  font-size: 5rem;
+}
+.large-icon {
+  font-size: 8rem;
+}
+.huge-icon {
+  font-size: 10rem;
+}
+
+
+.fade-out {
+  animation: fade-out 1s ease-out both;
+}
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    position: absolute;
+  }
+}

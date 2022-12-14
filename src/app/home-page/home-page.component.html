@@ -1,14 +1,34 @@
 
 <div class="container">
-  <div class="d-flex flex-column align-items-center">
-    <p class="h3 mt-3 mb-0">Welcome to Board Game Helper.</p>
-    <p>A collection of tools and resources to help you get the most out of your favorite games!</p>
-    <p>Choose a game to get started.</p>
-  </div>
+  <h1 class="mt-3 text-center">Welcome to Board Game Helper.</h1>
+  <p class="text-center">A collection of tools and resources to help you get the most out of your favorite games!</p>
+</div>
 
+<div class="bg-secondary">
+  <div class="container">
+    <h2 class="text-center pt-3 mb-0">General Board Gaming tools</h2>
+      <div class="d-flex align-items-center nav-help">
+        <button class="btn btn-primary my-3" (click)="router.navigate(['randomize/start'])">
+          Randomize Teams and Player Order
+        </button>
+        <i class="bi m-3 bi-question-circle-fill" style="font-size: 2.4rem;"
+        data-bs-toggle="collapse" data-bs-target="#draftCollapse" aria-expanded="false" aria-controls="draftCollapse">
+      </i>
+    </div>
+    <div class="collapse pb-3" id="draftCollapse">
+      <div class="card card-body">
+        This tool will assign each player to a random team and also set a random team order.
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <h2 class="text-center mt-3">Game Specific Tools</h2>
 
   <div class="row d-flex justify-content-center">
-    <div class="card card-shadow m-3 p-0">
+    <div class="card game-card card-shadow m-3 p-0">
       <a href='' routerLink="/holas">
         <img class="card-img-top" src='../../assets/holasFront.webp'>
       </a>
@@ -17,7 +37,7 @@
       </div>
     </div>
 
-    <div class="card card-shadow m-3 p-0">
+    <div class="card game-card card-shadow m-3 p-0">
       <a href='' routerLink="/kemet">
         <img class="card-img-top" height=248px src='../../assets/kemet.jfif'>
       </a>
@@ -26,7 +46,7 @@
       </div>
     </div>
 
-    <div class="card card-shadow m-3 p-0">
+    <div class="card game-card card-shadow m-3 p-0">
       <a href='' routerLink="/uprising">
         <img class="card-img-top" src='../../assets/'>
       </a>
@@ -35,7 +55,7 @@
       </div>
     </div>
     
-    <div class="card card-shadow m-3 p-0">
+    <div class="card game-card card-shadow m-3 p-0">
       <a href='' routerLink="/ankh">
         <img class="card-img-top" src='../../assets/AnkhFront.webp'>
       </a>
@@ -44,7 +64,7 @@
       </div>
     </div>
     
-    <div class="card card-shadow m-3 p-0">
+    <div class="card game-card card-shadow m-3 p-0">
       <a href='' routerLink="/descent">
         <img class="card-img-top" src='../../assets/descentFront2.webp'>
       </a>

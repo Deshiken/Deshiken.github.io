@@ -43,11 +43,11 @@ export class PlayerSelectComponent implements OnInit {
   }
   
   public selectIcon(selectedIcon: string) {
-    this.iconChange = true;
+    // this.iconChange = true
     if (this.draftService.selectedIcons.length < this.draftService.numberOfPlayers) {
       this.draftService.selectedIcons.push(selectedIcon);
     }
-    this.iconChange = false;
+    // this.iconChange = false;
   }
 
   public next() {
@@ -158,7 +158,6 @@ export class PlayerSelectComponent implements OnInit {
         console.log('free for all with mercs');
         let firstHalf = this.randomDraftOrder();
         let secondHalf = [...firstHalf];
-        // this.draftService.draftSteps = [...firstHalf, ...firstHalf.reverse()];
         this.draftService.draftSteps = this.draftService.draftSteps.concat(firstHalf,secondHalf.reverse());
         break;
       }

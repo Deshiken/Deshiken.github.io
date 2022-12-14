@@ -24,6 +24,11 @@ const routes: Routes = [
     component: AboutComponent,
   },
   { 
+    path: 'randomize', 
+    data: { animation: 'isRight' }, //can be used to specify routing animation state/transition
+    loadChildren: () => import('./randomize/randomize.module').then(m => m.RandomizeModule) 
+  },
+  { 
     path: 'holas', 
     data: { animation: 'isRight' }, //can be used to specify routing animation state/transition
     loadChildren: () => import('./holas/holas.module').then(m => m.HolasModule) 

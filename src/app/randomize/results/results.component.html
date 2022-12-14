@@ -1,0 +1,20 @@
+<div class='container'>
+  <app-heading-with-back [title]="'Team and Player Order'"></app-heading-with-back>
+
+  <div class="card mb-4 card-shadow__light" *ngFor="let player of playerMap.values()">
+    <div class="row">
+      <div class="col-4 d-flex align-items-center">
+        <app-player-icon [size]="IconSize.Medium" [icon]="player.icon"></app-player-icon>
+      </div>
+      <div class="col-8 card-body d-flex flex-column justify-content-center">
+        <h5 class="card-title">Player {{player.playerNumber}}</h5>
+        <p class="card-text mb-1" *ngIf="player.teamNumber > 0">Team {{player.teamNumber}}</p>
+      </div>
+    </div>
+  </div>
+
+  <strong>
+    <a routerLink="/">Back to Homepage</a>
+  </strong>
+
+</div>

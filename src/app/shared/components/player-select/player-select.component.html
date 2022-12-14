@@ -1,98 +1,99 @@
 <div class="container">
-  <h1 class="mt-3">Player Select</h1>
+  <app-heading-with-back [title]="'Player Select'"></app-heading-with-back>
+
   <p>Starting in any order you like, have each player select an icon to represent them in the draft by taping or clicking on it.</p>
-  <p>Remember the icon you chose to represent you!</p>
+  <p>Remember the icon you choose to represent you!</p>
 
   <div *ngIf="errors.tooFewIconsSelected" class="alert alert-warning" role="alert">
-    Please make sure all {{draftService.numberOfPlayers}} players have selected an icon.
+    Please make sure all {{numberOfPlayers}} players have selected an icon.
   </div>
 
-  <div appDynamicGrow [lockHeight]="this.draftService.selectedIcons.length">
-    <app-draft-icon 
-      *ngIf="draftService.selectedIcons.indexOf('star') < 0" 
+  <div appDynamicGrow [lockHeight]="playerSelectService.selectedIcons.length">
+    <app-player-icon 
+      *ngIf="playerSelectService.selectedIcons.indexOf('star') < 0" 
       [@simpleFadeAnimation]="'in'"
       [size]="IconSize.Medium" 
       [icon]="'star'"
       (click)="selectIcon('star')">
-    </app-draft-icon>
+    </app-player-icon>
   
-    <app-draft-icon 
-      *ngIf="draftService.selectedIcons.indexOf('bug') < 0"
+    <app-player-icon 
+      *ngIf="playerSelectService.selectedIcons.indexOf('bug') < 0"
       [@simpleFadeAnimation]="'in'"
       [size]="IconSize.Medium" 
       [icon]="'bug'"
       (click)="selectIcon('bug')">
-    </app-draft-icon>
+    </app-player-icon>
   
-    <app-draft-icon 
-      *ngIf="draftService.selectedIcons.indexOf('face') < 0"
+    <app-player-icon 
+      *ngIf="playerSelectService.selectedIcons.indexOf('face') < 0"
       [@simpleFadeAnimation]="'in'"
       [size]="IconSize.Medium" 
       [icon]="'face'"
       (click)="selectIcon('face')">
-    </app-draft-icon>
+    </app-player-icon>
   
-    <app-draft-icon
-      *ngIf="draftService.selectedIcons.indexOf('moon') < 0"
+    <app-player-icon
+      *ngIf="playerSelectService.selectedIcons.indexOf('moon') < 0"
       [@simpleFadeAnimation]="'in'" 
       [size]="IconSize.Medium" 
       [icon]="'moon'"
       (click)="selectIcon('moon')">
-    </app-draft-icon>
+    </app-player-icon>
   
-    <app-draft-icon 
-      *ngIf="draftService.selectedIcons.indexOf('shield') < 0"
+    <app-player-icon 
+      *ngIf="playerSelectService.selectedIcons.indexOf('shield') < 0"
       [@simpleFadeAnimation]="'in'"
       [size]="IconSize.Medium" 
       [icon]="'shield'"
       (click)="selectIcon('shield')">
-    </app-draft-icon>
+    </app-player-icon>
   
-    <app-draft-icon 
-      *ngIf="draftService.selectedIcons.indexOf('tree') < 0"
+    <app-player-icon 
+      *ngIf="playerSelectService.selectedIcons.indexOf('tree') < 0"
       [@simpleFadeAnimation]="'in'"
       [size]="IconSize.Medium" 
       [icon]="'tree'"
       (click)="selectIcon('tree')">
-    </app-draft-icon>
+    </app-player-icon>
   
-    <app-draft-icon 
-      *ngIf="draftService.selectedIcons.indexOf('cloud') < 0"
+    <app-player-icon 
+      *ngIf="playerSelectService.selectedIcons.indexOf('cloud') < 0"
       [@simpleFadeAnimation]="'in'"
       [size]="IconSize.Medium" 
       [icon]="'cloud'"
       (click)="selectIcon('cloud')">
-    </app-draft-icon>
+    </app-player-icon>
   
-    <app-draft-icon 
-      *ngIf="draftService.selectedIcons.indexOf('droplet') < 0"
+    <app-player-icon 
+      *ngIf="playerSelectService.selectedIcons.indexOf('droplet') < 0"
       [@simpleFadeAnimation]="'in'"
       [size]="IconSize.Medium" 
       [icon]="'droplet'"
       (click)="selectIcon('droplet')">
-    </app-draft-icon>
+    </app-player-icon>
   
-    <app-draft-icon 
-      *ngIf="draftService.selectedIcons.indexOf('fire') < 0"
+    <app-player-icon 
+      *ngIf="playerSelectService.selectedIcons.indexOf('fire') < 0"
       [@simpleFadeAnimation]="'in'"
       [size]="IconSize.Medium" 
       [icon]="'fire'"
       (click)="selectIcon('fire')">
-    </app-draft-icon>
+    </app-player-icon>
   </div>
 
   <ng-container>
     <h2>Selected Icons</h2>
-    <ng-container *ngFor="let icon of draftService.selectedIcons; let i = index">
-      <app-draft-icon 
+    <ng-container *ngFor="let icon of playerSelectService.selectedIcons; let i = index">
+      <app-player-icon 
         [@simpleFadeAnimation]="'in'"
         [size]="IconSize.Smallest" 
         [icon]="icon">
-      </app-draft-icon>
+      </app-player-icon>
     </ng-container>
   </ng-container>
 
-  <div *ngIf="draftService.selectedIcons.length">
+  <div *ngIf="playerSelectService.selectedIcons.length">
     <button class="btn btn-primary m-3" (click)="undo()">
       Undo
       <i  class="bi bi-arrow-counterclockwise"></i>

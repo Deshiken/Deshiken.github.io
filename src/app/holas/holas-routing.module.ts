@@ -6,7 +6,6 @@ import { DraftStartComponent } from './holas-draft/draft-start/draft-start.compo
 import { DraftSummaryComponent } from './holas-draft/draft-summary/draft-summary.component';
 import { PlayerSelectComponent } from './holas-draft/player-select/player-select.component';
 import { HolasRulesUpdateComponent } from './holas-rules-update/holas-rules-update.component';
-
 import { HolasComponent } from './holas.component';
 import { RoundTimerComponent } from './round-timer/round-timer.component';
 

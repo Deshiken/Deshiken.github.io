@@ -1,0 +1,27 @@
+<div class="container">
+  <app-heading-with-back [title]="'Player Randomization'"></app-heading-with-back>
+  
+  <label class='h6' for="playerNumberSelect">Number of Players:</label>
+  <select #playerNumber (change)="playerNumberSelect()" class="form-select mb-3" id="playerNumberSelect" aria-label="Number of players">
+    <option [value]="2">Two</option>
+    <option [value]="3">Three</option>
+    <option [value]="4" selected>Four</option>
+    <option [value]="5">Five</option>
+    <option [value]="6">Six</option>
+    <option [value]="7">Seven</option>
+    <option [value]="8">Eight</option>
+  </select>
+
+  <label class='h6' for="playerNumberSelect">Number of Teams:</label>
+  <select #numberOfTeams [(ngModel)]="teamRandomizeService.selectedTeamOption" class="form-select mb-3" id="teamSelect" aria-label="Number of teams">
+    <option [ngValue]="teamRandomizeService.freeForAll" selected>{{teamRandomizeService.freeForAll.displayName}}</option>
+    <option *ngFor="let option of teamOptions" [ngValue]="option">{{option.displayName}}</option>
+  </select>
+  <p *ngIf="teamsAvailable">*Team play is not enabled for the current number of players.</p>
+
+  <button class="btn btn-primary my-3" (click)="next()">
+    Next
+    <i class="bi bi-arrow-right"></i>
+  </button>
+
+</div>
