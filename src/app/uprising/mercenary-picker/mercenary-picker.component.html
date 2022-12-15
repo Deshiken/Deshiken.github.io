@@ -35,19 +35,17 @@
 
   <button class="btn btn-primary mt-4" (click)="generateMercenaries()">Generate Mercenaries</button>
 
-  
   <ng-container *ngIf="generatedMercenaries.length > 0">
     <p class='mb-0 mt-4 h6'>Randomly Selected Mercenaries:</p>
     
     <ul>
       <li
-      [@simpleFadeAnimation]="'in'" 
+        [@simpleFadeAnimation]="'in'" 
         *ngFor="let merc of generatedMercenaries">
         {{merc}}
-    </li>
+      </li>
     </ul>
-    <!-- <ng-container *ngFor="let merc of generatedMercenaries"> -->
-    <!-- </ng-container> -->
+
   </ng-container>
   
 </div>

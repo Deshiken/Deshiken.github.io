@@ -1,0 +1,18 @@
+<div class='container'>
+  <app-heading-with-back [title]="'Kemet Tools'"></app-heading-with-back>
+  
+  <div class="d-flex align-items-center justify-content-between nav-help">
+    <button class="btn btn-primary btn-lg my-3" (click)="router.navigate(['kemet/upgrade-tiles'])">
+      Choose Upgrade Tiles
+    </button>
+    <i class="bi m-3 bi-question-circle-fill" style="font-size: 2.4rem;"
+      data-bs-toggle="collapse" data-bs-target="#draftCollapse" aria-expanded="false" aria-controls="draftCollapse">
+    </i>
+  </div>
+  <div class="collapse" id="draftCollapse">
+    <div class="card card-body">
+      This tool will allow you to randomly select what colors of upgrade tiles you will use for a game of Kemet.
+    </div>
+  </div>
+
+</div>

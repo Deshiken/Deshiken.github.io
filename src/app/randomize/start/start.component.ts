@@ -31,7 +31,6 @@ export class StartComponent implements OnInit {
     // Reset Team option array
     this.teamOptions = new Array<TeamOption>();
     this.teamRandomizeService.numberOfPlayers = this.playerNumber.nativeElement.value;
-    console.log('player number value', this.playerNumber.nativeElement.value)
 
     // Depending on the number of players selected, add the options for the possible team choices
     switch (this.playerNumber.nativeElement.value) {
@@ -58,7 +57,6 @@ export class StartComponent implements OnInit {
   }
 
   next() {
-    console.log('number of players', this.teamRandomizeService.numberOfPlayers);
     this.router.navigate(
       ['/randomize/player-select'], 
       {queryParams: {numberOfPlayers: this.teamRandomizeService.numberOfPlayers, nextPage: '/randomize/results'}}

@@ -1,1 +1,86 @@
-<p>upgrade-tiles works!</p>
+<div class='container'>
+  <app-heading-with-back [title]="'Upgrade Tiles'"></app-heading-with-back>
+
+  <label class='h6' for="playerNumberSelect">Number of Players:</label>
+  <select [(ngModel)]="numberOfPlayers" class="form-select mb-3" id="playerNumberSelect" aria-label="Number of Players">
+    <option [ngValue]="2">Two</option>
+    <option [ngValue]="3">Three</option>
+    <option [ngValue]="4" selected>Four</option>
+    <option [ngValue]="5">Five</option>
+  </select>
+  
+
+  <label class='h6' for="playerNumberSelect">Available Tile Colors:</label>
+  <div class="row">
+    <div class="col">
+      <div class="form-check">
+        <input class="form-check-input" 
+          type="checkbox" 
+          id="saphireCheckbox" 
+          (change)="tileChange($event, KemetTile.Saphire)" 
+          checked>
+        <label class="form-check-label" for="flexCheckChecked">
+          Saphire (Blue Tiles)
+        </label>
+      </div>
+
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox"  
+          (change)="tileChange($event, KemetTile.Ruby)"
+          id="rubyCheckbox" checked>
+        <label class="form-check-label" for="flexCheckChecked">
+          Ruby (Red Tiles)
+        </label>
+      </div>
+
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox"  
+          (change)="tileChange($event, KemetTile.Diamond)"
+          id="diamondCheckbox" checked>
+        <label class="form-check-label" for="flexCheckChecked">
+          Diamond (White Tiles)
+        </label>
+      </div>
+    </div>
+    
+    <div class='col'>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox"  
+          (change)="tileChange($event, KemetTile.Onyx)"
+          id="onyxCheckbox" checked>
+        <label class="form-check-label" for="flexCheckChecked">
+          Onyx (Black Tiles)
+        </label>
+      </div>
+  
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox"  
+          (change)="tileChange($event, KemetTile.Emerald)"
+          id="saphireCheckbox">
+        <label class="form-check-label" for="flexCheckChecked">
+          Emerald (Green Tiles)
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="tooFewTileSetsSelected" class="text-danger">
+    Please select at least {{numberOfTileSets}} Tile Colors.
+  </div>
+
+  <button class="btn btn-primary mt-4" (click)="submit()">Generate Tiles</button>
+
+  <ng-container *ngIf="generatedTiles.length > 0">
+    <p class='mb-0 mt-4 h6'>Randomly Selected Tiles:</p>
+    
+    <ul>
+      <li
+        [@simpleFadeAnimation]="'in'" 
+        *ngFor="let tile of generatedTiles">
+        {{tile}}
+      </li>
+    </ul>
+
+  </ng-container>
+
+</div>
