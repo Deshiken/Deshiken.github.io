@@ -1,0 +1,54 @@
+<div class="container">
+  <app-heading-with-back [title]="'Maps and Play Instructions'"></app-heading-with-back>
+
+  <div (click)="showTwoPlayerMaps = !showTwoPlayerMaps"
+    class="d-flex align-items-center"
+    data-bs-toggle="collapse" 
+    data-bs-target="#twoPlayerMapsColapse">
+    <legend style="width: auto;" class="mb-0 fs-5">Two Player Maps:</legend>
+    <i [ngClass]="{'rotate-clockwise' : showTwoPlayerMaps}" 
+      class="bi ms-3 bi-chevron-down med-icon rotate-transition">
+    </i>
+  </div>
+  <div class="collapse" id="twoPlayerMapsColapse">
+    <div class="d-flex flex-column">
+      <a href="../../../assets/uprising_maps/2Player_Standard_v2.jpg" target="_blank">2 Player Standard</a>
+      <a href="../../../assets/uprising_maps/2Player_CaptureTheFlag_v2.jpg" target="_blank">2 Player Capture The Flag</a>
+    </div>
+  </div>
+
+  <div (click)="showThreePlayerMaps = !showThreePlayerMaps"
+    class="d-flex align-items-center"
+    data-bs-toggle="collapse" 
+    data-bs-target="#threePlayerMapsColapse">
+    <legend style="width: auto;" class="mb-0 fs-5">Three Player Maps:</legend>
+    <i [ngClass]="{'rotate-clockwise' : showThreePlayerMaps}" 
+      class="bi ms-3 bi-chevron-down med-icon rotate-transition">
+    </i>
+  </div>
+  <div class="collapse" id="threePlayerMapsColapse">
+    <div class="d-flex flex-column">
+      <a href="../../../assets/uprising_maps/3Player_FortressDefense_v3.jpg" target="_blank">Fortress Defense</a>
+    </div>
+  </div>
+
+  <div (click)="showFourPlayerMaps = !showFourPlayerMaps"
+    class="d-flex align-items-center"
+    data-bs-toggle="collapse" 
+    data-bs-target="#fourPlayerMapsColapse">
+    <legend style="width: auto;" class="mb-0 fs-5">Four Player Maps:</legend>
+    <i [ngClass]="{'rotate-clockwise' : showFourPlayerMaps}" 
+      class="bi ms-3 bi-chevron-down med-icon rotate-transition">
+    </i>
+  </div>
+  <div class="collapse" id="fourPlayerMapsColapse">
+    <div class="d-flex flex-column">
+      <a href="../../../assets/uprising_maps/4Player_StandardGameBoard_v4.jpg" target="_blank">Standard 4 Player Map</a>
+      <a href="../../../assets/uprising_maps/4Player_CaptureTheFlag4Player_v1.jpg" target="_blank">Capture the Flag Free-for-All</a>
+      <a href="../../../assets/uprising_maps/4Player_CaptureTheFlagTeams_v1.jpg" target="_blank">Capture the Flag - Teams</a>
+      <a href="../../../assets/uprising_maps/4Player_FourCorners_v1.jpg" target="_blank">Four Corners</a>
+      <a href="../../../assets/uprising_maps/4Player_KingOfTheHill_v2.jpg" target="_blank">King of the Hill</a>
+    </div>
+  </div>
+
+</div>

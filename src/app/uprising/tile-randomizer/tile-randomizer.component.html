@@ -1,0 +1,32 @@
+<div class='container'>
+  <app-heading-with-back [title]="'Map Tile Randomizer'"></app-heading-with-back>
+
+  <p class='mb-0 mt-4 h6'>Map Tiles to Include:</p>
+  <div class="form-check">
+    <input class="form-check-input" 
+      type="checkbox" 
+      id="humansCheckbox" 
+      [checked]="useExpansionTiles"
+      (change)="useExpansionTiles = !useExpansionTiles"
+    >
+    <label class="form-check-label" for="flexCheckChecked">
+      Use Expansion Tiles (E1, E2, E3, E4)
+    </label>
+  </div>
+
+  <button class="btn btn-primary mt-4" (click)="generateMapTiles()">Generate Map Tiles</button>
+
+  <ng-container *ngIf="generatedTiles.length > 0">
+    <p class='mb-0 mt-4 h6'>Randomly Selected Map Tiles:</p>
+    
+    <ul>
+      <li
+        [@simpleFadeAnimation]="'in'" 
+        *ngFor="let tile of generatedTiles">
+        {{tile}}
+      </li>
+    </ul>
+
+  </ng-container>
+
+</div>
