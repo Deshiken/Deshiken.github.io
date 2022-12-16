@@ -1,21 +1,22 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { RandomizeService, TeamOption } from '../randomize.service';
+import { RandomizeTeamsService, TeamOption } from '../randomize-teams.service';
 
 @Component({
-  selector: 'app-start',
-  templateUrl: './start.component.html',
-  styleUrls: ['./start.component.scss']
+  selector: 'app-randomize-teams-start',
+  templateUrl: './randomize-teams-start.component.html',
+  styleUrls: ['./randomize-teams-start.component.scss']
 })
-export class StartComponent implements OnInit {
+export class RandomizeTeamsStartComponent implements OnInit {
 
+  
   @ViewChild('playerNumber') playerNumber!: ElementRef;
   @ViewChild('numberOfTeams') numberOfTeams!: ElementRef;
 
   teamOptions: Array<TeamOption> = new Array<TeamOption>();
 
   constructor(
-    public teamRandomizeService: RandomizeService,
+    public teamRandomizeService: RandomizeTeamsService,
     public router: Router
   ) { }
 
@@ -58,8 +59,8 @@ export class StartComponent implements OnInit {
 
   next() {
     this.router.navigate(
-      ['/randomize/player-select'], 
-      {queryParams: {numberOfPlayers: this.teamRandomizeService.numberOfPlayers, nextPage: '/randomize/results'}}
+      ['/tools/player-select'], 
+      {queryParams: {numberOfPlayers: this.teamRandomizeService.numberOfPlayers, nextPage: '/tools/randomize-teams-results'}}
     );
   }
 

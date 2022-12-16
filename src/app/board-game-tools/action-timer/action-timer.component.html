@@ -1,0 +1,125 @@
+<div class="container">
+  
+  <app-heading-with-back [title]="'Action Timer'"></app-heading-with-back>
+
+  <h2 class="mb-0">Options:</h2>
+  <fieldset>
+    <div (click)="showTimeNameOptions = !showTimeNameOptions"
+      class="d-flex align-items-center"
+      data-bs-toggle="collapse" 
+      data-bs-target="#timeNameColapse">
+      <legend style="width: auto;" class="mb-0 fs-5">Set Timer Names:</legend>
+      <i [ngClass]="{'rotate-clockwise' : showTimeNameOptions}" 
+        class="bi ms-3 bi-chevron-down med-icon rotate-transition">
+      </i>
+    </div>
+    <div class="collapse" id="timeNameColapse">
+      <label for="timer-1-name" class="form-label">Timer 1 Name</label>
+      <input type="text" placeholder="ex: Turn Action Time" class="form-control" id="timer-1-name" [(ngModel)]="timer1Name">
+      <label for="timer-2-name" class="form-label mt-2">Timer 2 Name</label>
+      <input type="text" placeholder="ex: Combat Action Time" class="form-control" id="timer-2-name" [(ngModel)]="timer2Name">
+      <label for="timer-3-name" class="form-label mt-2">Timer 3 Name</label>
+      <input type="text" placeholder="ex: Tactics Card Action Time" class="form-control" id="timer-3-name" [(ngModel)]="timer3Name">
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <div (click)="showTimeOptions = !showTimeOptions"
+      class="d-flex align-items-center"
+      data-bs-toggle="collapse" 
+      data-bs-target="#timeColapse">
+      <legend style="width: auto;" class="mb-0 fs-5">Set Timer Length:</legend>
+      <i [ngClass]="{'rotate-clockwise' : showTimeOptions}" 
+        class="bi ms-3 bi-chevron-down med-icon rotate-transition">
+      </i>
+    </div>
+    <div class="collapse" id="timeColapse">
+      <label for="turnTime" class="form-label">{{timer1Name}}: <span>{{turnActionTime}} seconds</span></label>
+      <input type="range" class="form-range"
+        [(ngModel)]="turnActionTime"
+        min="15" max="120" step="15" 
+        id="turnTime">
+      <label for="combatSpell" class="form-label">{{timer2Name}}: <span>{{combatSpellTime}} seconds</span></label>
+      <input type="range" class="form-range"
+        [(ngModel)]="combatSpellTime" 
+        min="15" max="120" step="15" 
+        id="combatSpell">
+      <label for="combatTactic" class="form-label">{{timer3Name}}: <span>{{combatTacticTime}} seconds</span></label>
+      <input type="range" class="form-range"
+        [(ngModel)]="combatTacticTime" 
+        min="15" max="120" step="15" 
+        id="combatTactic">
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <div (click)="showAudioOptions = !showAudioOptions"
+      class="d-flex align-items-center"
+      data-bs-toggle="collapse" 
+      data-bs-target="#audioColapse">
+      <legend style="width: auto;" class="mb-0 fs-5">Alarm Sound:</legend>
+      <i [ngClass]="{'rotate-clockwise' : showAudioOptions}" class="bi ms-3 bi-chevron-down med-icon rotate-transition"></i>
+      <!-- <i *ngIf="!showAudioOptions" class="bi ms-3 bi-chevron-down med-icon"></i> -->
+      <!-- <i *ngIf="showAudioOptions" class="bi ms-3 bi-chevron-up med-icon"></i> -->
+    </div>
+    <div class="collapse"  id="audioColapse">
+      <div class="form-check radio-with-sample">
+        <input 
+          (change)="setAudioSource(AudioSource.ClassicAlarm)"
+          class="form-check-input" type="radio" name="alarmRadio" id="flexRadioDefault2" checked>
+        <label class="form-check-label" for="flexRadioDefault2">
+          Classic Alarm
+        </label>
+        <i (click)="playSample(AudioSource.ClassicAlarm)" class="bi bi-play-circle-fill"></i>
+      </div>
+      <div class="form-check radio-with-sample">
+        <input class="form-check-input" 
+          (change)="setAudioSource(AudioSource.BattleshipAlarm)"
+          type="radio" name="alarmRadio" id="battleshipAudio">
+        <label class="form-check-label" for="battleshipAudio">
+          Battleship Alarm
+        </label>
+        <i (click)="playSample(AudioSource.BattleshipAlarm)" class="bi bi-play-circle-fill"></i>
+      </div>
+      <div class="form-check radio-with-sample">
+        <input class="form-check-input" 
+          (change)="setAudioSource(AudioSource.DigitalRingAlarm)"
+          type="radio" name="alarmRadio" id="digitalRingAlarm">
+        <label class="form-check-label" for="digitalRingAlarm">
+          Digital Ring Alarm
+        </label>
+        <i (click)="playSample(AudioSource.DigitalRingAlarm)" class="bi bi-play-circle-fill"></i>
+      </div>
+      <div class="form-check radio-with-sample">
+        <input class="form-check-input" 
+          (change)="setAudioSource(AudioSource.DigitalClockAlarm)"
+          type="radio" name="alarmRadio" id="digitalRingClock">
+        <label class="form-check-label" for="digitalRingClock">
+          Digital Clock Alarm
+        </label>
+        <i (click)="playSample(AudioSource.DigitalClockAlarm)" class="bi bi-play-circle-fill"></i>
+      </div>
+    </div>
+  </fieldset>
+
+  <h2 class="mb-0 mt-4">Start a Timer</h2>
+  <button  type="button" 
+    (click)="startTimer(turnActionTime)"
+    class="btn btn-primary mt-2 me-2">
+    {{timer1Name}}
+  </button>
+  <button type="button" 
+    (click)="startTimer(combatSpellTime)"
+    class="btn btn-primary mt-2 me-2">
+    {{timer2Name}}
+  </button>
+  <button type="button"
+    (click)="startTimer(combatTacticTime)" 
+    class="btn btn-primary mt-2 me-2">
+    {{timer3Name}}
+  </button>
+
+  <h2 class="mt-5">Current Timer: </h2>
+  <p style="font-size: 8rem; line-height: 5rem;" class="text-center" [ngClass]="{'text-danger' : currentTimer < 10}">{{currentTimer}}</p>
+
+</div>

@@ -24,9 +24,9 @@ const routes: Routes = [
     component: AboutComponent,
   },
   { 
-    path: 'randomize', 
+    path: 'tools', 
     data: { animation: 'isRight' }, //can be used to specify routing animation state/transition
-    loadChildren: () => import('./randomize/randomize.module').then(m => m.RandomizeModule) 
+    loadChildren: () => import('./board-game-tools/board-game-tools.module').then(m => m.BoardGameToolsModule) 
   },
   { 
     path: 'holas', 

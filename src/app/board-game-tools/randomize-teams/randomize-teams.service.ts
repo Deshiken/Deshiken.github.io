@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class RandomizeService {
+export class RandomizeTeamsService {
 
   public freeForAll: TeamOption = {
     displayName: 'Free for All',

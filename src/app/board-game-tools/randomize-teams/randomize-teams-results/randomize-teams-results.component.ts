@@ -3,27 +3,27 @@ import { Router } from '@angular/router';
 import { IconSize } from 'src/app/shared/components/player-icon/player-icon.component';
 import { PlayerSelectService } from 'src/app/shared/components/player-select/player-select.service';
 import { RandomService } from 'src/app/shared/services/random.service';
-import { RandomizeService } from '../randomize.service';
+import { RandomizeTeamsService } from '../randomize-teams.service';
 
 @Component({
-  selector: 'app-results',
-  templateUrl: './results.component.html',
-  styleUrls: ['./results.component.scss']
+  selector: 'app-randomize-teams-results',
+  templateUrl: './randomize-teams-results.component.html',
+  styleUrls: ['./randomize-teams-results.component.scss']
 })
-export class ResultsComponent implements OnInit {
+export class RandomizeTeamsResultsComponent implements OnInit {
 
   playerMap: Map<number, Player> = new Map<number, Player>();
   IconSize = IconSize;
 
   constructor(
     public router: Router,
-    public randomizeService: RandomizeService,
+    public randomizeTeamsService: RandomizeTeamsService,
     public playerSelectService: PlayerSelectService,
     public randomService: RandomService
   ) { }
 
   ngOnInit(): void {
-    if (this.randomizeService.selectedTeamOption == this.randomizeService.freeForAll) {
+    if (this.randomizeTeamsService.selectedTeamOption == this.randomizeTeamsService.freeForAll) {
       this.setFreeForAllPlayerOrder();
     } else {
       this.setTeamsAndTeamOrder();
@@ -31,7 +31,7 @@ export class ResultsComponent implements OnInit {
   }
 
   private setFreeForAllPlayerOrder() {
-    for (let i = 0; i < this.randomizeService.numberOfPlayers; i++) {
+    for (let i = 0; i < this.randomizeTeamsService.numberOfPlayers; i++) {
       // Randomly select an icon for this player number.
       const icon = this.randomService.getRandomEntryFromArray(this.playerSelectService.selectedIcons);
       
@@ -45,7 +45,7 @@ export class ResultsComponent implements OnInit {
 
   private setTeamsAndTeamOrder() {
     let currentTeamNumber = 1
-    for (let i = 0; i < this.randomizeService.numberOfPlayers; i++) {
+    for (let i = 0; i < this.randomizeTeamsService.numberOfPlayers; i++) {
       // Randomly select an icon for this player number.
       const icon = this.randomService.getRandomEntryFromArray(this.playerSelectService.selectedIcons);
       
@@ -58,11 +58,12 @@ export class ResultsComponent implements OnInit {
       // Increment the team number so the next player is assigned to the next team;
       currentTeamNumber ++;
 
-      if (currentTeamNumber > this.randomizeService.selectedTeamOption.numberOfTeams) {
+      if (currentTeamNumber > this.randomizeTeamsService.selectedTeamOption.numberOfTeams) {
         currentTeamNumber = 1 ;
       }
     }
   }
+
 }
 
 export class Player {
