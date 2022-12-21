@@ -35,12 +35,26 @@
       Map Tile Randomizer
     </button>
     <i class="bi m-3 bi-question-circle-fill" style="font-size: 2.4rem;"
-      data-bs-toggle="collapse" data-bs-target="#tileRandomizerCollapse" aria-expanded="false" aria-controls="draftCollapse">
+      data-bs-toggle="collapse" data-bs-target="#tileRandomizerCollapse" aria-expanded="false" aria-controls="tileRandomizerCollapse">
     </i>
   </div>
   <div class="collapse" id="tileRandomizerCollapse">
     <div class="card card-body">
       Shuffling large map tiles can be difficult. Use this tool to quickly randomize the order of the map tiles.
+    </div>
+  </div>
+
+  <div class="d-flex align-items-center">
+    <button class="btn btn-primary btn-lg my-3" (click)="router.navigate(['uprising/unit-reference-cards'])">
+      Unit Reference Cards
+    </button>
+    <i class="bi m-3 bi-question-circle-fill" style="font-size: 2.4rem;"
+      data-bs-toggle="collapse" data-bs-target="#unitReferenceCards" aria-expanded="false" aria-controls="unitReferenceCards">
+    </i>
+  </div>
+  <div class="collapse" id="unitReferenceCards">
+    <div class="card card-body">
+      Access to current and past versions of the unit reference card.
     </div>
   </div>
 
