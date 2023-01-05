@@ -9,7 +9,6 @@ import { RandomizeTeamsService, TeamOption } from '../randomize-teams.service';
 })
 export class RandomizeTeamsStartComponent implements OnInit {
 
-  
   @ViewChild('playerNumber') playerNumber!: ElementRef;
   @ViewChild('numberOfTeams') numberOfTeams!: ElementRef;
 

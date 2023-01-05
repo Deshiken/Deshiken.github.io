@@ -37,10 +37,6 @@ export class UpgradeTilesComponent implements OnInit {
 
   submit() {
     this.numberOfTileSets = this.getNumberOfTileSets()
-    console.log("number of tile sets", this.numberOfTileSets);
-    console.log("number of players", this.numberOfPlayers);
-    console.log("availableTiles", this.availableTiles);
-    console.log("availableTiles", this.availableTiles);
 
     // The number of selected tile sets must be the same or more than numberOfTileSets
     if (this.availableTiles.length < this.numberOfTileSets) {
@@ -66,10 +62,8 @@ export class UpgradeTilesComponent implements OnInit {
     // Subscribe to the observable,
     pickNumber.subscribe(() => {
       let randomTile = this.randomService.getRandomEntryFromArray(availableTilesCopy);
-      console.log('adding ', randomTile);
       this.generatedTiles.push(randomTile);
       this.randomService.deleteFromArray(availableTilesCopy,randomTile);
-      console.log("availableTiles", availableTilesCopy);
     });
 
   }
@@ -91,9 +85,9 @@ export class UpgradeTilesComponent implements OnInit {
 }
 
 export enum KemetTile {
-  Diamond = 'Diamond',
-  Saphire = 'Saphire',
-  Emerald = 'Emerald',
-  Ruby = 'Ruby',
-  Onyx = 'Onyx'
+  Diamond = 'Diamond (White)',
+  Saphire = 'Saphire (Blue)',
+  Emerald = 'Emerald (Green)',
+  Ruby = 'Ruby (Red)',
+  Onyx = 'Onyx (Black)'
 }

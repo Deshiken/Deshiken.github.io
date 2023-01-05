@@ -23,6 +23,20 @@
           This tool will assign each player to a random team and also set a random team order.
         </div>
       </div>
+
+      <div class="d-flex align-items-center">
+        <button class="btn btn-primary my-3" (click)="router.navigate(['tools/coin-flip'])">
+          Flip a Coin
+        </button>
+        <i class="bi m-3 bi-question-circle-fill" style="font-size: 2.4rem;"
+          data-bs-toggle="collapse" data-bs-target="#coinFlipCollapse" aria-expanded="false" aria-controls="coinFlipCollapse">
+        </i>
+      </div>
+      <div class="collapse pb-3" id="coinFlipCollapse">
+        <div class="card card-body">
+          Flip a coin and see the result. Pretty simple really...
+        </div>
+      </div>
   
       <div class="d-flex align-items-center">
         <button class="btn btn-primary my-3" (click)="router.navigate(['tools/timer'])">

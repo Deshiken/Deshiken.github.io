@@ -1,0 +1,18 @@
+<div class='container'>
+  <app-heading-with-back [title]="'Coin Flip'"></app-heading-with-back>
+
+  <p class='d-flex align-items-center mb-5'>
+    Choose either blue 
+    <span class='sample sample_blue mx-2'></span> 
+    or green 
+    <span class='sample sample_green mx-2'></span> 
+    and hit flip to see the result.
+  </p>
+  
+  <div #coin class="coin">
+    <div class="front"></div>
+    <div class="back"></div>
+  </div>
+
+  <button class="btn btn-primary mt-5" (click)="flipCoin()">Flip</button>
+</div>
