@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomePageComponent } from './home-page/home-page.component';
-import { DescentComponent } from './descent/descent.component';
 import { PricingComponent } from './pricing/pricing.component';
 import { AboutComponent } from './about/about.component';
 
@@ -13,7 +12,6 @@ import { AboutComponent } from './about/about.component';
   declarations: [
     AppComponent,
     HomePageComponent,
-    DescentComponent,
     PricingComponent,
     AboutComponent
   ],
