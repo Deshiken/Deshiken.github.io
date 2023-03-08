@@ -1,0 +1,31 @@
+<div class="container">
+  <h1 class="mt-3">Descent Party Builder</h1>
+  
+  <label class='h6' for="partyNumberSelect">Number of Party Members:</label>
+  <select [(ngModel)]="partyBuilderService.descentPartyBuilderOptions.numberOfPartyMembers" class="form-select mb-3" id="partyNumberSelect" aria-label="Default select example">
+    <option [ngValue]="1">One</option>
+    <option [ngValue]="2">Two</option>
+    <option [ngValue]="3">Three</option>
+    <option [ngValue]="4" selected>Four</option>
+    <option [ngValue]="5">Five</option>
+    <option [ngValue]="6">Six</option>
+    <option [ngValue]="7">Seven</option>
+  </select>
+
+  <div class="form-check">
+    <input class="form-check-input" 
+      type="checkbox" 
+      id="humansCheckbox" 
+      [(ngModel)]="partyBuilderService.descentPartyBuilderOptions.buildBalancedParty"
+    >
+    <label class="form-check-label" for="flexCheckChecked">
+      Build balanced party
+    </label>
+  </div>
+
+  <button
+    type="button" class="btn btn-primary btn-sm" 
+    (click)="partyBuilderService.saveToLocalStorage()">
+    Save My Options
+  </button>
+</div>

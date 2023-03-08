@@ -9,7 +9,7 @@ const routes: Routes = [
     path: '', 
     component: HomePageComponent,
     data: {
-      metaDescription: 'We can’t find the page you’re looking for, but have some other pages to explore',
+      metaDescription: "We can't find the page you're looking for, but have some other pages to explore",
       title: 'Page not found | My Say | Say Insurance ®',
       animation: 'home' //can be used to specify routing animation state/transition
     } 
@@ -42,6 +42,11 @@ const routes: Routes = [
     data: { animation: 'isRight' }, //can be used to specify routing animation state/transition
     loadChildren: () => import('./uprising/uprising.module').then(m => m.UprisingModule) 
   },
+  {
+    path: 'descent',
+    // loadComponent: () => import('./descent/descent-home/descent-home.component').then(mod => mod.DescentHomeComponent)
+    loadChildren: () => import('./descent/descent-routes').then(mod => mod.DESCENT_ROUTES)
+  }
 ];
 
 @NgModule({
