@@ -1,30 +1,79 @@
 <div class="container">
   <h1 class="mt-3">Descent Party Builder</h1>
   
-  <label class='h6' for="partyNumberSelect">Number of Party Members:</label>
+  <label class='h5' for="partyNumberSelect">Number of Party Members:</label>
   <select [(ngModel)]="partyBuilderService.descentPartyBuilderOptions.numberOfPartyMembers" class="form-select mb-3" id="partyNumberSelect" aria-label="Default select example">
     <option [ngValue]="1">One</option>
     <option [ngValue]="2">Two</option>
     <option [ngValue]="3">Three</option>
     <option [ngValue]="4" selected>Four</option>
-    <option [ngValue]="5">Five</option>
-    <option [ngValue]="6">Six</option>
-    <option [ngValue]="7">Seven</option>
   </select>
 
   <div class="form-check">
-    <input class="form-check-input" 
+    <input 
+      [(ngModel)]="partyBuilderService.descentPartyBuilderOptions.preventRepeatClasses"
+      class="form-check-input" 
       type="checkbox" 
-      id="humansCheckbox" 
-      [(ngModel)]="partyBuilderService.descentPartyBuilderOptions.buildBalancedParty"
-    >
-    <label class="form-check-label" for="flexCheckChecked">
-      Build balanced party
+      id="teamDraft">
+    <label class="form-check-label" for="randomBuilding">
+      Prevent repeat archetypes
     </label>
+    <i class="bi m-3 bi-question-circle-fill" 
+      data-bs-toggle="collapse" data-bs-target="#preventRepeatClassInfo" aria-expanded="false" aria-controls="balancedParty">
+    </i>
+  </div>
+  <div class="collapse" id="preventRepeatClassInfo">
+    <div class="card card-body">
+      If selected, no two party members will have the same archetype (Healer, Mage, Warrior, Scout).
+    </div>
   </div>
 
+  <p class='mb-0 mt-4 h6'>Select the content you own:</p>
+
+    <button type="button" class="btn btn-primary btn-sm me-4 my-2">
+      Select All
+    </button>
+    <button type="button" class="btn btn-primary btn-sm me-4 my-2">
+      Unselect All
+    </button>
+
+    <div class="row">
+      <div class="col">
+        <div class="form-check" *ngFor="let expansion of partyBuilderService.descentPartyBuilderOptions.expansionMap | keyvalue">
+          <input class="form-check-input" type="checkbox"          
+            [(ngModel)]="expansion.value.owned">
+          <label class="form-check-label" for="flexCheckChecked">
+            {{expansion.value.name}}
+          </label>
+        </div>
+        
+        <!-- <div class="form-check">
+          <input class="form-check-input" type="checkbox"          
+            [(ngModel)]="partyBuilderService.descentPartyBuilderOptions.expansions.labyrinthOfRuin">
+          <label class="form-check-label" for="flexCheckChecked">
+            Labyrinth of Ruin
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox"          
+            [(ngModel)]="partyBuilderService.descentPartyBuilderOptions.expansions.lairOfTheWyrm">
+          <label class="form-check-label" for="flexCheckChecked">
+            Lair Of The Wyrm
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox"          
+            [(ngModel)]="partyBuilderService.descentPartyBuilderOptions.expansions.shadowOfNerekhall">
+          <label class="form-check-label" for="flexCheckChecked">
+            Shadow of Nerekhall
+          </label>
+        </div> -->
+
+      </div>
+    </div>
+
   <button
-    type="button" class="btn btn-primary btn-sm" 
+    type="button" class="btn btn-primary btn-sm mt-3" 
     (click)="partyBuilderService.saveToLocalStorage()">
     Save My Options
   </button>

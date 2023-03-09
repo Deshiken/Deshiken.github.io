@@ -18,7 +18,7 @@ export class DraftStartComponent implements OnInit {
   
 
   public errorFree: boolean = true;
-  public errors: Map<string,boolean> = new Map<string, boolean>([
+  public errors: Map<string,boolean> = new Map([
     ['teamDraftWithOddPlayers',false],
     ['tooFewFactionsSelected',false],
     ['tooFewMercenariesSelected',false]
