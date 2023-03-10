@@ -39,36 +39,14 @@
 
     <div class="row">
       <div class="col">
-        <div class="form-check" *ngFor="let expansion of partyBuilderService.descentPartyBuilderOptions.expansionMap | keyvalue">
-          <input class="form-check-input" type="checkbox"          
-            [(ngModel)]="expansion.value.owned">
+        <div class="form-check" *ngFor="let expansion of partyBuilderService.expansionMap | keyvalue">
+          <input class="form-check-input" type="checkbox"
+            [(ngModel)]="partyBuilderService.descentPartyBuilderOptions[expansion.key]">          
           <label class="form-check-label" for="flexCheckChecked">
             {{expansion.value.name}}
           </label>
         </div>
         
-        <!-- <div class="form-check">
-          <input class="form-check-input" type="checkbox"          
-            [(ngModel)]="partyBuilderService.descentPartyBuilderOptions.expansions.labyrinthOfRuin">
-          <label class="form-check-label" for="flexCheckChecked">
-            Labyrinth of Ruin
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox"          
-            [(ngModel)]="partyBuilderService.descentPartyBuilderOptions.expansions.lairOfTheWyrm">
-          <label class="form-check-label" for="flexCheckChecked">
-            Lair Of The Wyrm
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox"          
-            [(ngModel)]="partyBuilderService.descentPartyBuilderOptions.expansions.shadowOfNerekhall">
-          <label class="form-check-label" for="flexCheckChecked">
-            Shadow of Nerekhall
-          </label>
-        </div> -->
-
       </div>
     </div>
 

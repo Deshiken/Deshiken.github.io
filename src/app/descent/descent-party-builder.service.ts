@@ -1,39 +1,68 @@
 import { Injectable } from '@angular/core';
+import { RandomService } from '../shared/services/random.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DescentPartyBuilderService {
-  public descentPartyBuilderOptions: DescentPartyBuilderOptions = this.setPartyBuilderData();
+  public descentPartyBuilderOptions: any = this.setPartyBuilderData();
+  public expansionMap: Map<ExpansionKey, DescentExpansion> = new Map([
+    [ExpansionKey.LabyrinthOfRuin, {
+      name: 'Labyrinth of Ruin', 
+      classesAdded: [],
+      heroesAdded: [],
+    }],
+    [ExpansionKey.LairOfTheWyrm, {
+      name: 'Lair Of The Wyrm', 
+      classesAdded: [],
+      heroesAdded: [],
+    }],
+    [ExpansionKey.ManorOfRavens, {
+      name: 'Manor Of Ravens', 
+      classesAdded: [],
+      heroesAdded: [],
+    }],
+    [ExpansionKey.ShadowOfNerekhall, {
+      name: 'Shadow Of Nerekhall', 
+      classesAdded: [],
+      heroesAdded: [],
+    }],
+    [ExpansionKey.TheTrollfens, {
+      name: 'The Trollfens', 
+      classesAdded: [],
+      heroesAdded: [],
+    }],
+  ])
 
-  constructor() { }
+  constructor(
+    private utilities: RandomService
+  ) { }
 
   public setPartyBuilderData(): DescentPartyBuilderOptions {
-    const localStorageOption = localStorage.getItem('descentPartyBuilderOptions');
-    console.log('partyBuilderOptions from localStorage', localStorageOption);
-   
-    if (typeof localStorageOption === 'string') {
-      return JSON.parse(localStorageOption) as DescentPartyBuilderOptions
+    const localStorageOptions = localStorage.getItem('descentPartyBuilderOptions');
+    
+    if (typeof localStorageOptions === 'string') {
+      // If options are found in local storage, merge them with the default options, overlaying the defaults with the options from local storage.
+      return this.utilities.mergeRecursive(this.useDefaultOptions(), JSON.parse(localStorageOptions) as DescentPartyBuilderOptions)
     } else {
       return this.useDefaultOptions();
     }
   }
 
   private useDefaultOptions() {
-    let partyBuilderOptions: DescentPartyBuilderOptions = {
+    let partyBuilderOptions: any = {
       numberOfPartyMembers: 4,
-      preventRepeatClasses: true,
-      expansionMap: new Map([
-        [ExpansionKey.LabyrinthOfRuin, {name: 'Labyrinth of Ruin', owned: false}],
-        [ExpansionKey.ShadowOfNerekhall, {name: 'Shadow of Nerekhall', owned: false}],
-        [ExpansionKey.LairOfTheWyrm, {name: 'Lair Of The Wyrm', owned: false}]
-      ])
+      preventRepeatClasses: true
     };
-    
+
+    // Add each enum of ExpansionKey as a property with a value of false.
+    Object.values(ExpansionKey).map((value) => partyBuilderOptions[value] = false);
+
     return partyBuilderOptions;
   }
 
   public saveToLocalStorage() {
+    console.log('saving: ', this.descentPartyBuilderOptions)
     localStorage.setItem('descentPartyBuilderOptions', JSON.stringify(this.descentPartyBuilderOptions));
   }
 }
@@ -41,31 +70,10 @@ export class DescentPartyBuilderService {
 interface DescentPartyBuilderOptions {
   numberOfPartyMembers: number; 
   preventRepeatClasses: boolean;
-  expansionMap: Map<ExpansionKey, DescentExpansionOption>
-  // expansions: {
-  //   labyrinthOfRuin: boolean;
-  //   shadowOfNerekhall: boolean;
-  //   lairOfTheWyrm: boolean;
-  //   theTrollfens: boolean;
-  //   manorOfRavens: boolean;
-  //   mistsOfBilehall: boolean;
-  //   theChainsThatRust: boolean;
-  //   lostLegends: boolean;
-  // }
-  // heroAndMonsterPacks: {
-  //   oathOfTheOutcast: boolean;
-  //   crownOfDestiny: boolean;
-  //   crusadeOfTheForgotten: boolean;
-  //   guardiansOfDeephall: boolean;
-  //   bondsOfTheWild: boolean;
-  //   treatyOfChampions: boolean;
-  //   stewardsOfTheSecret: boolean;
-  //   visionsOfDawn: boolean;
-  //   shardsOfEverdark: boolean;
-  // }
+  expansionOptionMap: Map<ExpansionKey, boolean>
 }
 
-enum ExpansionKey {
+export enum ExpansionKey {
   LabyrinthOfRuin = 'labyrinthOfRuin',
   ShadowOfNerekhall = 'shadowOfNerekhall',
   LairOfTheWyrm = 'lairOfTheWyrm',
@@ -73,14 +81,8 @@ enum ExpansionKey {
   ManorOfRavens = 'manorOfRavens',
 }
 
-const DescentExpansions: Map<string, DescentExpansion> = new Map()
-
-interface DescentExpansionOption {
+export interface DescentExpansion {
   name: string;
-  owned: boolean;
-}
-
-interface DescentExpansion extends DescentExpansionOption {
   heroesAdded: Array<DescentHero>;
   classesAdded: Array<DescentClass>;
 }

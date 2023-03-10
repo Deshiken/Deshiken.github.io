@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DescentPartyBuilderService } from '../descent-party-builder.service';
+import { DescentPartyBuilderService, ExpansionKey } from '../descent-party-builder.service';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./descent-party-builder.component.scss']
 })
 export class DescentPartyBuilderComponent implements OnInit {
+  public ExpansionKey = ExpansionKey;
 
   constructor( public partyBuilderService: DescentPartyBuilderService ) { }
 
