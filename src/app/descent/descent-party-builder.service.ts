@@ -8,43 +8,6 @@ import { ExpansionKey, DescentExpansion, ExpansionType } from './descent-data'
 export class DescentPartyBuilderService {
   public descentPartyBuilderOptions: any = this.setPartyBuilderData();
   
-  public expansionMap: Map<ExpansionKey, DescentExpansion> = new Map([
-    [ExpansionKey.LabyrinthOfRuin, {
-      name: 'Labyrinth of Ruin',
-      expansionType: ExpansionType.BoxExpansion,
-      image: 'https://static.wikia.nocookie.net/descent2e/images/f/f4/LabyrinthBox.png/revision/latest/scale-to-width-down/300?cb=20130206012036', 
-      classesAdded: [],
-      heroesAdded: [],
-    }],
-    [ExpansionKey.LairOfTheWyrm, {
-      name: 'Lair Of The Wyrm', 
-      expansionType: ExpansionType.BoxExpansion,
-      image: 'https://static.wikia.nocookie.net/descent2e/images/f/f4/LabyrinthBox.png/revision/latest/scale-to-width-down/300?cb=20130206012036',
-      classesAdded: [],
-      heroesAdded: [],
-    }],
-    [ExpansionKey.ManorOfRavens, {
-      name: 'Manor Of Ravens', 
-      expansionType: ExpansionType.BoxExpansion,
-      image: 'https://static.wikia.nocookie.net/descent2e/images/f/f4/LabyrinthBox.png/revision/latest/scale-to-width-down/300?cb=20130206012036',
-      classesAdded: [],
-      heroesAdded: [],
-    }],
-    [ExpansionKey.ShadowOfNerekhall, {
-      name: 'Shadow Of Nerekhall', 
-      expansionType: ExpansionType.BoxExpansion,
-      image: 'https://static.wikia.nocookie.net/descent2e/images/f/f4/LabyrinthBox.png/revision/latest/scale-to-width-down/300?cb=20130206012036',
-      classesAdded: [],
-      heroesAdded: [],
-    }],
-    [ExpansionKey.TheTrollfens, {
-      name: 'The Trollfens',
-      expansionType: ExpansionType.BoxExpansion,
-      image: 'https://static.wikia.nocookie.net/descent2e/images/f/f4/LabyrinthBox.png/revision/latest/scale-to-width-down/300?cb=20130206012036', 
-      classesAdded: [],
-      heroesAdded: [],
-    }],
-  ])
 
   constructor(
     private utilities: RandomService
@@ -64,7 +27,9 @@ export class DescentPartyBuilderService {
   private useDefaultOptions() {
     let partyBuilderOptions: any = {
       numberOfPartyMembers: 4,
-      preventRepeatClasses: true
+      preventRepeatClasses: true,
+      includeHybridClass: true,
+      selectHybridSubclass: true
     };
 
     // Add each enum of ExpansionKey as a property with a value of false.

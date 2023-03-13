@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DescentPartyBuilderService } from '../descent-party-builder.service';
-import { ExpansionKey } from '../descent-data';
+import { ExpansionKey,ExpansionType } from '../descent-data';
 import { FormsModule } from '@angular/forms';
 import { expansionMap } from '../descent-data';
 
@@ -16,6 +16,8 @@ import { expansionMap } from '../descent-data';
 export class DescentPartyBuilderComponent implements OnInit {
   public ExpansionKey = ExpansionKey;
   public expansionMap = expansionMap;
+  public boxExpansions = new Map([...expansionMap].filter(([key, value]) => value.expansionType === ExpansionType.BoxExpansion))
+  public characterAndMonsterExpansions = new Map([...expansionMap].filter(([key, value]) => value.expansionType === ExpansionType.CharacterAndMonsterPack))
 
   constructor( 
     public partyBuilderService: DescentPartyBuilderService,
@@ -23,6 +25,12 @@ export class DescentPartyBuilderComponent implements OnInit {
 
   ngOnInit(): void {
     this.partyBuilderService.setPartyBuilderData();
+    console.log('boxExpansions', this.boxExpansions);
+    console.log('characterAndMonsterExpansions', this.characterAndMonsterExpansions);
+  }
+
+  public buildParty() {
+    
   }
 
 }
