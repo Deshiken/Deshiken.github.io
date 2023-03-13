@@ -1,34 +1,46 @@
 import { Injectable } from '@angular/core';
 import { RandomService } from '../shared/services/random.service';
+import { ExpansionKey, DescentExpansion, ExpansionType } from './descent-data'
 
 @Injectable({
   providedIn: 'root'
 })
 export class DescentPartyBuilderService {
   public descentPartyBuilderOptions: any = this.setPartyBuilderData();
+  
   public expansionMap: Map<ExpansionKey, DescentExpansion> = new Map([
     [ExpansionKey.LabyrinthOfRuin, {
-      name: 'Labyrinth of Ruin', 
+      name: 'Labyrinth of Ruin',
+      expansionType: ExpansionType.BoxExpansion,
+      image: 'https://static.wikia.nocookie.net/descent2e/images/f/f4/LabyrinthBox.png/revision/latest/scale-to-width-down/300?cb=20130206012036', 
       classesAdded: [],
       heroesAdded: [],
     }],
     [ExpansionKey.LairOfTheWyrm, {
       name: 'Lair Of The Wyrm', 
+      expansionType: ExpansionType.BoxExpansion,
+      image: 'https://static.wikia.nocookie.net/descent2e/images/f/f4/LabyrinthBox.png/revision/latest/scale-to-width-down/300?cb=20130206012036',
       classesAdded: [],
       heroesAdded: [],
     }],
     [ExpansionKey.ManorOfRavens, {
       name: 'Manor Of Ravens', 
+      expansionType: ExpansionType.BoxExpansion,
+      image: 'https://static.wikia.nocookie.net/descent2e/images/f/f4/LabyrinthBox.png/revision/latest/scale-to-width-down/300?cb=20130206012036',
       classesAdded: [],
       heroesAdded: [],
     }],
     [ExpansionKey.ShadowOfNerekhall, {
       name: 'Shadow Of Nerekhall', 
+      expansionType: ExpansionType.BoxExpansion,
+      image: 'https://static.wikia.nocookie.net/descent2e/images/f/f4/LabyrinthBox.png/revision/latest/scale-to-width-down/300?cb=20130206012036',
       classesAdded: [],
       heroesAdded: [],
     }],
     [ExpansionKey.TheTrollfens, {
-      name: 'The Trollfens', 
+      name: 'The Trollfens',
+      expansionType: ExpansionType.BoxExpansion,
+      image: 'https://static.wikia.nocookie.net/descent2e/images/f/f4/LabyrinthBox.png/revision/latest/scale-to-width-down/300?cb=20130206012036', 
       classesAdded: [],
       heroesAdded: [],
     }],
@@ -70,29 +82,4 @@ export class DescentPartyBuilderService {
 interface DescentPartyBuilderOptions {
   numberOfPartyMembers: number; 
   preventRepeatClasses: boolean;
-  expansionOptionMap: Map<ExpansionKey, boolean>
-}
-
-export enum ExpansionKey {
-  LabyrinthOfRuin = 'labyrinthOfRuin',
-  ShadowOfNerekhall = 'shadowOfNerekhall',
-  LairOfTheWyrm = 'lairOfTheWyrm',
-  TheTrollfens = 'theTrollfens',
-  ManorOfRavens = 'manorOfRavens',
-}
-
-export interface DescentExpansion {
-  name: string;
-  heroesAdded: Array<DescentHero>;
-  classesAdded: Array<DescentClass>;
-}
-
-interface DescentHero {
-  name: string;
-  archetype: string;
-}
-
-interface DescentClass {
-  name: string;
-  archetype: string;
 }
