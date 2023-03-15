@@ -4,13 +4,20 @@ export enum ExpansionType {
 }
 
 export enum Archetype {
-  Mage = 1,
-  Scout = 2,
-  Warrior = 3,
-  Healer = 4
+  Mage = 'Mage',
+  Scout = 'Scout',
+  Warrior = 'Warrior',
+  Healer = 'Healer'
 }
+// export enum Archetype {
+//   Mage = 0,
+//   Scout = 1,
+//   Warrior = 2,
+//   Healer = 3
+// }
 
 export enum ExpansionKey {
+  DescentBaseGame = 'descentBaseGame',
   LabyrinthOfRuin = 'labyrinthOfRuin',
   ShadowOfNerekhall = 'shadowOfNerekhall',
   LairOfTheWyrm = 'lairOfTheWyrm',
@@ -41,6 +48,7 @@ export interface DescentExpansion {
 export interface DescentHero {
   name: string;
   archetype: Archetype;
+  class? : DescentClass;
 }
 
 export interface DescentClass {
@@ -49,6 +57,31 @@ export interface DescentClass {
   hybridArchetype? : Archetype;
 }
 export const expansionMap: Map<ExpansionKey, DescentExpansion> = new Map([
+  [ExpansionKey.DescentBaseGame, {
+    name: 'Descent Base Game',
+    expansionType: ExpansionType.BoxExpansion,
+    link: 'https://descent2e.fandom.com/wiki/Descent:_Journeys_in_the_Dark_(Second_Edition)_Wiki',
+    classesAdded: [
+      {name: 'Necromancer', archetype: Archetype.Mage},
+      {name: 'Runemaster', archetype: Archetype.Mage},
+      {name: 'Thief', archetype: Archetype.Scout},
+      {name: 'Wildlander', archetype: Archetype.Scout},
+      {name: 'Berserker', archetype: Archetype.Warrior},
+      {name: 'Knight', archetype: Archetype.Warrior},
+      {name: 'Disciple', archetype: Archetype.Healer},
+      {name: 'Spiritspeaker', archetype: Archetype.Healer},
+    ],
+    heroesAdded: [
+      {name: 'Ashrian', archetype: Archetype.Healer},
+      {name: 'Avric Albright', archetype: Archetype.Healer},
+      {name: 'Grisbane the Thirsty', archetype: Archetype.Warrior},
+      {name: 'Syndrael', archetype: Archetype.Warrior},
+      {name: 'Jain Fairwood', archetype: Archetype.Scout},
+      {name: 'Tomble Burrowell', archetype: Archetype.Scout},
+      {name: 'Leoric of the Book', archetype: Archetype.Mage},
+      {name: 'Widow Tarha', archetype: Archetype.Mage},
+    ],
+  }],
   [ExpansionKey.LabyrinthOfRuin, {
     name: 'Labyrinth of Ruin',
     expansionType: ExpansionType.BoxExpansion,
@@ -217,6 +250,42 @@ export const expansionMap: Map<ExpansionKey, DescentExpansion> = new Map([
       {name: 'Master Thorn', archetype: Archetype.Mage},
       {name: 'Nara the Fang', archetype: Archetype.Warrior},
       {name: 'Sir Valadir', archetype: Archetype.Warrior},
+    ],
+  }],
+  [ExpansionKey.BondsOfTheWild, {
+    name: 'Bonds Of The Wild', 
+    expansionType: ExpansionType.CharacterAndMonsterPack,
+    link: 'https://descent2e.fandom.com/wiki/Bonds_of_the_Wild',
+    classesAdded: [],
+    heroesAdded: [
+      {name: 'Lyssa', archetype: Archetype.Mage},
+      {name: 'Challara', archetype: Archetype.Mage},
+      {name: 'Ronan of the Wild', archetype: Archetype.Scout},
+      {name: 'Vyrah the Falconer', archetype: Archetype.Scout},
+    ],
+  }],
+  [ExpansionKey.TreatyOfChampions, {
+    name: 'Treaty Of Champions', 
+    expansionType: ExpansionType.CharacterAndMonsterPack,
+    link: 'https://descent2e.fandom.com/wiki/Treaty_of_Champions',
+    classesAdded: [],
+    heroesAdded: [
+      {name: 'Zyla', archetype: Archetype.Mage},
+      {name: 'Jonas the Kind', archetype: Archetype.Healer},
+      {name: 'Grey Ker', archetype: Archetype.Scout},
+      {name: 'Krutzbeck', archetype: Archetype.Warrior},
+    ],
+  }],
+  [ExpansionKey.StewardsOfTheSecret, {
+    name: 'Stewards Of The Secret', 
+    expansionType: ExpansionType.CharacterAndMonsterPack,
+    link: 'https://descent2e.fandom.com/wiki/Stewards_of_the_Secret',
+    classesAdded: [],
+    heroesAdded: [
+      {name: 'Seer Kel', archetype: Archetype.Mage},
+      {name: 'Tatianna', archetype: Archetype.Scout},
+      {name: 'Okaluk and Rakash', archetype: Archetype.Healer},
+      {name: 'Nanok of the Blade', archetype: Archetype.Warrior},
     ],
   }],
 ])
