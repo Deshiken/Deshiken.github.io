@@ -55,6 +55,7 @@ export interface DescentClass {
   name: string;
   archetype: Archetype;
   hybridArchetype? : Archetype;
+  hybridSubClass? : DescentClass;
 }
 export const expansionMap: Map<ExpansionKey, DescentExpansion> = new Map([
   [ExpansionKey.DescentBaseGame, {

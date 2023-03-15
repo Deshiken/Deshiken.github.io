@@ -66,19 +66,23 @@ export class DescentPartyBuilderComponent implements OnInit {
     expansionMap.forEach((value: DescentExpansion, key: ExpansionKey) => {
       if (this.partyBuilderService.descentPartyBuilderOptions[key] === true) {
         value.classesAdded.forEach((descentClass) => {
-          switch(descentClass.archetype) {
-            case Archetype.Healer:
-              this.ownedHealersClasses.push(descentClass);
-              break;
-            case Archetype.Warrior:
-              this.ownedWarriorsClasses.push(descentClass);
-              break;
-            case Archetype.Scout:
-              this.ownedScoutsClasses.push(descentClass);
-              break;
-            case Archetype.Mage:
-              this.ownedMagesClasses.push(descentClass);
-              break;
+          if (this.partyBuilderService.descentPartyBuilderOptions.includeHybridClass = false && descentClass.hybridArchetype) {
+            // do noting
+          } else {
+            switch(descentClass.archetype) {
+              case Archetype.Healer:
+                this.ownedHealersClasses.push(descentClass);
+                break;
+              case Archetype.Warrior:
+                this.ownedWarriorsClasses.push(descentClass);
+                break;
+              case Archetype.Scout:
+                this.ownedScoutsClasses.push(descentClass);
+                break;
+              case Archetype.Mage:
+                this.ownedMagesClasses.push(descentClass);
+                break;
+            }
           }
         })
         value.heroesAdded.forEach((descentHero) => {
@@ -154,6 +158,26 @@ export class DescentPartyBuilderComponent implements OnInit {
           hero.class = this.tools.getRandomEntryFromArray(this.ownedMagesClasses);
           this.tools.deleteFromArray(this.ownedMagesClasses, hero.class);
           break;
+      }
+      if (this.partyBuilderService.descentPartyBuilderOptions.selectHybridSubclass = true && hero.class?.hybridArchetype) {
+        switch (hero.class?.hybridArchetype) {
+          case Archetype.Healer:
+            hero.class.hybridSubClass = this.tools.getRandomEntryFromArray(this.ownedHealersClasses.filter(clazz => clazz.hybridArchetype === undefined));
+            this.tools.deleteFromArray(this.ownedHealersClasses, hero.class);
+            break;
+          case Archetype.Warrior:
+            hero.class.hybridSubClass = this.tools.getRandomEntryFromArray(this.ownedWarriorsClasses.filter(clazz => clazz.hybridArchetype === undefined));
+            this.tools.deleteFromArray(this.ownedWarriorsClasses, hero.class);
+            break;
+          case Archetype.Scout:
+            hero.class.hybridSubClass = this.tools.getRandomEntryFromArray(this.ownedScoutsClasses.filter(clazz => clazz.hybridArchetype === undefined));
+            this.tools.deleteFromArray(this.ownedScoutsClasses, hero.class);
+            break;
+          case Archetype.Mage:
+            hero.class.hybridSubClass = this.tools.getRandomEntryFromArray(this.ownedMagesClasses.filter(clazz => clazz.hybridArchetype === undefined));
+            this.tools.deleteFromArray(this.ownedMagesClasses, hero.class);
+            break;
+        }
       }
     })
   }
