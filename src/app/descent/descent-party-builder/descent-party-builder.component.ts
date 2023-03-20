@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DescentPartyBuilderService } from '../descent-party-builder.service';
 import { DescentHero, ExpansionKey,ExpansionType,DescentExpansion, DescentClass, Archetype } from '../descent-data';
 import { FormsModule } from '@angular/forms';
 import { expansionMap } from '../descent-data';
 import { RandomService } from 'src/app/shared/services/random.service';
+// import { Toast } from 'bootstrap';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @Component({
   selector: 'app-descent-party-builder',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, SharedModule],
   templateUrl: './descent-party-builder.component.html',
   styleUrls: ['./descent-party-builder.component.scss']
 })
@@ -17,6 +19,9 @@ import { RandomService } from 'src/app/shared/services/random.service';
 export class DescentPartyBuilderComponent implements OnInit {
   public ExpansionKey = ExpansionKey;
   public expansionMap = expansionMap;
+
+  @ViewChild('savedOptionsToast') savedOptionsToast!: ElementRef;
+
   public boxExpansions = new Map([...expansionMap].filter(([key, value]) => value.expansionType === ExpansionType.BoxExpansion))
   public characterAndMonsterExpansions = new Map([...expansionMap].filter(([key, value]) => value.expansionType === ExpansionType.CharacterAndMonsterPack))
   
@@ -66,8 +71,8 @@ export class DescentPartyBuilderComponent implements OnInit {
     expansionMap.forEach((value: DescentExpansion, key: ExpansionKey) => {
       if (this.partyBuilderService.descentPartyBuilderOptions[key] === true) {
         value.classesAdded.forEach((descentClass) => {
-          if (this.partyBuilderService.descentPartyBuilderOptions.includeHybridClass = false && descentClass.hybridArchetype) {
-            // do noting
+          if (this.partyBuilderService.descentPartyBuilderOptions.includeHybridClass === false && descentClass.hybridArchetype) {
+            // Do noting
           } else {
             switch(descentClass.archetype) {
               case Archetype.Healer:
@@ -159,7 +164,7 @@ export class DescentPartyBuilderComponent implements OnInit {
           this.tools.deleteFromArray(this.ownedMagesClasses, hero.class);
           break;
       }
-      if (this.partyBuilderService.descentPartyBuilderOptions.selectHybridSubclass = true && hero.class?.hybridArchetype) {
+      if (this.partyBuilderService.descentPartyBuilderOptions.selectHybridSubclass === true && hero.class?.hybridArchetype) {
         switch (hero.class?.hybridArchetype) {
           case Archetype.Healer:
             hero.class.hybridSubClass = this.tools.getRandomEntryFromArray(this.ownedHealersClasses.filter(clazz => clazz.hybridArchetype === undefined));
@@ -194,6 +199,12 @@ export class DescentPartyBuilderComponent implements OnInit {
     this.selectedParty = [];
   }
 
+  public saveOptions() {
+    this.partyBuilderService.saveToLocalStorage();
+
+    this.savedOptionsToast.nativeElement.classList.add('show');
+    window.setTimeout(() => {this.savedOptionsToast.nativeElement.classList.remove('show')}, 3000);
+  }
 
 }
 

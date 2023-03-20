@@ -1,6 +1,18 @@
 <div class="container">
-  <h1 class="mt-3 mb-4">Descent Party Builder</h1>
   
+  <div #savedOptionsToast class="toast fade align-items-center fixed-top" 
+    data-bs-animation="true" data-bs-autohide="true" data-bs-delay="3000"
+    role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">
+        Your options have been saved.
+      </div>
+      <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+
+  <app-heading-with-back [title]="'Descent Party Builder'"></app-heading-with-back>
+
   <h2 class="h5">Party Builder Options:</h2>
 
   <label for="partyNumberSelect">Number of Party Members:</label>
@@ -118,32 +130,38 @@
 
   </div>
 
-  <button
-    type="button" class="btn btn-primary btn-sm mt-3" 
-    (click)="partyBuilderService.saveToLocalStorage()">
-    Save My Options
-  </button>
-  <i class="bi m-3 bi-question-circle-fill" 
-    data-bs-toggle="collapse" data-bs-target="#optionsSave" aria-expanded="false" aria-controls="balancedParty">
-  </i>
-  <div class="collapse" id="optionsSave">
-    <div class="card card-body">
-      Save the options and content you have selected here to your brower's cookies for future use.
+  <div class="row">
+    <div class="d-flex align-items-center">
+      <button
+        type="button" class="btn btn-primary btn-sm" 
+        (click)="saveOptions()">
+        Save My Options
+      </button>
+      <i class="bi bi-question-circle-fill mx-3 med-icon" 
+        data-bs-toggle="collapse" data-bs-target="#optionsSave" aria-expanded="false" aria-controls="balancedParty">
+      </i>
     </div>
-  </div>
-  
-  <button
-    type="button" class="btn btn-primary mt-3"
-    (click)="buildParty()">
-    Build My Party
-  </button>
+    <div class="collapse" id="optionsSave">
+      <div class="card card-body">
+        Save the options and content you have selected here to your brower's cookies for future use.
+      </div>
+    </div>
 
-  <div class="row" *ngIf="this.selectedParty.length > 0">
-    <strong class="mt-3">Selected Party</strong>
-    <ng-container *ngFor="let hero of selectedParty">
-      <p>Name: {{hero.name}}, Archetype: {{hero.archetype}}, Class: {{hero.class?.name}}</p>
-      <span *ngIf="hero.class?.hybridArchetype">Hybrid Archetype: {{hero.class?.hybridArchetype}}</span> 
-      <span *ngIf="hero.class?.hybridSubClass">Hybrid Sub Class: {{hero.class?.hybridSubClass?.name}}</span> 
+    <div class="col">
+      <button
+        type="button" class="btn btn-primary mt-3"
+        (click)="buildParty()">
+        Build My Party
+      </button>
+    </div>  
+  
+    <ng-container *ngIf="this.selectedParty.length > 0">
+      <strong class="mt-3">Selected Party</strong>
+      <div class="d-flex flex-row" *ngFor="let hero of selectedParty">
+        <p>Name: {{hero.name}}, Archetype: {{hero.archetype}}, Class: {{hero.class?.name}}</p>
+        <span *ngIf="hero.class?.hybridArchetype">Hybrid Archetype: {{hero.class?.hybridArchetype}}</span> 
+        <span *ngIf="hero.class?.hybridSubClass">Hybrid Sub Class: {{hero.class?.hybridSubClass?.name}}</span> 
+      </div>
     </ng-container>
   </div>
 

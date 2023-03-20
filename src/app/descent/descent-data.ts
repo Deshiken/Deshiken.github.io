@@ -9,12 +9,6 @@ export enum Archetype {
   Warrior = 'Warrior',
   Healer = 'Healer'
 }
-// export enum Archetype {
-//   Mage = 0,
-//   Scout = 1,
-//   Warrior = 2,
-//   Healer = 3
-// }
 
 export enum ExpansionKey {
   DescentBaseGame = 'descentBaseGame',
@@ -57,6 +51,7 @@ export interface DescentClass {
   hybridArchetype? : Archetype;
   hybridSubClass? : DescentClass;
 }
+
 export const expansionMap: Map<ExpansionKey, DescentExpansion> = new Map([
   [ExpansionKey.DescentBaseGame, {
     name: 'Descent Base Game',
