@@ -15,10 +15,10 @@
           Randomize Teams and Player Order
         </button>
         <i class="bi m-3 bi-question-circle-fill" style="font-size: 2.4rem;"
-          data-bs-toggle="collapse" data-bs-target="#draftCollapse" aria-expanded="false" aria-controls="draftCollapse">
+          data-bs-toggle="collapse" data-bs-target="#randomTeams" aria-expanded="false" aria-controls="randomTeams">
         </i>
       </div>
-      <div class="collapse pb-3" id="draftCollapse">
+      <div class="collapse pb-3" id="randomTeams">
         <div class="card card-body">
           This tool will assign each player to a random team and also set a random team order.
         </div>
@@ -49,6 +49,21 @@
       <div class="collapse pb-3" id="timerCollapse">
         <div class="card card-body">
           This tool will allow you to customize up to three different timers to use for different gameplay actions.
+        </div>
+      </div>
+
+      <div class="d-flex align-items-center">
+        <button class="btn btn-primary my-3" (click)="router.navigate(['tools/draft'])">
+          Start a Draft
+        </button>
+        <i class="bi m-3 bi-question-circle-fill" style="font-size: 2.4rem;"
+          data-bs-toggle="collapse" data-bs-target="#draftCollapse" aria-expanded="false" aria-controls="draftCollapse">
+        </i>
+      </div>
+      <div class="collapse pb-3" id="draftCollapse">
+        <div class="card card-body">
+          This tool will allow you to add your own list of draftable items, and start a draft. 
+          It is advised that you determine teams and player order before starting a draft.
         </div>
       </div>
     

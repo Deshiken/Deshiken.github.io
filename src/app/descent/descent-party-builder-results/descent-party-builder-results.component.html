@@ -1,0 +1,27 @@
+<div class='container'>
+  
+  <app-heading-with-back [title]="'Party Builder Results'"></app-heading-with-back>
+  
+  <strong class="mt-3">Selected Party</strong>
+  <div class="row">
+    <div class="card mb-4 card-shadow__light m-3 p-0 fade-in"
+      style="max-width: 300px;"
+      *ngFor="let hero of selectedPartyCopy"
+    >
+      <div class='card-body'>
+        <p class='mb-0'><strong>Name:</strong> {{hero.name}}</p>
+        <p class='mb-0'><strong>Archetype:</strong> {{hero.archetype}}</p>
+        <p class='mb-0'><strong>Class:</strong> {{hero.class?.name}}</p>
+        <p class='mb-0' *ngIf="hero.class?.hybridArchetype"><strong>Hybrid Archetype:</strong> {{hero.class?.hybridArchetype}}</p> 
+        <p class='mb-0' *ngIf="hero.class?.hybridSubClass"><strong>Hybrid Sub Class:</strong> {{hero.class?.hybridSubClass?.name}}</p> 
+      </div>
+    </div>
+  </div>
+
+  <!-- <strong class="mb-3 fade-in" *ngIf="this.partyBuilderService.selectedParty.length === selectedPartyCopy.length">
+    <a routerLink="/">Back to Homepage</a>
+  </strong> -->
+
+</div>
+
+

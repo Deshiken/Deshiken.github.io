@@ -5,8 +5,8 @@ import { DescentHero, ExpansionKey,ExpansionType,DescentExpansion, DescentClass,
 import { FormsModule } from '@angular/forms';
 import { expansionMap } from '../descent-data';
 import { RandomService } from 'src/app/shared/services/random.service';
-// import { Toast } from 'bootstrap';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-descent-party-builder',
@@ -25,7 +25,6 @@ export class DescentPartyBuilderComponent implements OnInit {
   public boxExpansions = new Map([...expansionMap].filter(([key, value]) => value.expansionType === ExpansionType.BoxExpansion))
   public characterAndMonsterExpansions = new Map([...expansionMap].filter(([key, value]) => value.expansionType === ExpansionType.CharacterAndMonsterPack))
   
-  public selectedParty: Array<DescentHero> = new Array<DescentHero>();
   public ownedHealersHeroes: Array<DescentClass> = new Array<DescentClass>();
   public ownedWarriorsHeroes: Array<DescentClass> = new Array<DescentClass>();
   public ownedScoutsHeroes: Array<DescentClass> = new Array<DescentClass>();
@@ -37,6 +36,7 @@ export class DescentPartyBuilderComponent implements OnInit {
 
   constructor( 
     public partyBuilderService: DescentPartyBuilderService,
+    private router: Router,
     public tools: RandomService
   ) { }
 
@@ -59,11 +59,23 @@ export class DescentPartyBuilderComponent implements OnInit {
     
     this.selectClassForEachHero()
 
+    // Navigate to show results
+    this.router.navigate(['descent/party-results'])
+
     console.log('ending mages', this.ownedMagesClasses);
     console.log('ending warriors', this.ownedWarriorsClasses);
     console.log('ending scouts', this.ownedScoutsClasses);
     console.log('ending healers', this.ownedHealersClasses);
-    console.log('ending selected heroes', this.selectedParty);
+    console.log('ending selected heroes', this.partyBuilderService.selectedParty);
+  }
+
+  setAllContent(setToBoolean: boolean) {
+    Object.keys(this.partyBuilderService.descentPartyBuilderOptions).forEach(property => {
+      console.log('property', property)
+      if (Object.values<string>(ExpansionKey).includes(property)) {
+        this.partyBuilderService.descentPartyBuilderOptions[property] = setToBoolean;
+      }
+    });
   }
 
 
@@ -117,7 +129,7 @@ export class DescentPartyBuilderComponent implements OnInit {
     // for each player select a random character from the list of owned characters.
     for (let i = 0; i < this.partyBuilderService.descentPartyBuilderOptions.numberOfPartyMembers; i++) {
       let randomCharacter = this.tools.getRandomEntryFromArray(allOwnedHeroes);
-      this.selectedParty.push(randomCharacter);
+      this.partyBuilderService.selectedParty.push(randomCharacter);
       this.tools.deleteFromArray(allOwnedHeroes, randomCharacter);
     }
   }
@@ -136,7 +148,7 @@ export class DescentPartyBuilderComponent implements OnInit {
       let selectedHero = this.tools.getRandomEntryFromArray(heroSubArray);
 
       // add the selected hero to our party
-      this.selectedParty.push(selectedHero);
+      this.partyBuilderService.selectedParty.push(selectedHero);
 
       // remove the sub array so a hero of that archetype will not be selected again.
       this.tools.deleteFromArray(multiHeroArray, heroSubArray);
@@ -145,7 +157,7 @@ export class DescentPartyBuilderComponent implements OnInit {
 
   private selectClassForEachHero() {
     // randomly select a class for each previously selected hero
-    this.selectedParty.forEach(hero => {
+    this.partyBuilderService.selectedParty.forEach(hero => {
       switch (hero.archetype) {
         case Archetype.Healer:
           hero.class = this.tools.getRandomEntryFromArray(this.ownedHealersClasses);
@@ -196,14 +208,20 @@ export class DescentPartyBuilderComponent implements OnInit {
     this.ownedWarriorsClasses = [];
     this.ownedScoutsClasses = [];
     this.ownedHealersClasses = [];
-    this.selectedParty = [];
+    this.partyBuilderService.selectedParty = [];
   }
 
   public saveOptions() {
     this.partyBuilderService.saveToLocalStorage();
 
-    this.savedOptionsToast.nativeElement.classList.add('show');
-    window.setTimeout(() => {this.savedOptionsToast.nativeElement.classList.remove('show')}, 3000);
+    this.savedOptionsToast.nativeElement.classList.add('show', 'fade-in');
+    window.setTimeout(() => {
+      this.savedOptionsToast.nativeElement.classList.remove('fade-in');
+      this.savedOptionsToast.nativeElement.classList.add('fade-out');
+    }, 3000);
+    window.setTimeout(() => {
+      this.savedOptionsToast.nativeElement.classList.remove('show')
+    }, 5000);
   }
 
 }

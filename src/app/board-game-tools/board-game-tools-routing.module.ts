@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PlayerSelectComponent } from '../shared/components/player-select/player-select.component';
 import { ActionTimerComponent } from './action-timer/action-timer.component';
 import { CoinFlipComponent } from './coin-flip/coin-flip.component';
+import { DraftStartComponent } from './draft/draft-start/draft-start.component';
 import { RandomizeTeamsResultsComponent } from './randomize-teams/randomize-teams-results/randomize-teams-results.component';
 import { RandomizeTeamsStartComponent } from './randomize-teams/randomize-teams-start/randomize-teams-start.component';
 
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'timer',
     component: ActionTimerComponent
+  },
+  {
+    path: 'draft',
+    component: DraftStartComponent
   }
 
 ];

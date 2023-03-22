@@ -7,6 +7,7 @@ import { BoardGameToolsRoutingModule } from './board-game-tools-routing.module';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { CoinFlipComponent } from './coin-flip/coin-flip.component';
+import { DraftStartComponent } from './draft/draft-start/draft-start.component';
 
 
 
@@ -15,7 +16,8 @@ import { CoinFlipComponent } from './coin-flip/coin-flip.component';
     ActionTimerComponent,
     RandomizeTeamsStartComponent,
     RandomizeTeamsResultsComponent,
-    CoinFlipComponent
+    CoinFlipComponent,
+    DraftStartComponent,
   ],
   imports: [
     CommonModule,

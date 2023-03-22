@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { RandomService } from '../shared/services/random.service';
-import { ExpansionKey } from './descent-data'
+import { ExpansionKey, DescentHero } from './descent-data'
 
 @Injectable({
   providedIn: 'root'
 })
 export class DescentPartyBuilderService {
   public descentPartyBuilderOptions: any = this.setPartyBuilderData();
+  public selectedParty: Array<DescentHero> = new Array<DescentHero>();
   
 
   constructor(
@@ -34,6 +35,7 @@ export class DescentPartyBuilderService {
 
     // Add each enum of ExpansionKey as a property with a value of false.
     Object.values(ExpansionKey).map((value) => partyBuilderOptions[value] = false);
+    
     // Set the Base game property to true, since the base game is required.
     partyBuilderOptions.descentBaseGame = true;
 
