@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { RandomService } from 'src/app/shared/services/random.service';
+import { ToastService } from 'src/app/shared/services/toast.service';
 import { DraftOptions, DraftService } from '../draft.service';
 
 @Component({
@@ -16,12 +17,10 @@ export class DraftStartComponent implements OnInit {
   constructor( 
     public draftService: DraftService,
     public utils: RandomService,
-  ) {
+    private toastService: ToastService,
+  ) { }
 
-  }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   public addDraftChoice() {
     if(this.newDraftChoice) {
@@ -53,15 +52,9 @@ export class DraftStartComponent implements OnInit {
       //save the list of drafts to local storage
       localStorage.setItem('savedDraftList',JSON.stringify(this.draftService.savedDraftLists))
 
+
       // Briefly display toast message
-      this.savedOptionsToast.nativeElement.classList.add('show', 'fade-in');
-      window.setTimeout(() => {
-        this.savedOptionsToast.nativeElement.classList.remove('fade-in');
-        this.savedOptionsToast.nativeElement.classList.add('fade-out');
-      }, 3000);
-      window.setTimeout(() => {
-        this.savedOptionsToast.nativeElement.classList.remove('show')
-      }, 5000);
+      this.toastService.toastSubject.next();
     }
   }
 

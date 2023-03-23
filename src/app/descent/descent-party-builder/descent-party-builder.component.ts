@@ -7,11 +7,13 @@ import { expansionMap } from '../descent-data';
 import { RandomService } from 'src/app/shared/services/random.service';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { Router } from '@angular/router';
+import { ToastComponent } from 'src/app/shared/components/toast/toast.component';
+import { ToastService } from 'src/app/shared/services/toast.service';
 
 @Component({
   selector: 'app-descent-party-builder',
   standalone: true,
-  imports: [CommonModule, FormsModule, SharedModule],
+  imports: [CommonModule, FormsModule, SharedModule, ToastComponent],
   templateUrl: './descent-party-builder.component.html',
   styleUrls: ['./descent-party-builder.component.scss']
 })
@@ -37,7 +39,8 @@ export class DescentPartyBuilderComponent implements OnInit {
   constructor( 
     public partyBuilderService: DescentPartyBuilderService,
     private router: Router,
-    public tools: RandomService
+    public tools: RandomService,
+    private toastService: ToastService,
   ) { }
 
   ngOnInit(): void {
@@ -213,15 +216,7 @@ export class DescentPartyBuilderComponent implements OnInit {
 
   public saveOptions() {
     this.partyBuilderService.saveToLocalStorage();
-
-    this.savedOptionsToast.nativeElement.classList.add('show', 'fade-in');
-    window.setTimeout(() => {
-      this.savedOptionsToast.nativeElement.classList.remove('fade-in');
-      this.savedOptionsToast.nativeElement.classList.add('fade-out');
-    }, 3000);
-    window.setTimeout(() => {
-      this.savedOptionsToast.nativeElement.classList.remove('show')
-    }, 5000);
+    this.toastService.toastSubject.next();
   }
 
 }

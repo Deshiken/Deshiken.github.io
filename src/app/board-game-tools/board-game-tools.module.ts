@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { CoinFlipComponent } from './coin-flip/coin-flip.component';
 import { DraftStartComponent } from './draft/draft-start/draft-start.component';
+import { ToastComponent } from '../shared/components/toast/toast.component';
 
 
 
@@ -23,7 +24,8 @@ import { DraftStartComponent } from './draft/draft-start/draft-start.component';
     CommonModule,
     BoardGameToolsRoutingModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    ToastComponent
   ]
 })
 export class BoardGameToolsModule { }
