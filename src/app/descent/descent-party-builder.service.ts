@@ -5,6 +5,7 @@ import { ExpansionKey, DescentHero } from './descent-data'
 @Injectable({
   providedIn: 'root'
 })
+
 export class DescentPartyBuilderService {
   public descentPartyBuilderOptions: any = this.setPartyBuilderData();
   public selectedParty: Array<DescentHero> = new Array<DescentHero>();

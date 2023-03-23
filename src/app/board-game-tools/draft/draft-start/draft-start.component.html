@@ -74,7 +74,7 @@
   </div>
   <div class="collapse" id="teamDraftToggle">
     <div class="card card-body">
-      If selected the draft order will alternate between teams. 
+      If selected the draft order will alternate between two teams. 
     </div>
   </div>
 
@@ -95,6 +95,7 @@
     <div class="card card-body">
       In Snake Drafts, teams take turns drafting, with the pick order reversing after half of thie picks are made. 
       For example, in a four player team draft, the pick order will be Team 1, Team 2, Team 2, and then Team 1.
+      This helps to mitigate the advantage Team 1 has from getting the first pick. 
     </div>
   </div>
 
@@ -121,6 +122,8 @@
   <ul>
     <li *ngFor="let item of draftService.selectedDraft.choiceList">{{item}}</li>
   </ul>
+  
+  <hr>
 
   <label for="draftName"  class="form-label">Draft Name</label>
   <div class="row">
@@ -147,11 +150,20 @@
       </div>
     </div>
   </div>
-  
-  <div class="collapse" id="optionsSave">
+
+  <div class="collapse mt-2" id="optionsSave">
     <div class="card card-body">
       Save this draft to your browser's storage. Note: the drafts you save will only be available on this device.
     </div>
   </div>
 
+  <div>
+    <button class="btn btn-primary my-3"
+      [routerLink]="'draft-pick'"
+    >
+      Start the Draft
+      <i class="bi bi-arrow-right"></i>
+    </button>
+  </div>
+  
 </div>

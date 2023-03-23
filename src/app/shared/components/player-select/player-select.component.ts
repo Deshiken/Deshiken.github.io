@@ -31,8 +31,6 @@ export class PlayerSelectComponent implements OnInit {
       this.numberOfPlayers = params['numberOfPlayers'];
       this.nextPage = params['nextPage'];
     })
-    console.log('number of players', this.numberOfPlayers);
-    console.log('next url', this.nextPage);
   }
 
   public undo() {
@@ -40,11 +38,9 @@ export class PlayerSelectComponent implements OnInit {
   }
   
   public selectIcon(selectedIcon: string) {
-    // this.iconChange = true;
     if (this.playerSelectService.selectedIcons.length < this.numberOfPlayers) {
       this.playerSelectService.selectedIcons.push(selectedIcon);
     }
-    // this.iconChange = false;
   }
 
   public next() {

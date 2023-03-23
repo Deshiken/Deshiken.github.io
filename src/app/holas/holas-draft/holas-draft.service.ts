@@ -3,7 +3,7 @@ import { DraftStep } from './models/draft-step';
 import { Player } from './models/player';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class HolasDraftService {
 
