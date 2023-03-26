@@ -7,8 +7,11 @@ import { Injectable } from '@angular/core';
 export class DraftService {
 
   public testDraftOptions: Array<DraftOptions> = [
-    { draftName: 'Uprising', choiceList: ['Orcs', 'Elves', 'Dwarves', 'Templar'], snakeDraft: false, numberOfPlayers: 4, teamDraft: false },
-    { draftName: 'Everdel', choiceList: ['Birds', 'Badgers', 'Frogs', 'Moles', 'Rats', 'Mice'], snakeDraft: true, numberOfPlayers: 6, teamDraft: true },
+    { draftName: 'Uprising', choiceList: ['Orcs', 'Elves', 'Dwarves', 'Templar'], picksPerPlayer: 1,randomDraftItems: false,
+      useItemCategories: false, snakeDraft: false, numberOfPlayers: 4, teamDraft: false 
+    },
+    { draftName: 'Everdel', choiceList: ['Birds', 'Badgers', 'Frogs', 'Moles', 'Rats', 'Mice'], picksPerPlayer: 2, randomDraftItems: false,
+      useItemCategories: false, snakeDraft: true, numberOfPlayers: 6, teamDraft: true },
   ]
   // public savedDraftLists = new Array<DraftOptions>();
   public savedDraftLists = this.testDraftOptions;
@@ -28,8 +31,11 @@ export class DraftService {
     return {
       draftName: '',
       numberOfPlayers: 4,
+      picksPerPlayer: 1,
       snakeDraft: true,
       teamDraft: true,
+      randomDraftItems: false,
+      useItemCategories: false,
       choiceList: []
     }
   }
@@ -44,7 +50,10 @@ export interface Player {
 export interface DraftOptions {
   draftName: string;
   numberOfPlayers: number,
+  picksPerPlayer: number,
   snakeDraft: boolean,
   teamDraft: boolean,
+  randomDraftItems: boolean,
+  useItemCategories: boolean,
   choiceList: Array<string>
 }

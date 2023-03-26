@@ -29,14 +29,12 @@ export class DraftStartComponent implements OnInit {
 
   public addDraftChoice() {
     if(this.newDraftChoice) {
-      console.log('adding draft choice: ', this.newDraftChoice);
       this.draftService.selectedDraft.choiceList.push(this.newDraftChoice);
       this.newDraftChoice = '';
     }
   }
 
   public deleteDraftFromStorage() {
-    console.log('deleting draft: ', this.draftToDelete);
     this.utils.deleteFromArray(this.draftService.savedDraftLists, this.draftToDelete);
     localStorage.setItem('savedDraftList',JSON.stringify(this.draftService.savedDraftLists))
   }
@@ -64,6 +62,7 @@ export class DraftStartComponent implements OnInit {
   }
 
   public startDraft() {
+    console.log('selected draft ', this.draftService.selectedDraft)
     // Build our map of errors
     this.checkForErrors();
     
@@ -78,7 +77,7 @@ export class DraftStartComponent implements OnInit {
     //Reset all errors
     this.errors.forEach((value,key) => { this.errors.set(key,false) });
 
-    if (this.draftService.selectedDraft.numberOfPlayers > this.draftService.selectedDraft.choiceList.length) {
+    if (this.draftService.selectedDraft.numberOfPlayers * this.draftService.selectedDraft.picksPerPlayer > this.draftService.selectedDraft.choiceList.length) {
       this.errors.set('tooFewItems',true);
       // Scroll to bottom
       window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: "smooth" });

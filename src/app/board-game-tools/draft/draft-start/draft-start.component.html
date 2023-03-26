@@ -43,20 +43,43 @@
 
   <h2 class="h4">Draft Options</h2>
 
-  <label for="numberOfPlayersSelect">Number of Players:</label>
-  <select 
-    [(ngModel)]="draftService.selectedDraft.numberOfPlayers" class="form-select mb-3" 
-    id="numberOfPlayersSelect" aria-label="Number of Players Select"
-    style="max-width: 200px;"
-  >
-    <option [ngValue]="2">Two</option>
-    <option [ngValue]="3">Three</option>
-    <option [ngValue]="4" selected>Four</option>
-    <option [ngValue]="5">Five</option>
-    <option [ngValue]="6">Six</option>
-    <option [ngValue]="7">Seven</option>
-    <option [ngValue]="8">Eight</option>
-  </select>
+  <div class="row">
+    <!-- <div class='col-sm-auto'> -->
+    <div class='col-sm-auto'>
+      <label for="numberOfPlayersSelect">Number of Players:</label>
+      <select 
+        [(ngModel)]="draftService.selectedDraft.numberOfPlayers" 
+        class="form-select mb-3" 
+        id="numberOfPlayersSelect" 
+        aria-label="Number of Players Select"
+        style="max-width: 150px;"
+      >
+        <option [ngValue]="2">Two</option>
+        <option [ngValue]="3">Three</option>
+        <option [ngValue]="4">Four</option>
+        <option [ngValue]="5">Five</option>
+        <option [ngValue]="6">Six</option>
+        <option [ngValue]="7">Seven</option>
+        <option [ngValue]="8">Eight</option>
+      </select>
+    </div>
+    <div class='col'>
+      <label for="numberOfPicksPerPlayerSelect">Number of Picks Per Player:</label>
+      <select 
+        [(ngModel)]="draftService.selectedDraft.picksPerPlayer" 
+        class="form-select mb-3" 
+        id="numberOfPicksPerPlayerSelect" 
+        aria-label="Number of Picks Per Player Select"
+        style="max-width: 200px;"
+      >
+        <option [ngValue]="1">One</option>
+        <option [ngValue]="2">Two</option>
+        <option [ngValue]="3">Three</option>
+        <option [ngValue]="4">Four</option>
+      </select>
+    </div>
+  </div>
+  
 
   <div class="form-check">
     <input 
@@ -79,10 +102,54 @@
 
   <div class="form-check">
     <input 
+      [(ngModel)]="draftService.selectedDraft.useItemCategories"
+      class="form-check-input" 
+      type="checkbox" 
+      id="teamDraft">
+    <label class="form-check-label" for="randomBuilding">
+      Use Item Categories   
+    </label>
+    <i class="bi m-3 bi-question-circle-fill" 
+      data-bs-toggle="collapse" data-bs-target="#itemCategories" aria-expanded="false" aria-controls="teamDraftToggle">
+    </i>
+  </div>
+  <div class="collapse" id="itemCategories">
+    <div class="card card-body">
+      If selected you will be able to add a category to each draft item. Having the draft items broken down into categories
+      prevents a player from picking two items of the same category. For example, your are drafting a game that requires 
+      each player to draft a hero and a faction. Once a player has drafted a hero they can not draft another hero and must 
+      pick a faction.  
+    </div>
+  </div>
+
+  <div class="form-check">
+    <input 
+      [(ngModel)]="draftService.selectedDraft.randomDraftItems"
+      class="form-check-input" 
+      type="checkbox" 
+      id="teamDraft">
+    <label class="form-check-label" for="randomBuilding">
+      Randomize Available Draft Items 
+    </label>
+    <i class="bi m-3 bi-question-circle-fill" 
+      data-bs-toggle="collapse" data-bs-target="#randomDraftItems" aria-expanded="false" aria-controls="teamDraftToggle">
+    </i>
+  </div>
+  <div class="collapse" id="randomDraftItems">
+    <div class="card card-body">
+      If selected, the list of draft items will be narrowed down until it matches the number of required picks for this draft,
+      by randomly removing entries. For example, in a 4 player draft with two picks for each player, the draft items will 
+      be reduced to 8 randomly selected entries.
+    </div>
+  </div>
+
+  <div class="form-check">
+    <input 
       [(ngModel)]="draftService.selectedDraft.snakeDraft"
       class="form-check-input" 
       type="checkbox" 
-      id="snakeDraft">
+      id="snakeDraft"
+    >
     <label class="form-check-label" for="randomBuilding">
       Snake Draft
     </label>
@@ -92,7 +159,7 @@
   </div>
   <div class="collapse" id="snakeDraftToggle">
     <div class="card card-body">
-      In Snake Drafts, teams take turns drafting, with the pick order reversing after half of thie picks are made. 
+      In Snake Drafts, halfway through the draft, the draft order will reverse. 
       For example, in a four player team draft, the pick order will be Team 1, Team 2, Team 2, and then Team 1.
       This helps to mitigate the advantage Team 1 has from getting the first pick. 
     </div>
@@ -105,7 +172,9 @@
   <label for="addDraftChoice" class="form-label">Enter a New Draft Item</label>
   <div class="row">
     <div class="col">
-      <input type="email" [(ngModel)]="newDraftChoice" 
+      <input 
+        type="email" 
+        [(ngModel)]="newDraftChoice" 
         class="form-control" id="addDraftChoice" 
         placeholder="ex: Orc Faction"
       >
@@ -158,7 +227,8 @@
 
   <div *ngIf="errors.get('tooFewItems')"
     class="alert alert-warning fade-in mt-3 mb-0" role="alert">
-    You need at least one item per player to start a draft. Please add more items or lower the number of players.
+    You do not have enough draft items for your current number of players and picks per player options. 
+    Please add more items or adjust your Draft Options.
   </div>
 
   <div>
