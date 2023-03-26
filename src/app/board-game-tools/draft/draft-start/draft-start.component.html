@@ -49,7 +49,6 @@
     id="numberOfPlayersSelect" aria-label="Number of Players Select"
     style="max-width: 200px;"
   >
-    <option [ngValue]="1">One</option>
     <option [ngValue]="2">Two</option>
     <option [ngValue]="3">Three</option>
     <option [ngValue]="4" selected>Four</option>
@@ -157,13 +156,19 @@
     </div>
   </div>
 
+  <div *ngIf="errors.get('tooFewItems')"
+    class="alert alert-warning fade-in mt-3 mb-0" role="alert">
+    You need at least one item per player to start a draft. Please add more items or lower the number of players.
+  </div>
+
   <div>
     <button class="btn btn-primary my-3"
-      [routerLink]="'draft-pick'"
+      (click)="startDraft()"
     >
       Start the Draft
       <i class="bi bi-arrow-right"></i>
     </button>
   </div>
+
   
 </div>

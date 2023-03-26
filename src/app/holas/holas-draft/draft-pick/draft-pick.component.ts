@@ -37,21 +37,16 @@ export class DraftPickComponent implements OnInit {
   }
 
   public chooseFaction(faction: SelectedFaction) {
-    console.log(faction, ' chosen')
-    // this.currentPlayer.factionPick = faction;
     this.choiceType = 'faction';
     this.factionChoice = faction;
   }
   
   public chooseMercenary(mercenary: string) {
-    console.log(mercenary, ' chosen');
-    // this.currentPlayer.mercenaryPick = mercenary;
     this.choiceType = 'mercenary';
     this.mercenaryChoice = mercenary;
   }
 
   public undo() {
-    // this.factionChoice = null;
     this.choiceType = '';
   }
 

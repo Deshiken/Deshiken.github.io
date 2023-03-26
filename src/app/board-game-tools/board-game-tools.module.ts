@@ -9,6 +9,8 @@ import { SharedModule } from '../shared/shared.module';
 import { CoinFlipComponent } from './coin-flip/coin-flip.component';
 import { DraftStartComponent } from './draft/draft-start/draft-start.component';
 import { ToastComponent } from '../shared/components/toast/toast.component';
+import { DraftPickComponent } from './draft/draft-pick/draft-pick.component';
+import { DraftResultsComponent } from './draft/draft-results/draft-results.component';
 
 
 
@@ -19,6 +21,8 @@ import { ToastComponent } from '../shared/components/toast/toast.component';
     RandomizeTeamsResultsComponent,
     CoinFlipComponent,
     DraftStartComponent,
+    DraftPickComponent,
+    DraftResultsComponent,
   ],
   imports: [
     CommonModule,

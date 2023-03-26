@@ -1,0 +1,29 @@
+<div class="container">
+  <h1 class="text-center mt-3">Draft Pick</h1>
+
+  <p>Currently Picking: Player {{this.player.playerNumber}}</p>
+
+  <h2 class='h5'>
+    Available Picks
+  </h2>
+
+  <ul class="list-group" >
+    <ng-container *ngFor="let item of this.draftService.selectedDraft.choiceList">
+      <li class="list-group-item" 
+        (click)="selectedItem = item"
+        [ngClass]="{'selected-item' : item === selectedItem}" 
+      >
+        <p class="mb-0">{{item}}</p>
+      </li>
+    </ng-container>
+  </ul>
+
+  <div>
+    <button class="btn btn-primary my-3" (click)="next()">
+      Next
+      <i class="bi bi-arrow-right"></i>
+    </button>
+  </div>
+
+
+</div>

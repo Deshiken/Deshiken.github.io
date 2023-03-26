@@ -10,10 +10,11 @@ export class DraftService {
     { draftName: 'Uprising', choiceList: ['Orcs', 'Elves', 'Dwarves', 'Templar'], snakeDraft: false, numberOfPlayers: 4, teamDraft: false },
     { draftName: 'Everdel', choiceList: ['Birds', 'Badgers', 'Frogs', 'Moles', 'Rats', 'Mice'], snakeDraft: true, numberOfPlayers: 6, teamDraft: true },
   ]
-  // public savedDraftLists = new Array<DraftOptions>()
+  // public savedDraftLists = new Array<DraftOptions>();
   public savedDraftLists = this.testDraftOptions;
   public selectedDraft: DraftOptions = this.defaultDraftOptions();
 
+  public players: Array<Player> = new Array<Player>()
 
   constructor() { 
     let localStorageString = localStorage.getItem('savedDraftList');
@@ -32,6 +33,12 @@ export class DraftService {
       choiceList: []
     }
   }
+}
+
+export interface Player {
+  playerNumber: number;
+  team: number;
+  pick: string;
 }
 
 export interface DraftOptions {
