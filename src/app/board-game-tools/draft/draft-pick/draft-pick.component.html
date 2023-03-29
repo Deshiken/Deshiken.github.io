@@ -8,12 +8,12 @@
   </h2>
 
   <ul class="list-group" >
-    <ng-container *ngFor="let item of this.draftService.selectedDraft.choiceList">
+    <ng-container *ngFor="let item of this.draftService.selectedDraft.draftItems">
       <li class="list-group-item" 
         (click)="selectedItem = item"
         [ngClass]="{'selected-item' : item === selectedItem}" 
       >
-        <p class="mb-0">{{item}}</p>
+        <p class="mb-0">{{item.itemName}}</p>
       </li>
     </ng-container>
   </ul>

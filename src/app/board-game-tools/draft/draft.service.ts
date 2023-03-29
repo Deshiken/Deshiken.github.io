@@ -7,17 +7,47 @@ import { Injectable } from '@angular/core';
 export class DraftService {
 
   public testDraftOptions: Array<DraftOptions> = [
-    { draftName: 'Uprising', choiceList: ['Orcs', 'Elves', 'Dwarves', 'Templar'], picksPerPlayer: 1,randomDraftItems: false,
-      useItemCategories: false, snakeDraft: false, numberOfPlayers: 4, teamDraft: false 
+    { draftName: 'Uprising', 
+      draftItems: [
+        {itemName:'Orcs', itemCategory:'Faction'}, 
+        {itemName:'Elves', itemCategory:'Faction'}, 
+        {itemName:'Dwarves', itemCategory:'Faction'}, 
+        {itemName:'Undead', itemCategory:'Faction'},
+        {itemName:'Templar', itemCategory:'Faction'},
+        {itemName:'Druid', itemCategory:'Hero'}, 
+        {itemName:'Gorgon', itemCategory:'Hero'}, 
+        {itemName:'Cultist', itemCategory:'Hero'}, 
+        {itemName:'Demon Lord', itemCategory:'Hero'}, 
+        {itemName:'Hill Giant', itemCategory:'Hero'},
+      ],
+      draftItemCategories: ['Faction', 'Hero'],
+      picksPerPlayer: 2,
+      randomDraftItems: false,
+      randomDraftOrder: false,
+      useItemCategories: true, 
+      snakeDraft: false, 
+      numberOfPlayers: 4, 
+      teamDraft: true 
     },
-    { draftName: 'Everdel', choiceList: ['Birds', 'Badgers', 'Frogs', 'Moles', 'Rats', 'Mice'], picksPerPlayer: 2, randomDraftItems: false,
-      useItemCategories: false, snakeDraft: true, numberOfPlayers: 6, teamDraft: true },
+    { draftName: 'Everdel', 
+      draftItems: [{itemName:'Birds'}, {itemName:'Badgers'}, {itemName:'Frogs'}, {itemName:'Moles'}, {itemName:'Rats'}, {itemName:'Mice'}],
+      draftItemCategories: new Array<string>(),
+      picksPerPlayer: 2, 
+      randomDraftItems: false,
+      randomDraftOrder: false,
+      useItemCategories: false, 
+      snakeDraft: true, 
+      numberOfPlayers: 6, 
+      teamDraft: true 
+    },
   ]
+
+
   // public savedDraftLists = new Array<DraftOptions>();
   public savedDraftLists = this.testDraftOptions;
   public selectedDraft: DraftOptions = this.defaultDraftOptions();
-
-  public players: Array<Player> = new Array<Player>()
+  public players: Map<number,Player> = new Map<number,Player>()
+  public draftSteps: Array<Player> = new Array<Player>();
 
   constructor() { 
     let localStorageString = localStorage.getItem('savedDraftList');
@@ -35,16 +65,23 @@ export class DraftService {
       snakeDraft: true,
       teamDraft: true,
       randomDraftItems: false,
+      randomDraftOrder: false,
       useItemCategories: false,
-      choiceList: []
+      draftItemCategories: new Array<string>(),
+      draftItems: new Array<DraftItem>(),
     }
   }
 }
 
 export interface Player {
   playerNumber: number;
-  team: number;
-  pick: string;
+  team?: number;
+  draftPicks?: Array<DraftItem>;
+}
+
+export interface DraftItem {
+  itemName: string,
+  itemCategory?: string,
 }
 
 export interface DraftOptions {
@@ -54,6 +91,8 @@ export interface DraftOptions {
   snakeDraft: boolean,
   teamDraft: boolean,
   randomDraftItems: boolean,
+  randomDraftOrder: boolean,
   useItemCategories: boolean,
-  choiceList: Array<string>
+  draftItemCategories: Array<string>,
+  draftItems: Array<DraftItem>,
 }

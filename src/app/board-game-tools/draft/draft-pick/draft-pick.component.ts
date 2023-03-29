@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RandomService } from 'src/app/shared/services/random.service';
-import { DraftService, Player } from '../draft.service';
+import { DraftItem, DraftService, Player } from '../draft.service';
 
 @Component({
   selector: 'app-draft-pick',
@@ -9,9 +9,9 @@ import { DraftService, Player } from '../draft.service';
   styleUrls: ['./draft-pick.component.scss']
 })
 export class DraftPickComponent implements OnInit {
-  public player: Player; 
+  public player: Player = {playerNumber: 1}; 
+  public selectedItem: DraftItem = {itemName: ''};
   public draftStep: number = 0;
-  public selectedItem: string = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -22,19 +22,19 @@ export class DraftPickComponent implements OnInit {
 
   ngOnInit(): void {
     this.draftStep = Number(this.route.snapshot.paramMap.get('draft-step'));
-    this.player = this.draftService.players[this.draftStep]
+    this.player = this.draftService.players.get(this.draftStep) as Player
     console.log('player for draft step', this.player);
   }
 
   public next() {
     if (this.selectedItem) {
-      this.player.pick = this.selectedItem;
-      this.utils.deleteFromArray(this.draftService.selectedDraft.choiceList, this.selectedItem);
+      this.player.draftPicks?.push(this.selectedItem);
+      this.utils.deleteFromArray(this.draftService.selectedDraft.draftItems, this.selectedItem);
       
       this.draftStep ++;
-      this.player = this.draftService.players[this.draftStep];
+      this.player = this.draftService.players.get(this.draftStep) as Player;
 
-      if (this.draftStep === this.draftService.players.length) {
+      if (this.draftStep === this.draftService.players.size) {
         this.router.navigate(['/tools/draft-results']);
       } else {
         this.router.navigate(['/tools/draft-pick', {draftStep: this.draftStep}])

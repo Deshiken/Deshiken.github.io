@@ -145,6 +145,26 @@
 
   <div class="form-check">
     <input 
+      [(ngModel)]="draftService.selectedDraft.randomDraftOrder"
+      class="form-check-input" 
+      type="checkbox" 
+      id="teamDraft">
+    <label class="form-check-label" for="randomBuilding">
+      Randomize Draft Order
+    </label>
+    <i class="bi m-3 bi-question-circle-fill" 
+      data-bs-toggle="collapse" data-bs-target="#randomDraftOrder" aria-expanded="false" aria-controls="randomDraftOrderToggle">
+    </i>
+  </div>
+  <div class="collapse" id="randomDraftOrder">
+    <div class="card card-body">
+      Rather than starting with player one and drafting in sequential order, the draft order will be determined randomly.
+      If team play is selected, the draft order will still alternate between teams. 
+    </div>
+  </div>
+
+  <div class="form-check">
+    <input 
       [(ngModel)]="draftService.selectedDraft.snakeDraft"
       class="form-check-input" 
       type="checkbox" 
@@ -167,7 +187,7 @@
 
   <hr>
   
-  <h2 class="h4">Draft Items</h2>
+  <!-- <h2 class="h4">Draft Items</h2>
   
   <label for="addDraftChoice" class="form-label">Enter a New Draft Item</label>
   <div class="row">
@@ -189,9 +209,9 @@
 
   <ul>
     <li *ngFor="let item of draftService.selectedDraft.choiceList">{{item}}</li>
-  </ul>
+  </ul> -->
   
-  <hr>
+  <!-- <hr>
 
   <label for="draftName"  class="form-label">Draft Name</label>
   <div class="row">
@@ -223,7 +243,7 @@
     <div class="card card-body">
       Save this draft to your browser's storage. Note: the drafts you save will only be available on this device.
     </div>
-  </div>
+  </div> -->
 
   <div *ngIf="errors.get('tooFewItems')"
     class="alert alert-warning fade-in mt-3 mb-0" role="alert">
@@ -235,7 +255,7 @@
     <button class="btn btn-primary my-3"
       (click)="startDraft()"
     >
-      Start the Draft
+      Next
       <i class="bi bi-arrow-right"></i>
     </button>
   </div>

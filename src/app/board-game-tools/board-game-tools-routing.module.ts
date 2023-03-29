@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PlayerSelectComponent } from '../shared/components/player-select/player-select.component';
 import { ActionTimerComponent } from './action-timer/action-timer.component';
 import { CoinFlipComponent } from './coin-flip/coin-flip.component';
+import { DraftItemsComponent } from './draft/draft-items/draft-items.component';
 import { DraftPickComponent } from './draft/draft-pick/draft-pick.component';
 import { DraftResultsComponent } from './draft/draft-results/draft-results.component';
 import { DraftStartComponent } from './draft/draft-start/draft-start.component';
@@ -41,7 +42,11 @@ const routes: Routes = [
   {
     path: 'draft-results',
     component: DraftResultsComponent
-  }
+  },
+  {
+    path: 'draft-items',
+    component: DraftItemsComponent
+  },
 
 ];
 

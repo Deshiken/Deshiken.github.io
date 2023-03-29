@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { RandomService } from 'src/app/shared/services/random.service';
 import { ToastService } from 'src/app/shared/services/toast.service';
-import { DraftOptions, DraftService } from '../draft.service';
+import { DraftItem, DraftOptions, DraftService } from '../draft.service';
 
 @Component({
   selector: 'app-draft-start',
@@ -26,73 +26,80 @@ export class DraftStartComponent implements OnInit {
   ) { }
 
   ngOnInit(): void { }
-
-  public addDraftChoice() {
-    if(this.newDraftChoice) {
-      this.draftService.selectedDraft.choiceList.push(this.newDraftChoice);
-      this.newDraftChoice = '';
-    }
-  }
-
+  
   public deleteDraftFromStorage() {
     this.utils.deleteFromArray(this.draftService.savedDraftLists, this.draftToDelete);
     localStorage.setItem('savedDraftList',JSON.stringify(this.draftService.savedDraftLists))
   }
 
-  public saveDraft() {
-    let draftToSave = this.draftService.selectedDraft
-    console.log('draft to save: ', draftToSave);
+  // public addDraftChoice() {
+  //   if(this.newDraftChoice) {
+  //     this.draftService.selectedDraft.choiceList.push(this.newDraftChoice);
+  //     this.newDraftChoice = '';
+  //   }
+  // }
+
+
+  // public saveDraft() {
+  //   let draftToSave = this.draftService.selectedDraft
+  //   console.log('draft to save: ', draftToSave);
     
-    if(draftToSave.draftName && draftToSave.choiceList.length > 0) {
-      //if name exists on saved drafts list remove it
-      if(this.draftService.savedDraftLists.find(draft => draft.draftName === draftToSave.draftName)) {
-        this.utils.deleteFromArray(this.draftService.savedDraftLists, draftToSave);
-      }
+  //   if(draftToSave.draftName && draftToSave.choiceList.length > 0) {
+  //     //if name exists on saved drafts list remove it
+  //     if(this.draftService.savedDraftLists.find(draft => draft.draftName === draftToSave.draftName)) {
+  //       this.utils.deleteFromArray(this.draftService.savedDraftLists, draftToSave);
+  //     }
       
-      //add the draft to the list of drafts
-      this.draftService.savedDraftLists.push(draftToSave);
+  //     //add the draft to the list of drafts
+  //     this.draftService.savedDraftLists.push(draftToSave);
   
-      //save the list of drafts to local storage
-      localStorage.setItem('savedDraftList',JSON.stringify(this.draftService.savedDraftLists))
+  //     //save the list of drafts to local storage
+  //     localStorage.setItem('savedDraftList',JSON.stringify(this.draftService.savedDraftLists))
 
-
-      // Briefly display toast message
-      this.toastService.toastSubject.next();
-    }
-  }
+  //     // Briefly display toast message
+  //     this.toastService.toastSubject.next();
+  //   }
+  // }
 
   public startDraft() {
-    console.log('selected draft ', this.draftService.selectedDraft)
-    // Build our map of errors
+  //   console.log('selected draft ', this.draftService.selectedDraft)
+  //   // Build our map of errors
     this.checkForErrors();
     
     // We can't use filter on a map :( so we convert it to an array of key value pairs and then chek for entries that have errors
     if ([...this.errors].filter(([key,value]) => value === true).length === 0) {
-      this.buildDraftOrder()
-      this.router.navigate(['/tools/draft-pick', {draftStep: 0}])
+      this.buildPlayersMap()
+      // this.router.navigate(['/tools/draft-pick', {draftStep: 0}])
+      this.router.navigate(['/tools/draft-items'])
     } 
   }
 
   private checkForErrors() {
-    //Reset all errors
-    this.errors.forEach((value,key) => { this.errors.set(key,false) });
+  //   //Reset all errors
+  //   this.errors.forEach((value,key) => { this.errors.set(key,false) });
 
-    if (this.draftService.selectedDraft.numberOfPlayers * this.draftService.selectedDraft.picksPerPlayer > this.draftService.selectedDraft.choiceList.length) {
-      this.errors.set('tooFewItems',true);
-      // Scroll to bottom
-      window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: "smooth" });
-    }
+  //   if (this.draftService.selectedDraft.numberOfPlayers * this.draftService.selectedDraft.picksPerPlayer > this.draftService.selectedDraft.choiceList.length) {
+  //     this.errors.set('tooFewItems',true);
+  //     // Scroll to bottom
+  //     window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: "smooth" });
+  //   }
   }
 
-  private buildDraftOrder() {
+  private buildPlayersMap() {
+    let teamTracker = 1;
     for (let i = 0; i < this.draftService.selectedDraft.numberOfPlayers; i++) {
-      this.draftService.players.push({
-        pick: '',
-        playerNumber: i + 1,
-        team: i
-      })
+      this.draftService.players.set(
+        i + 1, 
+        {
+          playerNumber: i + 1,
+          draftPicks: new Array<DraftItem>(),
+          team: teamTracker  
+        }
+      )
     }
-    console.log('ending player array', this.draftService.players);
+    // Swap the team tracker between 1 and 2 each loop.
+    teamTracker = teamTracker === 1 ? 2 : 1;
+    console.log('ending player map', this.draftService.players);
   }
 
 }

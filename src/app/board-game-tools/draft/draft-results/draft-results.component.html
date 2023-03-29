@@ -1,12 +1,14 @@
 <div class='container'>
   <h1 class="text-center">Draft Results</h1>
 
-  <div class="card mb-4 card-shadow__light" *ngFor="let player of draftService.players">
+  <div class="card mb-4 card-shadow__light" *ngFor="let player of draftService.players | keyvalue">
     <div class="row">
       <div class="col-8 card-body">
-        <h5 class="card-title">Player {{player.playerNumber}}</h5>
-        <p class="card-text mb-1">Team {{player.team}}</p>
-        <p class="card-text mb-1">Pick: {{player.pick}}</p>
+        <h5 class="card-title">Player {{player.value.playerNumber}}</h5>
+        <p class="card-text mb-1">Team {{player.value.team}}</p>
+        <ng-container *ngFor="let pick of player.value.draftPicks">
+          <p class="card-text mb-1">Pick: {{pick}}</p>
+        </ng-container>
       </div>
     </div>
   </div>

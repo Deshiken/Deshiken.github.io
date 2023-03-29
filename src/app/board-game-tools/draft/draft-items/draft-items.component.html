@@ -1,0 +1,115 @@
+<div class='container'>
+  <app-heading-with-back [title]="'Draft Items'"></app-heading-with-back>
+
+  <div *ngIf="draftService.selectedDraft.useItemCategories">
+    <h2 class="h4">Draft Categories</h2>
+    <div class="row">
+      <div class="col">
+        <input 
+          [(ngModel)]="newCategoryName"
+          [ngClass]="{'is-invalid' : errors.get('categoryNameMissing') === true}"
+          type="email" 
+          class="form-control" 
+          id="addDraftChoice" 
+          placeholder="ex: Faction"
+        >
+        <div class="invalid-feedback">
+          Please enter a category name.
+        </div>
+      </div>
+      <div class="col">
+        <button class="btn btn-primary" (click)="addNewItemCategory()">
+          Add Category
+          <i class="bi bi-plus-circle"></i>
+        </button>
+      </div>
+    </div>
+    <p>Available Categories</p>
+    <div class="d-flex align-items-center" *ngFor="let category of draftService.selectedDraft.draftItemCategories">
+      {{category}}
+      <i (click)="deleteDraftCategory(category)" 
+        data-bs-toggle="modal" data-bs-target="#exampleModal" 
+        class="bi bi-trash-fill mx-3 med-icon">
+      </i>
+    </div>
+
+  </div>
+  
+  <h2 class="h4">Draft Items</h2>
+
+  <label for="addDraftChoice" class="form-label">Enter a New Draft Item</label>
+  <div class="row">
+    <div class="col">
+      <label for="newItemName" class="form-label">Item Name</label>
+      <input 
+        id="newItemName"
+        [(ngModel)]="newItemName"
+        [ngClass]="{'is-invalid' : errors.get('itemNameMissing') === true}"
+        type="email" 
+        class="form-control" id="addDraftChoice" 
+        placeholder="ex: Orcs "
+      >
+      <div class="invalid-feedback">
+        Please enter an item name.
+      </div>
+    </div>
+    <div class="col-sm" *ngIf="draftService.selectedDraft.useItemCategories">
+      <label for="newItemCategory" class="form-label">Item Category</label>
+      <select
+        id="newItemCategory"
+        [(ngModel)]="newItemCategory"
+        [ngClass]="{'is-invalid' : errors.get('itemCategoryMissing') === true}"
+        class="form-select" 
+        id="numberOfPlayersSelect"
+      >
+        <option value=''>Select a category</option>
+        <option *ngFor='let category of draftService.selectedDraft.draftItemCategories'>{{category}}</option>
+      </select>
+      <div class="invalid-feedback">
+        Please select a category.
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-primary mt-2" 
+    (click)="addDraftItem()">
+    Add This Item
+    <i class="bi bi-plus-circle"></i>
+  </button>
+
+  <div class="d-flex align-items-center" *ngFor="let item of draftService.selectedDraft.draftItems">
+    {{item.itemName}} {{item.itemCategory}}
+    <i (click)="deleteDraftItem(item)" 
+      data-bs-toggle="modal" data-bs-target="#exampleModal" 
+      class="bi bi-trash-fill mx-3 med-icon">
+    </i>
+  </div>
+
+  <hr>
+
+  <div *ngIf="errors.get('tooFewItems')"
+    class="alert alert-warning fade-in mt-3 mb-0" role="alert">
+    You do not have enough draft items for your current number of players and picks per player options. 
+    Please add more items or adjust your Draft Options.
+  </div>
+  <div *ngIf="errors.get('tooFewItemsPerCategory')"
+    class="alert alert-warning fade-in mt-3 mb-0" role="alert">
+    For each category you have, you must add enough items for each player to draft 1 item of that category. 
+    Please add more items or adjust the player count.
+  </div>
+  <div *ngIf="errors.get('tooFewCategories')"
+    class="alert alert-warning fade-in mt-3 mb-0" role="alert">
+    In order for each player to have {{draftService.selectedDraft.picksPerPlayer}} picks, 
+    they must have items of at least {{draftService.selectedDraft.picksPerPlayer}} categories to pick from. 
+    Please add additional categories and the corresponding items for those categores.
+  </div>
+
+  <div>
+    <button class="btn btn-primary my-3"
+      (click)="startDraft()"
+    >
+      Start Drafting
+      <i class="bi bi-arrow-right"></i>
+    </button>
+  </div>
+
+</div>
