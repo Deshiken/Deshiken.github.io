@@ -174,48 +174,56 @@ export class DraftItemsComponent implements OnInit {
 
   private randomizeDraftItems() {
     if (this.draftService.selectedDraft.useItemCategories) {
-      this.randomizeItemsWithCategories()
+      this.draftService.selectedDraft.draftItems = this.randomizeItemsWithCategories()
     } else {
-      let draftItemsCopy = [...this.draftService.selectedDraft.draftItems];
-      let randomDraftItems = new Array<DraftItem>();
-      for (let i = 0; i < this.draftService.selectedDraft.numberOfPlayers; i++) {
-        const randomItem = this.utils.getRandomEntryFromArray(draftItemsCopy);
-        randomDraftItems.push(randomItem);
-        this.utils.deleteFromArray(draftItemsCopy, randomItem);
-      }
-      this.draftService.selectedDraft.draftItems = randomDraftItems;
+      this.draftService.selectedDraft.draftItems = this.randomizeArrayForPlayerCount(this.draftService.selectedDraft.draftItems);
     }
+
+    console.log('ending randomized array', this.draftService.selectedDraft.draftItems);
   }
 
-  private randomizeItemsWithCategories() {
-    // First we need to break the items down into separate array for each categoy;
+  private randomizeItemsWithCategories(): Array<DraftItem> {
+    // First we need to break the items down into separate array for each categoy.
+    // Build a map of with a key of each category
     let itemCategoryMap = new Map<string, Array<DraftItem>>();
     this.draftService.selectedDraft.draftItemCategories.forEach((category) => {
       itemCategoryMap.set(category, new Array<DraftItem>());
     })
-
+    console.log('step 1: ', itemCategoryMap);
+    
+    // Populate the array with the items matching the category key
     this.draftService.selectedDraft.draftItems.forEach((item) => {
       if (typeof item.itemCategory === 'string') {
         itemCategoryMap.get(item.itemCategory)?.push(item);
       }
     })
+    console.log('step 2: ', itemCategoryMap);
 
-    // Now we have an array of items for each item category.
+    // Randomize the entries in each array.
     itemCategoryMap.forEach((value) => {
       this.randomizeArrayForPlayerCount(value);
     })
+    console.log('step 3: ', itemCategoryMap);
 
+    // Combine the randomized arrays of each category into one array.
+    let concatArray = new Array<DraftItem>();
+    itemCategoryMap.forEach((value) => {
+      concatArray = concatArray.concat(value);
+    });
+    console.log('step 4', concatArray);
+
+    return concatArray
   }
 
-  private randomizeArrayForPlayerCount(array: Array<DraftItem>) {
+  private randomizeArrayForPlayerCount(array: Array<DraftItem>) : Array<DraftItem> {
     let arrayCopy = [...array];
     let randomOrderArray = new Array<DraftItem>();
-    for (let i = 0; i < this.draftService.selectedDraft.numberOfPlayers; i++) {
+    for (let i = 0; i <= this.draftService.selectedDraft.numberOfPlayers; i++) {
       const randomItem = this.utils.getRandomEntryFromArray(arrayCopy);
       randomOrderArray.push(randomItem);
       this.utils.deleteFromArray(arrayCopy, randomItem);
     }
-    array = randomOrderArray;
+    return randomOrderArray;
   }
 
 }
