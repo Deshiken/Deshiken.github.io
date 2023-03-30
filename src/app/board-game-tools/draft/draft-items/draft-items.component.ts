@@ -87,6 +87,10 @@ export class DraftItemsComponent implements OnInit {
 
     if (this.errors.get('tooFewItems') === false && this.errors.get('tooFewItemsPerCategory') === false && this.errors.get('tooFewCategories') === false) {
       this.setDraftOrder();
+
+      if (this.draftService.selectedDraft.randomDraftItems) {
+        this.randomizeDraftItems();
+      }
     }
   }
 
@@ -166,6 +170,52 @@ export class DraftItemsComponent implements OnInit {
       orderedPlayerArray.push(i + 1)
     }
     return orderedPlayerArray;
+  }
+
+  private randomizeDraftItems() {
+    if (this.draftService.selectedDraft.useItemCategories) {
+      this.randomizeItemsWithCategories()
+    } else {
+      let draftItemsCopy = [...this.draftService.selectedDraft.draftItems];
+      let randomDraftItems = new Array<DraftItem>();
+      for (let i = 0; i < this.draftService.selectedDraft.numberOfPlayers; i++) {
+        const randomItem = this.utils.getRandomEntryFromArray(draftItemsCopy);
+        randomDraftItems.push(randomItem);
+        this.utils.deleteFromArray(draftItemsCopy, randomItem);
+      }
+      this.draftService.selectedDraft.draftItems = randomDraftItems;
+    }
+  }
+
+  private randomizeItemsWithCategories() {
+    // First we need to break the items down into separate array for each categoy;
+    let itemCategoryMap = new Map<string, Array<DraftItem>>();
+    this.draftService.selectedDraft.draftItemCategories.forEach((category) => {
+      itemCategoryMap.set(category, new Array<DraftItem>());
+    })
+
+    this.draftService.selectedDraft.draftItems.forEach((item) => {
+      if (typeof item.itemCategory === 'string') {
+        itemCategoryMap.get(item.itemCategory)?.push(item);
+      }
+    })
+
+    // Now we have an array of items for each item category.
+    itemCategoryMap.forEach((value) => {
+      this.randomizeArrayForPlayerCount(value);
+    })
+
+  }
+
+  private randomizeArrayForPlayerCount(array: Array<DraftItem>) {
+    let arrayCopy = [...array];
+    let randomOrderArray = new Array<DraftItem>();
+    for (let i = 0; i < this.draftService.selectedDraft.numberOfPlayers; i++) {
+      const randomItem = this.utils.getRandomEntryFromArray(arrayCopy);
+      randomOrderArray.push(randomItem);
+      this.utils.deleteFromArray(arrayCopy, randomItem);
+    }
+    array = randomOrderArray;
   }
 
 }
