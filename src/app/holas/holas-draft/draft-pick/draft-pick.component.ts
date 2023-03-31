@@ -74,17 +74,6 @@ export class DraftPickComponent implements OnInit {
     }
   }
 
-  public fadeInOut(state: string) {
-    this.renderer.removeClass(this.container.nativeElement, 'fade-out');
-    if (state === 'in') {
-      this.renderer.addClass(this.container.nativeElement, 'fade-out');
-    }
-    if (state === 'out') {
-      this.renderer.removeClass(this.container.nativeElement, 'fade-in');
-      this.renderer.addClass(this.container.nativeElement, 'fade-in');
-    }
-  }
-
   public savePickToPlayer() {
     if (this.choiceType === 'faction') {
       this.currentPlayer.factionPick = this.factionChoice;

@@ -84,6 +84,10 @@ export class DraftItemsComponent implements OnInit {
     }
   }
 
+  public saveDraft() {
+    localStorage.setItem('savedDraftList', JSON.stringify(this.draftService.savedDraftLists))
+  }
+
   public startDraft() {
     this.checkForErrors();
 
@@ -94,7 +98,7 @@ export class DraftItemsComponent implements OnInit {
         this.randomizeDraftItems();
       }
 
-      this.router.navigate(['/tools/draft-pick', {'draft-step': 1}])
+      this.router.navigate(['/tools/draft-pick', {'draft-step': 0}])
     }
   }
 
@@ -152,6 +156,7 @@ export class DraftItemsComponent implements OnInit {
     } 
 
     console.log('final draft order', finalDraftOrder)
+    this.draftService.draftSteps  = finalDraftOrder;
     
   }
 
@@ -225,6 +230,7 @@ export class DraftItemsComponent implements OnInit {
     for (let i = 1; i <= this.draftService.selectedDraft.numberOfPlayers; i++) {
       const randomItem = this.utils.getRandomEntryFromArray(arrayCopy);
       randomOrderArray.push(randomItem);
+      console.log('randomly selected item', randomItem);
       this.utils.deleteFromArray(arrayCopy, randomItem);
     }
     return randomOrderArray;

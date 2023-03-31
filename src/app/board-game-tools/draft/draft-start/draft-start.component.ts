@@ -15,7 +15,7 @@ export class DraftStartComponent implements OnInit {
   public newDraftChoice: string = '';
   public draftToDelete: DraftOptions = this.draftService.testDraftOptions[0];
   public errors: Map<string,boolean> = new Map([
-    ['tooFewItems', false]
+    ['snakeDraftNotAllowed', false]
   ]);
 
   constructor( 
@@ -44,14 +44,17 @@ export class DraftStartComponent implements OnInit {
   }
 
   private checkForErrors() {
-  //   //Reset all errors
-  //   this.errors.forEach((value,key) => { this.errors.set(key,false) });
+    //Reset all errors
+    this.errors.forEach((value,key) => { this.errors.set(key,false) });
 
-  //   if (this.draftService.selectedDraft.numberOfPlayers * this.draftService.selectedDraft.picksPerPlayer > this.draftService.selectedDraft.choiceList.length) {
-  //     this.errors.set('tooFewItems',true);
-  //     // Scroll to bottom
-  //     window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: "smooth" });
-  //   }
+    // Snake draft is only possible with team play or multiple picks per player
+    if (this.draftService.selectedDraft.picksPerPlayer === 1 
+        && this.draftService.selectedDraft.teamDraft === false 
+        && this.draftService.selectedDraft.snakeDraft === true) {
+      this.errors.set('snakeDraftNotAllowed', true);
+      // Scroll to bottom
+      window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: "smooth" });
+    }
   }
 
   private buildPlayersMap() {
@@ -65,9 +68,9 @@ export class DraftStartComponent implements OnInit {
           team: teamTracker  
         }
       )
+      // Swap the team tracker between 1 and 2 each loop.
+      teamTracker = teamTracker === 1 ? 2 : 1;
     }
-    // Swap the team tracker between 1 and 2 each loop.
-    teamTracker = teamTracker === 1 ? 2 : 1;
     console.log('ending player map', this.draftService.players);
   }
 

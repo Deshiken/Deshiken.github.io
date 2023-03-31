@@ -46,7 +46,7 @@ export class DraftService {
   public savedDraftLists = this.testDraftOptions;
   public selectedDraft: DraftOptions = this.defaultDraftOptions();
   public players: Map<number,Player> = new Map<number,Player>()
-  public draftSteps: Array<Player> = new Array<Player>();
+  public draftSteps: Array<number> = new Array<number>();
 
   constructor() { 
     let localStorageString = localStorage.getItem('savedDraftList');

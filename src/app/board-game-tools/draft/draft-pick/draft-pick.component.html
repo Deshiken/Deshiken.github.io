@@ -1,7 +1,20 @@
-<div class="container">
+<div #container class="container">
   <h1 class="text-center mt-3">Draft Pick</h1>
-
-  <p>Currently Picking: Player {{this.player.playerNumber}}</p>
+  <p class="h2">
+    Currently Picking:
+  </p>
+  <div class="card mb-4 card-shadow__light" style="max-width: 400px;">
+    <div class="row">
+      <div class="col-8 card-body">
+        <p class="card-title h5">Player {{player.playerNumber}}</p>
+        <p *ngIf="draftService.selectedDraft.teamDraft" class="card-text mb-1">Team {{player.team}}</p>
+        <p *ngIf="player?.draftPicks?.length" class="card-text mb-1">Previous Picks:</p>
+        <ng-container *ngFor="let pick of player.draftPicks">
+          {{pick.itemName}} {{pick.itemCategory}}
+        </ng-container>
+      </div>
+    </div>
+  </div>
 
   <h2 class='h5'>
     Available Picks
@@ -13,10 +26,21 @@
         (click)="selectedItem = item"
         [ngClass]="{'selected-item' : item === selectedItem}" 
       >
-        <p class="mb-0">{{item.itemName}}</p>
+        <p class="mb-0">{{item.itemName}} {{item.itemCategory}}</p>
       </li>
     </ng-container>
   </ul>
+
+  <div *ngIf="errors.get('noItemSelected')"
+    class="alert alert-warning fade-in mt-3 mb-0" role="alert">
+    Please select an item from the list of available picks.
+  </div>
+
+  <div *ngIf="errors.get('itemWithThisCategoryAlreadyPicked')"
+    class="alert alert-warning fade-in mt-3 mb-0" role="alert">
+    You have previously picked an item with the category of {{this.selectedItem?.itemCategory}}. 
+    Please pick an item of a different category.
+  </div>
 
   <div>
     <button class="btn btn-primary my-3" (click)="next()">

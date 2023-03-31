@@ -116,7 +116,7 @@
   <div class="collapse" id="itemCategories">
     <div class="card card-body">
       If selected you will be able to add a category to each draft item. Having the draft items broken down into categories
-      prevents a player from picking two items of the same category. For example, your are drafting a game that requires 
+      prevents a player from picking two items of the same category. For example, you are drafting a game that requires 
       each player to draft a hero and a faction. Once a player has drafted a hero they can not draft another hero and must 
       pick a faction.  
     </div>
@@ -245,10 +245,10 @@
     </div>
   </div> -->
 
-  <div *ngIf="errors.get('tooFewItems')"
+  <div *ngIf="errors.get('snakeDraftNotAllowed')"
     class="alert alert-warning fade-in mt-3 mb-0" role="alert">
-    You do not have enough draft items for your current number of players and picks per player options. 
-    Please add more items or adjust your Draft Options.
+    A snake style draft is only possible with team play or multiple picks per player. Please increase the number of Picks Per Player
+    or select Team Draft.
   </div>
 
   <div>

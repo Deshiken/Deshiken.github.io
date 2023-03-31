@@ -7,7 +7,7 @@
         <h5 class="card-title">Player {{player.value.playerNumber}}</h5>
         <p class="card-text mb-1">Team {{player.value.team}}</p>
         <ng-container *ngFor="let pick of player.value.draftPicks">
-          <p class="card-text mb-1">Pick: {{pick}}</p>
+          <p class="card-text mb-1">Pick: {{pick.itemName}} {{pick.itemCategory}}</p>
         </ng-container>
       </div>
     </div>

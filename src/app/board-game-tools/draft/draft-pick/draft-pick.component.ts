@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RandomService } from 'src/app/shared/services/random.service';
 import { DraftItem, DraftService, Player } from '../draft.service';
@@ -10,37 +10,69 @@ import { DraftItem, DraftService, Player } from '../draft.service';
 })
 export class DraftPickComponent implements OnInit {
   public player: Player = {playerNumber: 1}; 
-  public selectedItem: DraftItem = {itemName: ''};
+  // public selectedItem: DraftItem | undefined = {itemName: ''};
+  public selectedItem: DraftItem | null = null;
   public draftStep: number = 1;
+  public errors: Map<string,boolean> = new Map([
+    ['noItemSelected', false],
+    ['itemWithThisCategoryAlreadyPicked', false],
+  ]);
+  @ViewChild('container') container: ElementRef;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     public draftService: DraftService,
-    private utils: RandomService
+    private utils: RandomService,
+    public renderer: Renderer2,
   ) { }
 
   ngOnInit(): void {
     this.draftStep = Number(this.route.snapshot.paramMap.get('draft-step'));
+    this.player = this.draftService.players.get(this.draftService.draftSteps[this.draftStep]) as Player
     console.log('draft service players', this.draftService.players)
     console.log('draftStep', this.draftStep)
-    this.player = this.draftService.players.get(this.draftStep) as Player
     console.log('player for draft step', this.player);
   }
 
   public next() {
-    if (this.selectedItem) {
-      this.player.draftPicks?.push(this.selectedItem);
+    this.checkForErrors()
+
+    // Check if any errors present
+    if ([...this.errors].filter(([key,value]) => value === true).length === 0) {
+      this.renderer.addClass(this.container.nativeElement, 'fade-in');
+      this.player.draftPicks?.push(this.selectedItem as DraftItem);
       this.utils.deleteFromArray(this.draftService.selectedDraft.draftItems, this.selectedItem);
       
       this.draftStep ++;
-      this.player = this.draftService.players.get(this.draftStep) as Player;
+      this.player = this.draftService.players.get(this.draftService.draftSteps[this.draftStep]) as Player
 
-      if (this.draftStep === this.draftService.players.size) {
+      if (this.draftStep === this.draftService.selectedDraft.numberOfPlayers * this.draftService.selectedDraft.picksPerPlayer) {
         this.router.navigate(['/tools/draft-results']);
       } else {
         this.router.navigate(['/tools/draft-pick', {draftStep: this.draftStep}])
       }
+      
+      window.setTimeout(() => {
+        this.renderer.removeClass(this.container.nativeElement, 'fade-in');    
+      },400)
+    }
+  }
+
+  private checkForErrors() {
+    // Reset all errors
+    this.errors.forEach((value, key) => { this.errors.set(key, false)});
+
+    if (!this.selectedItem) {
+      this.errors.set('noItemSelected', true);
+    }
+
+    if (this.selectedItem && this.player.draftPicks) {
+      this.player.draftPicks.forEach(draftItem => {
+        if (draftItem.itemCategory === this.selectedItem?.itemCategory) {
+          this.errors.set('itemWithThisCategoryAlreadyPicked', true)
+        }
+      })
     }
   }
 
