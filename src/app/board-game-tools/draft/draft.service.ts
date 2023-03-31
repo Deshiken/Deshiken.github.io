@@ -32,7 +32,7 @@ export class DraftService {
     { draftName: 'Everdel', 
       draftItems: [{itemName:'Birds'}, {itemName:'Badgers'}, {itemName:'Frogs'}, {itemName:'Moles'}, {itemName:'Rats'}, {itemName:'Mice'}],
       draftItemCategories: new Array<string>(),
-      picksPerPlayer: 2, 
+      picksPerPlayer: 1, 
       randomDraftItems: false,
       randomDraftOrder: false,
       useItemCategories: false, 
@@ -41,7 +41,6 @@ export class DraftService {
       teamDraft: true 
     },
   ]
-
 
   // public savedDraftLists = new Array<DraftOptions>();
   public savedDraftLists = this.testDraftOptions;

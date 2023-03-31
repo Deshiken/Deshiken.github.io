@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { RandomService } from 'src/app/shared/services/random.service';
 import { DraftItem, DraftService } from '../draft.service';
 
@@ -22,7 +23,8 @@ export class DraftItemsComponent implements OnInit {
 
   constructor(
     public draftService: DraftService,
-    public utils: RandomService
+    public utils: RandomService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -91,6 +93,8 @@ export class DraftItemsComponent implements OnInit {
       if (this.draftService.selectedDraft.randomDraftItems) {
         this.randomizeDraftItems();
       }
+
+      this.router.navigate(['/tools/draft-pick', {'draft-step': 1}])
     }
   }
 
@@ -218,7 +222,7 @@ export class DraftItemsComponent implements OnInit {
   private randomizeArrayForPlayerCount(array: Array<DraftItem>) : Array<DraftItem> {
     let arrayCopy = [...array];
     let randomOrderArray = new Array<DraftItem>();
-    for (let i = 0; i <= this.draftService.selectedDraft.numberOfPlayers; i++) {
+    for (let i = 1; i <= this.draftService.selectedDraft.numberOfPlayers; i++) {
       const randomItem = this.utils.getRandomEntryFromArray(arrayCopy);
       randomOrderArray.push(randomItem);
       this.utils.deleteFromArray(arrayCopy, randomItem);

@@ -21,7 +21,7 @@ export class DraftStartComponent implements OnInit {
   constructor( 
     public draftService: DraftService,
     public utils: RandomService,
-    private toastService: ToastService,
+    // private toastService: ToastService,
     private router: Router
   ) { }
 
@@ -32,44 +32,13 @@ export class DraftStartComponent implements OnInit {
     localStorage.setItem('savedDraftList',JSON.stringify(this.draftService.savedDraftLists))
   }
 
-  // public addDraftChoice() {
-  //   if(this.newDraftChoice) {
-  //     this.draftService.selectedDraft.choiceList.push(this.newDraftChoice);
-  //     this.newDraftChoice = '';
-  //   }
-  // }
-
-
-  // public saveDraft() {
-  //   let draftToSave = this.draftService.selectedDraft
-  //   console.log('draft to save: ', draftToSave);
-    
-  //   if(draftToSave.draftName && draftToSave.choiceList.length > 0) {
-  //     //if name exists on saved drafts list remove it
-  //     if(this.draftService.savedDraftLists.find(draft => draft.draftName === draftToSave.draftName)) {
-  //       this.utils.deleteFromArray(this.draftService.savedDraftLists, draftToSave);
-  //     }
-      
-  //     //add the draft to the list of drafts
-  //     this.draftService.savedDraftLists.push(draftToSave);
-  
-  //     //save the list of drafts to local storage
-  //     localStorage.setItem('savedDraftList',JSON.stringify(this.draftService.savedDraftLists))
-
-  //     // Briefly display toast message
-  //     this.toastService.toastSubject.next();
-  //   }
-  // }
-
   public startDraft() {
-  //   console.log('selected draft ', this.draftService.selectedDraft)
-  //   // Build our map of errors
+    // Build our map of errors
     this.checkForErrors();
     
     // We can't use filter on a map :( so we convert it to an array of key value pairs and then chek for entries that have errors
     if ([...this.errors].filter(([key,value]) => value === true).length === 0) {
       this.buildPlayersMap()
-      // this.router.navigate(['/tools/draft-pick', {draftStep: 0}])
       this.router.navigate(['/tools/draft-items'])
     } 
   }

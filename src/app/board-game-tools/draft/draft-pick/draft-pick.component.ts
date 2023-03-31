@@ -11,7 +11,7 @@ import { DraftItem, DraftService, Player } from '../draft.service';
 export class DraftPickComponent implements OnInit {
   public player: Player = {playerNumber: 1}; 
   public selectedItem: DraftItem = {itemName: ''};
-  public draftStep: number = 0;
+  public draftStep: number = 1;
 
   constructor(
     private route: ActivatedRoute,
@@ -22,6 +22,8 @@ export class DraftPickComponent implements OnInit {
 
   ngOnInit(): void {
     this.draftStep = Number(this.route.snapshot.paramMap.get('draft-step'));
+    console.log('draft service players', this.draftService.players)
+    console.log('draftStep', this.draftStep)
     this.player = this.draftService.players.get(this.draftStep) as Player
     console.log('player for draft step', this.player);
   }
