@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomePageComponent } from './home-page/home-page.component';
 import { PricingComponent } from './pricing/pricing.component';
 import { AboutComponent } from './about/about.component';
+import { NgOptimizedImage } from '@angular/common'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
@@ -20,6 +21,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    NgOptimizedImage,
     NgbModule
   ],
   providers: [],
