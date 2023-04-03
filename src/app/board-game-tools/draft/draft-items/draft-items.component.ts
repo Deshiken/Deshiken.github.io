@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { RandomService } from 'src/app/shared/services/random.service';
 import { ToastService } from 'src/app/shared/services/toast.service';
 import { DraftItem, DraftService } from '../draft.service';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-draft-items',
@@ -29,6 +30,7 @@ export class DraftItemsComponent implements OnInit {
     public utils: RandomService,
     private router: Router,
     private toastService: ToastService,
+    private modalService: NgbModal,
   ) { }
 
   ngOnInit(): void {
@@ -46,14 +48,15 @@ export class DraftItemsComponent implements OnInit {
     }
   }
 
-  public deleteDraftCategory(categoryToDelte: string) {
+  public deleteDraftCategory(categoryToDelte: string, content: any) {
     // Delete the item category
     this.utils.deleteFromArray(this.draftService.selectedDraft.draftItemCategories, categoryToDelte);
 
     // Delete all items that have that category set
+    this.modalService.open(content);
     this.draftService.selectedDraft.draftItems.forEach(item => {
       if (item.itemCategory === categoryToDelte) {
-        this.deleteModal.nativeElement.classList.push('show')
+        // this.deleteModal.nativeElement.classList.push('show')
         // this.displayStyle = 'block';
         // this.utils.deleteFromArray(this.draftService.selectedDraft.draftItems, item);
       }
