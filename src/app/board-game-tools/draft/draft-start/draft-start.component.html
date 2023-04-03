@@ -179,76 +179,18 @@
   </div>
   <div class="collapse" id="snakeDraftToggle">
     <div class="card card-body">
-      In Snake Drafts, halfway through the draft, the draft order will reverse. 
-      For example, in a four player team draft, the pick order will be Team 1, Team 2, Team 2, and then Team 1.
+      In Snake Drafts, after each round of drafting, the pick order will reverse. 
+      For example, in a four player draft with 2 picks for each player, 
+      the pick order will be player 1, 2, 3 , 4 for the first round and player 4, 3, 2, 1 for the second round.
       This helps to mitigate the advantage Team 1 has from getting the first pick. 
     </div>
   </div>
 
   <hr>
-  
-  <!-- <h2 class="h4">Draft Items</h2>
-  
-  <label for="addDraftChoice" class="form-label">Enter a New Draft Item</label>
-  <div class="row">
-    <div class="col">
-      <input 
-        type="email" 
-        [(ngModel)]="newDraftChoice" 
-        class="form-control" id="addDraftChoice" 
-        placeholder="ex: Orc Faction"
-      >
-    </div>
-    <div class="col">
-      <button class="btn btn-primary" (click)="addDraftChoice()">
-        Add This Item
-        <i class="bi bi-plus-circle"></i>
-      </button>
-    </div>
-  </div>
-
-  <ul>
-    <li *ngFor="let item of draftService.selectedDraft.choiceList">{{item}}</li>
-  </ul> -->
-  
-  <!-- <hr>
-
-  <label for="draftName"  class="form-label">Draft Name</label>
-  <div class="row">
-    <div class="col">
-      <input type="text" 
-        class="form-control" 
-        id="draftName"
-        [(ngModel)]="draftService.selectedDraft.draftName" 
-        placeholder="ex: Everdell Draft"
-      >
-    </div>
-    <div class="col">
-      <div class="d-flex align-items-center">
-        <button
-          type="button" class="btn btn-primary btn-sm" 
-          (click)="saveDraft()">
-          Save this Draft
-        </button>
-        <i class="bi bi-question-circle-fill mx-2 med-icon" 
-          data-bs-toggle="collapse" data-bs-target="#optionsSave" 
-          aria-expanded="false" aria-controls="balancedParty"
-        >
-        </i>
-      </div>
-    </div>
-  </div>
-
-  <div class="collapse mt-2" id="optionsSave">
-    <div class="card card-body">
-      Save this draft to your browser's storage. Note: the drafts you save will only be available on this device.
-    </div>
-  </div> -->
 
   <div *ngIf="errors.get('snakeDraftNotAllowed')"
     class="alert alert-warning fade-in mt-3 mb-0" role="alert">
-    A snake style draft is only possible with team play or multiple picks per player. Please increase the number of Picks Per Player
-    or select Team Draft.
+    A snake style draft is only possible with multiple picks per player. Please increase the number of Picks Per Player.
   </div>
 
   <div>

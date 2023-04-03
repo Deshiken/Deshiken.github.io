@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { RandomService } from 'src/app/shared/services/random.service';
+import { ToastService } from 'src/app/shared/services/toast.service';
 import { DraftItem, DraftService } from '../draft.service';
 
 @Component({
@@ -9,9 +10,11 @@ import { DraftItem, DraftService } from '../draft.service';
   styleUrls: ['./draft-items.component.scss']
 })
 export class DraftItemsComponent implements OnInit {
+  @ViewChild('deleteModal') deleteModal!: ElementRef;
   public newItemName = '';
   public newItemCategory = '';
   public newCategoryName = '';
+  // public displayStyle = "hide";
   public errors: Map<string,boolean> = new Map([
     ['categoryNameMissing', false],
     ['itemNameMissing', false],
@@ -24,7 +27,8 @@ export class DraftItemsComponent implements OnInit {
   constructor(
     public draftService: DraftService,
     public utils: RandomService,
-    private router: Router
+    private router: Router,
+    private toastService: ToastService,
   ) { }
 
   ngOnInit(): void {
@@ -49,7 +53,9 @@ export class DraftItemsComponent implements OnInit {
     // Delete all items that have that category set
     this.draftService.selectedDraft.draftItems.forEach(item => {
       if (item.itemCategory === categoryToDelte) {
-        this.utils.deleteFromArray(this.draftService.selectedDraft.draftItems, item);
+        this.deleteModal.nativeElement.classList.push('show')
+        // this.displayStyle = 'block';
+        // this.utils.deleteFromArray(this.draftService.selectedDraft.draftItems, item);
       }
     })
   }
@@ -85,7 +91,8 @@ export class DraftItemsComponent implements OnInit {
   }
 
   public saveDraft() {
-    localStorage.setItem('savedDraftList', JSON.stringify(this.draftService.savedDraftLists))
+    localStorage.setItem('savedDraftList', JSON.stringify(this.draftService.savedDraftLists));
+    this.toastService.toastSubject.next();
   }
 
   public startDraft() {
@@ -140,39 +147,60 @@ export class DraftItemsComponent implements OnInit {
   }
 
   private setDraftOrder() {
-    let numberOfPicks = this.draftService.selectedDraft.numberOfPlayers * this.draftService.selectedDraft.picksPerPlayer;
     let finalDraftOrder = new Array<number>();
 
     // Set Order for 1 round of drafting. We will multiply this by the number of picksPerPlayer later to make a full draft order.
     const oneRoundDraftOrder = this.draftService.selectedDraft.randomDraftOrder ? this.randomDraftOrder() : this.standardDraftOrder() ;
     
     for (let i = 0; i < this.draftService.selectedDraft.picksPerPlayer; i++) {
-      finalDraftOrder = finalDraftOrder.concat(oneRoundDraftOrder);
+      // For a Snake Draft the draft order is reversed on every other round. 
+      if (this.draftService.selectedDraft.snakeDraft && (i % 2 === 1)) {
+        finalDraftOrder = finalDraftOrder.concat(oneRoundDraftOrder.reverse())
+      }
+      // Non Snake Drafts will use the same pick order for each round 
+      else {
+        finalDraftOrder = finalDraftOrder.concat(oneRoundDraftOrder);
+      }
     }
     
-    // We need to reverse the draft order halfway through the draft
-    if (this.draftService.selectedDraft.snakeDraft) {
-
-    } 
-
     console.log('final draft order', finalDraftOrder)
-    this.draftService.draftSteps  = finalDraftOrder;
-    
+    this.draftService.draftSteps  = finalDraftOrder;    
   }
 
   private randomDraftOrder() {
-    let orderedPlayerArray = this.standardDraftOrder();
-    let randomPlayerArray = new Array<number>();
+    // For team drafts, we need to alternate picks between teams
+    if (this.draftService.selectedDraft.teamDraft) {
+      let teamOneArray = new Array<number>()
+      let teamTwoArray = new Array<number>()
+      
+      // Break the player array into two separate arrays, one for each team.
+      this.draftService.players.forEach((value, key) => {
+        value.team === 1 ? teamOneArray.push(key) : teamTwoArray.push(key)
+      });
+      
+      let startingTeam = Math.floor(Math.random() * 2) + 1;
+      console.log('seed number', startingTeam);
+      
+      
+      let endingPlayerOrder = new Array<number>()
+      for (let i = 1; i <= this.draftService.selectedDraft.numberOfPlayers; i++) {
+        let arrayToUse  = startingTeam === 1 ? teamOneArray : teamTwoArray;
+        let player = this.utils.getRandomEntryFromArray(arrayToUse);
+        endingPlayerOrder.push(player);
+        this.utils.deleteFromArray(arrayToUse, player);
 
-    for (let i = 0; i < this.draftService.selectedDraft.numberOfPlayers; i++) {
-      let randomPlayer = this.utils.getRandomEntryFromArray(orderedPlayerArray);
-      randomPlayerArray.push(randomPlayer);
-      this.utils.deleteFromArray(orderedPlayerArray,randomPlayer);
+        // Swap the value of the starting team to pick from the opposite team array.
+        startingTeam = startingTeam === 1 ? 2 : 1;
+      }
+      return endingPlayerOrder;
+    } else {
+      return this.randomizeArrayForPlayerCount(this.standardDraftOrder(), this.draftService.selectedDraft.numberOfPlayers)
     }
-    console.log('ending random player array', randomPlayerArray)
-    return randomPlayerArray;
   }
 
+  /** Returns an array in sequential order of the players numbers of the draft 
+   *  ex: [1, 2, 3, 4]
+   */
   private standardDraftOrder() {
     let orderedPlayerArray = new Array<number>();
     for (let i = 0; i < this.draftService.selectedDraft.numberOfPlayers; i++) {
@@ -185,20 +213,19 @@ export class DraftItemsComponent implements OnInit {
     if (this.draftService.selectedDraft.useItemCategories) {
       this.draftService.selectedDraft.draftItems = this.randomizeItemsWithCategories()
     } else {
-      this.draftService.selectedDraft.draftItems = this.randomizeArrayForPlayerCount(this.draftService.selectedDraft.draftItems);
+      this.draftService.selectedDraft.draftItems = this.randomizeArrayForPlayerCount(this.draftService.selectedDraft.draftItems, this.draftService.selectedDraft.numberOfPlayers);
     }
 
     console.log('ending randomized array', this.draftService.selectedDraft.draftItems);
   }
 
   private randomizeItemsWithCategories(): Array<DraftItem> {
-    // First we need to break the items down into separate array for each categoy.
+    // First we need to break the items down into separate array for each category.
     // Build a map of with a key of each category
     let itemCategoryMap = new Map<string, Array<DraftItem>>();
     this.draftService.selectedDraft.draftItemCategories.forEach((category) => {
       itemCategoryMap.set(category, new Array<DraftItem>());
     })
-    console.log('step 1: ', itemCategoryMap);
     
     // Populate the array with the items matching the category key
     this.draftService.selectedDraft.draftItems.forEach((item) => {
@@ -206,31 +233,27 @@ export class DraftItemsComponent implements OnInit {
         itemCategoryMap.get(item.itemCategory)?.push(item);
       }
     })
-    console.log('step 2: ', itemCategoryMap);
 
     // Randomize the entries in each array.
-    itemCategoryMap.forEach((value) => {
-      this.randomizeArrayForPlayerCount(value);
+    itemCategoryMap.forEach((value, key) => {
+      itemCategoryMap.set(key, this.randomizeArrayForPlayerCount(value, this.draftService.selectedDraft.numberOfPlayers));
     })
-    console.log('step 3: ', itemCategoryMap);
 
     // Combine the randomized arrays of each category into one array.
     let concatArray = new Array<DraftItem>();
     itemCategoryMap.forEach((value) => {
       concatArray = concatArray.concat(value);
     });
-    console.log('step 4', concatArray);
 
     return concatArray
   }
 
-  private randomizeArrayForPlayerCount(array: Array<DraftItem>) : Array<DraftItem> {
+  private randomizeArrayForPlayerCount(array: Array<any>, randomArraySize: number) : Array<any> {
     let arrayCopy = [...array];
-    let randomOrderArray = new Array<DraftItem>();
-    for (let i = 1; i <= this.draftService.selectedDraft.numberOfPlayers; i++) {
+    let randomOrderArray = new Array<any>();
+    for (let i = 1; i <= randomArraySize; i++) {
       const randomItem = this.utils.getRandomEntryFromArray(arrayCopy);
       randomOrderArray.push(randomItem);
-      console.log('randomly selected item', randomItem);
       this.utils.deleteFromArray(arrayCopy, randomItem);
     }
     return randomOrderArray;

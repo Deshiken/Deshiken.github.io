@@ -11,9 +11,11 @@
   margin-right: auto;
 }
 
-.tile {
-  height: 200px;
-  width: 200px;
-  border-radius: 10px;
-  background-color: cadetblue;
+.tool-card {
+  max-width: 400px;
+  color: white;
+  background-color: rgb(69, 114, 116);
+  &--icon {
+    font-size: 3.4rem;
+  }
 }

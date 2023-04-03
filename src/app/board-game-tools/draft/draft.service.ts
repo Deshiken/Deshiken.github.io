@@ -44,7 +44,8 @@ export class DraftService {
 
   // public savedDraftLists = new Array<DraftOptions>();
   public savedDraftLists = this.testDraftOptions;
-  public selectedDraft: DraftOptions = this.defaultDraftOptions();
+  // public selectedDraft: DraftOptions = this.defaultDraftOptions();
+  public selectedDraft: DraftOptions = this.testDraftOptions[0];
   public players: Map<number,Player> = new Map<number,Player>()
   public draftSteps: Array<number> = new Array<number>();
 

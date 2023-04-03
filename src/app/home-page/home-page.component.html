@@ -6,73 +6,58 @@
 
 <div class="bg-secondary">
   <div class="container">
-    
+
     <h2 class="text-center pt-3 mb-0">General Board Gaming tools</h2>
 
-    <div class="tile"></div>
+    <div class="row justify-content-center">
 
-
-
-
-    
-    <div class="d-flex flex-column align-items-center">
-      <div class="d-flex align-items-center">
-        <button class="btn btn-primary my-3" (click)="router.navigate(['tools/randomize-teams-start'])">
-          Randomize Teams and Player Order
-        </button>
-        <i class="bi m-3 bi-question-circle-fill" style="font-size: 2.4rem;"
-          data-bs-toggle="collapse" data-bs-target="#randomTeams" aria-expanded="false" aria-controls="randomTeams">
-        </i>
-      </div>
-      <div class="collapse pb-3" id="randomTeams">
-        <div class="card card-body">
-          This tool will assign each player to a random team and also set a random team order.
+      <div class="card tool-card m-3" style="background-color: rgb(69, 114, 116)" (click)="router.navigate(['tools/randomize-teams-start'])">
+        <div class="card-body text-center">
+          <i class="tool-card--icon bi bi-shuffle"
+            data-bs-toggle="collapse" data-bs-target="#randomTeams" aria-expanded="false" aria-controls="randomTeams">
+          </i>
+          <!-- <title class="card-title">Randomize Teams and Player Order</title>  -->
+          <div class="h5">Randomize Teams and Player Order</div>
+          <div>Assign each player to a random team and also set a random team order.</div>              
         </div>
       </div>
 
-      <div class="d-flex align-items-center">
-        <button class="btn btn-primary my-3" (click)="router.navigate(['tools/coin-flip'])">
-          Flip a Coin
-        </button>
-        <i class="bi m-3 bi-question-circle-fill" style="font-size: 2.4rem;"
-          data-bs-toggle="collapse" data-bs-target="#coinFlipCollapse" aria-expanded="false" aria-controls="coinFlipCollapse">
-        </i>
-      </div>
-      <div class="collapse pb-3" id="coinFlipCollapse">
-        <div class="card card-body">
-          Flip a coin and see the result. Pretty simple really...
-        </div>
-      </div>
-  
-      <div class="d-flex align-items-center">
-        <button class="btn btn-primary my-3" (click)="router.navigate(['tools/timer'])">
-          Turn and Action Timer
-        </button>
-        <i class="bi m-3 bi-question-circle-fill" style="font-size: 2.4rem;"
-          data-bs-toggle="collapse" data-bs-target="#timerCollapse" aria-expanded="false" aria-controls="timerCollapse">
-        </i>
-      </div>
-      <div class="collapse pb-3" id="timerCollapse">
-        <div class="card card-body">
-          This tool will allow you to customize up to three different timers to use for different gameplay actions.
+      <div class="card tool-card m-3" style="background-color: rgb(116, 69, 89)" (click)="router.navigate(['tools/coin-flip'])">
+        <div class="card-body text-center">
+          <i class="tool-card--icon bi bi-coin"
+            data-bs-toggle="collapse" data-bs-target="#randomTeams" aria-expanded="false" aria-controls="randomTeams">
+          </i>
+          <!-- <title class="card-title">Randomize Teams and Player Order</title>  -->
+          <div class="h5">Flip a Coin</div>
+          <div>Flip a coin and see the result.</div>              
         </div>
       </div>
 
-      <div class="d-flex align-items-center">
-        <button class="btn btn-primary my-3" (click)="router.navigate(['tools/draft'])">
-          Start a Draft
-        </button>
-        <i class="bi m-3 bi-question-circle-fill" style="font-size: 2.4rem;"
-          data-bs-toggle="collapse" data-bs-target="#draftCollapse" aria-expanded="false" aria-controls="draftCollapse">
-        </i>
-      </div>
-      <div class="collapse pb-3" id="draftCollapse">
-        <div class="card card-body">
-          This tool will allow you to add your own list of draftable items, and start a draft. 
-          It is advised that you determine teams and player order before starting a draft.
+      <div class="card tool-card m-3" style="background-color: rgb(116, 111, 69)" (click)="router.navigate(['tools/timer'])">
+        <div class="card-body text-center">
+          <i class="tool-card--icon bi bi-hourglass-split"
+            data-bs-toggle="collapse" data-bs-target="#randomTeams" aria-expanded="false" aria-controls="randomTeams">
+          </i>
+          <!-- <title class="card-title">Randomize Teams and Player Order</title>  -->
+          <div class="h5">Turn and Action Timer</div>
+          <div>Customize up to three different timers to use for different gameplay actions.</div>              
         </div>
       </div>
-    
+
+      <div class="card tool-card m-3" style="background-color: rgb(69, 116, 75)" (click)="router.navigate(['tools/draft'])">
+        <div class="card-body text-center">
+          <i class="tool-card--icon bi bi-diagram-3-fill"
+            data-bs-toggle="collapse" data-bs-target="#randomTeams" aria-expanded="false" aria-controls="randomTeams">
+          </i>
+          <!-- <title class="card-title">Randomize Teams and Player Order</title>  -->
+          <div class="h5">Start a Draft</div>
+          <div> 
+            This tool will allow you to add your own list of draftable items, and start a draft. 
+            It is advised that you determine teams and player order before starting a draft.
+          </div>              
+        </div>
+      </div>
+
     </div>
   </div>
 </div>

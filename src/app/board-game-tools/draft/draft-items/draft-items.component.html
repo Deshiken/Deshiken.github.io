@@ -1,6 +1,29 @@
 <div class='container'>
   <app-heading-with-back [title]="'Draft Items & Categories'"></app-heading-with-back>
 
+  <app-toast [message]="'Your draft has been saved.'"></app-toast>
+
+  <!-- [ngStyle]="{'display':displayStyle}"  -->
+  <div #deleteModal
+    class="modal fade" id="deleteModal" tabindex="-1" 
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Delete Confirm</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Deleting this category will delete all items matching the same category. Do you still want to delete this category?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Delete Category</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="accordion mt-3" id="accordionPanelsStayOpenExample">
   
     <div class="accordion-item" *ngIf="draftService.selectedDraft.useItemCategories">
@@ -94,7 +117,9 @@
 
           <div class="row">
             <strong class="mb-0 mt-3">Available Items</strong>
-            <div class="d-flex align-items-center" *ngFor="let item of draftService.selectedDraft.draftItems">
+            <div class="col-md-5 d-flex flex-nowrap align-items-center justify-content-between draft-item m-1" 
+              *ngFor="let item of draftService.selectedDraft.draftItems"
+              style="max-width: 500px;">
               <span style="min-width: 100px;">{{item.itemName}}</span>
               <span style="min-width: 50px;">{{item.itemCategory}}</span>
               <i (click)="deleteDraftItem(item)" 

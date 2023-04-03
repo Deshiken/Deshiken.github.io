@@ -11,7 +11,6 @@ import { DraftItem, DraftOptions, DraftService } from '../draft.service';
 })
 export class DraftStartComponent implements OnInit {
 
-  @ViewChild('savedOptionsToast') savedOptionsToast!: ElementRef;
   public newDraftChoice: string = '';
   public draftToDelete: DraftOptions = this.draftService.testDraftOptions[0];
   public errors: Map<string,boolean> = new Map([
@@ -48,9 +47,7 @@ export class DraftStartComponent implements OnInit {
     this.errors.forEach((value,key) => { this.errors.set(key,false) });
 
     // Snake draft is only possible with team play or multiple picks per player
-    if (this.draftService.selectedDraft.picksPerPlayer === 1 
-        && this.draftService.selectedDraft.teamDraft === false 
-        && this.draftService.selectedDraft.snakeDraft === true) {
+    if (this.draftService.selectedDraft.picksPerPlayer === 1 && this.draftService.selectedDraft.snakeDraft === true) {
       this.errors.set('snakeDraftNotAllowed', true);
       // Scroll to bottom
       window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: "smooth" });
