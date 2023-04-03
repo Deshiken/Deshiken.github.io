@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { RandomService } from 'src/app/shared/services/random.service';
 import { ToastService } from 'src/app/shared/services/toast.service';
 import { DraftItem, DraftService } from '../draft.service';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-draft-items',
@@ -15,7 +15,7 @@ export class DraftItemsComponent implements OnInit {
   public newItemName = '';
   public newItemCategory = '';
   public newCategoryName = '';
-  // public displayStyle = "hide";
+  public categoryToDelete = '';
   public errors: Map<string,boolean> = new Map([
     ['categoryNameMissing', false],
     ['itemNameMissing', false],
@@ -48,17 +48,22 @@ export class DraftItemsComponent implements OnInit {
     }
   }
 
-  public deleteDraftCategory(categoryToDelte: string, content: any) {
-    // Delete the item category
-    this.utils.deleteFromArray(this.draftService.selectedDraft.draftItemCategories, categoryToDelte);
-
+  public deleteDraftCategoryModal(categoryToDelte: string, content: any) {
     // Delete all items that have that category set
-    this.modalService.open(content);
-    this.draftService.selectedDraft.draftItems.forEach(item => {
-      if (item.itemCategory === categoryToDelte) {
-        // this.deleteModal.nativeElement.classList.push('show')
-        // this.displayStyle = 'block';
-        // this.utils.deleteFromArray(this.draftService.selectedDraft.draftItems, item);
+    this.modalService.open(content).result.then(
+      () => {this.deleteCategoyrAndMatchingItems(categoryToDelte)}, // Case when 'delete category' is pressed
+      (result2: any) => {console.log('modal result 2', result2)} // Case when modal is closed or cancelled
+    );
+  }
+
+  public deleteCategoyrAndMatchingItems(categoryToDelete: string) {
+    this.utils.deleteFromArray(this.draftService.selectedDraft.draftItemCategories, categoryToDelete);
+
+    const draftItemsCopy = [...this.draftService.selectedDraft.draftItems];
+
+    draftItemsCopy.forEach(item => {
+      if (item.itemCategory === categoryToDelete) {
+        this.deleteDraftItem(item);
       }
     })
   }
