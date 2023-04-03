@@ -4,14 +4,18 @@
     Currently Picking:
   </p>
   
-  <div class="card mb-4 card-shadow__light" style="max-width: 400px;">
-    <div class="row">
-      <div class="card-body">
+  <div class="card mb-4 card-shadow__light" style="max-width: 350px;">
+    <div class="card-body">
+      <div class="row">
         <p class="card-title h5">Player {{player.playerNumber}}</p>
         <p *ngIf="draftService.selectedDraft.teamDraft" class="card-text mb-1">Team {{player.team}}</p>
-        <p *ngIf="player?.draftPicks?.length" class="card-text mb-1">Previous Picks:</p>
-        <ng-container *ngFor="let pick of player.draftPicks">
-          {{pick.itemName}} {{pick.itemCategory}}
+        <ng-container *ngIf="player?.draftPicks?.length">
+          <p class="card-text mb-0">Previous Picks:</p>
+          <ul>
+            <li class="ms-4" *ngFor="let pick of player.draftPicks">
+              {{pick.itemName}} {{pick.itemCategory}}
+            </li>
+          </ul>
         </ng-container>
       </div>
     </div>
