@@ -10,13 +10,13 @@ import { DraftItem, DraftService, Player } from '../draft.service';
 })
 export class DraftPickComponent implements OnInit {
   public player: Player = {playerNumber: 1}; 
-  // public selectedItem: DraftItem | undefined = {itemName: ''};
   public selectedItem: DraftItem | null = null;
   public draftStep: number = 1;
   public errors: Map<string,boolean> = new Map([
     ['noItemSelected', false],
     ['itemWithThisCategoryAlreadyPicked', false],
   ]);
+  public selectedItemCategory = '';
   @ViewChild('container') container: ElementRef;
 
   constructor(
@@ -68,11 +68,13 @@ export class DraftPickComponent implements OnInit {
     }
 
     if (this.selectedItem && this.player.draftPicks) {
-      this.player.draftPicks.forEach(draftItem => {
-        if (draftItem.itemCategory === this.selectedItem?.itemCategory) {
-          this.errors.set('itemWithThisCategoryAlreadyPicked', true)
+      for (let draftItem of this.player.draftPicks) {
+        if (this.selectedItem?.itemCategory && (draftItem.itemCategory === this.selectedItem?.itemCategory)) {
+          this.selectedItemCategory = this.selectedItem?.itemCategory;
+          this.errors.set('itemWithThisCategoryAlreadyPicked', true);
+          break;
         }
-      })
+      }
     }
   }
 

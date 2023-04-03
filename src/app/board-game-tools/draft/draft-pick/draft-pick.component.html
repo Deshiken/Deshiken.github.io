@@ -3,9 +3,10 @@
   <p class="h2">
     Currently Picking:
   </p>
+  
   <div class="card mb-4 card-shadow__light" style="max-width: 400px;">
     <div class="row">
-      <div class="col-8 card-body">
+      <div class="card-body">
         <p class="card-title h5">Player {{player.playerNumber}}</p>
         <p *ngIf="draftService.selectedDraft.teamDraft" class="card-text mb-1">Team {{player.team}}</p>
         <p *ngIf="player?.draftPicks?.length" class="card-text mb-1">Previous Picks:</p>
@@ -38,7 +39,7 @@
 
   <div *ngIf="errors.get('itemWithThisCategoryAlreadyPicked')"
     class="alert alert-warning fade-in mt-3 mb-0" role="alert">
-    You have previously picked an item with the category of {{this.selectedItem?.itemCategory}}. 
+    You have previously picked an item with the category of {{selectedItemCategory}}. 
     Please pick an item of a different category.
   </div>
 
