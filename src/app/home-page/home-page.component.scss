@@ -15,6 +15,9 @@
   max-width: 350px;
   color: white;
   background-color: rgb(69, 114, 116);
+  :hover {
+    cursor: pointer;
+  }
   &--icon {
     font-size: 3.4rem;
   }
