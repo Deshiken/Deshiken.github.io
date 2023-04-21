@@ -1,0 +1,30 @@
+<div class="container">
+  <app-heading-with-back [title]="uprisingMap?.mapName + ' Details'"></app-heading-with-back>
+
+  <div class="row">
+    <div class="col-xl">
+      <img class="img-fluid" height="300px" width="550px" [src]="uprisingMap?.image">
+    </div>
+    <div class="col-xl d-flex flex-column">
+      <p><b>Game Mode: </b>{{uprisingMap?.objective}} </p>
+      <p><b>Number of Players: </b>{{uprisingMap?.numberOfPlayers}} </p>
+      <p><b>Description: </b>{{uprisingMap?.description}} </p>
+      <a class="mb-3" [href]="uprisingMap?.image" target="_blank"> 
+        <b>Map Details</b>
+        <i class="bi ms-1 bi-box-arrow-up-right"></i>
+      </a> 
+      <p *ngIf="uprisingMap?.specialRules"><b>Special Rules: </b>{{uprisingMap?.specialRules}} </p>
+      <ng-container *ngIf="uprisingMap?.variants">
+        <b>Variants</b>
+        <ul class="list-group" > 
+          <li class="ms-4" *ngFor="let variant of uprisingMap?.variants">{{variant}}</li>
+        </ul>
+
+      </ng-container>
+
+    </div>
+
+  </div>
+
+
+</div>

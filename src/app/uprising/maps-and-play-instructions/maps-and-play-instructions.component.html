@@ -43,8 +43,9 @@
   </div>
   <div class="collapse" id="fourPlayerMapsColapse">
     <div class="d-flex flex-column">
-      <a href="../../../assets/uprising_maps/4Player_StandardGameBoard_v4.jpg" target="_blank">Standard 4 Player Map</a>
-      <a href="../../../assets/uprising_maps/4Player_CaptureTheFlag4Player_v1.jpg" target="_blank">Capture the Flag Free-for-All</a>
+      <!-- <a href="../../../assets/uprising_maps/4Player_StandardGameBoard_v4.jpg" target="_blank">Standard 4 Player Map</a> -->
+      <a [routerLink]="['/uprising/map-details', UprisingMapName.FourPlayerStandard]">Standard 4 Player Map</a>
+      <a href="../../../assets/uprising_maps/4Player_CaptureTheFlag4Player_v1.jpg" target="_blank">Capture the Flag - Free for all</a>
       <a href="../../../assets/uprising_maps/4Player_CaptureTheFlagTeams_v1.jpg" target="_blank">Capture the Flag - Teams</a>
       <a href="../../../assets/uprising_maps/4Player_FourCorners_v1.jpg" target="_blank">Four Corners</a>
       <a href="../../../assets/uprising_maps/4Player_KingOfTheHill_v2.jpg" target="_blank">King of the Hill</a>
