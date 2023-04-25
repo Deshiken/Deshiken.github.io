@@ -10,6 +10,7 @@ import { MapsAndPlayInstructionsComponent } from './maps-and-play-instructions/m
 import { TileRandomizerComponent } from './tile-randomizer/tile-randomizer.component';
 import { UnitReferenceCardsComponent } from './unit-reference-cards/unit-reference-cards.component';
 import { MapDetailsComponent } from './map-details/map-details.component';
+import { MapBuilderComponent } from './map-builder/map-builder.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { MapDetailsComponent } from './map-details/map-details.component';
     MapsAndPlayInstructionsComponent,
     TileRandomizerComponent,
     UnitReferenceCardsComponent,
-    MapDetailsComponent
+    MapDetailsComponent,
+    MapBuilderComponent
   ],
   imports: [
     CommonModule,

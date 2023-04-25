@@ -1,0 +1,35 @@
+.draggable {
+  touch-action: none;
+  user-select: none;
+}
+
+.map-tile {
+  width: 25%;
+  min-height: 6.5em;
+  margin: 1rem 0 0 1rem;
+  background-color: #29e;
+  color: white;
+  border-radius: 0.75em;
+  padding: 4%;
+  z-index: 1;
+}
+
+.flag {
+  touch-action: none;
+  user-select: none;
+  height: 25px;
+  width: 35px;
+  z-index: 2;
+  // width: 25%;
+  border-radius: .50em;
+  &-yellow {
+    background-color: yellow;
+  }
+  &-red {
+    background-color: red;
+  }
+  &-green {
+    background-color: green;
+    color: white;
+  }
+}
