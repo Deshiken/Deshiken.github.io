@@ -1,25 +1,81 @@
 <div class="container">
   <app-heading-with-back [title]="'Uprising Map Builder'"></app-heading-with-back>
-  <button class="btn btn-primary btn-sm me-2" (click)="mapTiles.push(1)">Add Map Tile</button>
-  <button class="btn btn-primary btn-sm me-2" (click)="mapTilesReverse.push(1)">Add Map Tile Reverse</button>
-  <button class="btn btn-primary btn-sm me-2" (click)="mapFlagsGreen.push(1)">Add Flag</button>
-  <button class="btn btn-primary btn-sm me-2" (click)="mapTilesReverse.push(1)">Add Capitol</button>
-  <button class="btn btn-primary btn-sm me-2" (click)="mapTilesReverse.push(1)">Add Mountain Region</button>
-  <button class="btn btn-primary btn-sm me-2" (click)="mapTilesReverse.push(1)">Add Water Region</button>
+  
+  <div class="d-flex flex-row">
+    <button class="btn btn-primary btn-sm me-2" (click)="mapTiles.push(1)">Add Map Tile</button>
+    <button class="btn btn-primary btn-sm me-2" (click)="mapTilesReverse.push(1)">Add Map Tile Reverse</button>
+    <div class="dropdown me-2">
+      <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Add Flag
+      </button>
+      <ul class="dropdown-menu">
+        <li class="dropdown-item pointer" (click)="mapFlags.push('red')">Red</li>
+        <li class="dropdown-item pointer" (click)="mapFlags.push('orange')">Orange</li>
+        <li class="dropdown-item pointer" (click)="mapFlags.push('yellow')">Yellow</li>
+        <li class="dropdown-item pointer" (click)="mapFlags.push('green')">Green</li>
+      </ul>
+    </div>
+    <div class="dropdown me-2">
+      <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Add Port
+      </button>
+      <ul class="dropdown-menu">
+        <li class="dropdown-item pointer" (click)="mapPorts.push('blue')">Blue</li>
+        <li class="dropdown-item pointer" (click)="mapPorts.push('purple')">Purple</li>
+        <li class="dropdown-item pointer" (click)="mapPorts.push('teal')">Teal</li>
+      </ul>
+    </div>
+    <button class="btn btn-primary btn-sm me-2" (click)="mapCapitols.push(1)">Add Capitol</button>
+    <button class="btn btn-primary btn-sm me-2" (click)="mapMountains.push(1)">Add Mountain Region</button>
+    <button class="btn btn-primary btn-sm me-2" (click)="mapWaterRegions.push(1)">Add Water Region</button>
+  </div>
 
 
-  <div *ngFor="let map of mapTiles"
-    id="drag-1" class="draggable map-tile"> 
-    Map Tile
+
+  <div *ngFor="let map of mapTiles">
+    <img class="draggable position-absolute bottom-0 start-0" 
+      src="../../../assets/uprising_map_builder/MapSegment.svg" 
+      width="300px"> 
+  </div>
+
+  <div *ngFor="let map of mapTilesReverse">
+    <img class="draggable position-absolute bottom-0 start-0" 
+      src="../../../assets/uprising_map_builder/MapSegmentReverse.svg" 
+      width="300px"> 
   </div>
   
-  <div *ngFor="let flag of mapFlagsGreen"
-    id="drag-1" class="draggable flag flag-green"> 
-    Flag
+  <div *ngFor="let flag of mapFlags"> 
+    <img 
+      [ngClass]="{'flag-red': flag === 'red', 'flag-orange': flag === 'orange', 'flag-yellow': flag === 'yellow', 'flag-green': flag === 'green'}"
+      src="../../../assets/uprising_map_builder/Flag.svg" 
+      class="draggable position-absolute bottom-0 start-0" 
+      width="30px">
   </div>
 
-  <div id="drag-1" class="draggable map-tile"
-    *ngFor="let map of mapTilesReverse"> 
-    Reverse Map Tile
+  <div *ngFor="let port of mapPorts"> 
+    <img 
+      [ngClass]="{'port-blue': port === 'blue', 'port-purple': port === 'purple', 'port-teal': port === 'teal'}"
+      src="../../../assets/uprising_map_builder/Ship.svg" 
+      class="draggable position-absolute bottom-0 start-0" 
+      width="90px">
   </div>
+
+  <div *ngFor="let flag of mapCapitols"> 
+    <img class="draggable position-absolute bottom-0 start-0" 
+      src="../../../assets/uprising_map_builder/Castle.svg" 
+      width="50px">
+  </div>
+
+  <div *ngFor="let mountain of mapMountains"> 
+    <img class="draggable position-absolute bottom-0 start-0" 
+      src="../../../assets/uprising_map_builder/Mountains.svg" 
+      width="50px">
+  </div>
+
+  <div *ngFor="let water of mapWaterRegions"> 
+    <img class="draggable position-absolute bottom-0 start-0" 
+      src="../../../assets/uprising_map_builder/Water.svg" 
+      width="65px">
+  </div>
+
 </div>

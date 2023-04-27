@@ -10,11 +10,13 @@ import interact from 'interactjs';
 })
 export class MapBuilderComponent implements OnInit {
 
-  public mapTiles = Array(2).fill(1); // [1,1]
-  public mapTilesReverse = Array(1).fill(1); 
-  public mapFlagsGreen = Array(1).fill(1); 
-  public mapFlagsYellow = Array(1).fill(1);
-  public mapCapitols = Array(1).fill(1);
+  public mapTiles = Array(1).fill(1); // [1,1]
+  public mapTilesReverse = new Array<any>();
+  public mapFlags: Array<string> = new Array<string>();
+  public mapPorts: Array<string> = new Array<string>();
+  public mapCapitols = new Array<any>();
+  public mapMountains = new Array<any>();
+  public mapWaterRegions = new Array<any>();
 
   ngOnInit(){
     interact('.draggable').draggable({

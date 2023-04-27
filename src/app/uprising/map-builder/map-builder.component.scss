@@ -15,21 +15,41 @@
 }
 
 .flag {
-  touch-action: none;
-  user-select: none;
-  height: 25px;
-  width: 35px;
   z-index: 2;
-  // width: 25%;
-  border-radius: .50em;
   &-yellow {
-    background-color: yellow;
+    filter: invert(91%) sepia(17%) saturate(6840%) hue-rotate(358deg) brightness(103%) contrast(105%);
+    // background-color:#ffd700;
+  }
+  &-orange {
+    filter: invert(72%) sepia(33%) saturate(4408%) hue-rotate(358deg) brightness(101%) contrast(105%);
+    // background-color: orange;
   }
   &-red {
-    background-color: red;
+    filter: invert(12%) sepia(97%) saturate(5903%) hue-rotate(6deg) brightness(95%) contrast(128%);
+    // background-color: red;
   }
   &-green {
-    background-color: green;
-    color: white;
+    // background-color: green;
+    filter: invert(23%) sepia(80%) saturate(5478%) hue-rotate(111deg) brightness(95%) contrast(103%);
   }
+}
+
+.port {
+  z-index: 2;
+  &-blue {
+    filter: invert(39%) sepia(36%) saturate(2598%) hue-rotate(208deg) brightness(89%) contrast(99%);
+    // background-color:#4169e1;
+  }
+  &-purple {
+    filter: invert(12%) sepia(38%) saturate(7436%) hue-rotate(290deg) brightness(99%) contrast(121%);
+    // background-color: #800080;
+  }
+  &-teal {
+    filter: invert(35%) sepia(10%) saturate(7496%) hue-rotate(147deg) brightness(95%) contrast(101%);
+    // background-color: #008080;
+  }
+}
+
+.pointer {
+  cursor: pointer;
 }
