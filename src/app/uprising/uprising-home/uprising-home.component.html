@@ -59,6 +59,20 @@
   </div>
 
   <div class="d-flex align-items-center">
+    <button class="btn btn-primary btn-lg my-3" (click)="router.navigate(['uprising/factions'])">
+      Faction Boards
+    </button>
+    <i class="bi m-3 bi-question-circle-fill" style="font-size: 2.4rem;"
+      data-bs-toggle="collapse" data-bs-target="#unitReferenceCards" aria-expanded="false" aria-controls="unitReferenceCards">
+    </i>
+  </div>
+  <div class="collapse" id="unitReferenceCards">
+    <div class="card card-body">
+      Quick reference to the latest faction boards.
+    </div>
+  </div>
+
+  <div class="d-flex align-items-center">
     <button class="btn btn-primary btn-lg my-3" (click)="router.navigate(['uprising/map-builder'])">
       Map Builder
     </button>

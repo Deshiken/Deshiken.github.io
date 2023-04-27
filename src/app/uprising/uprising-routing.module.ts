@@ -6,6 +6,7 @@ import { MapsAndPlayInstructionsComponent } from './maps-and-play-instructions/m
 import { MercenaryPickerComponent } from './mercenary-picker/mercinary-picker.component';
 import { TileRandomizerComponent } from './tile-randomizer/tile-randomizer.component';
 import { UnitReferenceCardsComponent } from './unit-reference-cards/unit-reference-cards.component';
+import { UprisingFactionsComponent } from './uprising-factions/uprising-factions.component';
 import { UprisingHomeComponent } from './uprising-home/uprising-home.component';
 
 const routes: Routes = [
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'tile-randomizer', component: TileRandomizerComponent},
   { path: 'unit-reference-cards', component: UnitReferenceCardsComponent},
   { path: 'map-details/:id', component: MapDetailsComponent},
-  { path: 'map-builder', component: MapBuilderComponent}
+  { path: 'map-builder', component: MapBuilderComponent},
+  { path: 'factions', component: UprisingFactionsComponent},
 ];
 
 @NgModule({

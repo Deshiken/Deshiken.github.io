@@ -11,6 +11,7 @@ import { TileRandomizerComponent } from './tile-randomizer/tile-randomizer.compo
 import { UnitReferenceCardsComponent } from './unit-reference-cards/unit-reference-cards.component';
 import { MapDetailsComponent } from './map-details/map-details.component';
 import { MapBuilderComponent } from './map-builder/map-builder.component';
+import { UprisingFactionsComponent } from './uprising-factions/uprising-factions.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { MapBuilderComponent } from './map-builder/map-builder.component';
     TileRandomizerComponent,
     UnitReferenceCardsComponent,
     MapDetailsComponent,
-    MapBuilderComponent
+    MapBuilderComponent,
+    UprisingFactionsComponent
   ],
   imports: [
     CommonModule,
