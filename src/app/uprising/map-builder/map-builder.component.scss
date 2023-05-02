@@ -34,7 +34,7 @@
   }
 }
 
-.port {
+.portal {
   z-index: 2;
   &-blue {
     filter: invert(39%) sepia(36%) saturate(2598%) hue-rotate(208deg) brightness(89%) contrast(99%);
@@ -52,4 +52,12 @@
 
 .pointer {
   cursor: pointer;
+}
+
+.draw-zone {
+  height: 600px; 
+  width: 100%; 
+  border-radius: 10px; 
+  border-style: solid; 
+  border-width: 2px;
 }

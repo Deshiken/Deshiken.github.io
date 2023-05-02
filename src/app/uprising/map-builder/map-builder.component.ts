@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 // import * as interact from 'interactjs'
 // import * as interact from '@interactjs/types/index';
 import interact from 'interactjs';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-map-builder',
@@ -13,7 +14,7 @@ export class MapBuilderComponent implements OnInit {
   public mapTiles = Array(1).fill(1); // [1,1]
   public mapTilesReverse = new Array<any>();
   public mapFlags: Array<string> = new Array<string>();
-  public mapPorts: Array<string> = new Array<string>();
+  public mapPortals: Array<string> = new Array<string>();
   public mapCapitols = new Array<any>();
   public mapMountains = new Array<any>();
   public mapWaterRegions = new Array<any>();
@@ -53,4 +54,45 @@ export class MapBuilderComponent implements OnInit {
     })
   }
 
+  public saveAsImage(){
+    // html2canvas(document.getElementById("image-group")).then(function (canvas) {
+      // document.body.appendChild(canvas)
+      // var imgData = canvas.getContext("2d").getImageData(bounds.left, bounds.top, bounds.width, bounds.height);
+      // ctx.putImageData(imgData, 0, 0);
+    // })
+
+
+
+    let imageGroup = document.getElementById('image-group');
+    console.log('imageGroup', imageGroup)
+    console.log('document body', document.body)
+    
+    // html2canvas(imageGroup).then(canvas => {
+    //   document.body.appendChild(canvas);
+    // });
+
+    //@ts-expect-error
+    html2canvas(imageGroup).then(canvas => {
+      this.saveAs(canvas.toDataURL(), 'map.png');
+    });
+  }
+
+  saveAs(uri: any, filename: any) {
+    var link = document.createElement('a');
+    if (typeof link.download === 'string') {
+      link.href = uri;
+      link.download = filename;
+
+      //Firefox requires the link to be in the body
+      document.body.appendChild(link);
+
+      //simulate click
+      link.click();
+
+      //remove the link when done
+      document.body.removeChild(link);
+    } else {
+      window.open(uri);
+    }
+  }
 }
