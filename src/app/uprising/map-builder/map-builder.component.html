@@ -1,46 +1,55 @@
 <div class="container">
   <app-heading-with-back [title]="'Uprising Map Builder'"></app-heading-with-back>
   
-  <div class="d-flex flex-row">
-    <button class="btn btn-primary btn-sm me-2" (click)="mapTiles.push(1)">Add Map Tile</button>
-    <button class="btn btn-primary btn-sm me-2" (click)="mapTilesReverse.push(1)">Add Map Tile Reverse</button>
-    <div class="dropdown me-2">
-      <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Add Flag
-      </button>
-      <ul class="dropdown-menu">
-        <li class="dropdown-item pointer" (click)="mapFlags.push('red')">Red</li>
-        <li class="dropdown-item pointer" (click)="mapFlags.push('orange')">Orange</li>
-        <li class="dropdown-item pointer" (click)="mapFlags.push('yellow')">Yellow</li>
-        <li class="dropdown-item pointer" (click)="mapFlags.push('green')">Green</li>
-      </ul>
+  <div class="d-flex justify-content-between">
+    <!-- Button group -->
+    <div class="d-flex flex-row">
+
+      <button class="btn btn-primary btn-sm me-2" (click)="mapTiles.push(1)">Add Map Tile</button>
+      <button class="btn btn-primary btn-sm me-2" (click)="mapTilesReverse.push(1)">Add Map Tile Reverse</button>
+      <div class="dropdown me-2">
+        <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Add Flag
+        </button>
+        <ul class="dropdown-menu">
+          <li class="dropdown-item pointer" (click)="mapFlags.push('red')">Red</li>
+          <li class="dropdown-item pointer" (click)="mapFlags.push('orange')">Orange</li>
+          <li class="dropdown-item pointer" (click)="mapFlags.push('yellow')">Yellow</li>
+          <li class="dropdown-item pointer" (click)="mapFlags.push('green')">Green</li>
+        </ul>
+      </div>
+      <div class="dropdown me-2">
+        <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Add Portal
+        </button>
+        <ul class="dropdown-menu">
+          <li class="dropdown-item pointer" (click)="mapPortals.push('blue')">Blue</li>
+          <li class="dropdown-item pointer" (click)="mapPortals.push('purple')">Purple</li>
+          <li class="dropdown-item pointer" (click)="mapPortals.push('teal')">Teal</li>
+        </ul>
+      </div>
+      <button class="btn btn-primary btn-sm me-2" (click)="mapCapitols.push(1)">Add Capitol</button>
+      <button class="btn btn-primary btn-sm me-2" (click)="mapMountains.push(1)">Add Mountain Region</button>
+      <button class="btn btn-primary btn-sm me-2" (click)="mapWaterRegions.push(1)">Add Water Region</button>
     </div>
-    <div class="dropdown me-2">
-      <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Add Portal
-      </button>
-      <ul class="dropdown-menu">
-        <li class="dropdown-item pointer" (click)="mapPortals.push('blue')">Blue</li>
-        <li class="dropdown-item pointer" (click)="mapPortals.push('purple')">Purple</li>
-        <li class="dropdown-item pointer" (click)="mapPortals.push('teal')">Teal</li>
-      </ul>
+    
+    <div>
+      <i class="bi bi-trash dropzone" style="font-size: 2rem;"></i>
     </div>
-    <button class="btn btn-primary btn-sm me-2" (click)="mapCapitols.push(1)">Add Capitol</button>
-    <button class="btn btn-primary btn-sm me-2" (click)="mapMountains.push(1)">Add Mountain Region</button>
-    <button class="btn btn-primary btn-sm me-2" (click)="mapWaterRegions.push(1)">Add Water Region</button>
   </div>
 
 
   <div id="image-group" class="mt-3 draw-zone"> 
 
     <div *ngFor="let map of mapTiles">
-      <img class="draggable position-absolute bottom-0 start-0" 
+      <img 
+        class="drag-drop position-absolute bottom-0 start-0"
         src="../../../assets/uprising_map_builder/MapSegment.svg" 
         width="300px"> 
     </div>
   
     <div *ngFor="let map of mapTilesReverse">
-      <img class="draggable position-absolute bottom-0 start-0" 
+      <img class="drag-drop position-absolute bottom-0 start-0" 
         src="../../../assets/uprising_map_builder/MapSegmentReverse.svg" 
         width="300px"> 
     </div>
@@ -49,7 +58,7 @@
       <img 
         [ngClass]="{'flag-red': flag === 'red', 'flag-orange': flag === 'orange', 'flag-yellow': flag === 'yellow', 'flag-green': flag === 'green'}"
         src="../../../assets/uprising_map_builder/Flag.svg" 
-        class="draggable position-absolute bottom-0 start-0" 
+        class="drag-drop position-absolute bottom-0 start-0" 
         width="30px">
     </div>
   
@@ -57,24 +66,24 @@
       <img 
         [ngClass]="{'portal-blue': portal === 'blue', 'portal-purple': portal === 'purple', 'portal-teal': portal === 'teal'}"
         src="../../../assets/uprising_map_builder/Portal.svg" 
-        class="draggable position-absolute bottom-5 start-5" 
+        class="drag-drop position-absolute bottom-0 start-0" 
         width="50px">
     </div>
   
     <div *ngFor="let flag of mapCapitols"> 
-      <img class="draggable position-absolute bottom-0 start-0" 
+      <img class="drag-drop position-absolute bottom-0 start-0" 
         src="../../../assets/uprising_map_builder/Castle.svg" 
         width="50px">
     </div>
   
     <div *ngFor="let mountain of mapMountains"> 
-      <img class="draggable position-absolute bottom-0 start-0" 
+      <img class="drag-drop position-absolute bottom-0 start-0" 
         src="../../../assets/uprising_map_builder/Mountains.svg" 
         width="50px">
     </div>
   
     <div *ngFor="let water of mapWaterRegions"> 
-      <img class="draggable position-absolute bottom-0 start-0" 
+      <img class="drag-drop position-absolute bottom-0 start-0" 
         src="../../../assets/uprising_map_builder/Water.svg" 
         width="65px">
     </div>
@@ -83,5 +92,18 @@
   <button class='btn btn-primary'
     (click)="saveAsImage()" 
     style="position: absolute; bottom: 10px">
-    Save Map Image</button>
+    Save Map Image
+  </button>
+
+  
+  <!-- <div id="no-drop" class="drag-drop"> #no-drop </div>
+
+  <div id="yes-drop" class="drag-drop"> #yes-drop </div>
+
+  <div id="outer-dropzone" class="dropzone">
+    #outer-dropzone
+    <div id="inner-dropzone" class="dropzone">#inner-dropzone</div>
+  </div> -->
+
+
 </div>

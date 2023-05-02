@@ -20,7 +20,42 @@ export class MapBuilderComponent implements OnInit {
   public mapWaterRegions = new Array<any>();
 
   ngOnInit(){
-    interact('.draggable').draggable({
+    // enable draggables to be dropped into this
+    interact('.dropzone').dropzone({
+      // Require a .01% element overlap for a drop to be possible
+      overlap: 0.01,
+
+      // listen for drop related events:
+
+      ondropactivate: function (event) {
+        // add active dropzone feedback
+        event.target.classList.add('drop-active')
+      },
+      ondragenter: function (event) {
+        var draggableElement = event.relatedTarget
+        var dropzoneElement = event.target
+
+        // feedback the possibility of a drop
+        dropzoneElement.classList.add('drop-target')
+        draggableElement.classList.add('can-drop')
+      },
+      ondragleave: function (event) {
+        // remove the drop feedback style
+        event.target.classList.remove('drop-target')
+        event.relatedTarget.classList.remove('can-drop')
+      },
+      ondrop: function (event) {
+        // remove the dragged element from the dom
+        event.relatedTarget.remove();
+      },
+      ondropdeactivate: function (event) {
+        // remove active dropzone feedback
+        event.target.classList.remove('drop-active')
+        event.target.classList.remove('drop-target')
+      }
+    })
+
+    interact('.drag-drop').draggable({
       // enable inertial throwing
       inertia: true,
       // keep the element within the area of it's parent
@@ -30,13 +65,11 @@ export class MapBuilderComponent implements OnInit {
       //     endOnly: true
       //   })
       // ],
+
       // enable autoScroll
       autoScroll: true,
 
       listeners: {
-        start (event) { 
-          console.log(event.type, event.target)
-        },
         move (event) {
           var target = event.target
           // keep the dragged position in the data-x/data-y attributes
@@ -55,21 +88,7 @@ export class MapBuilderComponent implements OnInit {
   }
 
   public saveAsImage(){
-    // html2canvas(document.getElementById("image-group")).then(function (canvas) {
-      // document.body.appendChild(canvas)
-      // var imgData = canvas.getContext("2d").getImageData(bounds.left, bounds.top, bounds.width, bounds.height);
-      // ctx.putImageData(imgData, 0, 0);
-    // })
-
-
-
     let imageGroup = document.getElementById('image-group');
-    console.log('imageGroup', imageGroup)
-    console.log('document body', document.body)
-    
-    // html2canvas(imageGroup).then(canvas => {
-    //   document.body.appendChild(canvas);
-    // });
 
     //@ts-expect-error
     html2canvas(imageGroup).then(canvas => {

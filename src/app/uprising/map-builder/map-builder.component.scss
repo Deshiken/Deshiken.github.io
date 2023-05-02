@@ -1,6 +1,7 @@
 .draggable {
   touch-action: none;
   user-select: none;
+  transform: translate(0px, 0px);
 }
 
 .map-tile {
@@ -60,4 +61,47 @@
   border-radius: 10px; 
   border-style: solid; 
   border-width: 2px;
+}
+
+#outer-dropzone {
+  height: 140px;
+}
+
+#inner-dropzone {
+  height: 80px;
+}
+
+.dropzone {
+  background-color: #bfe4ff;
+  border: dashed 4px transparent;
+  border-radius: 4px;
+  margin: 10px auto 30px;
+  padding: 10px;
+  width: 80%;
+  // width: 100px;
+  transition: background-color 0.3s;
+}
+
+// Style of drop zone when an elemnt is being dragged and is able to be placed in the drop zone
+.drop-active {
+  border-color: #aaa;
+}
+
+// Style of drop zone when element is dragged and able to be dropped
+.drop-target {
+  background-color: #29e;
+  border-color: #af1a1a;
+  border-style: solid;
+}
+
+// Draggable elements
+.drag-drop {
+  touch-action: none;
+  transform: translate(0px, 0px);
+  transition: background-color 0.3s;
+}
+
+// Style of elements that are dragged into the drop zone
+.drag-drop.can-drop {
+  // background-color: #4e4;
 }
