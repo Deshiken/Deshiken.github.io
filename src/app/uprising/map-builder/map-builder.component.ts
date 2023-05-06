@@ -3,23 +3,44 @@ import { Component, OnInit } from '@angular/core';
 // import * as interact from '@interactjs/types/index';
 import interact from 'interactjs';
 import html2canvas from 'html2canvas';
+import { MapBuilderService, UprisingMap, UprisingMapSize } from '../map-builder.service';
+import { ActivatedRoute } from '@angular/router';
+import { ToastService } from 'src/app/shared/services/toast.service';
 
 @Component({
   selector: 'app-map-builder',
   templateUrl: './map-builder.component.html',
   styleUrls: ['./map-builder.component.scss']
 })
+
 export class MapBuilderComponent implements OnInit {
 
-  public mapTiles = Array(1).fill(1); // [1,1]
+  public selectedMap: UprisingMap = {mapSize: UprisingMapSize.Medium, mapHTML: new Array<string>(), mapName: '', description: ''};
+  public UprisingMapSize = UprisingMapSize;
+
+  // Map Elements
+  public mapTiles = new Array<any>(); // [1,1]
   public mapTilesReverse = new Array<any>();
-  public mapFlags: Array<string> = new Array<string>();
-  public mapPortals: Array<string> = new Array<string>();
+  public mapFlagsGreen: Array<any> = new Array<any>();
+  public mapFlagsYellow: Array<any> = new Array<any>();
+  public mapFlagsOrange: Array<any> = new Array<any>();
+  public mapFlagsRed: Array<any> = new Array<any>();
+  public mapPortalsBlue: Array<any> = new Array<any>();
+  public mapPortalsPurple: Array<any> = new Array<any>();
+  public mapPortalsTeal: Array<any> = new Array<any>();
   public mapCapitols = new Array<any>();
   public mapMountains = new Array<any>();
   public mapWaterRegions = new Array<any>();
 
-  ngOnInit(){
+  constructor(
+    public mapBuilderService: MapBuilderService,
+    private route: ActivatedRoute,
+    private toastService: ToastService,
+  ) {}
+
+  ngOnInit() {
+    this.loadMap();
+
     // enable draggables to be dropped into this
     interact('.dropzone').dropzone({
       // Require a .01% element overlap for a drop to be possible
@@ -114,4 +135,50 @@ export class MapBuilderComponent implements OnInit {
       window.open(uri);
     }
   }
+
+  /** Add each map piece to the dom by injecting the html into a div inside the map builder area */
+  private setMapHTML(selectedMap: UprisingMap){
+    let mapElements = document.getElementById('inner-div');
+    if (selectedMap?.mapHTML.length > 0 && mapElements) {
+      for (let mapHTML of selectedMap.mapHTML) {
+        mapElements.innerHTML += mapHTML;
+      }
+    }
+  }
+
+  public saveToLocalStorage() {
+    // All map pieces have a name of 'map-element'. Get all of them in the form of a NodeList
+    let mapElements = document.getElementsByName('map-element');
+    
+    // Array to store the html of each map piece
+    let htmlArray = new Array<string>();
+
+    // Add the html of each element to the array of html
+    mapElements.forEach(element => {
+      htmlArray.push(element.outerHTML);
+    })
+
+    if (mapElements) {
+      this.selectedMap.mapHTML = htmlArray;
+
+      // Add the current map with all map pieces html to the builderService
+      this.mapBuilderService.uprisingMaps.set(this.selectedMap.mapName, this.selectedMap)
+
+      // We can't directly convert a map to a json string, so we need to convert it first
+      localStorage.setItem('uprisingMaps', JSON.stringify(Array.from(this.mapBuilderService.uprisingMaps.entries())));
+
+      // Trigger the display of the successful save toast
+      this.toastService.toastSubject.next();
+    }
+  }
+
+  /** Load the map from the selected-map url parameter */
+  loadMap(){
+    let mapName = this.route.snapshot.paramMap.get('selected-map');
+    if (mapName) {
+      this.selectedMap = this.mapBuilderService.uprisingMaps.get(mapName) as UprisingMap;
+      this.setMapHTML(this.selectedMap);
+    }
+  }
+
 }

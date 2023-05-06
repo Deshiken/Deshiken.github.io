@@ -12,6 +12,8 @@ import { UnitReferenceCardsComponent } from './unit-reference-cards/unit-referen
 import { MapDetailsComponent } from './map-details/map-details.component';
 import { MapBuilderComponent } from './map-builder/map-builder.component';
 import { UprisingFactionsComponent } from './uprising-factions/uprising-factions.component';
+import { MapBuilderOptionsComponent } from './map-builder-options/map-builder-options.component';
+import { ToastComponent } from '../shared/components/toast/toast.component';
 
 
 @NgModule({
@@ -23,13 +25,15 @@ import { UprisingFactionsComponent } from './uprising-factions/uprising-factions
     UnitReferenceCardsComponent,
     MapDetailsComponent,
     MapBuilderComponent,
-    UprisingFactionsComponent
+    UprisingFactionsComponent,
+    MapBuilderOptionsComponent
   ],
   imports: [
     CommonModule,
     UprisingRoutingModule,
     FormsModule,
     SharedModule,
+    ToastComponent,
   ]
 })
 export class UprisingModule { }

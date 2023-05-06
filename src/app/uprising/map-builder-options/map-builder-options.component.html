@@ -1,0 +1,48 @@
+<div class="container">
+  <app-heading-with-back [title]="'Map Builder Option'"></app-heading-with-back>
+
+  <div class="card mb-3">
+    <div class="card-body">
+      <h5 class="card-title">Start a new map</h5>
+      <label for="mapName" class="form-label">Map Name</label>
+      <input type="text" class="form-control" id="mapName" [(ngModel)]="newMapName">
+      
+      <label class='h6' for="mapSize">Map Size:</label>
+      <select [(ngModel)]="newMapSize" class="form-select" id="mapSize">
+        <!-- create an option for each enum of UprisingMapSize -->
+        <!-- <option *ngFor="let mapSize of UprisingMapSize | keyvalue" [ngValue]="mapSize.value">{{mapSize.key}}</option> -->
+        <option *ngFor="let mapSize of mapSizeOptions | keyvalue" [ngValue]="mapSize.key">{{mapSize.key}} - {{mapSize.value}}</option>
+      </select>
+
+      <button class="btn btn-primary my-3" (click)="startNewMap()">
+        Create new map
+        <i class="bi bi-arrow-right"></i>
+      </button>
+
+    </div>
+  </div>
+
+  <div class="card" *ngIf="mapBuilderService.uprisingMaps.size > 0">
+    <div class="card-body">
+      <h5 class="card-title">Load an existing map</h5>
+      <select [(ngModel)]="selectedMap" class="form-select" id="mapSelect">
+        <option [value]="null" [selected]="true" [disabled]="true">Select an existing map</option>
+        <option *ngFor="let map of mapBuilderService.uprisingMaps | keyvalue" [ngValue]="map.value">
+          {{map.value.mapName}}
+        </option>
+      </select>
+      <div *ngIf="selectedMap">
+        <p><b>Map Size: </b>{{selectedMap.mapSize}}</p>  
+        <p *ngIf="selectedMap.description"><b>Map Description: </b>{{selectedMap.description}}</p>
+      </div>
+
+      <button class="btn btn-primary my-3" (click)="continueBuilding()">
+        Continue building
+        <i class="bi bi-arrow-right"></i>
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
