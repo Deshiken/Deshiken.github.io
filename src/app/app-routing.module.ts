@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { HomePageComponent } from './home-page/home-page.component';
-import { PricingComponent } from './pricing/pricing.component';
 
 const routes: Routes = [
   { 
@@ -13,10 +12,6 @@ const routes: Routes = [
       title: 'Page not found | My Say | Say Insurance ®',
       animation: 'home' //can be used to specify routing animation state/transition
     } 
-  },
-  {
-    path: 'pricing',
-    component: PricingComponent,
   },
   {
     path: 'about',

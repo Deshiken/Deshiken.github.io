@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { MapBuilderOptionsComponent } from './map-builder-options/map-builder-options.component';
 import { MapBuilderComponent } from './map-builder/map-builder.component';
 import { MapDetailsComponent } from './map-details/map-details.component';
 import { MapsAndPlayInstructionsComponent } from './maps-and-play-instructions/maps-and-play-instructions.component';
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'unit-reference-cards', component: UnitReferenceCardsComponent},
   { path: 'map-details/:id', component: MapDetailsComponent},
   { path: 'map-builder', component: MapBuilderComponent},
+  { path: 'map-builder-options', component: MapBuilderOptionsComponent},
   { path: 'factions', component: UprisingFactionsComponent},
 ];
 
