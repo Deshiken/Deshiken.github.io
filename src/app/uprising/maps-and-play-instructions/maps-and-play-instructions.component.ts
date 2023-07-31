@@ -11,6 +11,7 @@ export class MapsAndPlayInstructionsComponent implements OnInit {
   showTwoPlayerMaps: boolean = false;
   showThreePlayerMaps: boolean = false;
   showFourPlayerMaps: boolean = false;
+  showFivePlayerMaps: boolean = false;
 
 
   constructor() { }
