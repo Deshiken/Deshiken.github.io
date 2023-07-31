@@ -30,7 +30,7 @@ export enum UprisingMapName {
   // 2 Player Maps
   TwoPlayerStandard = 'Two Player Standard',
   TheGrid = 'The Grid',
-  TwoPlayerCloseQuarter = 'Close Quarters',
+  TwoPlayerCloseQuarter = 'Two Player Close Quarters',
   TwoPlayerCaptureTheFlag = 'Capture The Flag',
   // 3 Player Maps
   FortressDefense = 'Fortress Defense',
