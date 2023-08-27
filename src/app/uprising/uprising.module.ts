@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { MapsAndPlayInstructionsComponent } from './maps-and-play-instructions/maps-and-play-instructions.component';
 import { TileRandomizerComponent } from './tile-randomizer/tile-randomizer.component';
-import { UnitReferenceCardsComponent } from './unit-reference-cards/unit-reference-cards.component';
+import { ReferenceCardsComponent } from './reference-cards/reference-cards.component';
 import { MapDetailsComponent } from './map-details/map-details.component';
 import { MapBuilderComponent } from './map-builder/map-builder.component';
 import { UprisingFactionsComponent } from './uprising-factions/uprising-factions.component';
@@ -22,7 +22,7 @@ import { ToastComponent } from '../shared/components/toast/toast.component';
     MercenaryPickerComponent,
     MapsAndPlayInstructionsComponent,
     TileRandomizerComponent,
-    UnitReferenceCardsComponent,
+    ReferenceCardsComponent,
     MapDetailsComponent,
     MapBuilderComponent,
     UprisingFactionsComponent,

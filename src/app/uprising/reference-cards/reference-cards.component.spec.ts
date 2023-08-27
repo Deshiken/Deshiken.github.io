@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UnitReferenceCardsComponent } from './unit-reference-cards.component';
+import { UnitReferenceCardsComponent } from './reference-cards.component';
 
 describe('UnitReferenceCardsComponent', () => {
   let component: UnitReferenceCardsComponent;
