@@ -1,0 +1,36 @@
+<div class="container">
+  <app-heading-with-back [title]="'Spell Cards'"></app-heading-with-back>
+  
+  <label for="spellCardSort">Spell Card Sort</label>
+  <select (change)="sortOptionChange($event)" class="form-select mb-3" style="max-width: 300px;"
+    id="spellCardSort" aria-label="How would you like to sort the spell card lis?">
+    <option *ngFor="let option of SpellCardSortOptions | keyvalue" [ngValue]="option.value">{{option.value}}</option>
+  </select>
+
+  <div class="row ms-0">
+    <div *ngFor="let card of SpellCards" class="card mb-2 me-2" style="max-width: 20rem;">
+      <div class="card-body">
+        <div class="d-flex justify-content-between">
+          <p class="card-title fs-6 fw-bold">{{card.name}}</p> 
+          <div>
+            <i *ngFor="let item of [].constructor(card.spellCost)" class="bi bi-gem"></i>
+          </div>
+        </div>
+        <!-- Cost: {{card.spellCost}} -->
+        <p class="card-text">{{card.description}}</p>
+        <p class="card-text text-muted">Prepared: {{card.prepared}}</p>
+      </div>
+    </div>
+  </div>
+
+
+  <h2>Spell Card Stats</h2>
+  <p>Total number of spells: {{SpellCards.length}}</p>
+  <p>Number of spells costing 1: {{spellCost1Total}}</p>
+  <p>Number of spells costing 2: {{spellCost2Total}}</p>
+  <p>Number of spells costing 3: {{spellCost3Total}}</p>
+  <p>Number of spells costing 4: {{spellCost4Total}}</p>
+  <p>Number of spells costing 5: {{spellCost5Total}}</p>
+  <p>Average spell cost: {{spellCostAverage}}</p>
+  <p>Number of prepared spells: {{numberOfPreparedSpells}}</p>
+</div>

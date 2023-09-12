@@ -5,7 +5,8 @@
     <p>First, lets set your preferences for this draft.</p>
     
     <label class='h6' for="playerNumberSelect">Number of Players:</label>
-    <select [(ngModel)]="draftService.numberOfPlayers" class="form-select mb-3" id="playerNumberSelect" aria-label="Default select example">
+    <select [(ngModel)]="draftService.numberOfPlayers" class="form-select mb-3" 
+      id="playerNumberSelect" aria-label="Default select example" style="max-width: 400px;">
       <option [ngValue]="1">One</option>
       <option [ngValue]="2">Two</option>
       <option [ngValue]="3">Three</option>

@@ -86,5 +86,19 @@
     </div>
   </div>
 
+  <div class="d-flex align-items-center">
+    <button class="btn btn-primary btn-lg my-3" (click)="router.navigate(['uprising/spell-cards'])">
+      Spell Cards
+    </button>
+    <i class="bi m-3 bi-question-circle-fill" style="font-size: 2.4rem;"
+      data-bs-toggle="collapse" data-bs-target="#spellCards" aria-expanded="false" aria-controls="spellCards">
+    </i>
+  </div>
+  <div class="collapse" id="spellCards">
+    <div class="card card-body">
+      Read the spells of the game.
+    </div>
+  </div>
+
 
 </div>

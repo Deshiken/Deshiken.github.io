@@ -14,6 +14,7 @@ import { MapBuilderComponent } from './map-builder/map-builder.component';
 import { UprisingFactionsComponent } from './uprising-factions/uprising-factions.component';
 import { MapBuilderOptionsComponent } from './map-builder-options/map-builder-options.component';
 import { ToastComponent } from '../shared/components/toast/toast.component';
+import { SpellCardsComponent } from './spell-cards/spell-cards.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { ToastComponent } from '../shared/components/toast/toast.component';
     MapDetailsComponent,
     MapBuilderComponent,
     UprisingFactionsComponent,
-    MapBuilderOptionsComponent
+    MapBuilderOptionsComponent,
+    SpellCardsComponent
   ],
   imports: [
     CommonModule,
