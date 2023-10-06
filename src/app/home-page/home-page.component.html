@@ -31,7 +31,6 @@
           <i class="tool-card--icon bi bi-coin"
             data-bs-toggle="collapse" data-bs-target="#randomTeams" aria-expanded="false" aria-controls="randomTeams">
           </i>
-          <!-- <title class="card-title">Randomize Teams and Player Order</title>  -->
           <div class="h5">Flip a Coin</div>
           <div>Flip a coin and see the result.</div>
         </div>
@@ -44,7 +43,6 @@
           <i class="tool-card--icon bi bi-hourglass-split"
             data-bs-toggle="collapse" data-bs-target="#randomTeams" aria-expanded="false" aria-controls="randomTeams">
           </i>
-          <!-- <title class="card-title">Randomize Teams and Player Order</title>  -->
           <div class="h5">Turn and Action Timer</div>
           <div>Customize up to three different timers to use for different gameplay actions.</div>
         </div>
@@ -57,11 +55,24 @@
           <i class="tool-card--icon bi bi-diagram-3-fill"
             data-bs-toggle="collapse" data-bs-target="#randomTeams" aria-expanded="false" aria-controls="randomTeams">
           </i>
-          <!-- <title class="card-title">Randomize Teams and Player Order</title>  -->
           <div class="h5">Start a Draft</div>
           <div>
             This tool will allow you to add your own list of draftable items, and start a draft.
             It is advised that you determine teams and player order before starting a draft.
+          </div>
+        </div>
+      </div>
+
+      <div class="card tool-card m-3"
+        style="background-color: rgb(105, 69, 116)"
+        (click)="router.navigate(['tools/point-tracker'])">
+        <div class="card-body text-center">
+          <i class="tool-card--icon bi bi-plus-slash-minus"
+            data-bs-toggle="collapse" data-bs-target="#randomTeams" aria-expanded="false" aria-controls="randomTeams">
+          </i>
+          <div class="h5">Player Point Tracker</div>
+          <div>
+            Keep track of player or team points using this tool.
           </div>
         </div>
       </div>

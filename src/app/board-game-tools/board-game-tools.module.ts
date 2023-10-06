@@ -12,6 +12,7 @@ import { ToastComponent } from '../shared/components/toast/toast.component';
 import { DraftPickComponent } from './draft/draft-pick/draft-pick.component';
 import { DraftResultsComponent } from './draft/draft-results/draft-results.component';
 import { DraftItemsComponent } from './draft/draft-items/draft-items.component';
+import { PointTrackerComponent } from './point-tracker/point-tracker.component';
 
 
 
@@ -25,6 +26,7 @@ import { DraftItemsComponent } from './draft/draft-items/draft-items.component';
     DraftPickComponent,
     DraftResultsComponent,
     DraftItemsComponent,
+    PointTrackerComponent,
   ],
   imports: [
     CommonModule,

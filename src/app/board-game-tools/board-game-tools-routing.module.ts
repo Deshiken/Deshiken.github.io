@@ -7,6 +7,7 @@ import { DraftItemsComponent } from './draft/draft-items/draft-items.component';
 import { DraftPickComponent } from './draft/draft-pick/draft-pick.component';
 import { DraftResultsComponent } from './draft/draft-results/draft-results.component';
 import { DraftStartComponent } from './draft/draft-start/draft-start.component';
+import { PointTrackerComponent } from './point-tracker/point-tracker.component';
 import { RandomizeTeamsResultsComponent } from './randomize-teams/randomize-teams-results/randomize-teams-results.component';
 import { RandomizeTeamsStartComponent } from './randomize-teams/randomize-teams-start/randomize-teams-start.component';
 
@@ -46,6 +47,10 @@ const routes: Routes = [
   {
     path: 'draft-items',
     component: DraftItemsComponent
+  },
+  {
+    path: 'point-tracker',
+    component: PointTrackerComponent
   },
 
 ];

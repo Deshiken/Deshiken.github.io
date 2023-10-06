@@ -1,0 +1,18 @@
+.player-card {
+  max-width: 400px;
+  min-height: 120px;
+  color: white;
+  border-radius: 8px;
+  background-color: rgb(69, 114, 116);
+  &--icon {
+    font-size: 3.4rem;
+  }
+}
+
+.point-adjust {
+  border-radius: 8px;
+  color: white;
+  background-color: rgb(92, 127, 129);
+  height: 48%;
+  width: 85px;
+}
