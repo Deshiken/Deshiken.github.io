@@ -19,7 +19,6 @@ export class PlayerIconComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }
 
 export enum IconSize {
@@ -27,4 +26,16 @@ export enum IconSize {
   Small    = 'small',
   Medium   = 'medium',
   Large    = 'large',
+}
+
+export enum PlayerIcons {
+  Tree = "bi-tree-fill",
+  Fire = "bi-fire",
+  Shield = "bi-shield-fill",
+  Hammer = "bi-hammer",
+  Bug = "bi-bug",
+  Dice = "bi-dice-4-fill",
+  Moon = "bi-moon-stars-fill",
+  Cloud = "bi-cloud-lightning-rain-fill",
+  Droplet = "bi-droplet-fill"
 }

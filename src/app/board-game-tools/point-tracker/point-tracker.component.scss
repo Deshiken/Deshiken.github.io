@@ -1,18 +1,51 @@
 .player-card {
   max-width: 400px;
-  min-height: 120px;
+  min-height: 140px;
   color: white;
   border-radius: 8px;
-  background-color: rgb(69, 114, 116);
+  // background-color: rgb(69, 114, 116);
   &--icon {
     font-size: 3.4rem;
   }
 }
 
 .point-adjust {
-  border-radius: 8px;
+  // opacity: 60%;
+  // background-color: rgb(144, 176, 179);
+  border-style: solid;
+  border-width: 1px;
+  border-color: white;
+  // position: relative;
+  cursor: pointer;
+  // border-radius: 8px;
   color: white;
-  background-color: rgb(92, 127, 129);
   height: 48%;
   width: 85px;
+  &-top-left {
+    border-radius: 0px 0px 6px 0px;
+    border-top: none;
+    border-left: none;
+  }
+  &-top-right {
+    border-radius: 0px 0px 0px 6px;
+    border-top: none;
+    border-right: none;
+  }
+  &-bottom-left {
+    border-radius: 0px 6px 0px 0px;
+    border-bottom: none;
+    border-left: none;
+  }
+  &-bottom-right {
+    border-radius: 6px 0px 0px 0px;
+    border-bottom: none;
+    border-right: none;
+  }
+}
+
+.icon-selected {
+  border: #42c3c3;
+  border-style: solid;
+  border-bottom-width: 2px;
+  border-radius: 14px;
 }
