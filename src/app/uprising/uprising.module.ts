@@ -15,6 +15,8 @@ import { UprisingFactionsComponent } from './uprising-factions/uprising-factions
 import { MapBuilderOptionsComponent } from './map-builder-options/map-builder-options.component';
 import { ToastComponent } from '../shared/components/toast/toast.component';
 import { SpellCardsComponent } from './spell-cards/spell-cards.component';
+import { PrintableSpellCardComponent } from './spell-cards/printable-spell-card/printable-spell-card.component';
+import { SpellCardPrintSheetComponent } from './spell-cards/spell-card-print-sheet/spell-card-print-sheet.component';
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import { SpellCardsComponent } from './spell-cards/spell-cards.component';
     MapBuilderComponent,
     UprisingFactionsComponent,
     MapBuilderOptionsComponent,
-    SpellCardsComponent
+    SpellCardsComponent,
+    PrintableSpellCardComponent,
+    SpellCardPrintSheetComponent
   ],
   imports: [
     CommonModule,
