@@ -3,7 +3,16 @@
   border-color: black;
   border-radius: 10px;
   border-width: 8px;
-  height: 350px;
-  width: 250px;
-  
+  //Maintain a 1.4 ratio between height and width
+  height: 364px;
+  width: 260px;
+}
+
+@font-face {
+  font-family: segoe;
+  src: url(../../../../assets/font/Segoe-Print-Font.ttf);
+}
+
+.segoe {
+  font-family: segoe;
 }

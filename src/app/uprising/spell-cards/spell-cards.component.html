@@ -1,27 +1,49 @@
 <div class="container">
+
   <app-heading-with-back [title]="'Spell Cards'"></app-heading-with-back>
 
-  <div class="mb-3"><a routerLink="../spell-cards-print-sheet">Spell Card Print Sheet</a></div>
-  
-  <label for="spellCardSort">Spell Card Sort</label>
-  <select (change)="sortOptionChange($event)" class="form-select mb-3" style="max-width: 300px;"
-    id="spellCardSort" aria-label="How would you like to sort the spell card lis?">
-    <option *ngFor="let option of SpellCardSortOptions | keyvalue" [ngValue]="option.value">{{option.value}}</option>
-  </select>
+  <div>
+    <label for="spellCardSort">Spell Card Sort</label>
+    <select (change)="sortOptionChange($event)" 
+      class="form-select mb-3" 
+      style="max-width: 300px;"
+      id="spellCardSort" aria-label="How would you like to sort the spell card lis?">
+      <option 
+        *ngFor="let option of SpellCardSortOptions | keyvalue" 
+        [ngValue]="option.value">{{option.value}}
+      </option>
+    </select>
+  </div>
+
+  <button *ngIf="spellCardService.spellCardsToPrint.size > 0" 
+    class="btn btn-primary sticky-top fade-in mb-2" 
+    style="top: 5px"
+    (click)="router.navigate(['uprising/spell-cards-print-sheet'])"
+  >
+    Print Spell Cards {{spellCardService.spellCardsToPrint.size}}
+  </button>
 
 
   <div class="row ms-0">
-    <div *ngFor="let card of SpellCards; index as i" class="card mb-2 me-2" style="max-width: 20rem;">
+    <div *ngFor="let card of SpellCards; index as i" 
+      [ngClass]="{'selected' : spellCardService.spellCardsToPrint.has(card.name)}"
+      class="card mb-2 me-2" 
+      style="max-width: 20rem;">
       <div class="card-body">
         <div class="d-flex justify-content-between">
           <i *ngIf="card.prepared" class="bi bi-lightning-fill"></i>
           <p class="card-title fs-6 fw-bold">{{card.name}}</p> 
           <div>
-            <i *ngFor="let item of [].constructor(card.spellCost)" class="bi bi-gem"></i>
+            <i *ngFor="let item of [].constructor(card.spellCost)" class="bi bi-gem ms-1"></i>
           </div>
         </div>
         <div class="card-text" [innerHTML]="card.htmlDescription"></div>
-        <div>{{i}}</div>
+      </div>
+      <div class="card-footer row">
+        <i class="bi bi-printer ms-1" (click)="addCardToPintList(card)"></i>
+        <span *ngIf="spellCardService.spellCardsToPrint.has(card.name)">
+          *Added to print list
+        </span>
       </div>
     </div>
   </div>

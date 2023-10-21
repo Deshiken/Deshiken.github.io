@@ -1,8 +1,5 @@
-<div class="d-flex">
-  <app-printable-spell-card [spellCard]="spellCards[0]"></app-printable-spell-card>
-  <app-printable-spell-card [spellCard]="spellCards[34]"></app-printable-spell-card>
-  <app-printable-spell-card [spellCard]="spellCards[56]"></app-printable-spell-card>
-  <app-printable-spell-card [spellCard]="spellCards[52]"></app-printable-spell-card>
-  <app-printable-spell-card [spellCard]="spellCards[9]"></app-printable-spell-card>
-  <app-printable-spell-card [spellCard]="spellCards[76]"></app-printable-spell-card>
+<div class="d-flex flex-wrap" style="width: 1100px;">
+  <ng-container *ngFor="let spellCard of spellCardService.spellCardsToPrint | keyvalue">
+    <app-printable-spell-card [spellCard]="spellCard.value"></app-printable-spell-card>
+  </ng-container>
 </div>

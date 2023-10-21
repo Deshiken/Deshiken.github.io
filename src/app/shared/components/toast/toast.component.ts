@@ -12,6 +12,7 @@ import { ToastService } from '../../services/toast.service';
 export class ToastComponent implements OnInit {
 
   @Input() message: string = 'Your item has been saved';
+  @Input() marginTop: number = 0;
   @ViewChild('savedOptionsToast') savedOptionsToast!: ElementRef;
   
   constructor(
@@ -19,6 +20,7 @@ export class ToastComponent implements OnInit {
   ) { }
 
   ngOnInit(): void { 
+    console.log('marginTop: ', this.marginTop)
     this.toastService.toastSubject.subscribe(() => {
       console.log('subscription notified')
       this.showToast();

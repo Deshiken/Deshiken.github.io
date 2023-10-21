@@ -299,8 +299,7 @@ export const SpellCards: Array<SpellCard> = [
   { 
     name: 'Lightning Reflexes',
     spellCost: 1,
-    description: "Play at the start of a battle. You gain one 'hit' to your defense or attack dice.",
-    htmlDescription: `<p>Play at the start of a battle. You gain one 'hit' to your defense or attack dice.</p>`,
+    htmlDescription: `<p>Cast at the start of a battle. You gain one 'hit' to your defense or attack dice.</p>`,
     effectTokens: null,
     regions: null,
     prepared: true,
@@ -339,7 +338,7 @@ export const SpellCards: Array<SpellCard> = [
   { 
     name: 'Blood Lust',
     spellCost: 3,
-    htmlDescription: `<p>Play at the start of a battle. Double the amount of hits from attack rolls.</p>`,
+    htmlDescription: `<p>Cast at the start of a battle. Double the amount of hits from attack rolls.</p>`,
     effectTokens: null,
     regions: null,
     prepared: true,
@@ -348,7 +347,7 @@ export const SpellCards: Array<SpellCard> = [
   { 
     name: 'Shield Wall',
     spellCost: 1,
-    htmlDescription: `<p>Play at the start of a battle. Double the amount of hits from defense rolls.</p>`,
+    htmlDescription: `<p>Cast at the start of a battle. Double the amount of hits from defense rolls.</p>`,
     effectTokens: null,
     regions: null,
     prepared: true,
@@ -546,7 +545,7 @@ export const SpellCards: Array<SpellCard> = [
   { 
     name: 'Strength in Numbers',
     spellCost: 2,
-    htmlDescription: `<p>Play at the start of a battle. You may move up to three units in adjacent armies into the region combat is taking place.</p>`,
+    htmlDescription: `<p>Cast at the start of a battle. You may move up to three units in adjacent armies into the region combat is taking place.</p>`,
     effectTokens: null,
     regions: null,
     prepared: true,
@@ -663,7 +662,7 @@ export const SpellCards: Array<SpellCard> = [
   { 
     name: "Treachery",
     spellCost: 2,
-    htmlDescription: `<p>Play at the start of a battle. Gain control of target enemy unit in this combat. May not target hero or heavy units.</p>`,
+    htmlDescription: `<p>Cast at the start of a battle. Gain control of target enemy unit in this combat. May not target hero or heavy units.</p>`,
     effectTokens: null,
     regions: null,
     prepared: true,

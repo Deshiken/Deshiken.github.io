@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SpellCard, SpellCards } from './spell-card-data';
+import { SpellCardService } from './spell-cards.service';
 
 @Component({
   selector: 'app-spell-cards',
@@ -23,6 +25,11 @@ export class SpellCardsComponent implements OnInit {
   ngOnInit() {
     this.calculateSpellStats();
   }
+
+  constructor( 
+    public spellCardService: SpellCardService,
+    public router: Router
+  ) { }
 
   private calculateSpellStats() {
     let spellCardCostTotal = 0
@@ -57,10 +64,6 @@ export class SpellCardsComponent implements OnInit {
   public sortOptionChange(event: Event) {
     let target = event.target as HTMLInputElement;
     let value = target.value;
-    console.log("Event.target: ", target)
-    // if (event.target) {
-    console.log("Event.target.value: ", target.value)
-    // }
 
     switch(value) {
       case SpellCardSortOptions.Alphabetical:
@@ -80,10 +83,16 @@ export class SpellCardsComponent implements OnInit {
         console.log('Sort cost lowest');
         break;
     }
-
-    // this.SpellCards.sort((a,b) => a.name.localeCompare(b.name));
-
   }
+
+  addCardToPintList(spellCard: SpellCard) {
+    if (this.spellCardService.spellCardsToPrint.has(spellCard.name)) {
+      this.spellCardService.spellCardsToPrint.delete(spellCard.name)
+    } else {
+      this.spellCardService.spellCardsToPrint.set(spellCard.name, spellCard);
+    }
+  }
+
 }
 
 enum SpellCardSortOptions {

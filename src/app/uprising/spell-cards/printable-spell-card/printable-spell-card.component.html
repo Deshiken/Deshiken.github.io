@@ -2,17 +2,18 @@
   <div class="card-body">
     
     <!-- Top Row -->
-    <!-- <div class="d-flex flex-row align-items-center mb-1"> -->
-    <div class="mb-1 d-flex">
-      <i *ngIf="spellCard.prepared" class="bi bi-lightning-fill"></i>
+    <div class="d-flex justify-content-between fs-4">
+      <div>
+        <i *ngIf="spellCard.prepared" class="bi bi-lightning-fill"></i>
+      </div>
       <div class="align-self-end">
         <i *ngFor="let item of [].constructor(spellCard.spellCost)" class="bi bi-gem ms-1"></i>
       </div>
     </div>
 
-    <p class="card-title fs-5 fw-bold text-center mb-1">{{spellCard.name}}</p> 
+    <p class="card-title fs-5 fw-bold text-center mb-4 segoe">{{spellCard.name}}</p> 
 
-    <div class="card-text" [innerHTML]="spellCard.htmlDescription"></div>
+    <div class="card-text segoe" [innerHTML]="spellCard.htmlDescription"></div>
 
   </div>
 </div>

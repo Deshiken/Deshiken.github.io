@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SpellCards } from '../spell-card-data';
+import { SpellCardService } from '../spell-cards.service';
 
 @Component({
   selector: 'app-spell-card-print-sheet',
@@ -8,4 +9,8 @@ import { SpellCards } from '../spell-card-data';
 })
 export class SpellCardPrintSheetComponent {
   spellCards = SpellCards;
+
+  constructor(
+    public spellCardService: SpellCardService
+  ) {}
 }
