@@ -404,7 +404,7 @@ export const SpellCards: Array<SpellCard> = [
     htmlDescription: `<p>Exchange the location of any two enemy armies. This may not target armies in or adjacent to cities and capitols.</p>`,
     effectTokens: null,
     regions: null,
-    prepared: true,
+    prepared: false,
     destructive: false
   },
   { 
@@ -590,7 +590,7 @@ export const SpellCards: Array<SpellCard> = [
   { 
     name: 'New Recruits',
     spellCost: 2,
-    htmlDescription: `<p>Select a basic unit type. Units of this type lose all bonus to attack and damage and lose any additional bonus given to them from a faction's player board.</p>`,
+    htmlDescription: `<p>Select a basic unit type. Units of this type lose all bonuses to attack and damage and lose any additional bonus given to them from a faction's player board.</p>`,
     effectTokens: null,
     regions: null,
     prepared: false,
