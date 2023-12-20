@@ -9,8 +9,8 @@ import { SpellCardService } from './spell-cards.service';
   styleUrls: ['./spell-cards.component.scss']
 })
 export class SpellCardsComponent implements OnInit {
-  SpellCards: Array<SpellCard> = [...SpellCards];  //Make SpellCards available to the html 
-  SpellCardSortOptions = SpellCardSortOptions;  //Make SortOptions enum available to the html 
+  SpellCards: Array<SpellCard> = [...SpellCards];  //Make SpellCards available to the html
+  SpellCardSortOptions = SpellCardSortOptions;  //Make SortOptions enum available to the html
 
   spellCost1Total = 0;
   spellCost2Total = 0;
@@ -26,7 +26,7 @@ export class SpellCardsComponent implements OnInit {
     this.calculateSpellStats();
   }
 
-  constructor( 
+  constructor(
     public spellCardService: SpellCardService,
     public router: Router
   ) { }
@@ -35,7 +35,7 @@ export class SpellCardsComponent implements OnInit {
     let spellCardCostTotal = 0
     SpellCards.forEach(spellCard => {
       spellCardCostTotal += spellCard.spellCost;
-      
+
       switch (spellCard.spellCost) {
         case 1:
           this.spellCost1Total ++;
@@ -52,7 +52,7 @@ export class SpellCardsComponent implements OnInit {
         case 5:
           this.spellCost5Total ++;
       }
-      
+
       if (spellCard.prepared) {
         this.numberOfPreparedSpells ++;
       }
@@ -67,20 +67,21 @@ export class SpellCardsComponent implements OnInit {
 
     switch(value) {
       case SpellCardSortOptions.Alphabetical:
-        console.log('Sort Alphabetical');
         this.SpellCards.sort((a,b) => a.name.localeCompare(b.name));
         break;
       case SpellCardSortOptions.PreparedSpells:
-        console.log('Sort Prepared');
-        this.SpellCards.sort((a,b) => a.prepared ? -1 : 1)
+        this.SpellCards.sort((a,b) =>
+          Number(b.prepared) - Number(a.prepared) // First level sort prepared spells
+          || b.spellCost - a.spellCost // Second level sort spell cost
+          || a.name.localeCompare(b.name)); // Third level sort alphabetical
         break;
       case SpellCardSortOptions.SpellCostHighest:
-        this.SpellCards.sort((a,b) => a.spellCost - b.spellCost).reverse();
-        console.log('Sort cost highest');
+        // Sorted by spell cost fist and alphabetical second
+        this.SpellCards.sort((a,b) => b.spellCost - a.spellCost || a.name.localeCompare(b.name));
         break;
       case SpellCardSortOptions.SpellCostLowest:
-        this.SpellCards.sort((a,b) => a.spellCost - b.spellCost);
-        console.log('Sort cost lowest');
+        // Sorted by spell cost fist and alphabetical second
+        this.SpellCards.sort((a,b) => a.spellCost - b.spellCost || a.name.localeCompare(b.name));
         break;
     }
   }
