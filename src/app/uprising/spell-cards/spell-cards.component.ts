@@ -24,6 +24,9 @@ export class SpellCardsComponent implements OnInit {
 
   ngOnInit() {
     this.calculateSpellStats();
+
+    // Default sort to alphabetical
+    this.sortSpellCardList(SpellCardSortOptions.Alphabetical);
   }
 
   constructor(
@@ -61,11 +64,14 @@ export class SpellCardsComponent implements OnInit {
     this.spellCostAverage = spellCardCostTotal/SpellCards.length;
   }
 
-  public sortOptionChange(event: Event) {
+  public sortOptionChangeEvent(event: Event) {
     let target = event.target as HTMLInputElement;
     let value = target.value;
+    this.sortSpellCardList(value);
+  }
 
-    switch(value) {
+  sortSpellCardList(sortOption: string) {
+    switch(sortOption) {
       case SpellCardSortOptions.Alphabetical:
         this.SpellCards.sort((a,b) => a.name.localeCompare(b.name));
         break;

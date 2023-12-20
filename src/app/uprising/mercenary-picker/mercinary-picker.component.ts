@@ -16,15 +16,19 @@ import { RandomService } from 'src/app/shared/services/random.service';
 export class MercenaryPickerComponent implements OnInit {
 
   numberOfPlayers: number = 4;
-  
+
   useMercPack1: boolean = true;
   useMercPack2: boolean = false;
+  useMercPack3: boolean = false;
 
-  packOneMercenaries: Array<string> = ['Druid','Barbarian','Burrowing Wurm','Thief','Guardian',
-    'Cannon Tower','Balista','Harpy','Archmage','Merfolk','Air Ship', 'Necromancer', 'Wind Elemental'];
-  packTwoMercenaries: Array<string> = ['tes1', 'tes2', 'tes3', 'tes4', 'tes5', 'tes6'];
+  packOneMercenaries: Array<string> = ['Barbarian', 'Archmage', 'Werewolf', 'Burrowing Wurm', 'Cannon Tower', 'Guardian',
+    'Harpy', 'Merfolk', 'Necromancer', 'Thief', 'Wind Elemental'];
+  packTwoMercenaries: Array<string> = ['Cannoneer', 'Assassin', 'Centaur', 'Priest', 'Faerie', 'Kraken', 'Micon Warrior',
+    'Minotaur', 'Hill Troll', 'Witch'];
+  packThreeMercenaries: Array<string> = ['Air Ship', 'Acidic Slime', 'Balista', 'Bannerman', 'Beast Hunter', 'Cockatrice',
+    'Druid', 'Goblin Demolition Team', 'Ranger', 'Treant'];
   generatedMercenaries: Array<string> = new Array<string>();
-  
+
   constructor(private randomService: RandomService) { }
 
   ngOnInit(): void {
@@ -36,7 +40,7 @@ export class MercenaryPickerComponent implements OnInit {
 
     // Build the list of mercenaries to randomly pick from;
     let availableMercenaries = this.buildAvailableMercenaries();
-    
+
     //Create an objservable that emits initially and every 300ms. Take the number of emits equal to the number of players.
     const pickNumber = timer(0,300)
       .pipe(
@@ -59,6 +63,9 @@ export class MercenaryPickerComponent implements OnInit {
     }
     if (this.useMercPack2) {
       availableMercs = availableMercs.concat(...this.packTwoMercenaries);
+    }
+    if (this.useMercPack3) {
+      availableMercs = availableMercs.concat(...this.packThreeMercenaries);
     }
     return availableMercs;
   }

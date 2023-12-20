@@ -4,19 +4,19 @@
 
   <div>
     <label for="spellCardSort">Spell Card Sort</label>
-    <select (change)="sortOptionChange($event)" 
-      class="form-select mb-3" 
+    <select (change)="sortOptionChangeEvent($event)"
+      class="form-select mb-3"
       style="max-width: 300px;"
       id="spellCardSort" aria-label="How would you like to sort the spell card lis?">
-      <option 
-        *ngFor="let option of SpellCardSortOptions | keyvalue" 
+      <option
+        *ngFor="let option of SpellCardSortOptions | keyvalue"
         [ngValue]="option.value">{{option.value}}
       </option>
     </select>
   </div>
 
-  <button *ngIf="spellCardService.spellCardsToPrint.size > 0" 
-    class="btn btn-primary sticky-top fade-in mb-2" 
+  <button *ngIf="spellCardService.spellCardsToPrint.size > 0"
+    class="btn btn-primary sticky-top fade-in mb-2"
     style="top: 5px"
     (click)="router.navigate(['uprising/spell-cards-print-sheet'])"
   >
@@ -25,14 +25,14 @@
 
 
   <div class="row ms-0">
-    <div *ngFor="let card of SpellCards; index as i" 
+    <div *ngFor="let card of SpellCards; index as i"
       [ngClass]="{'selected' : spellCardService.spellCardsToPrint.has(card.name)}"
-      class="card mb-2 me-2" 
+      class="card mb-2 me-2"
       style="max-width: 20rem;">
       <div class="card-body">
         <div class="d-flex justify-content-between">
           <i *ngIf="card.prepared" class="bi bi-lightning-fill"></i>
-          <p class="card-title fs-6 fw-bold">{{card.name}}</p> 
+          <p class="card-title fs-6 fw-bold">{{card.name}}</p>
           <div>
             <i *ngFor="let item of [].constructor(card.spellCost)" class="bi bi-gem ms-1"></i>
           </div>

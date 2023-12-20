@@ -1,0 +1,11 @@
+.comma-list:last-child {
+  &::before {
+    content: " and ";
+  }
+}
+
+.comma-list:nth-of-type(n + 2):not(:last-child) {
+  &::before {
+    content: ", "
+  }
+}
