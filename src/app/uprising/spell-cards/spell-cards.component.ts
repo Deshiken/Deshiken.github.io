@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { SpellCard, SpellCards } from './spell-card-data';
+import { Region, SpellCard, SpellCards } from './spell-card-data';
 import { SpellCardService } from './spell-cards.service';
 
 @Component({
@@ -17,8 +17,14 @@ export class SpellCardsComponent implements OnInit {
   spellCost3Total = 0;
   spellCost4Total = 0;
   spellCost5Total = 0;
+  spellRegionPlainsTotal = 0;
+  spellRegionForestTotal = 0;
+  spellRegionHillsTotal = 0;
+  spellRegionBadlandsTotal = 0;
+  spellRegionMarshTotal = 0;
   spellCostAverage = 0;
   numberOfPreparedSpells = 0;
+  numberOfTokenSpells = 0;
 
   spellCardSort = SpellCardSortOptions.Alphabetical
 
@@ -35,7 +41,7 @@ export class SpellCardsComponent implements OnInit {
   ) { }
 
   private calculateSpellStats() {
-    let spellCardCostTotal = 0
+    let spellCardCostTotal = 0;
     SpellCards.forEach(spellCard => {
       spellCardCostTotal += spellCard.spellCost;
 
@@ -54,11 +60,37 @@ export class SpellCardsComponent implements OnInit {
           break;
         case 5:
           this.spellCost5Total ++;
+      };
+
+      if (spellCard.regions) {
+        spellCard.regions.forEach((region) => {
+          switch (region) {
+            case Region.Forest:
+              this.spellRegionForestTotal ++;
+              break;
+            case Region.Badlands:
+              this.spellRegionBadlandsTotal ++;
+              break;
+            case Region.Plains:
+              this.spellRegionPlainsTotal ++;
+              break;
+            case Region.Marsh:
+              this.spellRegionMarshTotal ++;
+              break;
+            case Region.Hills:
+              this.spellRegionHillsTotal ++;
+              break;
+          }
+        })
       }
 
       if (spellCard.prepared) {
         this.numberOfPreparedSpells ++;
-      }
+      };
+
+      if (spellCard.effectTokens && spellCard.effectTokens?.length > 0) {
+        this.numberOfTokenSpells ++;
+      };
 
     })
     this.spellCostAverage = spellCardCostTotal/SpellCards.length;

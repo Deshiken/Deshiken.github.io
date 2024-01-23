@@ -1,7 +1,6 @@
 .spell-card {
   border-style: solid;
   border-color: black;
-  border-radius: 10px;
   border-width: 9px;
   //Maintain a 1.4 ratio between height and width
   height: 362px;
@@ -15,4 +14,8 @@
 
 .segoe {
   font-family: segoe;
+}
+
+.small-text {
+  font-size: small;
 }

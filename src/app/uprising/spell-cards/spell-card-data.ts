@@ -49,11 +49,12 @@ enum IconHtml {
 export const SpellCards: Array<SpellCard> = [
   { 
     name: 'Entangle',
-    spellCost: 2,
+    spellCost: 1,
     description: 'Select two regions an place a entangle token on each',
-    htmlDescription: `<p>Select two regions and place an ${IconHtml.Entangle} token on each.</p>`,
-    effectTokens: [EffectTokenType.Entangle],
-    regions: null,
+    htmlDescription: `<p>Select two regions and place an ${IconHtml.Entangle} token on each. You may add a -${IconHtml.SlowHaste} token to a unit in one
+      of the selected regions if it is a Forest or Hills region.</p>`,
+    effectTokens: [EffectTokenType.Entangle, EffectTokenType.Slow],
+    regions: [Region.Forest],
     prepared: false,
     destructive: false 
   },
@@ -150,7 +151,7 @@ export const SpellCards: Array<SpellCard> = [
     name: 'Read Mind',
     spellCost: 1,
     description: "Look at each player's prepared spells. You may spend another mana to force a player to discard a prepared spell that costs 2 or less mana. You may add a mind contol token to an empty space on a player's action track.",
-    htmlDescription: `<p>Look at each player's prepared spells. You may spend another mana to force a player to discard a prepared spell that costs 2 or less mana. You may add ${IconHtml.Mind} to an empty space on a player's action track.</p>`,
+    htmlDescription: `<p>Look at each player's prepared spells. You may spend another mana to force a player to discard a prepared spell that costs 2 or less mana. You may add ${IconHtml.Mind} to an enemy unit.</p>`,
     effectTokens: [EffectTokenType.Confusion],
     regions: null,
     prepared: false,
@@ -280,7 +281,7 @@ export const SpellCards: Array<SpellCard> = [
     name: 'Bless',
     spellCost: 2,
     description: "Add up to three haste tokens on up to three different warrior units. You may remove up to two player and/or effect tokens from any regions, units, and buildings.",
-    htmlDescription: `<p>Add up to three +${IconHtml.SlowHaste} on up to three different warrior units. You may remove up to two player and/or effect tokens from any regions, units, and buildings..</p>`,
+    htmlDescription: `<p>Add a +${IconHtml.SlowHaste} token on up to three different warrior units. You may remove up to two player and/or effect tokens from any regions, units, and buildings.</p>`,
     effectTokens: [EffectTokenType.Haste],
     regions: null,
     prepared: false,
@@ -289,7 +290,6 @@ export const SpellCards: Array<SpellCard> = [
   { 
     name: 'Sneak Attack',
     spellCost: 3,
-    description: "Perform an attack action. The opponents army does not get to roll defense dice.",
     htmlDescription: `<p>Perform an attack action. The opponents army does not get to roll defense dice.</p>`,
     effectTokens: null,
     regions: null,
@@ -545,7 +545,7 @@ export const SpellCards: Array<SpellCard> = [
   { 
     name: 'Strength in Numbers',
     spellCost: 2,
-    htmlDescription: `<p>Cast at the start of a battle. You may move up to three units in adjacent armies into the region combat is taking place.</p>`,
+    htmlDescription: `<p>Cast at the start of a battle. You may move up to three units in adjacent armies into the attacked region.</p>`,
     effectTokens: null,
     regions: null,
     prepared: true,
@@ -554,7 +554,7 @@ export const SpellCards: Array<SpellCard> = [
   { 
     name: 'Back to Basics',
     spellCost: 2,
-    htmlDescription: `<p>Each player replaces 3 non-warrior units they control with warrior units.</p>`,
+    htmlDescription: `<p>Each player replaces 2 non-warrior units they control with warrior units.</p>`,
     effectTokens: null,
     regions: null,
     prepared: false,
@@ -661,8 +661,8 @@ export const SpellCards: Array<SpellCard> = [
   },
   { 
     name: "Treachery",
-    spellCost: 2,
-    htmlDescription: `<p>Cast at the start of a battle. Gain control of target enemy unit in this combat. May not target hero or heavy units.</p>`,
+    spellCost: 1,
+    htmlDescription: `<p>Cast at the start of a battle. Add a ${IconHtml.Mind} token to an enemy unit in this battle.</p>`,
     effectTokens: null,
     regions: null,
     prepared: true,
@@ -671,7 +671,8 @@ export const SpellCards: Array<SpellCard> = [
   { 
     name: "Confusion",
     spellCost: 3,
-    htmlDescription: `<p>Cast after a player chooses an action to perform. That player instead perfoms no action. Add a ${IconHtml.Mind} token to an empty space on a player's action track.</p>`,
+    htmlDescription: `<p>Cast after a player chooses an action to perform. That player instead perfoms no action. Add a 
+      ${IconHtml.Mind} token to an enemy unit.</p>`,
     effectTokens: null,
     regions: null,
     prepared: true,
@@ -706,7 +707,7 @@ export const SpellCards: Array<SpellCard> = [
   },
   { 
     name: "Summoning Circle",
-    spellCost: 3,
+    spellCost: 2,
     htmlDescription: `<p>Recruit one heavy unit to a city or capitol you control.</p>`,
     effectTokens: null,
     regions: null,
@@ -734,11 +735,12 @@ export const SpellCards: Array<SpellCard> = [
   { 
     name: "Acid Rain",
     spellCost: 2,
-    htmlDescription: `<p>Destroy a farm or tower. You may add a ${IconHtml.Poison} token to a unit in the region of the destroyed building.</p>`,
+    htmlDescription: `<p>Attack a farm, tower or city with an orange die. You may add a ${IconHtml.Poison} token to a unit in the region of the attacked building if 
+      the building is on a badlands or marsh region.</p>`,
     effectTokens: [EffectTokenType.Poison],
-    regions: null,
+    regions: [Region.Marsh, Region.Badlands],
     prepared: false,
-    destructive: false
+    destructive: true
   },
   { 
     name: "Raise Dead",
@@ -862,7 +864,7 @@ export const SpellCards: Array<SpellCard> = [
     spellCost: 2,
     htmlDescription: `<p>Attack an army with yellow dice equal to the number of forest regions the army is adjacent to, including the region the army is on.</p>`,
     effectTokens: null,
-    regions: null,
+    regions: [Region.Forest],
     prepared: false,
     destructive: false
   },
@@ -879,8 +881,8 @@ export const SpellCards: Array<SpellCard> = [
     name: "Corrupt Vegitation",
     spellCost: 1,
     htmlDescription: `<p>Add a ${IconHtml.Entangle} token on up to two hills or plains regiongs. You may add a ${IconHtml.Poison} token to a unit in a region with a ${IconHtml.Entangle} token on it.</p>`,
-    effectTokens: null,
-    regions: null,
+    effectTokens: [EffectTokenType.Entangle, EffectTokenType.Poison],
+    regions: [Region.Hills, Region.Plains],
     prepared: false,
     destructive: false
   },
@@ -905,7 +907,7 @@ export const SpellCards: Array<SpellCard> = [
   { 
     name: "Empty the Reserves",
     spellCost: 1,
-    htmlDescription: `<p>You may pay any amount of mana to cast this spell. For each mana spent, add one warrior unit to a city or capitol you control. You may not exceed the unit limit of that region.</p>`,
+    htmlDescription: `<p>Perform a recruit action. You may recruit 1 additional unit to your capitol and to each city you control.</p>`,
     effectTokens: null,
     regions: null,
     prepared: false,
@@ -960,7 +962,7 @@ export const SpellCards: Array<SpellCard> = [
     name: "Endurance",
     spellCost: 1,
     htmlDescription: `<p>Choose two warrior units. Place a +${IconHtml.SlowHaste} token on each chosen unit.</p>`,
-    effectTokens: null,
+    effectTokens: [EffectTokenType.Haste],
     regions: null,
     prepared: false,
     destructive: false
@@ -977,11 +979,136 @@ export const SpellCards: Array<SpellCard> = [
   { 
     name: "Sandstorm",
     spellCost: 3,
-    htmlDescription: `<p>Each player rolls an orange die for each badlands region they have units or buildings in. If a hit is rolled, that player destroys 1 unit or building in that region.</p>`,
+    htmlDescription: `<p>Enemy players roll an orange die for each badlands region they have units or buildings in. If a hit is rolled, 
+      that player destroys 1 unit or building in that region.</p>`,
+    effectTokens: null,
+    regions: [Region.Badlands],
+    prepared: false,
+    destructive: true
+  },
+  { 
+    name: "Unravel Mind",
+    spellCost: 3,
+    htmlDescription: `<p>Cast at the start of a battle. Add a ${IconHtml.Mind} token on up to two different enemy units in this battle.</p>`,
+    effectTokens: [EffectTokenType.Confusion],
+    regions: null,
+    prepared: true,
+    destructive: false
+  },
+  { 
+    name: "Early Spring",
+    spellCost: 1,
+    htmlDescription: `<p>Choose a region adjacent to an army you control. You may build an farm there after paying the cost of the farm. 
+      Add a +${IconHtml.Bountiful} token to a building.</p>`,
+    effectTokens: [EffectTokenType.Bountiful],
+    regions: null,
+    prepared: false,
+    destructive: false
+  },
+  { 
+    name: "Arcane Overload",
+    spellCost: 1,
+    htmlDescription: `<p>Perform two free cast actions.</p>`,
     effectTokens: null,
     regions: null,
     prepared: false,
     destructive: false
   },
+  {
+    name: "Chain Lightning",
+    spellCost: 3,
+    htmlDescription: `<p>Attack an army with 3 green dice. Attack another army with two green dice. Attack another army with one green die.</p>`,
+    effectTokens: null,
+    regions: null,
+    prepared: false,
+    destructive: true,
+  },
+  {
+    name: "Command Stone",
+    spellCost: 3,
+    htmlDescription: `<p>Perform a build action. The building created through this build action may be added to any region on the map.</p>`,
+    effectTokens: null,
+    regions: null,
+    prepared: false,
+    destructive: false,
+  },
+  {
+    name: "Gravity Distortion",
+    spellCost: 1,
+    htmlDescription: `<p>Choose a region. You may move units (friendly and/or enemy) from adjacent regions into this region. You may not exceed the 
+      maximum allowd unit limit.</p>`,
+    effectTokens: null,
+    regions: null,
+    prepared: false,
+    destructive: false,
+  },
+  {
+    name: "Mental Assault",
+    spellCost: 1,
+    htmlDescription: `<p>Add a ${IconHtml.Mind} token to an enemy building that is not a capitol. Perform a harvest or recruit action.</p>`,
+    effectTokens: [EffectTokenType.Confusion],
+    regions: null,
+    prepared: false,
+    destructive: false,
+  },
+  {
+    name: "Dimensional Door",
+    spellCost: 1,
+    htmlDescription: `<p>Perform a move action. For this move action you may treat all portals as if they are the same color.</p>`,
+    effectTokens: null,
+    regions: null,
+    prepared: false,
+    destructive: false,
+  },
+  {
+    name: "Elemental Mastery",
+    spellCost: 3,
+    htmlDescription: `<p>You may add the following tokens to any unit, building, or regions that the token can normally be applied to. No unit or building may 
+      have more than one token placed on it durring this spell.
+      +${IconHtml.SlowHaste}, -${IconHtml.SlowHaste}, +${IconHtml.StrengthenWeaken}, -${IconHtml.StrengthenWeaken}, ${IconHtml.Poison}, ${IconHtml.Entangle}</p>`,
+    effectTokens: [EffectTokenType.Slow, EffectTokenType.Haste, EffectTokenType.Strengthen, EffectTokenType.Weaken, EffectTokenType.Poison, EffectTokenType.Entangle],
+    regions: null,
+    prepared: false,
+    destructive: false,
+  },
+  {
+    name: "Poisoned Soil",
+    spellCost: 3,
+    htmlDescription: `<p>Cast when an opponent performs a harvest action. You may add a ${IconHtml.Poison} token to a unit for each farm that player controls.</p>`,
+    effectTokens: [EffectTokenType.Poison],
+    regions: null,
+    prepared: true,
+    destructive: false,
+  },
+  {
+    name: "Blight",
+    spellCost: 2,
+    htmlDescription: `<p>Choose a region type (Mountains, Plains, Marsh, etc). For each region of the chosen type, you may add a -${IconHtml.StrengthenWeaken} token to 
+      one enemy unit in that region or attack an enemy army with a yellow die in that region.</p>`,
+    effectTokens: [EffectTokenType.Weaken],
+    regions: null,
+    prepared: false,
+    destructive: false,
+  },
+  {
+    name: "Gaia's Blessing",
+    spellCost: 3,
+    htmlDescription: `<p>Choose a region type (Mountains, Plains, Marsh, etc). For each region of the chosen type, you may add a +${IconHtml.StrengthenWeaken} to 
+      one unit you control in that region. You may add up to four +${IconHtml.StrengthenWeaken} tokens when casting this spell.</p>`,
+    effectTokens: [EffectTokenType.Strengthen],
+    regions: null,
+    prepared: false,
+    destructive: false,
+  },
+  {
+    name: "Well of Knowledge",
+    spellCost: 4,
+    htmlDescription: `<p>You may cast or prepare any spell card from the discard pile without paying it's mana cost.</p>`,
+    effectTokens: null,
+    regions: null,
+    prepared: false,
+    destructive: false,
+  },
+
 
 ]

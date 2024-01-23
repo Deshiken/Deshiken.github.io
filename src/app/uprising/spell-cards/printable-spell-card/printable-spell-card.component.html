@@ -11,9 +11,13 @@
       </div>
     </div>
 
-    <p class="card-title fs-5 fw-bold text-center mb-4 segoe">{{spellCard.name}}</p> 
+    <p class="card-title fs-5 fw-bold text-center mb-3 segoe">{{spellCard.name}}</p> 
 
-    <div class="card-text segoe" [innerHTML]="spellCard.htmlDescription"></div>
+    <div class="card-text segoe" 
+      #cardText
+      [innerHTML]="spellCard.htmlDescription">
+  </div>
+  <!-- [ngClass]="{'small-text': this.useSmallText}" -->
 
   </div>
 </div>
