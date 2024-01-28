@@ -60,7 +60,7 @@ export class SpellCardsComponent implements OnInit {
           break;
         case 5:
           this.spellCost5Total ++;
-      };
+      }
 
       if (spellCard.regions) {
         spellCard.regions.forEach((region) => {
