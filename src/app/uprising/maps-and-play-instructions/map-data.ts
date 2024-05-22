@@ -20,6 +20,7 @@ export enum UprisingMapObjective {
 export enum UprisingMapName {
   // 4 Player Maps
   FourPlayerStandard = 'Four Player Standard',
+  FourPlayerStandardV2 = 'Four Player Standard Version 2',
   Friends ='Friends',
   FourCorners ='Four Corners',
   Sanctuary ='Sanctuary',
@@ -43,6 +44,14 @@ export const UprisingMaps: Map<UprisingMapName, MapData> = new Map([
     mapName: UprisingMapName.FourPlayerStandard,
     image: '../../../assets/uprising_maps/4Player_StandardGameBoard_v4.jpg',
     description: 'The recomended map for starting players.',
+    numberOfPlayers: 4,
+    objective: UprisingMapObjective.PointControl,
+    variants: [UprisingMapObjective.Conquest, UprisingMapObjective.Slayer]
+  }],
+  [UprisingMapName.FourPlayerStandardV2, {
+    mapName: UprisingMapName.FourPlayerStandardV2,
+    image: '../../../assets/uprising_maps_v2/Standard_4Player_v1_Tavern.jpg',
+    description: 'A basic map for v2 map tiles.',
     numberOfPlayers: 4,
     objective: UprisingMapObjective.PointControl,
     variants: [UprisingMapObjective.Conquest, UprisingMapObjective.Slayer]
