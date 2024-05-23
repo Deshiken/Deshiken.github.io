@@ -20,7 +20,6 @@ export class MapBuilderComponent implements OnInit {
 
   // Map Elements
   public mapTiles = new Array<any>(); // [1,1]
-  public mapTilesReverse = new Array<any>();
   public mapFlagsGreen: Array<any> = new Array<any>();
   public mapFlagsYellow: Array<any> = new Array<any>();
   public mapFlagsOrange: Array<any> = new Array<any>();
