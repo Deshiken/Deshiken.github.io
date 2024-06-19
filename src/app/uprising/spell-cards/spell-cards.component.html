@@ -31,7 +31,8 @@
       style="max-width: 20rem;">
       <div class="card-body">
         <div class="d-flex justify-content-between">
-          <i *ngIf="card.prepared" class="bi bi-lightning-fill"></i>
+          <i *ngIf="card.castType == 'Prepared'" class="bi bi-clock"></i>
+          <i *ngIf="card.castType == 'Instant'" class="bi bi-lightning-fill"></i>
           <p class="card-title fs-6 fw-bold">{{card.name}}</p>
           <div>
             <i *ngFor="let item of [].constructor(card.spellCost)" class="bi bi-gem ms-1"></i>

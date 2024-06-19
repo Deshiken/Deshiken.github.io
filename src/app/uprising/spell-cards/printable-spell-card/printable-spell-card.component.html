@@ -4,7 +4,8 @@
     <!-- Top Row -->
     <div class="d-flex justify-content-between fs-4">
       <div>
-        <i *ngIf="spellCard.prepared" class="bi bi-lightning-fill"></i>
+        <i *ngIf="spellCard.castType == 'Instant'" class="bi bi-lightning-fill"></i>
+        <i *ngIf="spellCard.castType == 'Prepared'" class="bi bi-clock"></i>
       </div>
       <div class="align-self-end">
         <i *ngFor="let item of [].constructor(spellCard.spellCost)" class="bi bi-gem ms-1"></i>

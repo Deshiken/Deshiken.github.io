@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Region, SpellCard, SpellCards } from './spell-card-data';
+import { CastType, Region, SpellCard, SpellCards } from './spell-card-data';
 import { SpellCardService } from './spell-cards.service';
 
 @Component({
@@ -24,6 +24,7 @@ export class SpellCardsComponent implements OnInit {
   spellRegionMarshTotal = 0;
   spellCostAverage = 0;
   numberOfPreparedSpells = 0;
+  numberOfInstantSpells = 0;
   numberOfTokenSpells = 0;
 
   spellCardSort = SpellCardSortOptions.Alphabetical
@@ -84,8 +85,12 @@ export class SpellCardsComponent implements OnInit {
         })
       }
 
-      if (spellCard.prepared) {
+      if (spellCard.castType == CastType.Prepared) {
         this.numberOfPreparedSpells ++;
+      };
+
+      if (spellCard.castType == CastType.Instant) {
+        this.numberOfInstantSpells ++;
       };
 
       if (spellCard.effectTokens && spellCard.effectTokens?.length > 0) {
@@ -109,7 +114,15 @@ export class SpellCardsComponent implements OnInit {
         break;
       case SpellCardSortOptions.PreparedSpells:
         this.SpellCards.sort((a,b) =>
-          Number(b.prepared) - Number(a.prepared) // First level sort prepared spells
+          // Number(b.prepared) - Number(a.prepared) // First level sort prepared spells
+          a.castType == CastType.Prepared ? -1 : 1
+          || b.spellCost - a.spellCost // Second level sort spell cost
+          || a.name.localeCompare(b.name)); // Third level sort alphabetical
+        break;
+      case SpellCardSortOptions.InstantSpells:
+        this.SpellCards.sort((a,b) =>
+          // Number(b.prepared) - Number(a.prepared) // First level sort prepared spells
+          a.castType == CastType.Instant ? -1 : 1
           || b.spellCost - a.spellCost // Second level sort spell cost
           || a.name.localeCompare(b.name)); // Third level sort alphabetical
         break;
@@ -139,4 +152,5 @@ enum SpellCardSortOptions {
   SpellCostHighest = "Spell Cost Highest",
   SpellCostLowest = "Spell Cost Lowest",
   PreparedSpells = "Prepared Spells",
+  InstantSpells = "Instant Spells",
 }
