@@ -1,7 +1,7 @@
 <div class="container">
   <app-heading-with-back [title]="'Maps and Play Instructions'"></app-heading-with-back>
 
-  <div (click)="showTwoPlayerMaps = !showTwoPlayerMaps"
+  <!-- <div (click)="showTwoPlayerMaps = !showTwoPlayerMaps"
     class="d-flex align-items-center"
     data-bs-toggle="collapse" 
     data-bs-target="#twoPlayerMapsColapse">
@@ -17,7 +17,7 @@
       <a [routerLink]="['/uprising/map-details', UprisingMapName.TwoPlayerCloseQuarter]">Close Quarters</a>
       <a [routerLink]="['/uprising/map-details', UprisingMapName.TwoPlayerCaptureTheFlag]">Capture The Flag</a>
     </div>
-  </div>
+  </div> -->
 
   <div (click)="showThreePlayerMaps = !showThreePlayerMaps"
     class="d-flex align-items-center"
@@ -30,7 +30,7 @@
   </div>
   <div class="collapse" id="threePlayerMapsColapse">
     <div class="d-flex flex-column">
-      <a href="../../../assets/uprising_maps/3Player_FortressDefense_v3.jpg" target="_blank">Fortress Defense</a>
+      <a [routerLink]="['/uprising/map-details', UprisingMapName.FortressDefense]">Fortress Defense</a>
     </div>
   </div>
 
@@ -45,19 +45,16 @@
   </div>
   <div class="collapse" id="fourPlayerMapsColapse">
     <div class="d-flex flex-column">
-      <a [routerLink]="['/uprising/map-details', UprisingMapName.FourPlayerStandardV2]">Standard 4 Player Map for version 2 tiles</a>
       <a [routerLink]="['/uprising/map-details', UprisingMapName.FourPlayerStandard]">Standard 4 Player Map</a>
-      <a [routerLink]="['/uprising/map-details', UprisingMapName.Friends]">Friends</a>
-      <a [routerLink]="['/uprising/map-details', UprisingMapName.FourCorners]">Four Corners</a>
-      <a [routerLink]="['/uprising/map-details', UprisingMapName.Sanctuary]">Sanctuary</a>
+      <a [routerLink]="['/uprising/map-details', UprisingMapName.Colosseum]">Colosseum</a>
       <a [routerLink]="['/uprising/map-details', UprisingMapName.CloseQuarters]">Close Quarters</a>
-      <a [routerLink]="['/uprising/map-details', UprisingMapName.Star]">Star</a>
-      <a href="../../../assets/uprising_maps/4Player_CaptureTheFlag4Player_v1.jpg" target="_blank">Capture the Flag - Free for all</a>
-      <a href="../../../assets/uprising_maps/4Player_CaptureTheFlagTeams_v1.jpg" target="_blank">Capture the Flag - Teams</a>
+      <a [routerLink]="['/uprising/map-details', UprisingMapName.HourGlass]">Hour Glass</a>
+      <a [routerLink]="['/uprising/map-details', UprisingMapName.BreathingRoom]">Breathing Room</a>
+      <a [routerLink]="['/uprising/map-details', UprisingMapName.TheFly]">The Fly</a>
     </div>
   </div>
 
-  <div (click)="showFivePlayerMaps = !showFivePlayerMaps"
+  <!-- <div (click)="showFivePlayerMaps = !showFivePlayerMaps"
     class="d-flex align-items-center"
     data-bs-toggle="collapse" 
     data-bs-target="#fivePlayerMapsColapse">
@@ -70,6 +67,6 @@
     <div class="d-flex flex-column">
       <a [routerLink]="['/uprising/map-details', UprisingMapName.FivePlayerAssault]">Assault</a>
     </div>
-  </div>
+  </div> -->
 
 </div>

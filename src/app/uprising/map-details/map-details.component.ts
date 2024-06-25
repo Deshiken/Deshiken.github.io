@@ -19,7 +19,7 @@ export class MapDetailsComponent implements OnInit {
     if (this.id) {
       this.uprisingMap = UprisingMaps.get(this.id as UprisingMapName)
     } else {
-      this.uprisingMap = UprisingMaps.get(UprisingMapName.TwoPlayerStandard)
+      // this.uprisingMap = UprisingMaps.get(UprisingMapName.TwoPlayerStandard)
     };
     console.log('map name', this.id);
     console.log('map', this.uprisingMap);
