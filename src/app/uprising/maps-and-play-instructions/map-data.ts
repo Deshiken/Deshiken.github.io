@@ -22,12 +22,11 @@ export enum UprisingMapName {
   FortressDefense = 'Fortress Defense',
   // 4 Player Maps
   FourPlayerStandard = 'Four Player Standard',
-  Colosseum ='colosseum',
+  Colosseum ='Colosseum',
   CloseQuarters ='Close Quarters',
   HourGlass ='Hour Glass',
   BreathingRoom ='Breathing Room',
   TheFly ='The Fly',
-  // 5 Player Maps
 }
 
 export const UprisingMaps: Map<UprisingMapName, MapData> = new Map([
