@@ -73,7 +73,7 @@ export const UprisingMaps: Map<UprisingMapName, MapData> = new Map([
   }],
   [UprisingMapName.TheFly, {
     mapName: UprisingMapName.TheFly,
-    image: '../../../assets/uprising_maps_v2/BreathingRoom_4Player_v1_Tavern.jpg',
+    image: '../../../assets/uprising_maps_v2/TheFly_4Player_v1_Tavern.jpg',
     description: 'This map is sure to see fast and early combat as each player is only a move or two away from each other. Player capitols are moved to the interior of the map with a central flag to fight for control of while other objectives are located around the maps perimeter.',
     numberOfPlayers: 4,
     objective: UprisingMapObjective.PointControl,
