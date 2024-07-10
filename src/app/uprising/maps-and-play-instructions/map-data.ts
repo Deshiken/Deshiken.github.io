@@ -32,6 +32,7 @@ export enum UprisingMapName {
   TheFly = 'The Fly',
   GreatSacrifice = 'Great Sacrifice',
   TheWildHunt = 'The Wild Hunt',
+  TheWildHuntv2 = 'The Wild Hunt Version 2',
 }
 
 export const UprisingMaps: Map<UprisingMapName, MapData> = new Map([
@@ -98,6 +99,21 @@ export const UprisingMaps: Map<UprisingMapName, MapData> = new Map([
   [UprisingMapName.TheWildHunt, {
     mapName: UprisingMapName.TheWildHunt,
     image: '../../../assets/uprising_maps_v2/TheWildHunt_4Player_v1_Tavern.jpg',
+    description: 'Points on this map are scored by destroying a beast that spawns at a random location. Each time it is destroyed it comes back stronger.',
+    specialRules: [
+      'For this game mode, points are scored by destroying a Wild Beast, that spawns at a random location on the map.',
+      'At the start of the game roll a six sided die. Add the wild beast (using any token) to the green flag matching the number that was rolled.',
+      'The beast attacks and defends with a green die. Any time the beast is attacked, it will perform an attack regardless if it is destroyed in the attack or not.',
+      'When the beast attacks, it attacks the units attacking it, not a specific region or army.',
+      'Each time the beast is destroyed it will spawn again using the same method used to place it at the start of the game.',
+      'Keep track of the number of times the beast is destroyed. Each time the beast is destroyed it gains an additional green attack and defense die to a maximum of 4 green dice.'
+    ],
+    numberOfPlayers: 4,
+    objective: UprisingMapObjective.Custom,
+  }],
+  [UprisingMapName.TheWildHuntv2, {
+    mapName: UprisingMapName.TheWildHuntv2,
+    image: '../../../assets/uprising_maps_v2/TheWildHunt_4Player_v3_Tavern.jpg',
     description: 'Points on this map are scored by destroying a beast that spawns at a random location. Each time it is destroyed it comes back stronger.',
     specialRules: [
       'For this game mode, points are scored by destroying a Wild Beast, that spawns at a random location on the map.',
