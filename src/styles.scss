@@ -23,10 +23,22 @@ $navbar-dark-toggler-border-color: rgba(255, 255, 255, 0.8);
 .card {
   &-shadow {
     box-shadow: 5px 5px 20px 10px rgba(9, 40, 66, 0.25);
-    
+
     &__light {
       box-shadow: 0 0 20px rgba(9, 40, 66, 0.25);
     }
+  }
+}
+
+.select {
+  &-small {
+    max-width: 150px;
+  }
+  &-med {
+    max-width: 300px;
+  }
+  &-large {
+    max-width: 600px
   }
 }
 
