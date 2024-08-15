@@ -13,7 +13,12 @@
         <b>Map Details</b>
         <i class="bi ms-1 bi-box-arrow-up-right"></i>
       </a> 
-      <p *ngIf="uprisingMap?.specialRules"><b>Special Rules: </b>{{uprisingMap?.specialRules}} </p>
+      <ng-container *ngIf="uprisingMap?.specialRules">
+        <b>Special Rules: </b>
+        <ul class="list-group" > 
+          <li *ngFor="let rule of uprisingMap?.specialRules" class="ms-4">{{rule}}</li>
+        </ul>
+      </ng-container>
       <ng-container *ngIf="uprisingMap?.variants">
         <b>Variants</b>
         <ul class="list-group" > 

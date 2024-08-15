@@ -12,10 +12,8 @@
   </div>
   <div class="collapse" id="twoPlayerMapsColapse">
     <div class="d-flex flex-column">
-      <a [routerLink]="['/uprising/map-details', UprisingMapName.TwoPlayerStandard]">Standard 2 Player</a>
-      <a [routerLink]="['/uprising/map-details', UprisingMapName.TheGrid]">The Grid</a>
-      <a [routerLink]="['/uprising/map-details', UprisingMapName.TwoPlayerCloseQuarter]">Close Quarters</a>
-      <a [routerLink]="['/uprising/map-details', UprisingMapName.TwoPlayerCaptureTheFlag]">Capture The Flag</a>
+      <a [routerLink]="['/uprising/map-details', UprisingMapName.TwoPlayerStandard]">Two Player Standard</a>
+      <a [routerLink]="['/uprising/map-details', UprisingMapName.DivideAndConquer]">Divide And Conquer</a>
     </div>
   </div>
 
@@ -30,7 +28,7 @@
   </div>
   <div class="collapse" id="threePlayerMapsColapse">
     <div class="d-flex flex-column">
-      <a href="../../../assets/uprising_maps/3Player_FortressDefense_v3.jpg" target="_blank">Fortress Defense</a>
+      <a [routerLink]="['/uprising/map-details', UprisingMapName.FortressDefense]">Fortress Defense</a>
     </div>
   </div>
 
@@ -45,19 +43,19 @@
   </div>
   <div class="collapse" id="fourPlayerMapsColapse">
     <div class="d-flex flex-column">
-      <a [routerLink]="['/uprising/map-details', UprisingMapName.FourPlayerStandardV2]">Standard 4 Player Map for version 2 tiles</a>
       <a [routerLink]="['/uprising/map-details', UprisingMapName.FourPlayerStandard]">Standard 4 Player Map</a>
-      <a [routerLink]="['/uprising/map-details', UprisingMapName.Friends]">Friends</a>
-      <a [routerLink]="['/uprising/map-details', UprisingMapName.FourCorners]">Four Corners</a>
-      <a [routerLink]="['/uprising/map-details', UprisingMapName.Sanctuary]">Sanctuary</a>
+      <a [routerLink]="['/uprising/map-details', UprisingMapName.Colosseum]">Colosseum</a>
       <a [routerLink]="['/uprising/map-details', UprisingMapName.CloseQuarters]">Close Quarters</a>
-      <a [routerLink]="['/uprising/map-details', UprisingMapName.Star]">Star</a>
-      <a href="../../../assets/uprising_maps/4Player_CaptureTheFlag4Player_v1.jpg" target="_blank">Capture the Flag - Free for all</a>
-      <a href="../../../assets/uprising_maps/4Player_CaptureTheFlagTeams_v1.jpg" target="_blank">Capture the Flag - Teams</a>
+      <a [routerLink]="['/uprising/map-details', UprisingMapName.HourGlass]">Hour Glass</a>
+      <a [routerLink]="['/uprising/map-details', UprisingMapName.BreathingRoom]">Breathing Room</a>
+      <a [routerLink]="['/uprising/map-details', UprisingMapName.TheFly]">The Fly</a>
+      <a [routerLink]="['/uprising/map-details', UprisingMapName.TheWildHunt]">The Wild Hunt</a>
+      <a [routerLink]="['/uprising/map-details', UprisingMapName.TheWildHuntv2]">The Wild Hunt Version 2</a>
+      <a [routerLink]="['/uprising/map-details', UprisingMapName.GreatSacrifice]">Great Sacrifice</a>
     </div>
   </div>
 
-  <div (click)="showFivePlayerMaps = !showFivePlayerMaps"
+  <!-- <div (click)="showFivePlayerMaps = !showFivePlayerMaps"
     class="d-flex align-items-center"
     data-bs-toggle="collapse" 
     data-bs-target="#fivePlayerMapsColapse">
@@ -70,6 +68,6 @@
     <div class="d-flex flex-column">
       <a [routerLink]="['/uprising/map-details', UprisingMapName.FivePlayerAssault]">Assault</a>
     </div>
-  </div>
+  </div> -->
 
 </div>
