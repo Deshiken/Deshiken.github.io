@@ -130,7 +130,14 @@ export const UprisingMaps: Map<UprisingMapName, MapData> = new Map([
   [UprisingMapName.FortressDefense, {
     mapName: UprisingMapName.FortressDefense,
     image: '../../../assets/uprising_maps_v2/Fortress_3Player_v1_Tavern.jpg',
-    description: '',
+    description: 'A player surrounded by opposing forces must survive a multi-round siege.',
+    specialRules: [
+      "The player with green colored buildings in the map image is the defending player, the other two capitols are the attacking players.",
+      "The portals adjacent to the defending player's capitol can only be used by the defending player.",
+      "The defending player may take 3 actions per turn instead of two.",
+      "The game is won by the attackers if they are successful in destroying the defending player's capitol by the end of the 4th round.",
+      "If the defending player destroys a capitol of an attacking player, that player is removed from the game. The player removes any pieces they have from the board and may no longer take any turns."
+    ],
     numberOfPlayers: 3,
     objective: UprisingMapObjective.Survival,
     variants: [UprisingMapObjective.Conquest, UprisingMapObjective.Slayer]
