@@ -7,7 +7,8 @@ import { Injectable } from '@angular/core';
 export class DraftService {
 
   public testDraftOptions: Array<DraftOptions> = [
-    { draftName: 'Uprising', 
+    { 
+      draftName: 'HOLAS', 
       draftItems: [
         {itemName:'Orcs', itemCategory:'Faction'}, 
         {itemName:'Elves', itemCategory:'Faction'}, 
@@ -29,7 +30,8 @@ export class DraftService {
       numberOfPlayers: 4, 
       teamDraft: true 
     },
-    { draftName: 'Everdel', 
+    { 
+      draftName: 'Everdel', 
       draftItems: [{itemName:'Birds'}, {itemName:'Badgers'}, {itemName:'Frogs'}, {itemName:'Moles'}, {itemName:'Rats'}, {itemName:'Mice'}],
       draftItemCategories: new Array<string>(),
       picksPerPlayer: 1, 
@@ -38,6 +40,40 @@ export class DraftService {
       useItemCategories: false, 
       snakeDraft: true, 
       numberOfPlayers: 6, 
+      teamDraft: true 
+    },
+    { 
+      draftName: 'Uprising with Heroes', 
+      draftItems: [
+        {itemName:'Abominations', itemCategory:'Faction'},
+        {itemName:'Dragonborn', itemCategory:'Faction'}, 
+        {itemName:'Drow', itemCategory:'Faction'}, 
+        {itemName:'Dwarves', itemCategory:'Faction'}, 
+        {itemName:'Gnomes', itemCategory:'Faction'}, 
+        {itemName:'High Elves', itemCategory:'Faction'}, 
+        {itemName:'Orcs', itemCategory:'Faction'}, 
+        {itemName:'Order of the Moon', itemCategory:'Faction'}, 
+        {itemName:'Templar', itemCategory:'Faction'},
+        {itemName:'Druid', itemCategory:'Hero'},
+        {itemName:'Ranger', itemCategory:'Hero'},
+        {itemName:'Assassin', itemCategory:'Hero'},
+        {itemName:'Berserker', itemCategory:'Hero'},
+        {itemName:'Cavalier', itemCategory:'Hero'},
+        {itemName:'Sorcerer', itemCategory:'Hero'},
+        {itemName:'Cleric', itemCategory:'Hero'},
+        {itemName:'Forge Master', itemCategory:'Hero'},
+        {itemName:'Flesh Titan', itemCategory:'Hero'},
+        {itemName:'Harpy Queen', itemCategory:'Hero'},
+        {itemName:'Gnome Tinkerer', itemCategory:'Hero'},
+        
+      ],
+      draftItemCategories: ['Faction', 'Hero'],
+      picksPerPlayer: 2,
+      randomDraftItems: true,
+      randomDraftOrder: false,
+      useItemCategories: true, 
+      snakeDraft: true, 
+      numberOfPlayers: 4, 
       teamDraft: true 
     },
   ]

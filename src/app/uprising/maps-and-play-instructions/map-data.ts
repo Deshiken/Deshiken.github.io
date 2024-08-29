@@ -23,6 +23,7 @@ export enum UprisingMapName {
   DivideAndConquer = 'Divide And Conquer',
   // 3 Player Maps
   FortressDefense = 'Fortress Defense',
+  Star = 'Star',
   // 4 Player Maps
   FourPlayerStandard = 'Four Player Standard',
   Colosseum = 'Colosseum',
@@ -140,6 +141,14 @@ export const UprisingMaps: Map<UprisingMapName, MapData> = new Map([
     ],
     numberOfPlayers: 3,
     objective: UprisingMapObjective.Survival,
+    variants: [UprisingMapObjective.Conquest, UprisingMapObjective.Slayer]
+  }],
+  [UprisingMapName.Star, {
+    mapName: UprisingMapName.Star,
+    image: '../../../assets/uprising_maps_v2/Star_3Player_v1_Tavern.jpg',
+    description: 'A star shaped may for a free-for-all 3 player match.',
+    numberOfPlayers: 3,
+    objective: UprisingMapObjective.PointControl,
     variants: [UprisingMapObjective.Conquest, UprisingMapObjective.Slayer]
   }],
   // 2 Player Maps

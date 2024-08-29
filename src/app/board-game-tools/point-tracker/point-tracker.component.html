@@ -1,5 +1,6 @@
 <div class="container">
-  <!-- <div *ngFor="let player of players" class="player-card mt-3 d-flex justify-content-between"> -->
+  <app-heading-with-back [title]="'Player Point Tracker'"></app-heading-with-back>
+  
   <div *ngFor="let player of players" [ngStyle]="{'background-color': player.color}"
     class="player-card mt-3 d-flex justify-content-between">
     <div class="d-flex justify-content-between flex-column">
