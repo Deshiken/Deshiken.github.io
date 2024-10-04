@@ -6,16 +6,12 @@ import { UprisingMapName } from './map-data';
   templateUrl: './maps-and-play-instructions.component.html',
   styleUrls: ['./maps-and-play-instructions.component.scss']
 })
-export class MapsAndPlayInstructionsComponent implements OnInit {
+export class MapsAndPlayInstructionsComponent {
   public UprisingMapName = UprisingMapName;
   showTwoPlayerMaps: boolean = false;
   showThreePlayerMaps: boolean = false;
   showFourPlayerMaps: boolean = false;
   showFivePlayerMaps: boolean = false;
 
-
   constructor() { }
-
-  ngOnInit(): void {
-  }
 }

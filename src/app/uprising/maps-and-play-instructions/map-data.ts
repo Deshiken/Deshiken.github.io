@@ -24,6 +24,8 @@ export enum UprisingMapName {
   // 3 Player Maps
   FortressDefense = 'Fortress Defense',
   Star = 'Star',
+  Honeycomb = 'Honeycomb',
+  Pyramid = 'Pyramid',
   // 4 Player Maps
   FourPlayerStandard = 'Four Player Standard',
   Colosseum = 'Colosseum',
@@ -147,6 +149,22 @@ export const UprisingMaps: Map<UprisingMapName, MapData> = new Map([
     mapName: UprisingMapName.Star,
     image: '../../../assets/uprising_maps_v2/Star_3Player_v1_Tavern.jpg',
     description: 'A star shaped may for a free-for-all 3 player match.',
+    numberOfPlayers: 3,
+    objective: UprisingMapObjective.PointControl,
+    variants: [UprisingMapObjective.Conquest, UprisingMapObjective.Slayer]
+  }],
+  [UprisingMapName.Honeycomb, {
+    mapName: UprisingMapName.Honeycomb,
+    image: '../../../assets/uprising_maps_v2/Honeycomb_3Player_v1_Tavern.jpg',
+    description: '',
+    numberOfPlayers: 3,
+    objective: UprisingMapObjective.PointControl,
+    variants: [UprisingMapObjective.Conquest, UprisingMapObjective.Slayer]
+  }],
+  [UprisingMapName.Pyramid, {
+    mapName: UprisingMapName.Pyramid,
+    image: '../../../assets/uprising_maps_v2/Pyramid_3Player_v1_Tavern.jpg',
+    description: '',
     numberOfPlayers: 3,
     objective: UprisingMapObjective.PointControl,
     variants: [UprisingMapObjective.Conquest, UprisingMapObjective.Slayer]
