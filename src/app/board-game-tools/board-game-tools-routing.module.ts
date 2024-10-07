@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PlayerSelectComponent } from '../shared/components/player-select/player-select.component';
 import { ActionTimerComponent } from './action-timer/action-timer.component';
 import { CoinFlipComponent } from './coin-flip/coin-flip.component';
+import { DiceRollerComponent } from './dice-roller/dice-roller.component';
 import { DraftItemsComponent } from './draft/draft-items/draft-items.component';
 import { DraftPickComponent } from './draft/draft-pick/draft-pick.component';
 import { DraftResultsComponent } from './draft/draft-results/draft-results.component';
@@ -51,6 +52,10 @@ const routes: Routes = [
   {
     path: 'point-tracker',
     component: PointTrackerComponent
+  },
+  {
+    path: 'dice-roller',
+    component: DiceRollerComponent
   },
 
 ];

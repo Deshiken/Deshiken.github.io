@@ -13,6 +13,7 @@ import { DraftPickComponent } from './draft/draft-pick/draft-pick.component';
 import { DraftResultsComponent } from './draft/draft-results/draft-results.component';
 import { DraftItemsComponent } from './draft/draft-items/draft-items.component';
 import { PointTrackerComponent } from './point-tracker/point-tracker.component';
+import { DiceRollerComponent } from './dice-roller/dice-roller.component';
 
 
 
@@ -27,6 +28,7 @@ import { PointTrackerComponent } from './point-tracker/point-tracker.component';
     DraftResultsComponent,
     DraftItemsComponent,
     PointTrackerComponent,
+    DiceRollerComponent,
   ],
   imports: [
     CommonModule,
