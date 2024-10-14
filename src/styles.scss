@@ -46,5 +46,19 @@ $navbar-dark-toggler-border-color: rgba(255, 255, 255, 0.8);
   max-width: 450px;
 }
 
+/* Styles for dice box */
+// #dice-container {
+//   position: relative;
+//   box-sizing: border-box;
+//   width: 100%;
+//   height: 100%;
+//   background-size: cover;
+// }
+
+#dice-container canvas {
+  width: 100%;
+  height: 100%;
+}
+
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';

@@ -1,9 +1,96 @@
 <div class=container>
   <app-heading-with-back [title]="'Dice Roller'"></app-heading-with-back>
 
-  <div id="dice-container" #diceContainer
-    style="height: 600px; width: 600px; border-style: solid; border-width: 2px;"  
-  >
-  
+  <div id="dice-container" #diceContainer class="dice-container">
+    <!-- style="height: 600px; width: 600px; border-style: solid; border-width: 2px;"> -->
+  </div>
+
+  <button (click)="rollDice()" class="btn btn-lg btn-primary mt-3" >Roll Dice</button>
+
+  <div class="d-flex gap-4 mt-3">
+    <div class="d-flex flex-column align-items-center">
+      <button class="btn btn-outline-primary btn-dice" 
+        (click)="increaseDiceGroupeCount(diceToRoll[0])">
+        +1
+      </button>
+      <div>
+        <img src="../../../assets/dice-box/dice.svg#d4_die" alt="d4" class="die-icon"/>
+        <span>{{this.diceToRoll[0].numberOfDice}}</span>
+      </div>
+      <button class="btn btn-outline-primary btn-dice" 
+        (click)="decreaseDiceGroupeCount(this.diceToRoll[0])">
+        -1
+      </button>
+    </div>
+    <div class="d-flex flex-column align-items-center">
+      <button class="btn btn-outline-primary btn-dice" 
+        (click)="increaseDiceGroupeCount(diceToRoll[1])">
+        +1
+      </button>
+      <div>
+        <img src="../../../assets/dice-box/dice.svg#d6_die" alt="d6" class="die-icon"/>
+        <span>{{this.diceToRoll[1].numberOfDice}}</span>
+      </div>
+      <button class="btn btn-outline-primary btn-dice" 
+        (click)="decreaseDiceGroupeCount(this.diceToRoll[1])">
+        -1
+      </button>
+    </div>
+    <div class="d-flex flex-column align-items-center">
+      <button class="btn btn-outline-primary btn-dice" 
+        (click)="increaseDiceGroupeCount(diceToRoll[2])">
+        +1
+      </button>
+      <div>
+        <img src="../../../assets/dice-box/dice.svg#d8_die" alt="d8" class="die-icon"/>
+        <span>{{this.diceToRoll[2].numberOfDice}}</span>
+      </div>
+      <button class="btn btn-outline-primary btn-dice" 
+        (click)="decreaseDiceGroupeCount(this.diceToRoll[2])">
+        -1
+      </button>
+    </div>
+    <div class="d-flex flex-column align-items-center">
+      <button class="btn btn-outline-primary btn-dice" 
+        (click)="increaseDiceGroupeCount(diceToRoll[3])">
+        +1
+      </button>
+      <div>
+        <img src="../../../assets/dice-box/dice.svg#d10_die" alt="d10" class="die-icon"/>
+        <span>{{this.diceToRoll[3].numberOfDice}}</span>
+      </div>
+      <button class="btn btn-outline-primary btn-dice" 
+        (click)="decreaseDiceGroupeCount(this.diceToRoll[3])">
+        -1
+      </button>
+    </div>
+    <div class="d-flex flex-column align-items-center">
+      <button class="btn btn-outline-primary btn-dice" 
+        (click)="increaseDiceGroupeCount(diceToRoll[4])">
+        +1
+      </button>
+      <div>
+        <img src="../../../assets/dice-box/dice.svg#d12_die" alt="d12" class="die-icon"/>
+        <span>{{this.diceToRoll[4].numberOfDice}}</span>
+      </div>
+      <button class="btn btn-outline-primary btn-dice" 
+        (click)="decreaseDiceGroupeCount(this.diceToRoll[4])">
+        -1
+      </button>
+    </div>
+    <div class="d-flex flex-column align-items-center">
+      <button class="btn btn-outline-primary btn-dice" 
+        (click)="increaseDiceGroupeCount(diceToRoll[5])">
+        +1
+      </button>
+      <div>
+        <img src="../../../assets/dice-box/dice.svg#d20_die" alt="d20" class="die-icon"/>
+        <span>{{this.diceToRoll[5].numberOfDice}}</span>
+      </div>
+      <button class="btn btn-outline-primary btn-dice" 
+        (click)="decreaseDiceGroupeCount(this.diceToRoll[5])">
+        -1
+      </button>
+    </div>
   </div>
 </div>
