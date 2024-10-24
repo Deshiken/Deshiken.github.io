@@ -1,3 +1,198 @@
 <div class='container'>
   <app-heading-with-back [title]="'Alternate Game Modes'"></app-heading-with-back>
+
+  <h2>Egg Hunt</h2>
+  <div class="accordion mt-3" id="egg-hunt-accordion">
+
+    <div class="accordion-item">
+      <h3 class="accordion-header" id="panelsStayOpen-headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#overview-panel" aria-expanded="false" aria-controls="panelsStayOpen-collapseOne">
+          Overview
+        </button>
+      </h3>
+      <div id="overview-panel" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
+        <div class="accordion-body">
+          <p>
+            This game mode involves hunting for egg tokens that are stored with towers you control. While you can earn points from other means, 
+            the main source of points will come from protecting the eggs you have and destroying enemy towers to steal their eggs.
+          </p>
+        </div>
+      </div>
+    </div>
+  
+    <div class="accordion-item">
+      <h3 class="accordion-header" id="setup-panel1">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#setup-panel" aria-expanded="false" aria-controls="panelsStayOpen-collapseOne">
+          Setup
+        </button>
+      </h3>
+      <div id="setup-panel" class="accordion-collapse collapse" aria-labelledby="setup-panel1">
+        <div class="accordion-body">
+          <ul class="accordion-body pt-0 pe-0 pb-0 mb-2">
+            <li>
+              Designate 3 land exploration tokens per player that represent egg tokens. Because the HOLAS expansion only comes with 4 egg tokens, you will 
+              need to repurpose some other land exploraton tokens as egg tokens for this game mode. You can do this by adding a sticker or just mutually 
+              aggreeing with other players which tokens will be used as egg tokens.
+
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col"># of Players</th>
+                    <th scope="col">Egg Tokens</th>
+                    <th scope="col">Non-Egg Tokens</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>2</td>
+                    <td>6</td>
+                    <td>27</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>9</td>
+                    <td>35</td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>12</td>
+                    <td>32</td>
+                  </tr>
+                  <tr>
+                    <td>4 with floating island</td>
+                    <td>12</td>
+                    <td>43</td>
+                  </tr>
+                  <tr>
+                    <td>5 with floating island</td>
+                    <td>15</td>
+                    <td>40</td>
+                  </tr>
+                  <tr>
+                    <td>5 with 6 player board</td>
+                    <td>15</td>
+                    <td>51</td>
+                  </tr>
+                  <tr>
+                    <td>6 with 6 player board</td>
+                    <td>18</td>
+                    <td>48</td>
+                  </tr>
+                  <tr>
+                    <td>6 with 6 player board and floating island</td>
+                    <td>18</td>
+                    <td>59</td>
+                  </tr>
+                </tbody>
+              </table>
+            </li>
+            <!-- <li>
+              Because this game mode involves hunting for and fighting over the eggs, we recomend using the 5th player floating island to when playing a 4 player
+              game if you own it.
+            </li> -->
+            <li>
+              See the table above for how many egg tokens and non egg land exploration tokens will be used for various player counts. After setting 
+              aside the number of egg tokens required, randomly select the remaining needed land exploration tokens.
+            </li>
+            <li>
+              Mix the egg tokens together with the required number of non egg tokens and place the tokens using the standard game rules.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <h3 class="accordion-header" id="rules-panel1">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#rules-panel" aria-expanded="false" aria-controls="rules-panel1">
+          New Rules
+        </button>
+      </h3>
+      <div id="rules-panel" class="accordion-collapse collapse" aria-labelledby="rules-panel1">
+        <div class="accordion-body">
+          <ul class="accordion-body pt-0 pe-0 pb-0 mb-2">
+            <li>
+              The Catipult unit's ability gives +1 damage (rather than +2) for each 3 minerals the unit's owner has.
+            </li>
+            <li>
+              The normal egg token rules apply. When you destroy an enemy tower or move onto a region that has an egg token or multiple egg tokens, 
+              you gain those tokens.
+            </li>
+            <li>
+              Any time you would gain an egg token, it is added to a tower you control. A tower can hold a maximum of two eggs on it.
+            </li>
+            <li>
+              If a player gains an egg token or multiple egg tokens and has no tower to place them on, they will distribute the egg token(s) onto 
+              any desert regions on the map of their choice. A player may not add a second egg token to a desert region until all other desert regions
+              on the map currently have an egg token on them. 
+            </li>
+            <li>
+              A player is not eliminated if their capitol is defeated. Instead the attacking player plunders the capitol and gains half (rounded up) of each resource 
+              type that the defending player has. Then the attacking army is then moved to their capitol.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <h3 class="accordion-header" id="points-panel1">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#points-panel" aria-expanded="false" aria-controls="points-panel1">
+          Points
+        </button>
+      </h3>
+      <div id="points-panel" class="accordion-collapse collapse" aria-labelledby="points-panel1">
+        <div class="accordion-body">
+          <p>Unless noted below, players do not receive points for any other actions or at the end of the game.</p>
+          <ul class="accordion-body pt-0 pe-0 pb-0 mb-2">
+            <li>Gain 1 point at the end of each round for each egg on a tower you control.</li>
+            <li>Gain 1 point for winning a battle.</li>
+            <li>Gain 1 point for casting a spell.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <h2 class="mt-3">Second Chance</h2>
+  <div class="accordion mt-3" id="egg-hunt-accordion">
+
+    <div class="accordion-item">
+      <h3 class="accordion-header" id="second-chance-overview-panel1">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#second-chance-overview-panel" aria-expanded="false" aria-controls="panelsStayOpen-collapseOne">
+          Overview
+        </button>
+      </h3>
+      <div id="second-chance-overview-panel" class="accordion-collapse collapse" aria-labelledby="second-chance-overview-panel1">
+        <div class="accordion-body">
+          <p>
+            This game mode helps prevent quick and sudden wins by attacking an opponents capitol. 
+          </p>
+        </div>
+      </div>
+    </div>
+  
+    <div class="accordion-item">
+      <h3 class="accordion-header" id="second-chance-setup-panel1">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#second-chance-setup-panel" aria-expanded="false" aria-controls="panelsStayOpen-collapseOne">
+          Rules
+        </button>
+      </h3>
+      <div id="second-chance-setup-panel" class="accordion-collapse collapse" aria-labelledby="second-chance-setup-panel1">
+        <div class="accordion-body">
+          <ul class="accordion-body pt-0 pe-0 pb-0 mb-2">
+            <li>
+              A player is only defeated when their capitol is defeated and if that capitol is currently level 1. Otherwise, the capitol level is decreased by 1.
+            </li>
+            <li>
+              When a capitol level is decreased, the player that owns the capitol must discard down to their new spell card hand limit. The capitol's owner
+              may keep any additonal towers they contol that exceed their capitol's allowed limit.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>

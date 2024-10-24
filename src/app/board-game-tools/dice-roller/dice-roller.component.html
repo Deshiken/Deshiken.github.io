@@ -1,13 +1,12 @@
 <div class=container>
   <app-heading-with-back [title]="'Dice Roller'"></app-heading-with-back>
 
-  <div id="dice-container" #diceContainer class="dice-container">
-    <!-- style="height: 600px; width: 600px; border-style: solid; border-width: 2px;"> -->
-  </div>
+  <div id="dice-container" class="dice-container"></div>
 
   <button (click)="rollDice()" class="btn btn-lg btn-primary mt-3" >Roll Dice</button>
 
   <div class="d-flex gap-4 mt-3">
+
     <div class="d-flex flex-column align-items-center">
       <button class="btn btn-outline-primary btn-dice" 
         (click)="increaseDiceGroupeCount(diceToRoll[0])">
@@ -22,6 +21,7 @@
         -1
       </button>
     </div>
+
     <div class="d-flex flex-column align-items-center">
       <button class="btn btn-outline-primary btn-dice" 
         (click)="increaseDiceGroupeCount(diceToRoll[1])">
@@ -36,6 +36,7 @@
         -1
       </button>
     </div>
+
     <div class="d-flex flex-column align-items-center">
       <button class="btn btn-outline-primary btn-dice" 
         (click)="increaseDiceGroupeCount(diceToRoll[2])">
@@ -50,6 +51,7 @@
         -1
       </button>
     </div>
+
     <div class="d-flex flex-column align-items-center">
       <button class="btn btn-outline-primary btn-dice" 
         (click)="increaseDiceGroupeCount(diceToRoll[3])">
@@ -64,6 +66,7 @@
         -1
       </button>
     </div>
+
     <div class="d-flex flex-column align-items-center">
       <button class="btn btn-outline-primary btn-dice" 
         (click)="increaseDiceGroupeCount(diceToRoll[4])">
@@ -78,6 +81,7 @@
         -1
       </button>
     </div>
+
     <div class="d-flex flex-column align-items-center">
       <button class="btn btn-outline-primary btn-dice" 
         (click)="increaseDiceGroupeCount(diceToRoll[5])">
@@ -92,5 +96,6 @@
         -1
       </button>
     </div>
+
   </div>
 </div>

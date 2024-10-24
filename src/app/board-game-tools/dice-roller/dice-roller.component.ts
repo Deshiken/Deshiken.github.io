@@ -7,8 +7,6 @@ import DiceBox from '@3d-dice/dice-box'
   styleUrls: ['./dice-roller.component.scss']
 })
 export class DiceRollerComponent implements OnInit {
-
-  // @ViewChild('diceContainer', { static: true }) diceContainer!: ElementRef;
   diceBox: any;
   DiceType = DiceType;
   diceToRoll: Array<DiceGroup> = [
@@ -31,13 +29,6 @@ export class DiceRollerComponent implements OnInit {
   }
 
   rollDice(): void {
-    // this.diceBox.init().then(() => {
-    //   this.diceBox.OnRollComplete = (rollResult: any) => console.log('roll result: ', rollResult);
-
-    //   this.diceBox.roll(this.diceGroupToStringArray()).then((results: any) => {
-    //     console.log('roll results:', results);
-    //   });
-    // })
     this.diceBox.roll(this.diceGroupToStringArray()).then((results: any) => {
       console.log('roll results:', results);
     });
@@ -54,29 +45,6 @@ export class DiceRollerComponent implements OnInit {
     return diceToRollArray;
   }
 
-  modifyNumberOfDiceToRoll(diceType: DiceType, modification: string) {
-    switch(diceType) {
-      case DiceType.D4:
-        this.diceToRoll[0].numberOfDice ++;
-        break;
-      case DiceType.D6:
-        this.diceToRoll[1].numberOfDice ++;
-        break;
-      case DiceType.D8:
-        this.diceToRoll[2].numberOfDice ++;
-        break;
-      case DiceType.D10:
-        this.diceToRoll[3].numberOfDice ++;
-        break;
-      case DiceType.D12:
-        this.diceToRoll[4].numberOfDice ++;
-        break;
-      case DiceType.D20:
-        this.diceToRoll[5].numberOfDice ++;
-        break;
-    }
-  }
-
   increaseDiceGroupeCount(diceGroup: DiceGroup) {
     diceGroup.numberOfDice ++;
   }
@@ -86,28 +54,11 @@ export class DiceRollerComponent implements OnInit {
       diceGroup.numberOfDice --;
     }
   }
-  
-  removeDieToRoll(diceType: DiceType) {
-    switch(diceType) {
-      case DiceType.D4:
-        this.diceToRoll[0].numberOfDice --;
-        break;
-      case DiceType.D6:
-        this.diceToRoll[1].numberOfDice --;
-        break;
-      case DiceType.D8:
-        this.diceToRoll[2].numberOfDice --;
-        break;
-      case DiceType.D10:
-        this.diceToRoll[3].numberOfDice --;
-        break;
-      case DiceType.D12:
-        this.diceToRoll[4].numberOfDice --;
-        break;
-      case DiceType.D20:
-        this.diceToRoll[5].numberOfDice --;
-        break;
-    }
+
+  resetDiceGroups() {
+    this.diceToRoll.forEach((diceGroup: DiceGroup)  => {
+      diceGroup.numberOfDice = 0;
+    });
   }
 
 }
