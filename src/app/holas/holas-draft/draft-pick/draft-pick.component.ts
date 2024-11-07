@@ -19,10 +19,11 @@ export class DraftPickComponent implements OnInit {
 
   public currentPlayer: Player = this.draftService.draftSteps[this.draftService.currentDraftStep].player;
   public currentStep: DraftStep = this.draftService.draftSteps[this.draftService.currentDraftStep];
-  
-  public factionChoice: SelectedFaction;
+
+  public factionChoice: SelectedFaction | null;
   public mercenaryChoice: string;
   public choiceType: string;
+  public noPickError: boolean = false;
 
   constructor(
     public draftService: HolasDraftService,
@@ -37,20 +38,25 @@ export class DraftPickComponent implements OnInit {
   }
 
   public chooseFaction(faction: SelectedFaction) {
+    this.mercenaryChoice = '';
     this.choiceType = 'faction';
     this.factionChoice = faction;
   }
-  
+
   public chooseMercenary(mercenary: string) {
+    this.factionChoice = null;
     this.choiceType = 'mercenary';
     this.mercenaryChoice = mercenary;
   }
 
   public undo() {
+    this.mercenaryChoice = '';
+    this.factionChoice = null;
     this.choiceType = '';
   }
 
   public next() {
+    this.checkForErrors()
     if (this.choiceType) {
       this.renderer.addClass(this.container.nativeElement, 'fade-in');
       this.savePickToPlayer();
@@ -65,20 +71,20 @@ export class DraftPickComponent implements OnInit {
         // move to the next player
         this.currentPlayer = this.draftService.draftSteps[this.draftService.currentDraftStep].player;
         this.currentStep = this.draftService.draftSteps[this.draftService.currentDraftStep];
-        
+
         // wait the duration of the animation then remove the fade-in class, so animation can be triggered again
         window.setTimeout(() => {
-          this.renderer.removeClass(this.container.nativeElement, 'fade-in');    
+          this.renderer.removeClass(this.container.nativeElement, 'fade-in');
         },400)
       }
     }
   }
 
   public savePickToPlayer() {
-    if (this.choiceType === 'faction') {
+    if (this.choiceType === 'faction' && this.factionChoice) {
       this.currentPlayer.factionPick = this.factionChoice;
     }
-    if (this.choiceType === 'mercenary') {
+    if (this.choiceType === 'mercenary' && this.mercenaryChoice) {
       this.currentPlayer.mercenaryPick = this.mercenaryChoice;
     }
   }
@@ -94,6 +100,10 @@ export class DraftPickComponent implements OnInit {
     if (this.choiceType === 'mercenary') {
       this.randomService.deleteFromArray(this.draftService.selectedMercs, this.currentPlayer.mercenaryPick)
     }
+  }
+
+  public checkForErrors() {
+    this.noPickError = !this.factionChoice && !this.mercenaryChoice;
   }
 
 

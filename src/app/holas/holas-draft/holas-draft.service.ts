@@ -18,14 +18,14 @@ export class HolasDraftService {
   public availableFactions: Array<HolasFaction> = Object.values(HolasFaction);
   /* Array of the randomly selected factions from the list of all available factions */
   public selectedFactions: Array<SelectedFaction> = new Array<SelectedFaction>();
-  
+
   /* Array of all available mercs user seleced through the options page*/
   public availableMercs: Array<Mercenary> = Object.values(Mercenary);
   // public availableMercs: Array<Mercenary> = Array<Mercenary>();
   /* Array of the randomly selected mercs from the list of all available mercs */
   public selectedMercs: Array<string> = new Array<string>();
-  
-  
+
+
   /* Map of players including the draft choices they have made */
   public playerMap: Map<number, Player> = new Map<number, Player>();
   /* Array of steps to complete in order to complete the draft */
@@ -34,7 +34,7 @@ export class HolasDraftService {
   public currentDraftStep: number = 0;
 
   constructor() { }
-  
+
 }
 
 export enum Mercenary {
@@ -64,7 +64,7 @@ export enum HolasFaction {
   Merfolk = 'Merfolk'
 }
 
-export class SelectedFaction {
-  public faction: HolasFaction;
-  public building: string;
+export interface SelectedFaction {
+  faction: HolasFaction;
+  building: string;
 }
