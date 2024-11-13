@@ -54,6 +54,7 @@ export class DraftService {
         {itemName:'Orcs', itemCategory:'Faction'}, 
         {itemName:'Order of the Moon', itemCategory:'Faction'}, 
         {itemName:'Templar', itemCategory:'Faction'},
+        {itemName:'Merfolk', itemCategory:'Faction'},
         {itemName:'Druid', itemCategory:'Hero'},
         {itemName:'Ranger', itemCategory:'Hero'},
         {itemName:'Assassin', itemCategory:'Hero'},
@@ -65,7 +66,6 @@ export class DraftService {
         {itemName:'Flesh Titan', itemCategory:'Hero'},
         {itemName:'Harpy Queen', itemCategory:'Hero'},
         {itemName:'Gnome Tinkerer', itemCategory:'Hero'},
-        
       ],
       draftItemCategories: ['Faction', 'Hero'],
       picksPerPlayer: 2,

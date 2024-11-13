@@ -12,8 +12,7 @@
   </div>
   <div class="collapse" id="twoPlayerMapsColapse">
     <div class="d-flex flex-column">
-      <a [routerLink]="['/uprising/map-details', UprisingMapName.TwoPlayerStandard]">Two Player Standard</a>
-      <a [routerLink]="['/uprising/map-details', UprisingMapName.DivideAndConquer]">Divide And Conquer</a>
+      <a *ngFor="let map of twoPlayerMaps" [routerLink]="['/uprising/map-details', map.mapName]">{{map.mapName}}</a>
     </div>
   </div>
 
@@ -28,10 +27,7 @@
   </div>
   <div class="collapse" id="threePlayerMapsColapse">
     <div class="d-flex flex-column">
-      <a [routerLink]="['/uprising/map-details', UprisingMapName.FortressDefense]">Fortress Defense</a>
-      <a [routerLink]="['/uprising/map-details', UprisingMapName.Star]">Star</a>
-      <a [routerLink]="['/uprising/map-details', UprisingMapName.Honeycomb]">Honeycomb</a>
-      <a [routerLink]="['/uprising/map-details', UprisingMapName.Pyramid]">Pyramid</a>
+      <a *ngFor="let map of threePlayerMaps" [routerLink]="['/uprising/map-details', map.mapName]">{{map.mapName}}</a>
     </div>
   </div>
 
@@ -46,15 +42,7 @@
   </div>
   <div class="collapse" id="fourPlayerMapsColapse">
     <div class="d-flex flex-column">
-      <a [routerLink]="['/uprising/map-details', UprisingMapName.FourPlayerStandard]">Standard 4 Player Map</a>
-      <a [routerLink]="['/uprising/map-details', UprisingMapName.Colosseum]">Colosseum</a>
-      <a [routerLink]="['/uprising/map-details', UprisingMapName.CloseQuarters]">Close Quarters</a>
-      <a [routerLink]="['/uprising/map-details', UprisingMapName.HourGlass]">Hour Glass</a>
-      <a [routerLink]="['/uprising/map-details', UprisingMapName.BreathingRoom]">Breathing Room</a>
-      <a [routerLink]="['/uprising/map-details', UprisingMapName.TheFly]">The Fly</a>
-      <a [routerLink]="['/uprising/map-details', UprisingMapName.TheWildHunt]">The Wild Hunt</a>
-      <a [routerLink]="['/uprising/map-details', UprisingMapName.TheWildHuntv2]">The Wild Hunt Version 2</a>
-      <a [routerLink]="['/uprising/map-details', UprisingMapName.GreatSacrifice]">Great Sacrifice</a>
+      <a *ngFor="let map of fourPlayerMaps" [routerLink]="['/uprising/map-details', map.mapName]">{{map.mapName}}</a>
     </div>
   </div>
 
@@ -69,7 +57,7 @@
   </div>
   <div class="collapse" id="fivePlayerMapsColapse">
     <div class="d-flex flex-column">
-      <a [routerLink]="['/uprising/map-details', UprisingMapName.FivePlayerAssault]">Assault</a>
+      <a *ngFor="let map of fivePlayerMaps" [routerLink]="['/uprising/map-details', map.mapName]">{{map.mapName}}</a>
     </div>
   </div> -->
 

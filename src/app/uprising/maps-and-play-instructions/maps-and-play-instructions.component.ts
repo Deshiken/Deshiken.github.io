@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UprisingMapName } from './map-data';
+import { UprisingMapName, UprisingMaps } from './map-data';
 
 @Component({
   selector: 'app-maps-and-play-instructions',
@@ -12,6 +12,11 @@ export class MapsAndPlayInstructionsComponent {
   showThreePlayerMaps: boolean = false;
   showFourPlayerMaps: boolean = false;
   showFivePlayerMaps: boolean = false;
+
+  twoPlayerMaps = Array.from(UprisingMaps.values()).filter(map => map.numberOfPlayers === 2)
+  threePlayerMaps = Array.from(UprisingMaps.values()).filter(map => map.numberOfPlayers === 3)
+  fourPlayerMaps = Array.from(UprisingMaps.values()).filter(map => map.numberOfPlayers === 4)
+  fivePlayerMaps = Array.from(UprisingMaps.values()).filter(map => map.numberOfPlayers === 5)
 
   constructor() { }
 }

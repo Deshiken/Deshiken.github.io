@@ -36,6 +36,7 @@ export enum UprisingMapName {
   GreatSacrifice = 'Great Sacrifice',
   TheWildHunt = 'The Wild Hunt',
   TheWildHuntv2 = 'The Wild Hunt Version 2',
+  CaptureTheFlag = 'Capture The Flag',
 }
 
 export const UprisingMaps: Map<UprisingMapName, MapData> = new Map([
@@ -125,6 +126,25 @@ export const UprisingMaps: Map<UprisingMapName, MapData> = new Map([
       'When the beast attacks, it attacks the units attacking it, not a specific region or army.',
       'Each time the beast is destroyed it will spawn again using the same method used to place it at the start of the game.',
       'Keep track of the number of times the beast is destroyed. Each time the beast is destroyed it gains an additional green attack and defense die to a maximum of 4 green dice.'
+    ],
+    numberOfPlayers: 4,
+    objective: UprisingMapObjective.Custom,
+  }],
+  [UprisingMapName.CaptureTheFlag, {
+    mapName: UprisingMapName.CaptureTheFlag,
+    image: '../../../assets/uprising_maps_v2/Capture_the_Flag_4Player_v1_Tavern.jpg',
+    description: 'Points on this map are scored by capturing a flag and returning it to your capital.',
+    specialRules: [
+      'This game mode is played 2vs2 with one team being the green team and one team being the red team. Each player places their capitol according to their teams color using the setup map.',
+      'Only red flags may be captured by the red team and green flags by the green team.',
+      'To capture a flag you must have a unit in the same region of the flag. At any point on your turn, you may place the flag on a unit you control of your choice to capture it. This is the flag carrier.',
+      'The flag will move with the flag carrier during move actions.',
+      'If the flag carrier is destroyed, the owner of that unit may choose a unit in the same region as the destroyed unit to be the new flag carrier.',
+      'If the flag carrier is destoryed and no new flag carrier is/can be choosen, the flag will remain in the region of the destroyed unit.',
+      'If a flag is not in one of the marked starting positions and is not being carried, units of the opposite team may send that flag back to any one of the starting flag positions that does not currently have a flag present.',
+      'Flag carriers can not be moved by spells.',
+      'Flag carriers have -1 movement.',
+      '1 Point is gaind if a team is able to capture a flag and move that flag to any capitol of that team. The flag is then returned to any one of the starting flag positions that does not have a flag present.'
     ],
     numberOfPlayers: 4,
     objective: UprisingMapObjective.Custom,
