@@ -48,7 +48,8 @@ export enum Mercenary {
   Gorgon = 'Gorgon',
   Cultist = 'Cultist',
   DragonscaleYacht = 'Dragonscale Yacht',
-  Minotaur = 'Minotaur'
+  Minotaur = 'Minotaur',
+  Guardian = 'Guardian'
 }
 
 export enum HolasFaction {
