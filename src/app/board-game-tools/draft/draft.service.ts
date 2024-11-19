@@ -7,52 +7,54 @@ import { Injectable } from '@angular/core';
 export class DraftService {
 
   public testDraftOptions: Array<DraftOptions> = [
-    { 
-      draftName: 'HOLAS', 
+    {
+      draftName: 'HOLAS',
       draftItems: [
-        {itemName:'Orcs', itemCategory:'Faction'}, 
-        {itemName:'Elves', itemCategory:'Faction'}, 
-        {itemName:'Dwarves', itemCategory:'Faction'}, 
+        {itemName:'Orcs', itemCategory:'Faction'},
+        {itemName:'Elves', itemCategory:'Faction'},
+        {itemName:'Dwarves', itemCategory:'Faction'},
         {itemName:'Undead', itemCategory:'Faction'},
         {itemName:'Templar', itemCategory:'Faction'},
-        {itemName:'Druid', itemCategory:'Hero'}, 
-        {itemName:'Gorgon', itemCategory:'Hero'}, 
-        {itemName:'Cultist', itemCategory:'Hero'}, 
-        {itemName:'Demon Lord', itemCategory:'Hero'}, 
+        {itemName:'Druid', itemCategory:'Hero'},
+        {itemName:'Gorgon', itemCategory:'Hero'},
+        {itemName:'Cultist', itemCategory:'Hero'},
+        {itemName:'Demon Lord', itemCategory:'Hero'},
         {itemName:'Hill Giant', itemCategory:'Hero'},
       ],
       draftItemCategories: ['Faction', 'Hero'],
       picksPerPlayer: 2,
       randomDraftItems: false,
       randomDraftOrder: false,
-      useItemCategories: true, 
-      snakeDraft: false, 
-      numberOfPlayers: 4, 
-      teamDraft: true 
+      useItemCategories: true,
+      snakeDraft: false,
+      balancedDraft: false,
+      numberOfPlayers: 4,
+      teamDraft: true
     },
-    { 
-      draftName: 'Everdel', 
+    {
+      draftName: 'Everdel',
       draftItems: [{itemName:'Birds'}, {itemName:'Badgers'}, {itemName:'Frogs'}, {itemName:'Moles'}, {itemName:'Rats'}, {itemName:'Mice'}],
       draftItemCategories: new Array<string>(),
-      picksPerPlayer: 1, 
+      picksPerPlayer: 1,
       randomDraftItems: false,
       randomDraftOrder: false,
-      useItemCategories: false, 
-      snakeDraft: true, 
-      numberOfPlayers: 6, 
-      teamDraft: true 
+      useItemCategories: false,
+      snakeDraft: true,
+      balancedDraft: false,
+      numberOfPlayers: 6,
+      teamDraft: true
     },
-    { 
-      draftName: 'Uprising with Heroes', 
+    {
+      draftName: 'Uprising with Heroes',
       draftItems: [
         {itemName:'Abominations', itemCategory:'Faction'},
-        {itemName:'Dragonborn', itemCategory:'Faction'}, 
-        {itemName:'Drow', itemCategory:'Faction'}, 
-        {itemName:'Dwarves', itemCategory:'Faction'}, 
-        {itemName:'Gnomes', itemCategory:'Faction'}, 
-        {itemName:'High Elves', itemCategory:'Faction'}, 
-        {itemName:'Orcs', itemCategory:'Faction'}, 
-        {itemName:'Order of the Moon', itemCategory:'Faction'}, 
+        {itemName:'Dragonborn', itemCategory:'Faction'},
+        {itemName:'Drow', itemCategory:'Faction'},
+        {itemName:'Dwarves', itemCategory:'Faction'},
+        {itemName:'Gnomes', itemCategory:'Faction'},
+        {itemName:'High Elves', itemCategory:'Faction'},
+        {itemName:'Orcs', itemCategory:'Faction'},
+        {itemName:'Order of the Moon', itemCategory:'Faction'},
         {itemName:'Templar', itemCategory:'Faction'},
         {itemName:'Merfolk', itemCategory:'Faction'},
         {itemName:'Druid', itemCategory:'Hero'},
@@ -71,26 +73,27 @@ export class DraftService {
       picksPerPlayer: 2,
       randomDraftItems: true,
       randomDraftOrder: false,
-      useItemCategories: true, 
-      snakeDraft: true, 
-      numberOfPlayers: 4, 
-      teamDraft: true 
+      useItemCategories: true,
+      snakeDraft: true,
+      balancedDraft: false,
+      numberOfPlayers: 4,
+      teamDraft: true
     },
   ]
 
   // public savedDraftLists = new Array<DraftOptions>();
-  public savedDraftLists = this.testDraftOptions;
   // public selectedDraft: DraftOptions = this.defaultDraftOptions();
+  public savedDraftLists = this.testDraftOptions;
   public selectedDraft: DraftOptions = this.testDraftOptions[0];
   public players: Map<number,Player> = new Map<number,Player>()
   public draftSteps: Array<number> = new Array<number>();
 
-  constructor() { 
+  constructor() {
     let localStorageString = localStorage.getItem('savedDraftList');
     if (typeof localStorageString === 'string') {
       // If options are found in local storage, merge them with the default options, overlaying the defaults with the options from local storage.
       this.savedDraftLists = JSON.parse(localStorageString) as Array<DraftOptions>;
-    } 
+    }
   }
 
   private defaultDraftOptions(): DraftOptions {
@@ -99,6 +102,7 @@ export class DraftService {
       numberOfPlayers: 4,
       picksPerPlayer: 1,
       snakeDraft: true,
+      balancedDraft: false,
       teamDraft: true,
       randomDraftItems: false,
       randomDraftOrder: false,
@@ -125,6 +129,7 @@ export interface DraftOptions {
   numberOfPlayers: number,
   picksPerPlayer: number,
   snakeDraft: boolean,
+  balancedDraft: boolean,
   teamDraft: boolean,
   randomDraftItems: boolean,
   randomDraftOrder: boolean,

@@ -8,18 +8,18 @@
     <h2 class="h4">Your Saved Drafts</h2>
     <div class="d-flex align-items-center" *ngFor="let draft of this.draftService.savedDraftLists">
       {{draft.draftName}}
-      <button 
+      <button
         (click)="draftService.selectedDraft = draft"
         class="btn btn-outline-primary btn-sm ms-2"
       >
         Use this Draft
       </button>
-      <i (click)="draftToDelete = draft" 
-        data-bs-toggle="modal" data-bs-target="#exampleModal" 
+      <i (click)="draftToDelete = draft"
+        data-bs-toggle="modal" data-bs-target="#exampleModal"
         class="bi bi-trash-fill mx-3 med-icon">
       </i>
     </div>
-  
+
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -37,20 +37,19 @@
         </div>
       </div>
     </div>
-  
+
     <hr>
   </ng-container>
 
   <h2 class="h4">Draft Options</h2>
 
   <div class="row">
-    <!-- <div class='col-sm-auto'> -->
     <div class='col-sm-auto'>
       <label for="numberOfPlayersSelect">Number of Players:</label>
-      <select 
-        [(ngModel)]="draftService.selectedDraft.numberOfPlayers" 
-        class="form-select mb-3" 
-        id="numberOfPlayersSelect" 
+      <select
+        [(ngModel)]="draftService.selectedDraft.numberOfPlayers"
+        class="form-select mb-3"
+        id="numberOfPlayersSelect"
         aria-label="Number of Players Select"
         style="max-width: 150px;"
       >
@@ -65,10 +64,10 @@
     </div>
     <div class='col'>
       <label for="numberOfPicksPerPlayerSelect">Number of Picks Per Player:</label>
-      <select 
-        [(ngModel)]="draftService.selectedDraft.picksPerPlayer" 
-        class="form-select mb-3" 
-        id="numberOfPicksPerPlayerSelect" 
+      <select
+        [(ngModel)]="draftService.selectedDraft.picksPerPlayer"
+        class="form-select mb-3"
+        id="numberOfPicksPerPlayerSelect"
         aria-label="Number of Picks Per Player Select"
         style="max-width: 200px;"
       >
@@ -79,110 +78,132 @@
       </select>
     </div>
   </div>
-  
+
 
   <div class="form-check">
-    <input 
+    <input
       [(ngModel)]="draftService.selectedDraft.teamDraft"
-      class="form-check-input" 
-      type="checkbox" 
+      class="form-check-input"
+      type="checkbox"
       id="teamDraft">
-    <label class="form-check-label" for="randomBuilding">
+    <label class="form-check-label" for="teamDraft">
       Team Draft
     </label>
-    <i class="bi m-3 bi-question-circle-fill" 
+    <i class="bi m-3 bi-question-circle-fill"
       data-bs-toggle="collapse" data-bs-target="#teamDraftToggle" aria-expanded="false" aria-controls="teamDraftToggle">
     </i>
   </div>
   <div class="collapse" id="teamDraftToggle">
     <div class="card card-body">
-      If selected the draft order will alternate between two teams. 
+      If selected the draft order will alternate between two teams.
     </div>
   </div>
 
   <div class="form-check">
-    <input 
+    <input
       [(ngModel)]="draftService.selectedDraft.useItemCategories"
-      class="form-check-input" 
-      type="checkbox" 
-      id="teamDraft">
-    <label class="form-check-label" for="randomBuilding">
-      Use Item Categories   
+      class="form-check-input"
+      type="checkbox"
+      id="itemCategories">
+    <label class="form-check-label" for="itemCategories">
+      Use Item Categories
     </label>
-    <i class="bi m-3 bi-question-circle-fill" 
-      data-bs-toggle="collapse" data-bs-target="#itemCategories" aria-expanded="false" aria-controls="teamDraftToggle">
+    <i class="bi m-3 bi-question-circle-fill"
+      data-bs-toggle="collapse" data-bs-target="#itemCategoriesDetails" aria-expanded="false" aria-controls="itemCategoriesDetails">
     </i>
   </div>
-  <div class="collapse" id="itemCategories">
+  <div class="collapse" id="itemCategoriesDetails">
     <div class="card card-body">
       If selected you will be able to add a category to each draft item. Having the draft items broken down into categories
-      prevents a player from picking two items of the same category. For example, you are drafting a game that requires 
-      each player to draft a hero and a faction. Once a player has drafted a hero they can not draft another hero and must 
-      pick a faction.  
+      prevents a player from picking two items of the same category. For example, you are drafting a game that requires
+      each player to draft a hero and a faction. Once a player has drafted a hero they can not draft another hero and must
+      pick a faction.
     </div>
   </div>
 
   <div class="form-check">
-    <input 
+    <input
       [(ngModel)]="draftService.selectedDraft.randomDraftItems"
-      class="form-check-input" 
-      type="checkbox" 
-      id="teamDraft">
-    <label class="form-check-label" for="randomBuilding">
-      Randomize Available Draft Items 
+      class="form-check-input"
+      type="checkbox"
+      id="randomDraftItems">
+    <label class="form-check-label" for="randomDraftItems">
+      Randomize Available Draft Items
     </label>
-    <i class="bi m-3 bi-question-circle-fill" 
-      data-bs-toggle="collapse" data-bs-target="#randomDraftItems" aria-expanded="false" aria-controls="teamDraftToggle">
+    <i class="bi m-3 bi-question-circle-fill"
+      data-bs-toggle="collapse" data-bs-target="#randomDraftItemsDetails" aria-expanded="false" aria-controls="teamDraftToggle">
     </i>
   </div>
-  <div class="collapse" id="randomDraftItems">
+  <div class="collapse" id="randomDraftItemsDetails">
     <div class="card card-body">
       If selected, the list of draft items will be narrowed down until it matches the number of required picks for this draft,
-      by randomly removing entries. For example, in a 4 player draft with two picks for each player, the draft items will 
+      by randomly removing entries. For example, in a 4 player draft with two picks for each player, the draft items will
       be reduced to 8 randomly selected entries.
     </div>
   </div>
 
   <div class="form-check">
-    <input 
+    <input
       [(ngModel)]="draftService.selectedDraft.randomDraftOrder"
-      class="form-check-input" 
-      type="checkbox" 
-      id="teamDraft">
-    <label class="form-check-label" for="randomBuilding">
+      class="form-check-input"
+      type="checkbox"
+      id="randomDraftOrder">
+    <label class="form-check-label" for="randomDraftOrder">
       Randomize Draft Order
     </label>
-    <i class="bi m-3 bi-question-circle-fill" 
-      data-bs-toggle="collapse" data-bs-target="#randomDraftOrder" aria-expanded="false" aria-controls="randomDraftOrderToggle">
+    <i class="bi m-3 bi-question-circle-fill"
+      data-bs-toggle="collapse" data-bs-target="#randomDraftOrderDetails" aria-expanded="false" aria-controls="randomDraftOrderToggleDetails">
     </i>
   </div>
-  <div class="collapse" id="randomDraftOrder">
+  <div class="collapse" id="randomDraftOrderDetails">
     <div class="card card-body">
       Rather than starting with player one and drafting in sequential order, the draft order will be determined randomly.
-      If team play is selected, the draft order will still alternate between teams. 
+      If team play is selected, the draft order will still alternate between teams.
     </div>
   </div>
 
   <div class="form-check">
-    <input 
+    <input
       [(ngModel)]="draftService.selectedDraft.snakeDraft"
-      class="form-check-input" 
-      type="checkbox" 
+      class="form-check-input"
+      type="checkbox"
       id="snakeDraft"
     >
-    <label class="form-check-label" for="randomBuilding">
+    <label class="form-check-label" for="snakeDraft">
       Snake Draft
     </label>
-    <i class="bi m-3 bi-question-circle-fill" 
+    <i class="bi m-3 bi-question-circle-fill"
       data-bs-toggle="collapse" data-bs-target="#snakeDraftToggle" aria-expanded="false" aria-controls="snakeDraftToggle">
     </i>
   </div>
   <div class="collapse" id="snakeDraftToggle">
     <div class="card card-body">
-      In Snake Drafts, after each round of drafting, the pick order will reverse. 
-      For example, in a four player draft with 2 picks for each player, 
+      In Snake Drafts, after each round of drafting, the pick order will reverse.
+      For example, in a four player draft with 2 picks for each player,
       the pick order will be player 1, 2, 3 , 4 for the first round and player 4, 3, 2, 1 for the second round.
-      This helps to mitigate the advantage Team 1 has from getting the first pick. 
+      This helps to mitigate the advantage Team 1 has from getting the first pick.
+    </div>
+  </div>
+
+  <div class="form-check">
+    <input
+      [(ngModel)]="draftService.selectedDraft.balancedDraft"
+      class="form-check-input"
+      type="checkbox"
+      id="balancedDraft"
+    >
+    <label class="form-check-label" for="balancedDraft">
+      Balanced Draft
+    </label>
+    <i class="bi m-3 bi-question-circle-fill"
+      data-bs-toggle="collapse" data-bs-target="#balancedDraftToggle" aria-expanded="false" aria-controls="balancedDraftToggle">
+    </i>
+  </div>
+  <div class="collapse" id="balancedDraftToggle">
+    <div class="card card-body">
+      This option is designed for a team draft that has one pick for each player. In order to 'balance' the advantage of
+      the first pick being given to one team, the 2nd and 3rd pick will be given to the opposite team.
+      For example, in a 6 player draft with two teams, the pick order will be team 1, 2, 2, 1, 2, 1.
     </div>
   </div>
 
@@ -191,6 +212,14 @@
   <div *ngIf="errors.get('snakeDraftNotAllowed')"
     class="alert alert-warning fade-in mt-3 mb-0" role="alert">
     A snake style draft is only possible with multiple picks per player. Please increase the number of Picks Per Player.
+  </div>
+  <div *ngIf="errors.get('balancedDraftNotAllowed')"
+    class="alert alert-warning fade-in mt-3 mb-0" role="alert">
+    The balanced draft option is for team drafts with 1 pick for player. Please select Team Draft or chang the Number of Players.
+  </div>
+  <div *ngIf="errors.get('oddPlayerCountForTeamDraft')"
+    class="alert alert-warning fade-in mt-3 mb-0" role="alert">
+    A team draft is only possible with an even number of players. Please unselect Team Draft or chang the Number of Players.
   </div>
 
   <div>
@@ -202,5 +231,5 @@
     </button>
   </div>
 
-  
+
 </div>

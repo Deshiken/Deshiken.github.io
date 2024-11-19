@@ -27,7 +27,7 @@
             id="humansCheckbox"
             (change)="factionChange($event, HolasFaction.Humans)"
             checked>
-          <label class="form-check-label" for="flexCheckChecked">
+          <label class="form-check-label" for="humansCheckbox">
             Humans
           </label>
         </div>
@@ -36,7 +36,7 @@
           <input class="form-check-input" type="checkbox"
             (change)="factionChange($event, HolasFaction.Orcs)"
             id="orcsCheckbox" checked>
-          <label class="form-check-label" for="flexCheckChecked">
+          <label class="form-check-label" for="orcsCheckbox">
             Orcs
           </label>
         </div>
@@ -45,7 +45,7 @@
           <input class="form-check-input" type="checkbox"
             (change)="factionChange($event, HolasFaction.Elves)"
             id="elvesCheckbox" checked>
-          <label class="form-check-label" for="flexCheckChecked">
+          <label class="form-check-label" for="elvesCheckbox">
             Elves
           </label>
         </div>
@@ -54,7 +54,7 @@
           <input class="form-check-input" type="checkbox"
             (change)="factionChange($event, HolasFaction.Dwarves)"
             id="dwarvesCheckbox" checked>
-          <label class="form-check-label" for="flexCheckChecked">
+          <label class="form-check-label" for="dwarvesCheckbox">
             Dwarves
           </label>
         </div>
@@ -63,7 +63,7 @@
           <input class="form-check-input" type="checkbox"
           (change)="factionChange($event, HolasFaction.Lionkin)"
             id="lionkinCheckbox" checked>
-          <label class="form-check-label" for="flexCheckChecked">
+          <label class="form-check-label" for="lionkinCheckbox">
             Lionkin
           </label>
         </div>
@@ -76,7 +76,7 @@
           <input class="form-check-input" type="checkbox"
             (change)="factionChange($event, HolasFaction.Undead)"
             id="undeadCheckbox" checked>
-          <label class="form-check-label" for="flexCheckChecked">
+          <label class="form-check-label" for="undeadCheckbox">
             Undead
           </label>
         </div>
@@ -85,7 +85,7 @@
           <input class="form-check-input" type="checkbox"
             (change)="factionChange($event, HolasFaction.Goblins)"
             id="goblinsCheckbox" checked>
-          <label class="form-check-label" for="flexCheckChecked">
+          <label class="form-check-label" for="goblinsCheckbox">
             Goblins
           </label>
         </div>
@@ -94,7 +94,7 @@
           <input class="form-check-input" type="checkbox"
             (change)="factionChange($event, HolasFaction.Lizardfolk)"
             id="lizardfolkCheckbox" checked>
-          <label class="form-check-label" for="flexCheckChecked">
+          <label class="form-check-label" for="lizardfolkCheckbox">
             Lizardfolk
           </label>
         </div>
@@ -103,7 +103,7 @@
           <input class="form-check-input" type="checkbox"
             (change)="factionChange($event, HolasFaction.Birdfolk)"
             id="birdfolkCheckbox" checked>
-          <label class="form-check-label" for="flexCheckChecked">
+          <label class="form-check-label" for="birdfolkCheckbox">
             Birdfolk
           </label>
         </div>
@@ -112,7 +112,7 @@
           <input class="form-check-input" type="checkbox"
             (change)="factionChange($event, HolasFaction.Merfolk)"
             id="merfolkCheckbox" checked>
-          <label class="form-check-label" for="flexCheckChecked">
+          <label class="form-check-label" for="merfolkCheckbox">
             Merfolk
           </label>
         </div>
@@ -139,7 +139,7 @@
             (change)="mercenaryChange($event, Mercenary.Druid)"
             [checked]="draftService.availableMercs.indexOf(Mercenary.Druid) > -1"
             id="druidCheckbox">
-          <label class="form-check-label" for="flexCheckChecked">
+          <label class="form-check-label" for="druidCheckbox">
             {{Mercenary.Druid}}
           </label>
         </div>
@@ -148,7 +148,7 @@
             (change)="mercenaryChange($event, Mercenary.Warlord)"
             [checked]="draftService.availableMercs.indexOf(Mercenary.Warlord) > -1"
             id="warlordCheckbox">
-          <label class="form-check-label" for="flexCheckChecked">
+          <label class="form-check-label" for="warlordCheckbox">
             {{Mercenary.Warlord}}
           </label>
         </div>
@@ -157,7 +157,7 @@
             (change)="mercenaryChange($event, Mercenary.Harvester)"
             [checked]="draftService.availableMercs.indexOf(Mercenary.Harvester) > -1"
             id="harvesterCheckbox" >
-          <label class="form-check-label" for="flexCheckChecked">
+          <label class="form-check-label" for="harvesterCheckbox">
             {{Mercenary.Harvester}}
           </label>
         </div>
@@ -166,7 +166,7 @@
             (change)="mercenaryChange($event, Mercenary.Doppelganger)"
             [checked]="draftService.availableMercs.indexOf(Mercenary.Doppelganger) > -1"
             id="doppelgangerCheckbox">
-          <label class="form-check-label" for="flexCheckChecked">
+          <label class="form-check-label" for="doppelgangerCheckbox">
             {{Mercenary.Doppelganger}}
           </label>
         </div>
@@ -175,7 +175,7 @@
             (change)="mercenaryChange($event, Mercenary.HillGiant)"
             [checked]="draftService.availableMercs.indexOf(Mercenary.HillGiant) > -1"
             id="hillGiantCheckbox">
-          <label class="form-check-label" for="flexCheckChecked">
+          <label class="form-check-label" for="hillGiantCheckbox">
             {{Mercenary.HillGiant}}
           </label>
         </div>
@@ -184,7 +184,7 @@
             (change)="mercenaryChange($event, Mercenary.Gorgon)"
             [checked]="draftService.availableMercs.indexOf(Mercenary.Gorgon) > -1"
             id="gorgonCheckbox">
-          <label class="form-check-label" for="flexCheckChecked">
+          <label class="form-check-label" for="gorgonCheckbox">
             {{Mercenary.Gorgon}}
           </label>
         </div>
@@ -196,7 +196,7 @@
             (change)="mercenaryChange($event, Mercenary.DemonLord)"
             [checked]="draftService.availableMercs.indexOf(Mercenary.DemonLord) > -1"
             id="demonLordCheckbox">
-          <label class="form-check-label" for="flexCheckChecked">
+          <label class="form-check-label" for="demonLordCheckbox">
             {{Mercenary.DemonLord}}
           </label>
         </div>
@@ -205,7 +205,7 @@
             (change)="mercenaryChange($event, Mercenary.Treant)"
             [checked]="draftService.availableMercs.indexOf(Mercenary.Treant) > -1"
             id="treantCheckbox">
-          <label class="form-check-label" for="flexCheckChecked">
+          <label class="form-check-label" for="treantCheckbox">
             {{Mercenary.Treant}}
           </label>
         </div>
@@ -313,7 +313,6 @@
       <i class="bi bi-arrow-right"></i>
     </button>
 
-  <!-- </form> -->
 </div>
 
 

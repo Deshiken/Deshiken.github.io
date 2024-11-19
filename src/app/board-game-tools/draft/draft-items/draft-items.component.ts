@@ -51,12 +51,12 @@ export class DraftItemsComponent implements OnInit {
   public deleteDraftCategoryModal(categoryToDelte: string, content: any) {
     // Delete all items that have that category set
     this.modalService.open(content).result.then(
-      () => {this.deleteCategoyrAndMatchingItems(categoryToDelte)}, // Case when 'delete category' is pressed
+      () => {this.deleteCategoryAndMatchingItems(categoryToDelte)}, // Case when 'delete category' is pressed
       (result2: any) => {console.log('modal result 2', result2)} // Case when modal is closed or cancelled
     );
   }
 
-  public deleteCategoyrAndMatchingItems(categoryToDelete: string) {
+  public deleteCategoryAndMatchingItems(categoryToDelete: string) {
     this.utils.deleteFromArray(this.draftService.selectedDraft.draftItemCategories, categoryToDelete);
 
     const draftItemsCopy = [...this.draftService.selectedDraft.draftItems];
@@ -144,9 +144,9 @@ export class DraftItemsComponent implements OnInit {
           this.errors.set('tooFewItemsPerCategory', true);
         }
       })
-      
+
       // If drafting with categories, there must be at least one category for each player pick.
-      // Ex: 4 players drafting. 2 picks per player. The draft must have at least two categories for items. 
+      // Ex: 4 players drafting. 2 picks per player. The draft must have at least two categories for items.
       if (this.draftService.selectedDraft.draftItemCategories.length < this.draftService.selectedDraft.picksPerPlayer) {
         this.errors.set('tooFewCategories', true)
       }
@@ -157,22 +157,41 @@ export class DraftItemsComponent implements OnInit {
   private setDraftOrder() {
     let finalDraftOrder = new Array<number>();
 
+    // Snake draft for teams, one pick per player.
+    if (this.draftService.selectedDraft.picksPerPlayer === 1 && this.draftService.selectedDraft.snakeDraft && this.draftService.selectedDraft.teamDraft) {
+      // start with team one
+      //
+    }
+
     // Set Order for 1 round of drafting. We will multiply this by the number of picksPerPlayer later to make a full draft order.
     const oneRoundDraftOrder = this.draftService.selectedDraft.randomDraftOrder ? this.randomDraftOrder() : this.standardDraftOrder() ;
-    
+
     for (let i = 0; i < this.draftService.selectedDraft.picksPerPlayer; i++) {
-      // For a Snake Draft the draft order is reversed on every other round. 
+      // For a Snake Draft the draft order is reversed on every other round.
       if (this.draftService.selectedDraft.snakeDraft && (i % 2 === 1)) {
         finalDraftOrder = finalDraftOrder.concat(oneRoundDraftOrder.reverse())
       }
-      // Non Snake Drafts will use the same pick order for each round 
+      // Non Snake Drafts will use the same pick order for each round
       else {
         finalDraftOrder = finalDraftOrder.concat(oneRoundDraftOrder);
       }
     }
-    
+
+
+    if (this.draftService.selectedDraft.balancedDraft) {
+      finalDraftOrder = this.balancedDraftAdjustment(finalDraftOrder);
+    }
+
     console.log('final draft order', finalDraftOrder)
-    this.draftService.draftSteps  = finalDraftOrder;    
+    this.draftService.draftSteps  = finalDraftOrder;
+  }
+
+  private balancedDraftAdjustment(draftOrder: Array<number>): Array<number> {
+    // To adjust for a mor balanced draft between two teams, we can take the last pick and insert it to the 2nd pick position.
+    // Ex: 1,2,1,2,1,2 -> 1,2,2,1,2,1
+    draftOrder.splice(1,0, draftOrder[draftOrder.length - 1]);
+    draftOrder.pop();
+    return draftOrder;
   }
 
   private randomDraftOrder() {
@@ -180,16 +199,15 @@ export class DraftItemsComponent implements OnInit {
     if (this.draftService.selectedDraft.teamDraft) {
       let teamOneArray = new Array<number>()
       let teamTwoArray = new Array<number>()
-      
+
       // Break the player array into two separate arrays, one for each team.
       this.draftService.players.forEach((value, key) => {
         value.team === 1 ? teamOneArray.push(key) : teamTwoArray.push(key)
       });
-      
+
       let startingTeam = Math.floor(Math.random() * 2) + 1;
       console.log('seed number', startingTeam);
-      
-      
+
       let endingPlayerOrder = new Array<number>()
       for (let i = 1; i <= this.draftService.selectedDraft.numberOfPlayers; i++) {
         let arrayToUse  = startingTeam === 1 ? teamOneArray : teamTwoArray;
@@ -206,7 +224,7 @@ export class DraftItemsComponent implements OnInit {
     }
   }
 
-  /** Returns an array in sequential order of the players numbers of the draft 
+  /** Returns an array in sequential order of the players numbers of the draft
    *  ex: [1, 2, 3, 4]
    */
   private standardDraftOrder() {
@@ -234,7 +252,7 @@ export class DraftItemsComponent implements OnInit {
     this.draftService.selectedDraft.draftItemCategories.forEach((category) => {
       itemCategoryMap.set(category, new Array<DraftItem>());
     })
-    
+
     // Populate the array with the items matching the category key
     this.draftService.selectedDraft.draftItems.forEach((item) => {
       if (typeof item.itemCategory === 'string') {

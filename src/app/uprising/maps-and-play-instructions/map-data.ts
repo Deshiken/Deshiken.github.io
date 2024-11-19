@@ -140,11 +140,12 @@ export const UprisingMaps: Map<UprisingMapName, MapData> = new Map([
       'To capture a flag you must have a unit in the same region of the flag. At any point on your turn, you may place the flag on a unit you control of your choice to capture it. This is the flag carrier.',
       'The flag will move with the flag carrier during move actions.',
       'If the flag carrier is destroyed, the owner of that unit may choose a unit in the same region as the destroyed unit to be the new flag carrier.',
-      'If the flag carrier is destoryed and no new flag carrier is/can be choosen, the flag will remain in the region of the destroyed unit.',
+      'If the flag carrier is destroyed and no new flag carrier is/can be chosen, the flag will remain in the region of the destroyed unit.',
       'If a flag is not in one of the marked starting positions and is not being carried, units of the opposite team may send that flag back to any one of the starting flag positions that does not currently have a flag present.',
       'Flag carriers can not be moved by spells.',
       'Flag carriers have -1 movement.',
-      '1 Point is gaind if a team is able to capture a flag and move that flag to any capitol of that team. The flag is then returned to any one of the starting flag positions that does not have a flag present.'
+      'Flag carries may not use portals for movement',
+      '1 Point is gained if a team is able to capture a flag and move that flag to any capitol of that team. The flag is then returned to any one of the starting flag positions that does not have a flag present.'
     ],
     numberOfPlayers: 4,
     objective: UprisingMapObjective.Custom,

@@ -14,13 +14,12 @@ export class ToastComponent implements OnInit {
   @Input() message: string = 'Your item has been saved';
   @Input() marginTop: number = 0;
   @ViewChild('savedOptionsToast') savedOptionsToast!: ElementRef;
-  
+
   constructor(
     private toastService: ToastService
   ) { }
 
-  ngOnInit(): void { 
-    console.log('marginTop: ', this.marginTop)
+  ngOnInit(): void {
     this.toastService.toastSubject.subscribe(() => {
       console.log('subscription notified')
       this.showToast();
