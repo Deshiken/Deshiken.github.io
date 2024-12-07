@@ -14,6 +14,7 @@ import { DraftResultsComponent } from './draft/draft-results/draft-results.compo
 import { DraftItemsComponent } from './draft/draft-items/draft-items.component';
 import { PointTrackerComponent } from './point-tracker/point-tracker.component';
 import { DiceRollerComponent } from './dice-roller/dice-roller.component';
+import { OurGamesComponent } from './our-games/our-games/our-games.component';
 
 
 
@@ -29,6 +30,7 @@ import { DiceRollerComponent } from './dice-roller/dice-roller.component';
     DraftItemsComponent,
     PointTrackerComponent,
     DiceRollerComponent,
+    OurGamesComponent,
   ],
   imports: [
     CommonModule,

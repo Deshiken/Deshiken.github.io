@@ -1,0 +1,21 @@
+
+<div class="container">
+  <app-heading-with-back [title]="'Our Games'"></app-heading-with-back>
+
+  <div class="row d-flex justify-content-center">
+
+    <div *ngFor="let game of gameData" class="card game-card card-shadow m-3 p-0">
+      <div class="card-body">
+        <p class="card-title h5">{{game.name}}</p>
+        <p class="card-text"><b>Player Count: </b>{{game.playerCount}}</p>
+        <p class="mb-0"><b>Game Style:</b></p>
+        <span *ngFor="let gameStyle of game.gameStyles; let i = index" class="card-text">
+          {{gameStyle}}<span *ngIf="i + 1 != game.gameStyles.length">, </span>
+        </span>
+        <p class="card-text"><b>Length: </b>{{game.length}}</p>
+        <a class="card-link" href="{{game.bggLink}}" target="_blank">BGG Link</a>
+      </div>
+    </div>
+  </div>
+
+</div>
