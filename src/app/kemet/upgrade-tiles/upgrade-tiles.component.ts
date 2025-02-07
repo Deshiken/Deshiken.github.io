@@ -17,7 +17,7 @@ export class UpgradeTilesComponent implements OnInit {
   numberOfPlayers: number = 4;
   numberOfTileSets: number = 3;
   KemetTile = KemetTile;
-  availableTiles: Array<KemetTile> = new Array<KemetTile>(KemetTile.Diamond,KemetTile.Ruby,KemetTile.Saphire,KemetTile.Onyx);
+  availableTiles: Array<KemetTile> = new Array<KemetTile>(KemetTile.Diamond,KemetTile.Ruby,KemetTile.Saphire,KemetTile.Onyx,KemetTile.Amber,KemetTile.Amethyst);
   generatedTiles: Array<KemetTile> = new Array<KemetTile>();
 
   constructor(
@@ -89,5 +89,7 @@ export enum KemetTile {
   Saphire = 'Saphire (Blue)',
   Emerald = 'Emerald (Green)',
   Ruby = 'Ruby (Red)',
-  Onyx = 'Onyx (Black)'
+  Onyx = 'Onyx (Black)',
+  Amber = 'Amber (Gold)',
+  Amethyst = 'Amethyst (Purple)'
 }

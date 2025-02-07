@@ -61,6 +61,24 @@
           Emerald (Green Tiles)
         </label>
       </div>
+
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox"  
+          (change)="tileChange($event, KemetTile.Amber)"
+          id="amberCheckbox">
+        <label class="form-check-label" for="flexCheckChecked">
+          Amber (Gold Tiles)
+        </label>
+      </div>
+
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox"  
+          (change)="tileChange($event, KemetTile.Amethyst)"
+          id="amethystCheckbox">
+        <label class="form-check-label" for="flexCheckChecked">
+          Amethyst (Purple Tiles)
+        </label>
+      </div>
     </div>
   </div>
 

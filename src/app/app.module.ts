@@ -13,7 +13,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   declarations: [
     AppComponent,
     HomePageComponent,
-    AboutComponent
+    AboutComponent,
   ],
   imports: [
     BrowserModule,

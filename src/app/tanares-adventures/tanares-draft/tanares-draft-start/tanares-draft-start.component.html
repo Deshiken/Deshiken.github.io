@@ -1,0 +1,58 @@
+<div class="container">
+  
+  <app-heading-with-back [title]="'Arena the Contest/Tanares Adventures Draft Start'"></app-heading-with-back>
+
+  <label class='h6' for="numberOfHeroes">Number of heroes per team:</label>
+  <select [(ngModel)]="numberOfHeroesPerTeam" class="form-select mb-3"
+    id="numberOfHeroes" aria-label="Number of characters per team" style="max-width: 400px;">
+    <option [ngValue]="3">Three</option>
+    <option [ngValue]="4" selected>Four</option>
+    <option [ngValue]="5">Five</option>
+  </select>
+  
+  <label class='h6' for="numberOfHeroes">Number of random heroes of each class to choose from:</label>
+  <select [(ngModel)]="numberOfHeroesOfEachClass" class="form-select mb-3"
+    id="numberOfHeroes" aria-label="Number of characters per team" style="max-width: 400px;">
+    <option [ngValue]="1" selected>One</option>
+    <option [ngValue]="2">Two</option>
+    <option [ngValue]="3">Three</option>
+  </select>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox"
+      [(ngModel)]="draftHeroicActions"
+      [ngModelOptions]="{standalone: true}"
+      id="undeadCheckbox" checked>
+    <label class="form-check-label" for="undeadCheckbox">
+      Draft Heroic Actions?
+    </label>
+  </div>
+
+  <ng-container *ngIf="draftHeroicActions">
+    <label class='h6' for="numberOfHeroicActions">Number of randomly selected heroic actions to draft from:</label>
+    <select [(ngModel)]="numberOfHeroicActions" class="form-select mb-3"
+      id="numberOfHeroicActions" aria-label="Number of characters per team" style="max-width: 400px;">
+      <option [ngValue]="4" selected>Four</option>
+      <option [ngValue]="5">Five</option>
+      <option [ngValue]="6">Six</option>
+      <option [ngValue]="7">Seven</option>
+      <option [ngValue]="8">Eight</option>
+    </select>
+  </ng-container>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox"
+      [(ngModel)]="draftRelics"
+      [ngModelOptions]="{standalone: true}"
+      id="undeadCheckbox" checked>
+    <label class="form-check-label" for="undeadCheckbox">
+      Draft PvP Artifacts?
+    </label>
+  </div>
+
+  <button class="btn btn-primary my-3" (click)="next()">
+    Next
+    <i class="bi bi-arrow-right"></i>
+  </button>
+
+</div>

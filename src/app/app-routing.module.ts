@@ -41,6 +41,11 @@ const routes: Routes = [
     path: 'descent',
     // loadComponent: () => import('./descent/descent-home/descent-home.component').then(mod => mod.DescentHomeComponent)
     loadChildren: () => import('./descent/descent-routes').then(mod => mod.DESCENT_ROUTES)
+  },
+  {
+    path: 'tanares',
+    // loadComponent: () => import('./descent/descent-home/descent-home.component').then(mod => mod.DescentHomeComponent)
+    loadChildren: () => import('./tanares-adventures/tanares-routes').then(mod => mod.TANARES_ROUTES)
   }
 ];
 

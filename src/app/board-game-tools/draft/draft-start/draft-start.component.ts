@@ -2,6 +2,7 @@ import { Component, OnInit, } from '@angular/core';
 import { Router } from '@angular/router';
 import { RandomService } from 'src/app/shared/services/random.service';
 import { DraftItem, DraftOptions, DraftService } from '../draft.service';
+import { testDraftOptions } from '../draft.data';
 
 @Component({
   selector: 'app-draft-start',
@@ -11,7 +12,7 @@ import { DraftItem, DraftOptions, DraftService } from '../draft.service';
 export class DraftStartComponent implements OnInit {
 
   public newDraftChoice: string = '';
-  public draftToDelete: DraftOptions = this.draftService.testDraftOptions[0];
+  public draftToDelete: DraftOptions = testDraftOptions[0];
   public errors: Map<string,boolean> = new Map([
     ['snakeDraftNotAllowed', false],
     ['oddPlayerCountForTeamDraft', false],

@@ -1,0 +1,24 @@
+<div class="container">
+  
+  <app-heading-with-back [title]="'Arena the Contest/Tanares Adventures Draft Results'"></app-heading-with-back>
+  <h2>Heroes to Draft</h2>
+  <p *ngFor="let hero of tanaresDraftService.chosenTanaresHeroes">
+    <b>Name: </b> {{hero.name}}
+    <b>Class: </b> {{hero.class}}
+  </p>
+
+  <ng-container *ngIf="tanaresDraftService.chosenTanaresRelics.length > 0">
+    <h2>Relics to Draft</h2>
+    <p *ngFor="let relic of tanaresDraftService.chosenTanaresRelics">
+      <b>Name: </b> {{relic.name}}
+      <b>Level: </b> {{relic.level}}
+    </p>
+  
+  </ng-container>
+
+  <ng-container *ngIf="tanaresDraftService.chosenTanaresHeroicActions.length > 0">
+    <h2>Heroic Actions to Draft</h2>
+    <p *ngFor="let action of tanaresDraftService.chosenTanaresHeroicActions">{{action}}</p>
+  </ng-container>
+
+</div>

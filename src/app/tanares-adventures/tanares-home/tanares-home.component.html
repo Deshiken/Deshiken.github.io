@@ -1,0 +1,23 @@
+<div class="container">
+  
+  <app-heading-with-back [title]="'Arena the Contest/Tanares Adventures'"></app-heading-with-back>
+
+  <div class="d-flex align-items-center justify-content-between nav-help">
+    <button class="btn btn-primary btn-lg my-3" (click)="router.navigate(['tanares/draft-start'])">
+      PvP Draft
+    </button>
+    <i class="bi m-3 bi-question-circle-fill" style="font-size: 2.4rem;"
+      data-bs-toggle="collapse" data-bs-target="#draftCollapse" aria-expanded="false" aria-controls="draftCollapse">
+    </i>
+  </div>
+  <div class="collapse" id="draftCollapse">
+    <div class="card card-body">
+      This tool will help you randomly select a group of heroes to draft from and will facilitate a draft between two teams.
+    </div>
+  </div>
+
+  <div class="d-flex align-items-center justify-content-between nav-help">
+    <a target="_blank" href="https://www.dropbox.com/scl/fo/s11zk1zyzz07sb7axj0h8/AO9CQAwQVuXcxIfwz69LM_Q?e=5&preview=Tanares+Rulebook+PvP.pdf&rlkey=jqlhsc3h7zmakjeimffk6kcu6">PvP Rules</a>
+  </div>
+
+</div>

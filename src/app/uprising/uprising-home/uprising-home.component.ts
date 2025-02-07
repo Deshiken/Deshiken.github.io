@@ -8,7 +8,7 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class UprisingHomeComponent implements OnInit {
 
-  constructor( public router: Router) { }
+  constructor( public router: Router ) { }
 
   ngOnInit(): void {
   }
