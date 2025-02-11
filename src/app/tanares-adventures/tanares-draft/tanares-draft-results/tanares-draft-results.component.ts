@@ -12,6 +12,11 @@ import { SharedModule } from 'src/app/shared/shared.module';
 })
 
 export class TanaresDraftResultsComponent {
+  sortedChosenTanaresRelics = this.tanaresDraftService.chosenTanaresRelics.sort((a,b) => a.level - b.level);
+  sortedChosenTanaresHeroes = this.tanaresDraftService.chosenTanaresHeroes.sort((a,b) => a.class.localeCompare(b.class));
+
   constructor(public tanaresDraftService: TanaresDraftService){}
+
+  
 
 }

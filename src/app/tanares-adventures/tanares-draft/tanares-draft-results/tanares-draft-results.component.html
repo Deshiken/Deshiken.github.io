@@ -7,13 +7,13 @@
     <b>Class: </b> {{hero.class}}
   </p>
 
-  <ng-container *ngIf="tanaresDraftService.chosenTanaresRelics.length > 0">
+  <ng-container *ngIf="sortedChosenTanaresRelics.length > 0">
     <h2>Relics to Draft</h2>
-    <p *ngFor="let relic of tanaresDraftService.chosenTanaresRelics">
+    <!-- <p *ngFor="let relic of tanaresDraftService.chosenTanaresRelics"> -->
+    <p *ngFor="let relic of sortedChosenTanaresRelics">
       <b>Name: </b> {{relic.name}}
       <b>Level: </b> {{relic.level}}
     </p>
-  
   </ng-container>
 
   <ng-container *ngIf="tanaresDraftService.chosenTanaresHeroicActions.length > 0">

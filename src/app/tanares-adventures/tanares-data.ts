@@ -19,7 +19,7 @@ export enum TanaresHeroClass {
   Shooter = "Shooter",
   Brute = "Brute",
   Tactician = "Tactician",
-  Healer = "Healser",
+  Healer = "Healer",
   Controller = "Controller",
   Tank = "Tank",
   Commander ="Commander"
