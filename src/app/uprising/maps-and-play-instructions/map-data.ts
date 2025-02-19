@@ -21,6 +21,7 @@ export enum UprisingMapName {
   // 2 Player Maps
   TwoPlayerStandard = 'Two Player Standard',
   DivideAndConquer = 'Divide And Conquer',
+  BridgeTooNear2Player = 'Bridge Too Near 2 Player',
   // 3 Player Maps
   FortressDefense = 'Fortress Defense',
   Star = 'Star',
@@ -28,6 +29,8 @@ export enum UprisingMapName {
   Pyramid = 'Pyramid',
   // 4 Player Maps
   FourPlayerStandard = 'Four Player Standard',
+  MarchingOrders = 'Marching Orders',
+  BridgeTooNear = 'Bridge Too Near 4 Player',
   Colosseum = 'Colosseum',
   CloseQuarters = 'Close Quarters',
   HourGlass = 'Hour Glass',
@@ -36,15 +39,34 @@ export enum UprisingMapName {
   GreatSacrifice = 'Great Sacrifice',
   TheWildHunt = 'The Wild Hunt',
   TheWildHuntv2 = 'The Wild Hunt Version 2',
+  TheWildHuntv3 = 'The Wild Hunt Version 3',
   CaptureTheFlag = 'Capture The Flag',
 }
 
 export const UprisingMaps: Map<UprisingMapName, MapData> = new Map([
+  // 5 Player Maps
+
   // 4 Player Maps
   [UprisingMapName.FourPlayerStandard, {
     mapName: UprisingMapName.FourPlayerStandard,
     image: '../../../assets/uprising_maps_v2/Standard_4Player_v1_Tavern.jpg',
     description: 'The recomended map for starting players. This map gives a balanced experience for the majority of factions.',
+    numberOfPlayers: 4,
+    objective: UprisingMapObjective.PointControl,
+    variants: [UprisingMapObjective.Conquest, UprisingMapObjective.Slayer]
+  }],
+  [UprisingMapName.MarchingOrders, {
+    mapName: UprisingMapName.MarchingOrders,
+    image: '../../../assets/uprising_maps_v2/MarchingOrders_4Player_v1_Tavern.jpg',
+    description: '.',
+    numberOfPlayers: 4,
+    objective: UprisingMapObjective.PointControl,
+    variants: [UprisingMapObjective.Conquest, UprisingMapObjective.Slayer]
+  }],
+  [UprisingMapName.BridgeTooNear, {
+    mapName: UprisingMapName.BridgeTooNear,
+    image: '../../../assets/uprising_maps_v2/BridgeTooNear_4Player_v1_Tavern.jpg',
+    description: '.',
     numberOfPlayers: 4,
     objective: UprisingMapObjective.PointControl,
     variants: [UprisingMapObjective.Conquest, UprisingMapObjective.Slayer]
@@ -117,6 +139,21 @@ export const UprisingMaps: Map<UprisingMapName, MapData> = new Map([
   }],
   [UprisingMapName.TheWildHuntv2, {
     mapName: UprisingMapName.TheWildHuntv2,
+    image: '../../../assets/uprising_maps_v2/TheWildHunt_4Player_v2_Tavern.jpg',
+    description: 'Points on this map are scored by destroying a beast that spawns at a random location. Each time it is destroyed it comes back stronger.',
+    specialRules: [
+      'For this game mode, points are scored by destroying a Wild Beast, that spawns at a random location on the map.',
+      'At the start of the game roll a six sided die. Add the wild beast (using any token) to the green flag matching the number that was rolled.',
+      'The beast attacks and defends with a green die. Any time the beast is attacked, it will perform an attack regardless if it is destroyed in the attack or not.',
+      'When the beast attacks, it attacks the units attacking it, not a specific region or army.',
+      'Each time the beast is destroyed it will spawn again using the same method used to place it at the start of the game.',
+      'Keep track of the number of times the beast is destroyed. Each time the beast is destroyed it gains an additional green attack and defense die to a maximum of 4 green dice.'
+    ],
+    numberOfPlayers: 4,
+    objective: UprisingMapObjective.Custom,
+  }],
+  [UprisingMapName.TheWildHuntv3, {
+    mapName: UprisingMapName.TheWildHuntv3,
     image: '../../../assets/uprising_maps_v2/TheWildHunt_4Player_v3_Tavern.jpg',
     description: 'Points on this map are scored by destroying a beast that spawns at a random location. Each time it is destroyed it comes back stronger.',
     specialRules: [
@@ -202,6 +239,14 @@ export const UprisingMaps: Map<UprisingMapName, MapData> = new Map([
   [UprisingMapName.DivideAndConquer, {
     mapName: UprisingMapName.DivideAndConquer,
     image: '../../../assets/uprising_maps_v2/DivideAndConquer_2Player_v1_Tavern.jpg',
+    description: 'A 1vs1 map with more space and additional points to control. Spreading out to control and hold multiple points will be key to victory on this map.',
+    numberOfPlayers: 2,
+    objective: UprisingMapObjective.PointControl,
+    variants: [UprisingMapObjective.Conquest, UprisingMapObjective.Slayer]
+  }],
+  [UprisingMapName.BridgeTooNear2Player, {
+    mapName: UprisingMapName.BridgeTooNear2Player,
+    image: '../../../assets/uprising_maps_v2/BridgeTooNear_2Player_v1_Tavern.jpg',
     description: 'A 1vs1 map with more space and additional points to control. Spreading out to control and hold multiple points will be key to victory on this map.',
     numberOfPlayers: 2,
     objective: UprisingMapObjective.PointControl,

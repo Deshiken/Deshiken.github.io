@@ -16,7 +16,4 @@ export class TanaresDraftResultsComponent {
   sortedChosenTanaresHeroes = this.tanaresDraftService.chosenTanaresHeroes.sort((a,b) => a.class.localeCompare(b.class));
 
   constructor(public tanaresDraftService: TanaresDraftService){}
-
-  
-
 }
