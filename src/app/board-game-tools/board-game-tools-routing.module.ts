@@ -8,6 +8,8 @@ import { DraftItemsComponent } from './draft/draft-items/draft-items.component';
 import { DraftPickComponent } from './draft/draft-pick/draft-pick.component';
 import { DraftResultsComponent } from './draft/draft-results/draft-results.component';
 import { DraftStartComponent } from './draft/draft-start/draft-start.component';
+import { ChessTimerStartComponent } from './multiplayer-chess-timer/chess-timer-start/chess-timer-start.component';
+import { MultiplayerChessTimerComponent } from './multiplayer-chess-timer/multiplayer-chess-timer/multiplayer-chess-timer.component';
 import { OurGamesComponent } from './our-games/our-games/our-games.component';
 import { PointTrackerComponent } from './point-tracker/point-tracker.component';
 import { RandomizeTeamsResultsComponent } from './randomize-teams/randomize-teams-results/randomize-teams-results.component';
@@ -61,6 +63,14 @@ const routes: Routes = [
   {
     path: 'our-games',
     component: OurGamesComponent
+  },
+  {
+    path: 'chess-clock-start',
+    component: ChessTimerStartComponent
+  },
+  {
+    path: 'chess-clock',
+    component: MultiplayerChessTimerComponent
   },
 
 ];

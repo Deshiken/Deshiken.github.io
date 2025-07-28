@@ -1,0 +1,98 @@
+<div class='container'>
+  <app-heading-with-back [title]="'Chess Clock Options'"></app-heading-with-back>
+
+  <h2 class="h4">Your Saved Drafts</h2>
+
+  <label for="numberOfPlayersSelect">Number of Players:</label>
+  <select
+    [(ngModel)]="chessTimerService.numberOfPlayers"
+    class="form-select mb-3"
+    id="numberOfPlayersSelect"
+    aria-label="Number of Players Select"
+    style="max-width: 150px;"
+  >
+    <option [ngValue]="2">Two</option>
+    <option [ngValue]="3">Three</option>
+    <option [ngValue]="4">Four</option>
+    <option [ngValue]="5">Five</option>
+    <option [ngValue]="6">Six</option>
+  </select>
+
+  <label for="playerMinutes" class="form-label">Minutes for Each Player</label>
+  <input 
+    [(ngModel)]="chessTimerService.minutesPerPlayer"
+    type="number" 
+    min="1"
+    max="60"
+    class="form-control" 
+    id="playerMinutes" 
+  >
+
+  <div class="form-check">
+    <input
+      [(ngModel)]="chessTimerService.allowPause"
+      class="form-check-input"
+      type="checkbox"
+      id="allowPause">
+    <label class="form-check-label" for="allowPause">
+      Allow manual pausing
+    </label>
+    <i class="bi m-3 bi-question-circle-fill"
+      data-bs-toggle="collapse" data-bs-target="#allowPauseToggle" aria-expanded="false" aria-controls="allowPauseToggle">
+    </i>
+  </div>
+  <div class="collapse" id="allowPauseToggle">
+    <div class="card card-body">
+      Some games require other players to make decisions on a player's turn, such as choosing a combat card durring a battle. 
+      For times when multiple players are required to make decisions, the current player's timer can be paused. 
+    </div>
+  </div>
+
+  <div class="form-check">
+    <input
+      [(ngModel)]="chessTimerService.playerOrderChange"
+      class="form-check-input"
+      type="checkbox"
+      id="teamDraft">
+    <label class="form-check-label" for="teamDraft">
+      Pause timers between rounds
+    </label>
+    <i class="bi m-3 bi-question-circle-fill"
+      data-bs-toggle="collapse" data-bs-target="#teamDraftToggle" aria-expanded="false" aria-controls="teamDraftToggle">
+    </i>
+  </div>
+  <div class="collapse" id="teamDraftToggle">
+    <div class="card card-body">
+      At the end of a round, all timers will stop to allow end of round clean up and set up of the next round. Player order can also be adjusted durring this time.
+    </div>
+  </div>
+
+  <div class="wrapper" [ngClass]="{'is-open': chessTimerService.playerOrderChange}">
+    <div class="inner">
+      <label for="numberOfTurnsPerRound" 
+        class="form-label">
+        Number of player turns per round
+      </label>
+      <input 
+        [(ngModel)]="chessTimerService.numberOfTurnsPerRound"
+        type="number" 
+        min="2"
+        max="10"
+        class="form-control" 
+        id="numberOfTurnsPerRound" 
+      >
+    </div>
+  </div>
+
+  <div>
+    <button class="btn btn-primary my-3"
+      (click)="next()"
+    >
+      Next
+      <i class="bi bi-arrow-right"></i>
+    </button>
+  </div>
+
+</div>
+
+

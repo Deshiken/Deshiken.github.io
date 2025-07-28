@@ -1,0 +1,93 @@
+<div class='container'>
+  <app-heading-with-back [title]="'Multiplayer Chess Timer'"></app-heading-with-back>
+
+  <!-- <div class="example-box" cdkDrag>
+    Drag me around
+  </div> -->
+
+  <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+    <div *ngFor='let playerTimer of chessTimerService.playerTimers'
+      [ngStyle]="{'background-color': playerTimer.color}"
+      class="example-box"
+      cdkDrag>
+      
+      <div class="d-flex flex-column align-items-center">
+        <div class="d-flex">
+          <p class="mb-0">{{playerTimer.name}}</p>
+          <i class="ms-2 bi bi-pencil-square" 
+            (click)="playerTimerToEdit = playerTimer"
+            data-bs-toggle="modal" 
+            data-bs-target="#exampleModal">
+          </i>
+        </div>
+        <div class="d-flex align-items-center">
+          <i class="bi me-5" style="font-size: 3rem;" [class]="playerTimer.icon"></i>
+          <p style="font-size: 3rem" class="mb-0">{{playerTimer.timeRemaining}}</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class='d-flex gap-3 mt-3'>
+    <button class="btn btn-primary btn-lg" 
+      *ngIf="initialSetup || roundEnd" 
+      (click)="start()">
+      Start
+    </button>
+  
+    <ng-container *ngIf="!initialSetup && !roundEnd">
+      <button class="btn btn-primary btn-lg" (click)="next()">
+        Next Player
+      </button>
+    
+      <ng-container *ngIf="this.chessTimerService.allowPause">
+        <button class="btn btn-primary btn-lg" (click)="pause()">
+          Pause
+        </button>
+      
+        <button class="btn btn-primary btn-lg" 
+          [disabled]="!timerIsPaused"
+          (click)="resume()">
+          Resume
+        </button>
+      </ng-container>
+    </ng-container>
+  </div>
+
+  <!-- Modal to display player customization options -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <p class="modal-title h5" id="exampleModalLabel">Edit Player</p>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          
+          <label for="playerName" class="form-label">Player Name</label>
+          <input type="text" class="form-control" id="playerName" [(ngModel)]="playerTimerToEdit.name">
+          
+          <label for="playerColor" class="form-label mt-2">Player Color</label>
+          <input type="color" id="playerColor" class="form-control form-control-color" 
+            [(ngModel)]="playerTimerToEdit.color" style="width:85%;">
+
+          <label class="form-label mt-2">Player Icon</label>
+          <div>
+            <ng-container *ngFor="let icon of PlayerIcons | keyvalue">
+              <i class="bi ms-2" style="font-size: 1.75rem;"
+                [class]="icon.value" 
+                [ngClass]="{'icon-selected' : playerTimerToEdit.icon === icon.value}" 
+                (click)="playerTimerToEdit.icon = icon.value">
+              </i>
+            </ng-container>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Done</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

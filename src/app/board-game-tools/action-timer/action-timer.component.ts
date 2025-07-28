@@ -73,6 +73,7 @@ export class ActionTimerComponent implements OnInit, OnDestroy {
     window.clearInterval(this.interval);
 
     this.currentTimer = timerType
+    
     this.interval = window.setInterval(() => {this.currentTimer > 0 ? this.currentTimer -- : this.timesUp()} , 1000);
   }
 
