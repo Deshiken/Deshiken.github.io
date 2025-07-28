@@ -18,6 +18,7 @@ import { OurGamesComponent } from './our-games/our-games/our-games.component';
 import { ChessTimerStartComponent } from './multiplayer-chess-timer/chess-timer-start/chess-timer-start.component';
 import { CdkDropList, CdkDrag } from '@angular/cdk/drag-drop';
 import { MultiplayerChessTimerComponent } from './multiplayer-chess-timer/multiplayer-chess-timer/multiplayer-chess-timer.component';
+import { PlayerTimePipe } from './multiplayer-chess-timer/player-time.pipe';
 
 
 
@@ -36,6 +37,7 @@ import { MultiplayerChessTimerComponent } from './multiplayer-chess-timer/multip
     OurGamesComponent,
     ChessTimerStartComponent,
     MultiplayerChessTimerComponent,
+    PlayerTimePipe,
   ],
   imports: [
     CommonModule,

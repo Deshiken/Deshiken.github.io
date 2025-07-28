@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class ChessTimerService {
   public numberOfPlayers = 4;
-  public minutesPerPlayer = 10;
+  public minutesPerPlayer = 2;
   public allowPause = true;
   public playerOrderChange = false;
   public numberOfTurnsPerRound = 2;

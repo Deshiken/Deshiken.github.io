@@ -29,7 +29,7 @@ export class ChessTimerStartComponent {
         {
           name: `Player ${i+1}`,
           color: this.getRandomDarkColor(),
-          timeRemaining: this.chessTimerService.minutesPerPlayer * 60,
+          timeRemaining: this.chessTimerService.minutesPerPlayer * 60 * 10,
           icon: this.randomService.getRandomEntryFromArray(this.iconValuesArray),
           numberOfTurnsTaken: 0,
         }

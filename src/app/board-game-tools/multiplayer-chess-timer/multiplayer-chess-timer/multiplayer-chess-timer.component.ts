@@ -31,14 +31,12 @@ export class MultiplayerChessTimerComponent {
 
 
   drop(event: CdkDragDrop<string[], string, any>) {
-  // drop(event: any) {
     console.log(event);
     moveItemInArray(this.chessTimerService.playerTimers, event.previousIndex, event.currentIndex);
   }
 
   start() {
     this.roundEnd = false;
-    // this.timerIsPaused = false;
 
     //Initial setup is complete.
     this.initialSetup = false;
@@ -49,6 +47,7 @@ export class MultiplayerChessTimerComponent {
   }
 
   next() {
+    this.timerIsPaused = false;
     // If stopping for additional round setup and all players have played a turn.
     if (this.chessTimerService.playerOrderChange 
         && this.currentPlayerIndex + 1 == this.chessTimerService.playerTimers.length
@@ -83,16 +82,16 @@ export class MultiplayerChessTimerComponent {
     this.timerIsPaused = false;
     this.timerStart(this.chessTimerService.playerTimers[this.currentPlayerIndex])
   }
+
   timerStart(playerTimer: PlayerTimer) {
     console.log('start timer for player: ', playerTimer);
 
     // end any existing timers from continuing to count down
     window.clearInterval(this.interval);
 
+    // Start an interval that updates every 1/10th a second
     this.interval = window.setInterval(() => {
-      console.log('interval loop started');
       playerTimer.timeRemaining --;
-      // playerTimer.timeRemaining > 0 ? playerTimer.timeRemaining -- : playerTimer.timeRemaining = 0;
-    }, 1000);
+    }, 100);
   }
 }
