@@ -5,7 +5,10 @@
     Drag me around
   </div> -->
 
-  <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+  <div cdkDropList 
+    [cdkDropListDisabled]="!roundEnd && !initialSetup"
+    class="example-list" 
+    (cdkDropListDropped)="drop($event)">
     <div *ngFor='let playerTimer of chessTimerService.playerTimers'
       [ngStyle]="{'background-color': playerTimer.color}"
       class="example-box"
@@ -20,12 +23,12 @@
             data-bs-target="#exampleModal">
           </i>
         </div>
-        <div class="d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center justify-content-between" style="font-size: 1.5rem;">
           <div class="d-flex">
-            <i class="bi me-3 mb-0" style="font-size: 2rem;" [class]="playerTimer.icon"></i>
-            <p style="font-size: 2rem" class="mb-0 me-5">{{playerTimer.name}}</p>
+            <i class="bi me-3 mb-0" [class]="playerTimer.icon"></i>
+            <p class="mb-0 me-5">{{playerTimer.name}}</p>
           </div>
-          <p style="font-size: 2rem" class="mb-0">{{playerTimer.timeRemaining}}</p>
+          <p class="mb-0">{{playerTimer.timeRemaining}}</p>
         </div>
       </div>
 

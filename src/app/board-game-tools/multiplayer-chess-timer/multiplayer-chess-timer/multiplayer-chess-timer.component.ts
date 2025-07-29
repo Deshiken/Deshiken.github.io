@@ -1,18 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import {CdkDrag, CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
-import { HeadingWithBackComponent } from 'src/app/shared/components/heading-with-back/heading-with-back.component';
-import { SharedModule } from 'src/app/shared/shared.module';
-import { ChessTimerService, PlayerTimer } from '../chess-timer.service';
-import { CommonModule } from '@angular/common';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { Component } from '@angular/core';
 import { PlayerIcons } from 'src/app/shared/components/player-icon/player-icon.component';
 import { RandomService } from 'src/app/shared/services/random.service';
+import { ChessTimerService, PlayerTimer } from '../chess-timer.service';
 
 @Component({
   selector: 'app-multiplayer-chess-timer',
   templateUrl: './multiplayer-chess-timer.component.html',
   styleUrls: ['./multiplayer-chess-timer.component.scss'],
-  // standalone: true,
-  // imports: [CdkDrag, SharedModule, CommonModule]
 })
 export class MultiplayerChessTimerComponent {
   currentPlayerIndex: number = 0;
