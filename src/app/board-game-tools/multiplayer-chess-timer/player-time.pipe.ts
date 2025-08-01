@@ -9,11 +9,12 @@ export class PlayerTimePipe implements PipeTransform {
 
     console.log('value: ', value);
 
-    if (value >= 600) { // 1 minute or more of time remaining
-      return `${value / 600}:${(value % 600)/60}`;
-    } else {
-      return String(value / 10);
-    }
+    const minutes = Math.floor(value / 600);
+    const seconds = value % 600
+
+    const formattedMinutes = String(minutes).padStart(2, '0');
+    const formattedSeconds = String(seconds).padStart(2, '0');
+    return `${formattedMinutes}:${formattedSeconds}`; // "02:30"
   }
 
 }

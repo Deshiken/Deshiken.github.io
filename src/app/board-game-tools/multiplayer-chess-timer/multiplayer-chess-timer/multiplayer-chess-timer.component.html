@@ -28,7 +28,7 @@
             <i class="bi me-3 mb-0" [class]="playerTimer.icon"></i>
             <p class="mb-0 me-5">{{playerTimer.name}}</p>
           </div>
-          <p class="mb-0">{{playerTimer.timeRemaining}}</p>
+          <p class="mb-0">{{playerTimer.timeRemaining | playerTime}}</p>
         </div>
       </div>
 
