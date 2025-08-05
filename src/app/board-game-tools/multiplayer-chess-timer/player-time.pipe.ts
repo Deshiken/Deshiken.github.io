@@ -14,7 +14,8 @@ export class PlayerTimePipe implements PipeTransform {
 
     const formattedMinutes = String(minutes).padStart(2, '0');
     const formattedSeconds = String(seconds).padStart(2, '0');
-    return `${formattedMinutes}:${formattedSeconds}`; // "02:30"
+    const formattedSecondsString = `${formattedSeconds.slice(0,2)}${formattedSeconds.length > 2 ? '.' : ''}${formattedSeconds.slice(2)}`;
+    return `${formattedMinutes}:${formattedSecondsString}`; // "02:00" or "01:03.5"
   }
 
 }
