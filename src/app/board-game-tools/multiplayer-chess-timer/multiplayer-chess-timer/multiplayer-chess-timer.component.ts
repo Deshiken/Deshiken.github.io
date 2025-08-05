@@ -84,9 +84,12 @@ export class MultiplayerChessTimerComponent {
     // end any existing timers from continuing to count down
     window.clearInterval(this.interval);
 
-    // Start an interval that updates every 1/10th a second
+    // If the player has any time left, Start an interval that updates every 1/10th a second
     this.interval = window.setInterval(() => {
-      playerTimer.timeRemaining --;
+      if (playerTimer.timeRemaining > 0) {
+        playerTimer.timeRemaining --;
+      }
     }, 100);
   }
+
 }
