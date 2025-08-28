@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { timer } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { FadeInOutAnimation } from 'src/app/shared/animations/fadeInOutAnimation';
@@ -12,20 +12,17 @@ import { RandomService } from 'src/app/shared/services/random.service';
     FadeInOutAnimation
   ]
 })
-export class UpgradeTilesComponent implements OnInit {
+export class UpgradeTilesComponent {
   tooFewTileSetsSelected = false;
   numberOfPlayers: number = 4;
   numberOfTileSets: number = 3;
   KemetTile = KemetTile;
-  availableTiles: Array<KemetTile> = new Array<KemetTile>(KemetTile.Diamond,KemetTile.Ruby,KemetTile.Saphire,KemetTile.Onyx,KemetTile.Amber,KemetTile.Amethyst);
+  availableTiles: Array<KemetTile> = new Array<KemetTile>(KemetTile.Diamond,KemetTile.Ruby,KemetTile.Sapphire,KemetTile.Onyx);
   generatedTiles: Array<KemetTile> = new Array<KemetTile>();
 
   constructor(
     public randomService: RandomService
   ) { }
-
-  ngOnInit(): void {
-  }
 
   public tileChange(event: any, tile: KemetTile) {
     if (event?.target?.checked) {
@@ -45,20 +42,20 @@ export class UpgradeTilesComponent implements OnInit {
       this.generateRandomTileSelection(this.numberOfTileSets);
     }
   }
-  
+
   generateRandomTileSelection(numberOfTileSets: number) {
     // Copy the available tiles so to an array that is safe to delete from.
     let availableTilesCopy: Array<KemetTile> = new Array<KemetTile>(...this.availableTiles);
-  
+
     // Reset the list of selected tiles
     this.generatedTiles = new Array<KemetTile>();
-  
+
     //Create an objservable that emits initially and every 300ms. Take the number of emits equal to the number of players.
     const pickNumber = timer(0,300)
       .pipe(
         take(numberOfTileSets)
       )
-  
+
     // Subscribe to the observable,
     pickNumber.subscribe(() => {
       let randomTile = this.randomService.getRandomEntryFromArray(availableTilesCopy);
@@ -86,7 +83,7 @@ export class UpgradeTilesComponent implements OnInit {
 
 export enum KemetTile {
   Diamond = 'Diamond (White)',
-  Saphire = 'Saphire (Blue)',
+  Sapphire = 'Sapphire (Blue)',
   Emerald = 'Emerald (Green)',
   Ruby = 'Ruby (Red)',
   Onyx = 'Onyx (Black)',

@@ -8,74 +8,74 @@
     <option [ngValue]="4" selected>Four</option>
     <option [ngValue]="5">Five</option>
   </select>
-  
+
 
   <label class='h6' for="playerNumberSelect">Available Tile Colors:</label>
   <div class="row">
     <div class="col">
       <div class="form-check">
-        <input class="form-check-input" 
-          type="checkbox" 
-          id="saphireCheckbox" 
-          (change)="tileChange($event, KemetTile.Saphire)" 
+        <input class="form-check-input"
+          type="checkbox"
+          id="sapphireCheckbox"
+          (change)="tileChange($event, KemetTile.Sapphire)"
           checked>
-        <label class="form-check-label" for="flexCheckChecked">
-          Saphire (Blue Tiles)
+        <label class="form-check-label" for="sapphireCheckbox">
+          Sapphire (Blue Tiles)
         </label>
       </div>
 
       <div class="form-check">
-        <input class="form-check-input" type="checkbox"  
+        <input class="form-check-input" type="checkbox"
           (change)="tileChange($event, KemetTile.Ruby)"
           id="rubyCheckbox" checked>
-        <label class="form-check-label" for="flexCheckChecked">
+        <label class="form-check-label" for="rubyCheckbox">
           Ruby (Red Tiles)
         </label>
       </div>
 
       <div class="form-check">
-        <input class="form-check-input" type="checkbox"  
+        <input class="form-check-input" type="checkbox"
           (change)="tileChange($event, KemetTile.Diamond)"
           id="diamondCheckbox" checked>
-        <label class="form-check-label" for="flexCheckChecked">
+        <label class="form-check-label" for="diamondCheckbox">
           Diamond (White Tiles)
         </label>
       </div>
     </div>
-    
+
     <div class='col'>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox"  
+        <input class="form-check-input" type="checkbox"
           (change)="tileChange($event, KemetTile.Onyx)"
           id="onyxCheckbox" checked>
-        <label class="form-check-label" for="flexCheckChecked">
+        <label class="form-check-label" for="onyxCheckbox">
           Onyx (Black Tiles)
         </label>
       </div>
-  
+
       <div class="form-check">
-        <input class="form-check-input" type="checkbox"  
+        <input class="form-check-input" type="checkbox"
           (change)="tileChange($event, KemetTile.Emerald)"
-          id="saphireCheckbox">
-        <label class="form-check-label" for="flexCheckChecked">
+          id="emeraldCheckbox">
+        <label class="form-check-label" for="emeraldCheckbox">
           Emerald (Green Tiles)
         </label>
       </div>
 
       <div class="form-check">
-        <input class="form-check-input" type="checkbox"  
+        <input class="form-check-input" type="checkbox"
           (change)="tileChange($event, KemetTile.Amber)"
           id="amberCheckbox">
-        <label class="form-check-label" for="flexCheckChecked">
+        <label class="form-check-label" for="amberCheckbox">
           Amber (Gold Tiles)
         </label>
       </div>
 
       <div class="form-check">
-        <input class="form-check-input" type="checkbox"  
+        <input class="form-check-input" type="checkbox"
           (change)="tileChange($event, KemetTile.Amethyst)"
           id="amethystCheckbox">
-        <label class="form-check-label" for="flexCheckChecked">
+        <label class="form-check-label" for="amethystCheckbox">
           Amethyst (Purple Tiles)
         </label>
       </div>
@@ -90,10 +90,10 @@
 
   <ng-container *ngIf="generatedTiles.length > 0">
     <p class='mb-0 mt-4 h6'>Randomly Selected Tiles:</p>
-    
+
     <ul>
       <li
-        [@simpleFadeAnimation]="'in'" 
+        [@simpleFadeAnimation]="'in'"
         *ngFor="let tile of generatedTiles">
         {{tile}}
       </li>
