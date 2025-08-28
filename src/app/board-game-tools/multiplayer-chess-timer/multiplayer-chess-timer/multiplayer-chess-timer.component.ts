@@ -11,7 +11,7 @@ import { ChessTimerService, PlayerTimer } from '../chess-timer.service';
 })
 export class MultiplayerChessTimerComponent {
   currentPlayerIndex: number = 0;
-  interval: number = 0;   
+  interval: number = 0;
   playerTimerToEdit: PlayerTimer = this.chessTimerService.playerTimers[0];
   PlayerIcons = PlayerIcons; // Make PlayerIcons available to template
 
@@ -21,7 +21,7 @@ export class MultiplayerChessTimerComponent {
 
   constructor(
     public chessTimerService: ChessTimerService,
-    public randomService: RandomService,  
+    public randomService: RandomService,
   ) { }
 
 
@@ -37,17 +37,21 @@ export class MultiplayerChessTimerComponent {
     this.initialSetup = false;
 
     //Start with the first player of the player array.
-    this.currentPlayerIndex = 0;    
+    this.currentPlayerIndex = 0;
     this.timerStart(this.chessTimerService.playerTimers[0]);
   }
 
   next() {
     this.timerIsPaused = false;
     // If stopping for additional round setup and all players have played a turn.
-    if (this.chessTimerService.playerOrderChange 
+    if (this.chessTimerService.playerOrderChange
         && this.currentPlayerIndex + 1 == this.chessTimerService.playerTimers.length
         && this.chessTimerService.playerTimers[this.currentPlayerIndex].numberOfTurnsTaken == this.chessTimerService.numberOfTurnsPerRound) {
       this.pause();
+      // Reset the number of turns taken this round to zero
+      this.chessTimerService.playerTimers.forEach(playerTimer => {
+        playerTimer.numberOfTurnsTaken = 0;
+      })
       this.roundEnd = true;
     } else { // If not stopping between rounds always go to the next player.
       this.startNextPlayer();

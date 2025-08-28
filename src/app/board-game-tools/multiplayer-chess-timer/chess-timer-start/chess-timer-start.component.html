@@ -19,13 +19,13 @@
   </select>
 
   <label for="playerMinutes" class="form-label">Minutes for Each Player</label>
-  <input 
+  <input
     [(ngModel)]="chessTimerService.minutesPerPlayer"
-    type="number" 
+    type="number"
     min="1"
     max="60"
-    class="form-control" 
-    id="playerMinutes" 
+    class="form-control"
+    id="playerMinutes"
     style="max-width: 150px;"
   >
 
@@ -44,8 +44,8 @@
   </div>
   <div class="collapse" id="allowPauseToggle">
     <div class="card card-body">
-      Some games require other players to make decisions on a player's turn, such as choosing a combat card durring a battle. 
-      For times when multiple players are required to make decisions, the current player's timer can be paused. 
+      Some games require other players to make decisions on a player's turn, such as choosing a combat card durring a battle.
+      For times when multiple players are required to make decisions, the current player's timer can be paused.
     </div>
   </div>
 
@@ -70,17 +70,18 @@
 
   <div class="wrapper" [ngClass]="{'is-open': chessTimerService.playerOrderChange}">
     <div class="inner">
-      <label for="numberOfTurnsPerRound" 
+      <label for="numberOfTurnsPerRound"
         class="form-label">
         Number of player turns per round
       </label>
-      <input 
+      <input
         [(ngModel)]="chessTimerService.numberOfTurnsPerRound"
-        type="number" 
-        min="2"
+        style="max-width: 150px;"
+        type="number"
+        min="1"
         max="10"
-        class="form-control" 
-        id="numberOfTurnsPerRound" 
+        class="form-control"
+        id="numberOfTurnsPerRound"
       >
     </div>
   </div>
