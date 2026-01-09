@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-// import * as interact from 'interactjs'
-// import * as interact from '@interactjs/types/index';
 import interact from 'interactjs';
-import html2canvas from 'html2canvas';
+import * as htmlToImage from 'html-to-image';
 import { MapBuilderService, UprisingMap, UprisingMapSize } from '../map-builder.service';
 import { ActivatedRoute } from '@angular/router';
 import { ToastService } from 'src/app/shared/services/toast.service';
@@ -110,29 +108,14 @@ export class MapBuilderComponent implements OnInit {
   public saveAsImage(){
     let imageGroup = document.getElementById('image-group');
 
-    //@ts-expect-error
-    html2canvas(imageGroup).then(canvas => {
-      this.saveAs(canvas.toDataURL(), 'map.png');
-    });
-  }
-
-  saveAs(uri: any, filename: any) {
-    var link = document.createElement('a');
-    if (typeof link.download === 'string') {
-      link.href = uri;
-      link.download = filename;
-
-      //Firefox requires the link to be in the body
-      document.body.appendChild(link);
-
-      //simulate click
-      link.click();
-
-      //remove the link when done
-      document.body.removeChild(link);
-    } else {
-      window.open(uri);
-    }
+    htmlToImage.toJpeg(imageGroup as HTMLElement)
+      .then(function(dataUrl) {
+        console.log('dataUrl', dataUrl)
+        let link = document.createElement('a');
+        link.download = 'map.png';
+        link.href = dataUrl;
+        link.click();
+      })
   }
 
   /** Add each map piece to the dom by injecting the html into a div inside the map builder area */
