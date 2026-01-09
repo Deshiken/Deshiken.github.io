@@ -10,7 +10,7 @@ import { ChessTimerService, PlayerTimer } from '../chess-timer.service';
   styleUrls: ['./chess-timer-start.component.scss']
 })
 export class ChessTimerStartComponent {
-  iconValuesArray: Array<String> = Object.values(PlayerIcons) as Array<String>;
+  iconValuesArray: Array<string> = Object.values(PlayerIcons) as Array<string>;
 
   constructor(
     public chessTimerService: ChessTimerService,
@@ -24,7 +24,6 @@ export class ChessTimerStartComponent {
     
     //Initialize the array of player timers.
     for (let i = 0; i < this.chessTimerService.numberOfPlayers; i++) {
-      console.log('Creating player: ', i);
       this.chessTimerService.playerTimers.push(
         {
           name: `Player ${i+1}`,
@@ -34,7 +33,6 @@ export class ChessTimerStartComponent {
           numberOfTurnsTaken: 0,
         }
       )
-      console.log('Ending player timers: ', this.chessTimerService.playerTimers);
       this.router.navigate(['/tools/chess-clock'])
     }
   }

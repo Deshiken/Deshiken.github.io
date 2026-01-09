@@ -5,7 +5,7 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './player-icon.component.html',
   styleUrls: ['./player-icon.component.scss']
 })
-export class PlayerIconComponent implements OnInit {
+export class PlayerIconComponent {
   @Input() icon: string = '';
   @Input() size: IconSize = IconSize.Medium;
   @Input() style: string = 'medium';
@@ -15,10 +15,7 @@ export class PlayerIconComponent implements OnInit {
   public fadeOut() {
     this.isFadeOut = true;
   }
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  
 }
 
 export enum IconSize {
@@ -37,5 +34,6 @@ export enum PlayerIcons {
   Dice = "bi-dice-4-fill",
   Moon = "bi-moon-stars-fill",
   Cloud = "bi-cloud-lightning-rain-fill",
-  Droplet = "bi-droplet-fill"
+  Droplet = "bi-droplet-fill",
+  Feather = "bi-feather"
 }

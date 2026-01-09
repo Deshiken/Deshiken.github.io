@@ -9,77 +9,16 @@
   </div>
 
   <div appDynamicGrow [lockHeight]="playerSelectService.selectedIcons.length">
-    <app-player-icon 
-      *ngIf="playerSelectService.selectedIcons.indexOf('hammer') < 0" 
-      [@simpleFadeAnimation]="'in'"
-      [size]="IconSize.Medium" 
-      [icon]="'hammer'"
-      (click)="selectIcon('hammer')">
-    </app-player-icon>
-  
-    <app-player-icon 
-      *ngIf="playerSelectService.selectedIcons.indexOf('bug') < 0"
-      [@simpleFadeAnimation]="'in'"
-      [size]="IconSize.Medium" 
-      [icon]="'bug'"
-      (click)="selectIcon('bug')">
-    </app-player-icon>
-  
-    <app-player-icon 
-      *ngIf="playerSelectService.selectedIcons.indexOf('dice') < 0"
-      [@simpleFadeAnimation]="'in'"
-      [size]="IconSize.Medium" 
-      [icon]="'dice'"
-      (click)="selectIcon('dice')">
-    </app-player-icon>
-  
-    <app-player-icon
-      *ngIf="playerSelectService.selectedIcons.indexOf('moon') < 0"
-      [@simpleFadeAnimation]="'in'" 
-      [size]="IconSize.Medium" 
-      [icon]="'moon'"
-      (click)="selectIcon('moon')">
-    </app-player-icon>
-  
-    <app-player-icon 
-      *ngIf="playerSelectService.selectedIcons.indexOf('shield') < 0"
-      [@simpleFadeAnimation]="'in'"
-      [size]="IconSize.Medium" 
-      [icon]="'shield'"
-      (click)="selectIcon('shield')">
-    </app-player-icon>
-  
-    <app-player-icon 
-      *ngIf="playerSelectService.selectedIcons.indexOf('tree') < 0"
-      [@simpleFadeAnimation]="'in'"
-      [size]="IconSize.Medium" 
-      [icon]="'tree'"
-      (click)="selectIcon('tree')">
-    </app-player-icon>
-  
-    <app-player-icon 
-      *ngIf="playerSelectService.selectedIcons.indexOf('cloud') < 0"
-      [@simpleFadeAnimation]="'in'"
-      [size]="IconSize.Medium" 
-      [icon]="'cloud'"
-      (click)="selectIcon('cloud')">
-    </app-player-icon>
-  
-    <app-player-icon 
-      *ngIf="playerSelectService.selectedIcons.indexOf('droplet') < 0"
-      [@simpleFadeAnimation]="'in'"
-      [size]="IconSize.Medium" 
-      [icon]="'droplet'"
-      (click)="selectIcon('droplet')">
-    </app-player-icon>
-  
-    <app-player-icon 
-      *ngIf="playerSelectService.selectedIcons.indexOf('fire') < 0"
-      [@simpleFadeAnimation]="'in'"
-      [size]="IconSize.Medium" 
-      [icon]="'fire'"
-      (click)="selectIcon('fire')">
-    </app-player-icon>
+    @for (icon of iconValuesArray; track icon) {
+      <app-player-icon
+        *ngIf="playerSelectService.selectedIcons.indexOf(icon) < 0" 
+        [@simpleFadeAnimation]="'in'"
+        [size]="IconSize.Medium" 
+        [icon]="icon"
+        (click)="selectIcon(icon)">
+      >
+      </app-player-icon>  
+    }
   </div>
 
   <ng-container>

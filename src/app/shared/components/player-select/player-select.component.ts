@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FadeInOutAnimation } from '../../animations/fadeInOutAnimation';
-import { IconSize } from '../player-icon/player-icon.component';
+import { IconSize, PlayerIcons } from '../player-icon/player-icon.component';
 import { PlayerSelectService } from './player-select.service';
 
 @Component({
@@ -13,18 +13,23 @@ import { PlayerSelectService } from './player-select.service';
   ]
 })
 export class PlayerSelectComponent implements OnInit {
+  playerSelectService = inject(PlayerSelectService);
+  router = inject(Router);
+  route = inject(ActivatedRoute);
+
   numberOfPlayers: number = 0;
   nextPage: string = '';
   IconSize = IconSize;
+  iconValuesArray: Array<string> = Object.keys(PlayerIcons) as Array<string>;
+  
   public errors = {
     tooFewIconsSelected: false
   }
-  
-  constructor(
-    public playerSelectService: PlayerSelectService,
-    public router: Router,
-    public route: ActivatedRoute,
-  ) { }
+  // constructor(
+  //   public playerSelectService: PlayerSelectService,
+  //   public router: Router,
+  //   public route: ActivatedRoute,
+  // ) { }
   
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
