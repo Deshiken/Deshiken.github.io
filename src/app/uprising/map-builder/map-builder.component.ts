@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import interact from 'interactjs';
 import * as htmlToImage from 'html-to-image';
 import { MapBuilderService, UprisingMap, UprisingMapSize } from '../map-builder.service';
@@ -12,6 +12,9 @@ import { ToastService } from 'src/app/shared/services/toast.service';
 })
 
 export class MapBuilderComponent implements OnInit {
+  private mapBuilderService = inject(MapBuilderService);
+  private route = inject(ActivatedRoute);
+  private toastService = inject(ToastService);
 
   public selectedMap: UprisingMap = {mapSize: UprisingMapSize.Medium, mapHTML: new Array<string>(), mapName: '', description: ''};
   public UprisingMapSize = UprisingMapSize;
@@ -28,12 +31,6 @@ export class MapBuilderComponent implements OnInit {
   public mapCapitols = new Array<any>();
   public mapMountains = new Array<any>();
   public mapWaterRegions = new Array<any>();
-
-  constructor(
-    public mapBuilderService: MapBuilderService,
-    private route: ActivatedRoute,
-    private toastService: ToastService,
-  ) {}
 
   ngOnInit() {
     this.loadMap();
