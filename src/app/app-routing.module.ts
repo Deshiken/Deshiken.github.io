@@ -37,14 +37,17 @@ const routes: Routes = [
     data: { animation: 'isRight' }, //can be used to specify routing animation state/transition
     loadChildren: () => import('./uprising/uprising.module').then(m => m.UprisingModule) 
   },
+  { 
+    path: 'uprising-tactics', 
+    data: { animation: 'isRight' }, //can be used to specify routing animation state/transition
+    loadChildren: () => import('./uprising-tactics/routes').then(m => m.UPRISING_TACTICS_ROUTES) 
+  },
   {
     path: 'descent',
-    // loadComponent: () => import('./descent/descent-home/descent-home.component').then(mod => mod.DescentHomeComponent)
     loadChildren: () => import('./descent/descent-routes').then(mod => mod.DESCENT_ROUTES)
   },
   {
     path: 'tanares',
-    // loadComponent: () => import('./descent/descent-home/descent-home.component').then(mod => mod.DescentHomeComponent)
     loadChildren: () => import('./tanares-adventures/tanares-routes').then(mod => mod.TANARES_ROUTES)
   }
 ];

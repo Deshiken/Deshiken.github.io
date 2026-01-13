@@ -6,14 +6,11 @@ import { Location } from '@angular/common';
   templateUrl: './heading-with-back.component.html',
   styleUrls: ['./heading-with-back.component.scss']
 })
-export class HeadingWithBackComponent implements OnInit {
+export class HeadingWithBackComponent {
 
   @Input()
   title: string = "";
 
   constructor(public location: Location) { }
-
-  ngOnInit(): void {
-  }
 
 }

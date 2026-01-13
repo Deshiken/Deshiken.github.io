@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { CastType, Region, SpellCard, SpellCards } from './spell-card-data';
+import { Component, inject, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CastType, Region, SpellCard, UprisingSpellCards, UprisingTacticsSpellCards } from './spell-card-data';
 import { SpellCardService } from './spell-cards.service';
 
 @Component({
@@ -9,7 +9,10 @@ import { SpellCardService } from './spell-cards.service';
   styleUrls: ['./spell-cards.component.scss']
 })
 export class SpellCardsComponent implements OnInit {
-  SpellCards: Array<SpellCard> = [...SpellCards];  //Make SpellCards available to the html
+  public route = inject(ActivatedRoute);
+  cardList: string | null = this.route.snapshot.queryParamMap.get('card-list');
+
+  SpellCards: Array<SpellCard> = [];  //Make SpellCards available to the html
   SpellCardSortOptions = SpellCardSortOptions;  //Make SortOptions enum available to the html
 
   spellCost1Total = 0;
@@ -30,6 +33,13 @@ export class SpellCardsComponent implements OnInit {
   spellCardSort = SpellCardSortOptions.Alphabetical
 
   ngOnInit() {
+    console.log('spell card list url param: ', this.cardList);
+
+    if (this.cardList === 'uprising-tactics') {
+      this.SpellCards = [...UprisingTacticsSpellCards]
+    } else {
+      this.SpellCards = [...UprisingSpellCards]
+    }
     this.calculateSpellStats();
 
     // Default sort to alphabetical
@@ -43,7 +53,7 @@ export class SpellCardsComponent implements OnInit {
 
   private calculateSpellStats() {
     let spellCardCostTotal = 0;
-    SpellCards.forEach(spellCard => {
+    UprisingSpellCards.forEach(spellCard => {
       spellCardCostTotal += spellCard.spellCost;
 
       switch (spellCard.spellCost) {
@@ -98,7 +108,7 @@ export class SpellCardsComponent implements OnInit {
       };
 
     })
-    this.spellCostAverage = spellCardCostTotal/SpellCards.length;
+    this.spellCostAverage = spellCardCostTotal/UprisingSpellCards.length;
   }
 
   public sortOptionChangeEvent(event: Event) {

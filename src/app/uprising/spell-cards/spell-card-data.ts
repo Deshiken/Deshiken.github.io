@@ -53,7 +53,7 @@ enum IconHtml {
   StrengthenWeaken = "<img src='../../../assets/uprising_spell_icons/strengthen&weaken.svg' name='strengthen-and-weaken-icon' width='20px'>"
 }
 
-export const SpellCards: Array<SpellCard> = [
+export const UprisingSpellCards: Array<SpellCard> = [
   { 
     name: 'Entangle',
     spellCost: 1,
@@ -1130,4 +1130,80 @@ export const SpellCards: Array<SpellCard> = [
 
 
 
+]
+
+export const UprisingTacticsSpellCards: Array<SpellCard> = [
+  { 
+    name: 'Entangle',
+    spellCost: 1,
+    htmlDescription: `<p>Select two regions and place an ${IconHtml.Entangle} token on each. You may add a -${IconHtml.SlowHaste} token to a unit in one
+      of the selected regions if it is a Forest or Hills region.</p>`,
+    effectTokens: [EffectTokenType.Entangle, EffectTokenType.Slow],
+    regions: [Region.Forest],
+    castType: CastType.Normal,
+    destructive: false 
+  },
+  { 
+    name: 'Counter Spell',
+    spellCost: 2,
+    htmlDescription: `<p>Cast after an opponent casts a spell card. Cancel the effect of that spell.</p>`,
+    effectTokens: null,
+    regions: null,
+    castType: CastType.Prepared,
+    destructive: false 
+  },
+  { 
+    name: 'Wind Gust',
+    spellCost: 2,
+    htmlDescription: `<p>Until the end of the round, all units of target player lose flying <b>or</b> units you control in your faction's <i>favored region</i> gain flying. (Units that start a move action with flying retain flying until the end of the move action).</p>`,
+    effectTokens: null,
+    regions: null,
+    castType: CastType.Normal,
+    destructive: false 
+  },
+  { 
+    name: 'Metamorphosis',
+    spellCost: 3,
+    htmlDescription: `<p>Change up to two units you control into another basic unit. You can not change a unit into a heavy unit.</p>`,
+    effectTokens: null,
+    regions: null,
+    castType: CastType.Normal,
+    destructive: false 
+  },
+  { 
+    name: 'Reverse Time',
+    spellCost: 1,
+    htmlDescription: `<p>Cast after an opponent rolls their combat dice (attack or defense). They must re-roll all of the dice previously rolled.</p>`,
+    effectTokens: null,
+    regions: null,
+    castType: CastType.Instant,
+    destructive: false 
+  },
+  { 
+    name: 'Flood',
+    spellCost: 1,
+    htmlDescription: `<p>Place a water token on an unoccupied region. You may place a -${IconHtml.SlowHaste} token on a unit adjacent to this region.</p>`,
+    effectTokens: [EffectTokenType.Slow],
+    regions: [Region.Water],
+    castType: CastType.Normal,
+    destructive: false 
+  },
+  { 
+    name: 'Levitation',
+    spellCost: 1,
+    htmlDescription: `<p>Cast at the start of a move action. Units the active player controls have flying until the end of the move action.</p>`,
+    effectTokens: null,
+    regions: null,
+    castType: CastType.Instant,
+    destructive: false 
+  },
+  { 
+    name: 'Dark Bargin',
+    spellCost: 1,
+    htmlDescription: `<p>Destroy one unit you control. Target player destroys up to two units they control of equal or lesser gold cost.</p>`,
+    effectTokens: null,
+    regions: null,
+    castType: CastType.Normal,
+    destructive: true
+  }
 ]

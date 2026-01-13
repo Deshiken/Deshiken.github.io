@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
-import { SpellCard, SpellCards } from '../spell-card-data';
+import { SpellCard, UprisingSpellCards } from '../spell-card-data';
 
 @Component({
   selector: 'app-printable-spell-card',
@@ -9,7 +9,7 @@ import { SpellCard, SpellCards } from '../spell-card-data';
 
 export class PrintableSpellCardComponent implements AfterViewInit {
   constructor(public renderer: Renderer2) { }
-  @Input() spellCard: SpellCard  = SpellCards[0];
+  @Input() spellCard: SpellCard  = UprisingSpellCards[0];
   
   @ViewChild('cardText') cardText!: ElementRef<HTMLDivElement>;
   

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SpellCards } from '../spell-card-data';
+import { UprisingSpellCards } from '../spell-card-data';
 import { SpellCardService } from '../spell-cards.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { SpellCardService } from '../spell-cards.service';
   styleUrls: ['./spell-card-print-sheet.component.scss']
 })
 export class SpellCardPrintSheetComponent {
-  spellCards = SpellCards;
+  spellCards = UprisingSpellCards;
 
   constructor(
     public spellCardService: SpellCardService
