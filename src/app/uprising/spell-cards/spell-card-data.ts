@@ -8,7 +8,8 @@ export interface SpellCard {
   effectTokens: null | Array<EffectTokenType>,
   regions: null | Array<Region>,
   castType: CastType,
-  destructive: boolean
+  destructive: boolean,
+  healing?: boolean
 }
 
 export enum EffectTokenType {
@@ -39,7 +40,8 @@ export enum Region {
 export enum CastType {
   Normal = 'Normal',
   Instant = 'Instant',
-  Prepared = 'Prepared'
+  Prepared = 'Prepared',
+  Combat = 'Combat'
 }
 
 enum IconHtml {
@@ -50,7 +52,8 @@ enum IconHtml {
   Shock = "<img src='../../../assets/uprising_spell_icons/shock.svg' name='shock-icon' width='20px'>",
   Poison = "<img src='../../../assets/uprising_spell_icons/poison.svg' name='poison-icon' width='20px'>",
   SlowHaste = "<img src='../../../assets/uprising_spell_icons/slow&haste.svg' name='slow-and-haste-icon' width='20px'>",
-  StrengthenWeaken = "<img src='../../../assets/uprising_spell_icons/strengthen&weaken.svg' name='strengthen-and-weaken-icon' width='20px'>"
+  StrengthenWeaken = "<img src='../../../assets/uprising_spell_icons/strengthen&weaken.svg' name='strengthen-and-weaken-icon' width='20px'>",
+  Attack = ""
 }
 
 export const UprisingSpellCards: Array<SpellCard> = [
@@ -1153,6 +1156,36 @@ export const UprisingTacticsSpellCards: Array<SpellCard> = [
     destructive: false 
   },
   { 
+    name: 'Holy Light',
+    spellCost: 2,
+    htmlDescription: `<p>Heal 2 on each unit you control. You may remove 1 effect token from each unit you control.</p>`,
+    effectTokens: null,
+    regions: null,
+    castType: CastType.Normal,
+    destructive: false,
+    healing: true
+  },
+  { 
+    name: 'Cure Light Wounds',
+    spellCost: 1,
+    htmlDescription: `<p>If the defending unit is not destroyed at the end of this battle, <i>Heal 2</i>.</p>`,
+    effectTokens: null,
+    regions: null,
+    castType: CastType.Combat,
+    destructive: false,
+    healing: true
+  },
+  { 
+    name: 'Divine Intervention',
+    spellCost: 2,
+    htmlDescription: `<p>Choose a region. Each unit in that region and in adjacent regions <i>Heals 3</i>.</p>`,
+    effectTokens: null,
+    regions: null,
+    castType: CastType.Combat,
+    destructive: false,
+    healing: true
+  },
+  { 
     name: 'Wind Gust',
     spellCost: 2,
     htmlDescription: `<p>Until the end of the round, all units of target player lose flying <b>or</b> units you control in your faction's <i>favored region</i> gain flying. (Units that start a move action with flying retain flying until the end of the move action).</p>`,
@@ -1162,13 +1195,31 @@ export const UprisingTacticsSpellCards: Array<SpellCard> = [
     destructive: false 
   },
   { 
-    name: 'Metamorphosis',
-    spellCost: 3,
-    htmlDescription: `<p>Change up to two units you control into another basic unit. You can not change a unit into a heavy unit.</p>`,
+    name: 'Meterior Storm',
+    spellCost: 4,
+    htmlDescription: `<p>Choose a region. Attack all units and buildings in that region and each adjacent region with 3 ${IconHtml.Attack}</p>`,
     effectTokens: null,
     regions: null,
     castType: CastType.Normal,
-    destructive: false 
+    destructive: true 
+  },
+  { 
+    name: 'Chain Lightning',
+    spellCost: 3,
+    htmlDescription: `<p>Deal 1 damage to an enemy unit. If that unit is destroyed, you may repeat this process.</p>`,
+    effectTokens: null,
+    regions: null,
+    castType: CastType.Normal,
+    destructive: true 
+  },
+  { 
+    name: 'Fireball',
+    spellCost: 3,
+    htmlDescription: `<p>Attack an enemy unit or building with 6 ${IconHtml.Attack}. This spell may not target an enemy capitol.</p>`,
+    effectTokens: null,
+    regions: null,
+    castType: CastType.Normal,
+    destructive: true 
   },
   { 
     name: 'Reverse Time',
@@ -1189,18 +1240,27 @@ export const UprisingTacticsSpellCards: Array<SpellCard> = [
     destructive: false 
   },
   { 
-    name: 'Levitation',
+    name: 'Magic Armor',
     spellCost: 1,
-    htmlDescription: `<p>Cast at the start of a move action. Units the active player controls have flying until the end of the move action.</p>`,
-    effectTokens: null,
-    regions: null,
-    castType: CastType.Instant,
-    destructive: false 
+    htmlDescription: `<p>The attacked unit gains the <i>Armored</i> ability. The attacking unit loses the <i>Magic Attack</i> ability.</p>`,
+    effectTokens: [EffectTokenType.Slow],
+    regions: [Region.Water],
+    castType: CastType.Normal,
+    destructive: false
   },
   { 
-    name: 'Dark Bargin',
+    name: 'Memory Recall',
     spellCost: 1,
-    htmlDescription: `<p>Destroy one unit you control. Target player destroys up to two units they control of equal or lesser gold cost.</p>`,
+    htmlDescription: `<p>Return any one spell card from the discard pile to your hand.</p>`,
+    effectTokens: null,
+    regions: null,
+    castType: CastType.Normal,
+    destructive: false
+  },
+  { 
+    name: 'Cloud Kill',
+    spellCost: 2,
+    htmlDescription: `<p>Deal 2 damage to all units.</p>`,
     effectTokens: null,
     regions: null,
     castType: CastType.Normal,

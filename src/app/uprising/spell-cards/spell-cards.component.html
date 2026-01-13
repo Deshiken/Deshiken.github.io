@@ -25,7 +25,7 @@
 
 
   <div class="row ms-0">
-    <div *ngFor="let card of SpellCards; index as i"
+    <div *ngFor="let card of spellCards; index as i"
       [ngClass]="{'selected' : spellCardService.spellCardsToPrint.has(card.name)}"
       class="card mb-2 me-2"
       style="max-width: 20rem;">
@@ -49,23 +49,32 @@
     </div>
   </div>
 
-
-  <h2>Spell Card Stats</h2>
-  <p>Total number of spells: {{SpellCards.length}}</p>
-  <h3>Spell costs</h3>
-  <p>Number of spells costing 1: {{spellCost1Total}}</p>
-  <p>Number of spells costing 2: {{spellCost2Total}}</p>
-  <p>Number of spells costing 3: {{spellCost3Total}}</p>
-  <p>Number of spells costing 4: {{spellCost4Total}}</p>
-  <p>Number of spells costing 5: {{spellCost5Total}}</p>
-  <p>Average spell cost: {{spellCostAverage}}</p>
-  <h3>Regions</h3>
-  <p>Number of Spells effecting Marsh Regions: {{spellRegionMarshTotal}}</p>
-  <p>Number of Spells effecting Hills Regions: {{spellRegionHillsTotal}}</p>
-  <p>Number of Spells effecting Forest Regions: {{spellRegionForestTotal}}</p>
-  <p>Number of Spells effecting Plains Regions: {{spellRegionPlainsTotal}}</p>
-  <p>Number of Spells effecting Badlands Regions: {{spellRegionBadlandsTotal}}</p>
-  <h3>Other</h3>
-  <p>Number of prepared spells: {{numberOfPreparedSpells}}</p>
-  <p>Number of token spells: {{numberOfTokenSpells}}</p>
+  <div (click)="showSpellStats = !showSpellStats"
+    class="d-flex align-items-center"
+    data-bs-toggle="collapse" 
+    data-bs-target="#timeNameColapse">
+    <h2>Spell Card Stats</h2>
+    <i [ngClass]="{'rotate-clockwise' : showSpellStats}" 
+      class="bi ms-3 bi-chevron-up med-icon rotate-transition">
+    </i>
+  </div>
+  <div class="collapse" id="timeNameColapse">
+    <p>Total number of spells: {{spellCards.length}}</p>
+    <h3>Spell costs</h3>
+    <p>Number of spells costing 1: {{spellCost1Total}}</p>
+    <p>Number of spells costing 2: {{spellCost2Total}}</p>
+    <p>Number of spells costing 3: {{spellCost3Total}}</p>
+    <p>Number of spells costing 4: {{spellCost4Total}}</p>
+    <p>Number of spells costing 5: {{spellCost5Total}}</p>
+    <p>Average spell cost: {{spellCostAverage}}</p>
+    <h3>Regions</h3>
+    <p>Number of Spells effecting Marsh Regions: {{spellRegionMarshTotal}}</p>
+    <p>Number of Spells effecting Hills Regions: {{spellRegionHillsTotal}}</p>
+    <p>Number of Spells effecting Forest Regions: {{spellRegionForestTotal}}</p>
+    <p>Number of Spells effecting Plains Regions: {{spellRegionPlainsTotal}}</p>
+    <p>Number of Spells effecting Badlands Regions: {{spellRegionBadlandsTotal}}</p>
+    <h3>Other</h3>
+    <p>Number of prepared spells: {{numberOfPreparedSpells}}</p>
+    <p>Number of token spells: {{numberOfTokenSpells}}</p>
+  </div>
 </div>
