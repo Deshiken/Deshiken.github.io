@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
-import { SpellCard, UprisingSpellCards } from '../spell-card-data';
+import { SpellCard } from '../spell-card-data';
+import { UprisingSpellCards } from '../uprising-spell-cards';
 
 @Component({
   selector: 'app-printable-spell-card',

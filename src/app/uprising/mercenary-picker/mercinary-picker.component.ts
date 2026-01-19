@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { timer } from 'rxjs';
 import { take } from 'rxjs/operators'
 import { FadeInOutAnimation } from 'src/app/shared/animations/fadeInOutAnimation';
@@ -13,7 +13,7 @@ import { RandomService } from 'src/app/shared/services/random.service';
   ]
 })
 
-export class MercenaryPickerComponent implements OnInit {
+export class MercenaryPickerComponent {
 
   numberOfPlayers: number = 4;
 
@@ -30,9 +30,6 @@ export class MercenaryPickerComponent implements OnInit {
   generatedMercenaries: Array<string> = new Array<string>();
 
   constructor(private randomService: RandomService) { }
-
-  ngOnInit(): void {
-  }
 
   generateMercenaries() {
     // Reset the list of selected mercenaries

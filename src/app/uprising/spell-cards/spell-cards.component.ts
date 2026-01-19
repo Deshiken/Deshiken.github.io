@@ -1,13 +1,26 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CastType, Region, SpellCard, UprisingSpellCards, UprisingTacticsSpellCards } from './spell-card-data';
+import { sumBy } from 'lodash';
+import { CastType, Region, SpellCard } from './spell-card-data';
 import { SpellCardService } from './spell-cards.service';
+import { UprisingSpellCards } from './uprising-spell-cards';
+import { UprisingTacticsSpellCards } from './uprising-tactics-spell-cards';
+
+enum SpellCardSortOptions {
+  Alphabetical = "Alphabetical",
+  SpellCostHighest = "Spell Cost Highest",
+  SpellCostLowest = "Spell Cost Lowest",
+  PreparedSpells = "Prepared Spells",
+  InstantSpells = "Instant Spells",
+  CombatSpells = "Combat Spells",
+}
 
 @Component({
   selector: 'app-spell-cards',
   templateUrl: './spell-cards.component.html',
   styleUrls: ['./spell-cards.component.scss']
 })
+
 export class SpellCardsComponent implements OnInit {
   public route = inject(ActivatedRoute);
   cardList: string | null = this.route.snapshot.queryParamMap.get('card-list');
@@ -34,8 +47,6 @@ export class SpellCardsComponent implements OnInit {
   spellCardSort = SpellCardSortOptions.Alphabetical
 
   ngOnInit() {
-    console.log('spell card list url param: ', this.cardList);
-
     if (this.cardList === 'uprising-tactics') {
       this.spellCards = [...UprisingTacticsSpellCards]
     } else {
@@ -53,10 +64,7 @@ export class SpellCardsComponent implements OnInit {
   ) { }
 
   private calculateSpellStats() {
-    let spellCardCostTotal = 0;
     this.spellCards.forEach(spellCard => {
-      spellCardCostTotal += spellCard.spellCost;
-
       switch (spellCard.spellCost) {
         case 1:
           this.spellCost1Total ++;
@@ -109,12 +117,13 @@ export class SpellCardsComponent implements OnInit {
       };
 
     })
-    this.spellCostAverage = spellCardCostTotal/UprisingSpellCards.length;
+    const spellCardCostTotal = sumBy(this.spellCards, 'spellCost');
+    this.spellCostAverage = spellCardCostTotal/this.spellCards.length;
   }
 
   public sortOptionChangeEvent(event: Event) {
-    let target = event.target as HTMLInputElement;
-    let value = target.value;
+    const target = event.target as HTMLSelectElement;
+    const value = target.value;
     this.sortSpellCardList(value);
   }
 
@@ -125,17 +134,21 @@ export class SpellCardsComponent implements OnInit {
         break;
       case SpellCardSortOptions.PreparedSpells:
         this.spellCards.sort((a,b) =>
-          // Number(b.prepared) - Number(a.prepared) // First level sort prepared spells
-          a.castType == CastType.Prepared ? -1 : 1
-          || b.spellCost - a.spellCost // Second level sort spell cost
-          || a.name.localeCompare(b.name)); // Third level sort alphabetical
+          a.castType == CastType.Prepared ? -1 : 1  // First level sort prepared spells
+          || b.spellCost - a.spellCost              // Second level sort spell cost
+          || a.name.localeCompare(b.name));         // Third level sort alphabetical
         break;
       case SpellCardSortOptions.InstantSpells:
         this.spellCards.sort((a,b) =>
-          // Number(b.prepared) - Number(a.prepared) // First level sort prepared spells
-          a.castType == CastType.Instant ? -1 : 1
-          || b.spellCost - a.spellCost // Second level sort spell cost
-          || a.name.localeCompare(b.name)); // Third level sort alphabetical
+          a.castType == CastType.Instant ? -1 : 1   // First level sort instant spells
+          || b.spellCost - a.spellCost              // Second level sort spell cost
+          || a.name.localeCompare(b.name));         // Third level sort alphabetical
+        break;
+      case SpellCardSortOptions.CombatSpells:
+        this.spellCards.sort((a,b) =>
+          a.castType == CastType.Combat ? -1 : 1    // First level sort combat spells
+          || b.spellCost - a.spellCost              // Second level sort spell cost
+          || a.name.localeCompare(b.name));         // Third level sort alphabetical
         break;
       case SpellCardSortOptions.SpellCostHighest:
         // Sorted by spell cost fist and alphabetical second
@@ -148,7 +161,7 @@ export class SpellCardsComponent implements OnInit {
     }
   }
 
-  addCardToPintList(spellCard: SpellCard) {
+  addCardToPrintList(spellCard: SpellCard) {
     if (this.spellCardService.spellCardsToPrint.has(spellCard.name)) {
       this.spellCardService.spellCardsToPrint.delete(spellCard.name)
     } else {
@@ -158,10 +171,3 @@ export class SpellCardsComponent implements OnInit {
 
 }
 
-enum SpellCardSortOptions {
-  Alphabetical = "Alphabetical",
-  SpellCostHighest = "Spell Cost Highest",
-  SpellCostLowest = "Spell Cost Lowest",
-  PreparedSpells = "Prepared Spells",
-  InstantSpells = "Instant Spells",
-}

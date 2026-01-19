@@ -28,6 +28,7 @@
     "html-to-image": "^1.11.13",
     "interactjs": "^1.10.17",
     "latest": "^0.2.0",
+    "lodash-es": "^4.17.22",
     "rxjs": "~6.6.0",
     "zone.js": "~0.14.10"
   },

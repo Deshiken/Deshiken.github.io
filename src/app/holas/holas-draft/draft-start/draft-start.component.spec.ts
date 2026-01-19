@@ -5,7 +5,7 @@ import { HolasDraftService } from '../holas-draft.service';
 
 import { DraftStartComponent } from './draft-start.component';
 
-fdescribe('DraftStartComponent', () => {
+describe('DraftStartComponent', () => {
   let component: DraftStartComponent;
   let fixture: ComponentFixture<DraftStartComponent>;
 

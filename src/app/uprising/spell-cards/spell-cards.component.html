@@ -7,7 +7,7 @@
     <select (change)="sortOptionChangeEvent($event)"
       class="form-select mb-3"
       style="max-width: 300px;"
-      id="spellCardSort" aria-label="How would you like to sort the spell card lis?">
+      id="spellCardSort" aria-label="How would you like to sort the spell card list?">
       <option
         *ngFor="let option of SpellCardSortOptions | keyvalue"
         [ngValue]="option.value">{{option.value}}
@@ -19,6 +19,7 @@
     class="btn btn-primary sticky-top fade-in mb-2"
     style="top: 5px"
     (click)="router.navigate(['uprising/spell-cards-print-sheet'])"
+    [attr.aria-label]="'Print ' + spellCardService.spellCardsToPrint.size + ' selected spell cards'"
   >
     Print Spell Cards {{spellCardService.spellCardsToPrint.size}}
   </button>
@@ -31,17 +32,21 @@
       style="max-width: 20rem;">
       <div class="card-body">
         <div class="d-flex justify-content-between">
-          <i *ngIf="card.castType == 'Prepared'" class="bi bi-clock"></i>
-          <i *ngIf="card.castType == 'Instant'" class="bi bi-lightning-fill"></i>
+          <i *ngIf="card.castType == 'Prepared'" class="bi bi-clock" aria-hidden="true"></i>
+          <i *ngIf="card.castType == 'Instant'" class="bi bi-lightning-fill" aria-hidden="true"></i>
           <p class="card-title fs-6 fw-bold">{{card.name}}</p>
           <div>
-            <i *ngFor="let item of [].constructor(card.spellCost)" class="bi bi-gem ms-1"></i>
+            <i *ngFor="let item of [].constructor(card.spellCost)" class="bi bi-gem ms-1" aria-hidden="true"></i>
           </div>
         </div>
         <div class="card-text" [innerHTML]="card.htmlDescription"></div>
       </div>
       <div class="card-footer row">
-        <i class="bi bi-printer ms-1" (click)="addCardToPintList(card)"></i>
+        <button class="btn btn-link p-0" 
+          (click)="addCardToPrintList(card)" 
+          [attr.aria-label]="'Add ' + card.name + ' to print list'">
+          <i class="bi bi-printer ms-1" aria-hidden="true"></i>
+        </button>
         <span *ngIf="spellCardService.spellCardsToPrint.has(card.name)">
           *Added to print list
         </span>
@@ -49,16 +54,20 @@
     </div>
   </div>
 
-  <div (click)="showSpellStats = !showSpellStats"
-    class="d-flex align-items-center"
+  <button (click)="showSpellStats = !showSpellStats"
+    class="btn btn-link p-0 d-flex align-items-center"
     data-bs-toggle="collapse" 
-    data-bs-target="#timeNameColapse">
-    <h2>Spell Card Stats</h2>
+    data-bs-target="#timeNameCollapse"
+    [attr.aria-expanded]="showSpellStats"
+    aria-controls="timeNameCollapse"
+    aria-label="Toggle spell card stats">
+    <h2 id="spellStatsHeading" class="mb-0">Spell Card Stats</h2>
     <i [ngClass]="{'rotate-clockwise' : showSpellStats}" 
-      class="bi ms-3 bi-chevron-up med-icon rotate-transition">
+      class="bi ms-3 bi-chevron-up med-icon rotate-transition"
+      aria-hidden="true">
     </i>
-  </div>
-  <div class="collapse" id="timeNameColapse">
+  </button>
+  <div class="collapse" id="timeNameCollapse" role="region" aria-labelledby="spellStatsHeading">
     <p>Total number of spells: {{spellCards.length}}</p>
     <h3>Spell costs</h3>
     <p>Number of spells costing 1: {{spellCost1Total}}</p>
