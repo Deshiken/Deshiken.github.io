@@ -21,7 +21,7 @@
     (click)="router.navigate(['uprising/spell-cards-print-sheet'])"
     [attr.aria-label]="'Print ' + spellCardService.spellCardsToPrint.size + ' selected spell cards'"
   >
-    Print Spell Cards {{spellCardService.spellCardsToPrint.size}}
+    Print {{spellCardService.spellCardsToPrint.size}} Spell Card{{spellCardService.spellCardsToPrint.size > 1 ? 's' : ''}}
   </button>
 
 
@@ -85,5 +85,6 @@
     <h3>Other</h3>
     <p>Number of prepared spells: {{numberOfPreparedSpells}}</p>
     <p>Number of token spells: {{numberOfTokenSpells}}</p>
+    <p>Number of combat spells: {{numberOfCombatSpells}}</p>
   </div>
 </div>

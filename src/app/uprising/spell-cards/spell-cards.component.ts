@@ -25,7 +25,7 @@ export class SpellCardsComponent implements OnInit {
   public route = inject(ActivatedRoute);
   cardList: string | null = this.route.snapshot.queryParamMap.get('card-list');
 
-  spellCards: Array<SpellCard> = [];  //Make SpellCards available to the html
+  spellCards: Array<SpellCard> = [];            //Make SpellCards available to the html
   SpellCardSortOptions = SpellCardSortOptions;  //Make SortOptions enum available to the html
   showSpellStats = false;
 
@@ -43,6 +43,7 @@ export class SpellCardsComponent implements OnInit {
   numberOfPreparedSpells = 0;
   numberOfInstantSpells = 0;
   numberOfTokenSpells = 0;
+  numberOfCombatSpells = 0;
 
   spellCardSort = SpellCardSortOptions.Alphabetical
 
@@ -104,13 +105,18 @@ export class SpellCardsComponent implements OnInit {
         })
       }
 
-      if (spellCard.castType == CastType.Prepared) {
-        this.numberOfPreparedSpells ++;
-      };
-
-      if (spellCard.castType == CastType.Instant) {
-        this.numberOfInstantSpells ++;
-      };
+      switch (spellCard.castType) {
+        case CastType.Prepared:
+          this.numberOfPreparedSpells ++;
+          break;
+        case CastType.Instant:
+          this.numberOfInstantSpells ++;
+          break;
+        case CastType.Combat:
+          this.numberOfCombatSpells ++;
+          break;
+      }
+      
 
       if (spellCard.effectTokens && spellCard.effectTokens?.length > 0) {
         this.numberOfTokenSpells ++;
@@ -133,22 +139,40 @@ export class SpellCardsComponent implements OnInit {
         this.spellCards.sort((a,b) => a.name.localeCompare(b.name));
         break;
       case SpellCardSortOptions.PreparedSpells:
-        this.spellCards.sort((a,b) =>
-          a.castType == CastType.Prepared ? -1 : 1  // First level sort prepared spells
-          || b.spellCost - a.spellCost              // Second level sort spell cost
-          || a.name.localeCompare(b.name));         // Third level sort alphabetical
+        // Sort first by prepared spells, then by cost desc, then name
+        this.spellCards.sort((a,b) => {
+          const aIsPrepared = a.castType === CastType.Prepared;
+          const bIsPrepared = b.castType === CastType.Prepared;
+
+          if (aIsPrepared && !bIsPrepared) return -1;
+          if (!aIsPrepared && bIsPrepared) return 1;
+
+          return a.spellCost - b.spellCost || a.name.localeCompare(b.name);
+        });
         break;
       case SpellCardSortOptions.InstantSpells:
-        this.spellCards.sort((a,b) =>
-          a.castType == CastType.Instant ? -1 : 1   // First level sort instant spells
-          || b.spellCost - a.spellCost              // Second level sort spell cost
-          || a.name.localeCompare(b.name));         // Third level sort alphabetical
+        // Sort first by instant spells, then by cost desc, then name
+        this.spellCards.sort((a,b) => {
+          const aIsPrepared = a.castType === CastType.Instant;
+          const bIsPrepared = b.castType === CastType.Instant;
+
+          if (aIsPrepared && !bIsPrepared) return -1;
+          if (!aIsPrepared && bIsPrepared) return 1;
+
+          return a.spellCost - b.spellCost || a.name.localeCompare(b.name);
+        });
         break;
       case SpellCardSortOptions.CombatSpells:
-        this.spellCards.sort((a,b) =>
-          a.castType == CastType.Combat ? -1 : 1    // First level sort combat spells
-          || b.spellCost - a.spellCost              // Second level sort spell cost
-          || a.name.localeCompare(b.name));         // Third level sort alphabetical
+        // Sort first by combat spells, then by cost desc, then name
+        this.spellCards.sort((a,b) => {
+          const aIsPrepared = a.castType === CastType.Combat;
+          const bIsPrepared = b.castType === CastType.Combat;
+
+          if (aIsPrepared && !bIsPrepared) return -1;
+          if (!aIsPrepared && bIsPrepared) return 1;
+
+          return a.spellCost - b.spellCost || a.name.localeCompare(b.name);
+        });
         break;
       case SpellCardSortOptions.SpellCostHighest:
         // Sorted by spell cost fist and alphabetical second

@@ -12,6 +12,12 @@ export interface SpellCard {
   healing?: boolean
 }
 
+export interface SpellCardCost {
+  manaCost: number,
+  goldCost: number,
+  researchCost: number
+}
+
 export enum EffectTokenType {
   Strengthen = 'Strengthen',
   Weaken = 'Weaken',
