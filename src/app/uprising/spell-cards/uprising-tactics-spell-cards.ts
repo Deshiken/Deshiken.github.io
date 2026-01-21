@@ -231,7 +231,7 @@ export const UprisingTacticsSpellCards: Array<SpellCard> = [
     destructive: false,
   },
   {
-    name: "Front Lance",
+    name: "Frost Lance",
     spellCost: 3,
     htmlDescription: `<p>Attack a unit with 3 ${IconHtml.Attack}. You may add a -${IconHtml.SlowHaste} token to that unit</p>`,
     effectTokens: [EffectTokenType.Slow],
@@ -295,16 +295,7 @@ export const UprisingTacticsSpellCards: Array<SpellCard> = [
   },
   {
     name: "Healing Rain",
-    spellCost: 3,
-    htmlDescription: `<p>Until the end of the round, each unit you control <i>Heals 1</i> at the end of each of your turns.</p>`,
-    effectTokens: null,
-    regions: null,
-    castType: CastType.Normal,
-    destructive: false,
-  },
-  {
-    name: "Healing Rain",
-    spellCost: 3,
+    spellCost: 4,
     htmlDescription: `<p>Until the end of the round, each unit you control <i>Heals 1</i> at the end of each of your turns.</p>`,
     effectTokens: null,
     regions: null,
@@ -329,4 +320,23 @@ export const UprisingTacticsSpellCards: Array<SpellCard> = [
     castType: CastType.Combat,
     destructive: false,
   },
+  {
+    name: 'Egress',
+    spellCost: 1,
+    htmlDescription: `<p>Return the attacked unit to an unoccupied region adjacent to its controller's capitol.</p>`,
+    effectTokens: null,
+    regions: null,
+    castType: CastType.Combat,
+    destructive: false,
+  },
+  {
+    name: 'Frost Nova',
+    spellCost: 5,
+    htmlDescription: `<p>Choose a region. Attack each unit up to 2${IconHtml.Range} from the chosen region with 3${IconHtml.Attack}. Add a -${IconHtml.SlowHaste} token to each unit attacked using this spell that did not receive damage.</p>`,
+    effectTokens: null,
+    regions: null,
+    castType: CastType.Normal,
+    destructive: true,
+  },
+  
 ]
