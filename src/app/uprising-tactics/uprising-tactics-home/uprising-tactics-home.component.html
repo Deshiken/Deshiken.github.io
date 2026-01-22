@@ -17,6 +17,20 @@
   </div>
 
   <div class="d-flex align-items-center justify-content-between nav-help">
+    <button type="button" class="btn btn-primary btn-lg my-3" (click)="router.navigate(['uprising/maps'])" aria-label="Navigate to Uprising maps and setup instructions">
+      Test unit and ability cards.
+    </button>
+    <button id="draftHelpBtn" type="button" class="btn btn-link p-0 m-3" data-bs-toggle="collapse" data-bs-target="#draftCollapse" aria-expanded="false" aria-controls="draftCollapse" aria-label="Help: Game Modes and Setup Instructions">
+      <i class="bi bi-question-circle-fill" style="font-size: 2.4rem;" aria-hidden="true"></i>
+    </button>
+  </div>
+  <div class="collapse" id="draftCollapse" role="region" aria-labelledby="draftHelpBtn">
+    <div class="card card-body">
+      This tool has links to a variety of maps and play options for quick reference.
+    </div>
+  </div>
+
+  <div class="d-flex align-items-center justify-content-between nav-help">
     <button type="button" class="btn btn-primary btn-lg my-3" (click)="router.navigate(['uprising/map-builder-options'])" aria-label="Open Map Builder">
       Map Builder
     </button>

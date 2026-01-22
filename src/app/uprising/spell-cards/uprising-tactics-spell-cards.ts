@@ -62,7 +62,7 @@ export const UprisingTacticsSpellCards: Array<SpellCard> = [
   { 
     name: 'Meteor Storm',
     spellCost: 4,
-    htmlDescription: `<p>Choose a region. Attack all units and buildings in that region and each adjacent region with 4 ${IconHtml.Attack}</p>`,
+    htmlDescription: `<p>Choose a region. Attack all units and buildings in that region and each adjacent region with 4 ${IconHtml.Damage}</p>`,
     effectTokens: null,
     regions: null,
     castType: CastType.Normal,
