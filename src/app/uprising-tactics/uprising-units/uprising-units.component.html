@@ -1,0 +1,33 @@
+<h2>Uprising Tactics Units - {{ version }}</h2>
+<table class="units-table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Cost</th>
+      <th>Attack</th>
+      <th>Speed</th>
+      <th>Health</th>
+      <th>Attack Distance</th>
+      <th>Is Building</th>
+      <th>Special Abilities</th>
+      <th>Special Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let unit of units">
+      <td>{{ unit.name }}</td>
+      <td>
+        <span *ngIf="unit.cost?.gold">{{ unit.cost?.gold }} Gold </span>
+        <span *ngIf="unit.cost?.mana">{{ unit.cost?.mana }} Mana </span>
+        <span *ngIf="unit.cost?.technology">{{ unit.cost?.technology }} Technology</span>
+      </td>
+      <td>{{ unit.attack }}</td>
+      <td>{{ unit.speed }}</td>
+      <td>{{ unit.health }}</td>
+      <td>{{ unit.attackDistance }}</td>
+      <td>{{ unit.isBuilding ? 'Yes' : 'No' }}</td>
+      <td>{{ unit.specialAbilities?.join(', ') }}</td>
+      <td [innerHTML]="unit.specialDescripton"></td>
+    </tr>
+  </tbody>
+</table>

@@ -18,16 +18,29 @@
 
   <div class="d-flex align-items-center justify-content-between nav-help">
     <button type="button" class="btn btn-primary btn-lg my-3" (click)="router.navigate(['uprising/maps'])" aria-label="Navigate to Uprising maps and setup instructions">
-      Test unit and ability cards.
+      Unit and Ability cards.
     </button>
-    <button id="draftHelpBtn" type="button" class="btn btn-link p-0 m-3" data-bs-toggle="collapse" data-bs-target="#draftCollapse" aria-expanded="false" aria-controls="draftCollapse" aria-label="Help: Game Modes and Setup Instructions">
+    <button id="draftHelpBtn" type="button" class="btn btn-link p-0 m-3" data-bs-toggle="collapse" 
+      data-bs-target="#unitsCollapse" aria-expanded="false" aria-controls="unitsCollapse" 
+      aria-label="Help: Game Modes and Setup Instructions">
       <i class="bi bi-question-circle-fill" style="font-size: 2.4rem;" aria-hidden="true"></i>
     </button>
   </div>
-  <div class="collapse" id="draftCollapse" role="region" aria-labelledby="draftHelpBtn">
-    <div class="card card-body">
-      This tool has links to a variety of maps and play options for quick reference.
-    </div>
+  <div class="collapse" id="unitsCollapse" role="region" aria-labelledby="unitsHelpBtn">
+    <label for="unitsVersion" class="form-label">Units Version</label>
+    <select
+      id="unitsVersion"
+      [(ngModel)]="uprisingTacticsUnitsVersion"
+      class="form-select" 
+      id="numberOfPlayersSelect"
+      style="max-width: 150px;"
+    >
+      <option *ngFor='let versionedUprisingTacticsUnits of versionedUprisingTacticsUnits' 
+        [ngValue]="versionedUprisingTacticsUnits.version">
+        {{versionedUprisingTacticsUnits.version}}
+      </option>
+    </select>
+    <app-uprising-units [version]="uprisingTacticsUnitsVersion"></app-uprising-units>
   </div>
 
   <div class="d-flex align-items-center justify-content-between nav-help">

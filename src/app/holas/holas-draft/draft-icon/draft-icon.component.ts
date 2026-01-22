@@ -5,7 +5,7 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './draft-icon.component.html',
   styleUrls: ['./draft-icon.component.scss'],
 })
-export class DraftIconComponent implements OnInit {
+export class DraftIconComponent {
 
   @Input() icon: string = '';
   @Input() size: IconSize = IconSize.Medium;
@@ -15,12 +15,6 @@ export class DraftIconComponent implements OnInit {
   
   public fadeOut() {
     this.isFadeOut = true;
-  }
-
-  constructor(
-  ) { }
-
-  ngOnInit(): void {
   }
 
 }
