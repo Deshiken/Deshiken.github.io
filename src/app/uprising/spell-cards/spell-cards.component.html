@@ -34,6 +34,7 @@
         <div class="d-flex justify-content-between">
           <i *ngIf="card.castType == 'Prepared'" class="bi bi-clock" aria-hidden="true"></i>
           <i *ngIf="card.castType == 'Instant'" class="bi bi-lightning-fill" aria-hidden="true"></i>
+          <img *ngIf="card.castType == 'Combat'" src="../../../../assets/uprising_spell_icons/attack.svg" aria-hidden="true" height="18px">
           <p class="card-title fs-6 fw-bold">{{card.name}}</p>
           <div>
             <i *ngFor="let item of [].constructor(card.spellCost)" class="bi bi-gem ms-1" aria-hidden="true"></i>

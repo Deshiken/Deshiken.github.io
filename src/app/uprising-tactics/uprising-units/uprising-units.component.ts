@@ -16,18 +16,19 @@ export class UprisingUnitsComponent {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.version) {
-      const versionData = versionedUprisingTacticsUnits.find(v => v.version === this.version);
-      if (versionData) {
-        this.units = versionData.units;
-      }  
+      this.updateUnitsFromVersion();  
     }
   }
 
   constructor() {
+    this.updateUnitsFromVersion();
+  }
+  
+
+  private updateUnitsFromVersion() {
     const versionData = versionedUprisingTacticsUnits.find(v => v.version === this.version);
     if (versionData) {
       this.units = versionData.units;
     }
   }
-  
 }

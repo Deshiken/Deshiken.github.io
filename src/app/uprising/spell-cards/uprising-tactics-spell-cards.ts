@@ -11,15 +11,6 @@ export const UprisingTacticsSpellCards: Array<SpellCard> = [
     castType: CastType.Normal,
     destructive: false 
   },
-  {
-    name: 'Counter Spell',
-    spellCost: 2,
-    htmlDescription: `<p>Cast after an opponent casts a spell card. Cancel the effect of that spell.</p>`,
-    effectTokens: null,
-    regions: null,
-    castType: CastType.Instant,
-    destructive: false 
-  },
   { 
     name: 'Holy Light',
     spellCost: 2,
@@ -43,7 +34,7 @@ export const UprisingTacticsSpellCards: Array<SpellCard> = [
   { 
     name: 'Divine Intervention',
     spellCost: 2,
-    htmlDescription: `<p>Choose a region. Each unit in that region and in adjacent regions <i>Heals 3</i>.</p>`,
+    htmlDescription: `<p>Choose a region. Each unit in that region and in adjacent regions <i>Heals 2</i>.</p>`,
     effectTokens: null,
     regions: null,
     castType: CastType.Combat,
@@ -92,7 +83,7 @@ export const UprisingTacticsSpellCards: Array<SpellCard> = [
     htmlDescription: `<p>The attacking unit attacks with -2 ${IconHtml.Attack}.</p>`,
     effectTokens: null,
     regions: null,
-    castType: CastType.Instant,
+    castType: CastType.Combat,
     destructive: false 
   },
   { 
@@ -333,6 +324,24 @@ export const UprisingTacticsSpellCards: Array<SpellCard> = [
     name: 'Frost Nova',
     spellCost: 5,
     htmlDescription: `<p>Choose a region. Attack each unit up to 2${IconHtml.Range} from the chosen region with 3${IconHtml.Attack}. Add a -${IconHtml.SlowHaste} token to each unit attacked using this spell that did not receive damage.</p>`,
+    effectTokens: null,
+    regions: null,
+    castType: CastType.Normal,
+    destructive: true,
+  },
+  {
+    name: 'Fog',
+    spellCost: 2,
+    htmlDescription: `<p>Time 4. Enemy units do not perform <i>opportunity attacks</i>.</p>`,
+    effectTokens: null,
+    regions: null,
+    castType: CastType.Normal,
+    destructive: true,
+  },
+  {
+    name: 'Web',
+    spellCost: 3,
+    htmlDescription: `<p>Time 4. Enemy units lose the <i>flying</i> ability.</p>`,
     effectTokens: null,
     regions: null,
     castType: CastType.Normal,
