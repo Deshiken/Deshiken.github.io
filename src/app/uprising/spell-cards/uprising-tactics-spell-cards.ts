@@ -4,10 +4,11 @@ export const UprisingTacticsSpellCards: Array<SpellCard> = [
   {
     name: 'Entangle',
     spellCost: 1,
-    htmlDescription: `<p>Select two regions and place an ${IconHtml.Entangle} token on each. You may add a -${IconHtml.SlowHaste} token to a unit in one
-      of the selected regions if it is a Forest or Hills region.</p>`,
-    effectTokens: [EffectTokenType.Entangle, EffectTokenType.Slow],
-    regions: [Region.Forest],
+    htmlDescription: `<p>Select two regions and place an ${IconHtml.Entangle} token on each. You may add a -${IconHtml.SlowHaste} token to any units in each
+      of the selected regions if it is a Forest or Hills region. You may add a -${IconHtml.StrengthenWeaken} token to any units in each of the selected regions if 
+      it is a Marsh or Badlands region.</p>`,
+    effectTokens: [EffectTokenType.Entangle, EffectTokenType.Slow, EffectTokenType.Weaken],
+    regions: [Region.Forest, Region.Hills, Region.Marsh, Region.Badlands],
     castType: CastType.Normal,
     destructive: false 
   },
@@ -81,6 +82,15 @@ export const UprisingTacticsSpellCards: Array<SpellCard> = [
     name: 'Blinding Light',
     spellCost: 1,
     htmlDescription: `<p>The attacking unit attacks with -2 ${IconHtml.Attack}.</p>`,
+    effectTokens: null,
+    regions: null,
+    castType: CastType.Combat,
+    destructive: false 
+  },
+  { 
+    name: 'Giant Strength',
+    spellCost: 1,
+    htmlDescription: `<p>The attacking unit attacks with +2 ${IconHtml.Attack}.</p>`,
     effectTokens: null,
     regions: null,
     castType: CastType.Combat,
@@ -303,9 +313,18 @@ export const UprisingTacticsSpellCards: Array<SpellCard> = [
     destructive: false,
   },
   {
+    name: "Shock",
+    spellCost: 2,
+    htmlDescription: `<p>At the end of the battle, add a ${IconHtml.Shock} token to the attacking or defending unit.</p>`,
+    effectTokens: null,
+    regions: null,
+    castType: CastType.Combat,
+    destructive: false,
+  },
+  {
     name: "Dark Bargin",
     spellCost: 1,
-    htmlDescription: `<p>The attacking unit gain 3 ${IconHtml.Attack}. The attacking unit takes 1 damage at the end of the battle.</p>`,
+    htmlDescription: `<p>The attacking unit gains 3 ${IconHtml.Attack}. The attacking unit takes 1 damage at the end of the battle.</p>`,
     effectTokens: null,
     regions: null,
     castType: CastType.Combat,
@@ -322,8 +341,17 @@ export const UprisingTacticsSpellCards: Array<SpellCard> = [
   },
   {
     name: 'Frost Nova',
-    spellCost: 5,
+    spellCost: 4,
     htmlDescription: `<p>Choose a region. Attack each unit up to 2${IconHtml.Range} from the chosen region with 3${IconHtml.Attack}. Add a -${IconHtml.SlowHaste} token to each unit attacked using this spell that did not receive damage.</p>`,
+    effectTokens: null,
+    regions: null,
+    castType: CastType.Normal,
+    destructive: true,
+  },
+  {
+    name: 'Lightning Storm',
+    spellCost: 3,
+    htmlDescription: `<p>Choose a region. Add a ${IconHtml.Shock} token to each unit up to 2${IconHtml.Range} from the chosen region.</p>`,
     effectTokens: null,
     regions: null,
     castType: CastType.Normal,
@@ -332,7 +360,7 @@ export const UprisingTacticsSpellCards: Array<SpellCard> = [
   {
     name: 'Fog',
     spellCost: 2,
-    htmlDescription: `<p>Time 4. Enemy units do not perform <i>opportunity attacks</i>.</p>`,
+    htmlDescription: `<p>Time: 4. Enemy units do not perform <i>Opportunity Attacks</i>.</p>`,
     effectTokens: null,
     regions: null,
     castType: CastType.Normal,
@@ -341,7 +369,16 @@ export const UprisingTacticsSpellCards: Array<SpellCard> = [
   {
     name: 'Web',
     spellCost: 3,
-    htmlDescription: `<p>Time 4. Enemy units lose the <i>flying</i> ability.</p>`,
+    htmlDescription: `<p>Time: 4. Enemy units lose the <i>Flying</i> ability.</p>`,
+    effectTokens: null,
+    regions: null,
+    castType: CastType.Normal,
+    destructive: true,
+  },
+  {
+    name: 'Mythril Mail',
+    spellCost: 3,
+    htmlDescription: `<p>Time: 3. Units you control have the <i>Armored</i> ability.</p>`,
     effectTokens: null,
     regions: null,
     castType: CastType.Normal,
