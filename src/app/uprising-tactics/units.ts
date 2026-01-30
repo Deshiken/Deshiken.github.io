@@ -211,7 +211,7 @@ export const versionedUprisingTacticsUnits: Array<VersionedUprisingTacticsUnits>
             health: 4,
             attackDistance: 2,
             isBuilding: true,  
-            specialAbilities: [],
+            specialAbilities: [SpecialAbilities.ARMORED],
         },
         {
             name: 'Farm',
@@ -221,7 +221,7 @@ export const versionedUprisingTacticsUnits: Array<VersionedUprisingTacticsUnits>
             health: 3,
             attackDistance: 1,
             isBuilding: true,  
-            specialAbilities: [],
+            specialAbilities: [SpecialAbilities.ARMORED],
         },
         {
             name: 'City',
@@ -231,7 +231,7 @@ export const versionedUprisingTacticsUnits: Array<VersionedUprisingTacticsUnits>
             health: 4,
             attackDistance: 1,
             isBuilding: true,  
-            specialAbilities: [],
+            specialAbilities: [SpecialAbilities.ARMORED],
         },
         {
             name: 'Capitol',
@@ -240,7 +240,7 @@ export const versionedUprisingTacticsUnits: Array<VersionedUprisingTacticsUnits>
             health: 10,
             attackDistance: 1,
             isBuilding: true,  
-            specialAbilities: [],
+            specialAbilities: [SpecialAbilities.ARMORED],
         },
     ]
   },  
