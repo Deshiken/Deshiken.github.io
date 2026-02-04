@@ -545,6 +545,15 @@ export const UprisingTacticsSpellCards: Array<SpellCard> = [
     effectTokens: [EffectTokenType.Entangle, EffectTokenType.Slow, EffectTokenType.Weaken ],
     regions: null,
     castType: CastType.Normal,
+    destructive: false,
+  },
+  {
+    name: `Vine Lash`,
+    spellCost: 3,
+    htmlDescription: `<p>Choose up to two regions. Add a ${IconHtml.Entangle} token to each chosen region. You may Attack a unit or building in or adjacent to each region with an ${IconHtml.Entangle} with 2${IconHtml.Attack}.</p>`,
+    effectTokens: [EffectTokenType.Entangle],
+    regions: null,
+    castType: CastType.Normal,
     destructive: true,
   },
 ]

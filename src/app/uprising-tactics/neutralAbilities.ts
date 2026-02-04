@@ -20,6 +20,17 @@ export type NeutralAbility = {
     factionSynergy?: UprisingTacticsFaction[];
 };
 
+/* Faction Goals Reference
+    Elves Ranged attacks, entangle, forest synergy
+    Dwarves Armored, siege attacks, buildings synergy
+    Orcs added toughness, melee attacks
+    Templars healing,
+    Abominations multiple units, weakness effects
+    Dragonborn flying, spell casting
+    Gnomes technology, spell cost reduction
+    Drow stealth, poison effects, 
+*/
+
 export const neutralAbilities: NeutralAbility[] = [
     {
         name: 'Reinforced Armor',
