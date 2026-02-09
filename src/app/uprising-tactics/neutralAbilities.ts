@@ -23,11 +23,11 @@ export type NeutralAbility = {
 /* Faction Goals Reference
     Elves Ranged attacks, entangle, forest synergy
     Dwarves Armored, siege attacks, buildings synergy
-    Orcs added toughness, melee attacks
-    Templars healing,
+    Orcs added toughness, melee attacks, Hinder spells
+    Templars healing, Charge/Calvary
     Abominations multiple units, weakness effects
     Dragonborn flying, spell casting
-    Gnomes technology, spell cost reduction
+    Gnomes technology, harvest/farming
     Drow stealth, poison effects, 
 */
 
