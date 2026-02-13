@@ -1,0 +1,5 @@
+<div class="d-flex flex-wrap" style="width: 1100px;">
+  <ng-container *ngFor="let ability of cardPrintService.neutralAbilitiesToPrint | keyvalue">
+    <app-printable-neutral-ability [neutralAbility]="ability.value"></app-printable-neutral-ability>
+  </ng-container>
+</div>

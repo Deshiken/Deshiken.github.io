@@ -1,0 +1,22 @@
+.spell-card {
+  border-style: solid;
+  border-color: black;
+  border-width: 9px;
+  border-radius: 10px;
+  
+  width: 400px;
+  height: 160px;
+}
+
+@font-face {
+  font-family: segoe;
+  src: url(../../../assets/font/Segoe-Print-Font.ttf);
+}
+
+.segoe {
+  font-family: segoe;
+}
+
+.small-text {
+  font-size: small;
+}

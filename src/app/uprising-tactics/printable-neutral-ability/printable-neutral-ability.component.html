@@ -1,0 +1,22 @@
+<div class="spell-card p-2 m-1">
+  <div class="card-body">
+    
+    <!-- Top Row -->
+    <div class="d-flex justify-content-between fs-4">
+      <!-- <div class="align-self-end"> -->
+      <div>
+        @for (item of [].constructor(neutralAbility.cost.technology); track item) {
+          <i class="bi bi-gear ms-1"></i>
+        }
+      </div>
+      <p class="card-title fs-5 fw-bold text-center mb-3 segoe">{{neutralAbility.name}}</p> 
+    </div>
+
+
+    <div class="card-text segoe fs-10 small-text" 
+      #cardText
+      [innerHTML]="neutralAbility.description">
+    </div>
+
+  </div>
+</div>

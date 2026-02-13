@@ -73,5 +73,23 @@
     </div>
   </div>
 
+  <div class="d-flex align-items-center justify-content-between nav-help">
+    <button type="button" class="btn btn-primary btn-lg my-3" 
+      (click)="router.navigate(['uprising-tactics/neutral-abilities'])" 
+      aria-label="View Neutral Abilities for Uprising Tactics">
+      Neutral Abilities
+    </button>
+    <button id="neutralAbilitiesHelpBtn" type="button" class="btn btn-link p-0 m-3" 
+      data-bs-toggle="collapse" data-bs-target="#neutralAbilities" 
+      aria-expanded="false" aria-controls="neutralAbilities" aria-label="Help: Neutral Abilities">
+      <i class="bi bi-question-circle-fill" style="font-size: 2.4rem;" aria-hidden="true"></i>
+    </button>
+  </div>
+  <div class="collapse" id="neutralAbilities" role="region" aria-labelledby="neutralAbilitiesHelpBtn">
+    <div class="card card-body">
+      Read the neutral abilities of the game.
+    </div>
+  </div>
+
 
 </div>

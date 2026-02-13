@@ -1,0 +1,41 @@
+<div class="container">
+
+  <app-heading-with-back [title]="'Neutral Abilities'"></app-heading-with-back>
+
+  <button *ngIf="cardPrintService.neutralAbilitiesToPrint.size > 0"
+    class="btn btn-primary sticky-top fade-in mb-2"
+    style="top: 5px"
+    (click)="router.navigate(['uprising-tactics/neutral-abilities-print-sheet'])"
+    [attr.aria-label]="'Print ' + cardPrintService.neutralAbilitiesToPrint.size + ' selected neutral abilities'"
+  >
+    Print {{cardPrintService.neutralAbilitiesToPrint.size}} Neutral Abilit{{cardPrintService.neutralAbilitiesToPrint.size > 1 ? 'ies' : 'y'}}
+  </button>
+
+  <div class="row ms-0">
+    <div *ngFor="let card of neutralAbilities; index as i"
+      [ngClass]="{'selected' : cardPrintService.neutralAbilitiesToPrint.has(card.name)}"
+      class="card mb-2 me-2"
+      style="max-width: 20rem;">
+      <div class="card-body">
+        <div class="d-flex justify-content-between">
+          <p class="card-title fs-6 fw-bold">{{card.name}}</p>
+          <div>
+            <i *ngFor="let item of [].constructor(card.cost.technology)" class="bi bi-gear ms-1" aria-hidden="true"></i>
+          </div>
+        </div>
+        <div class="card-text" [innerHTML]="card.description"></div>
+      </div>
+      <div class="card-footer row">
+        <button class="btn btn-link p-0" 
+          (click)="addCardToPrintList(card)" 
+          [attr.aria-label]="'Add ' + card.name + ' to print list'">
+          <i class="bi bi-printer ms-1" aria-hidden="true"></i>
+        </button>
+        <span *ngIf="cardPrintService.neutralAbilitiesToPrint.has(card.name)">
+          *Added to print list
+        </span>
+      </div>
+    </div>
+  </div>
+
+</div>
