@@ -30,7 +30,7 @@ export type NeutralAbility = {
     Abominations multiple units, weakness effects
     Dragonborn flying, spell casting
     Gnomes technology, harvest/farming
-    Drow stealth, poison effects, 
+    Drow combat spells, damage to own units
 */
 
 export const neutralAbilities: NeutralAbility[] = [
@@ -173,9 +173,9 @@ export const neutralAbilities: NeutralAbility[] = [
         factionSynergy: [UprisingTacticsFaction.DROW, UprisingTacticsFaction.DRAGONBORN],
     },
     {
-        name: '',
+        name: 'Rewarding Pain',
         cost: { technology: 2 },
-        description: ``,
+        description: `<p>When a unit you control is dealt damage you may remove an effect token from that unit or from the region that unit is in and gain 1${IconHtml.Gold}.</p>`,
         factionSynergy: [UprisingTacticsFaction.DROW],
     },
     // Abilities not associated with a faction
@@ -199,7 +199,7 @@ export const neutralAbilities: NeutralAbility[] = [
     },
     {
         name: 'Transmutation',
-        cost: { technology: 2},
+        cost: { technology: 2 },
         description: `<p>When spending resources (research, casting, recruicting, ect), you may exchange any 1${IconHtml.Mana} or 1${IconHtml.Research} for 3${IconHtml.Gold} or vice versa.</p>`,
         factionSynergy: [],
     },

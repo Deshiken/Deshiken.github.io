@@ -179,7 +179,7 @@ export const versionedUprisingTacticsUnits: Array<VersionedUprisingTacticsUnits>
             speed: 2,
             health: 3,
             attackDistance: 1,
-            isBuilding: false,  
+            isBuilding: false,
             specialAbilities: [SpecialAbilities.MAGIC_ATTACK],
         },
         {
@@ -194,7 +194,7 @@ export const versionedUprisingTacticsUnits: Array<VersionedUprisingTacticsUnits>
         },
         {
             name: 'Siege Engine',
-            cost : { gold: 8, technology: 2 },
+            cost : { gold: 5, technology: 2 },
             attack: 4,
             speed: 1,
             health: 4,
