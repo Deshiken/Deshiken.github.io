@@ -1,21 +1,19 @@
-
-
 export interface SpellCard {
-  name: string,
-  spellCost: number,
-  description?: string,
-  htmlDescription: string,
-  effectTokens: null | Array<EffectTokenType>,
-  regions: null | Array<Region>,
-  castType: CastType,
-  destructive: boolean,
-  healing?: boolean
+  name: string;
+  spellCost: number;
+  description?: string;
+  htmlDescription: string;
+  effectTokens: null | Array<EffectTokenType>;
+  regions: null | Array<Region>;
+  castType: CastType;
+  destructive: boolean;
+  healing?: boolean;
 }
 
 export interface SpellCardCost {
-  manaCost: number,
-  goldCost: number,
-  researchCost: number
+  manaCost: number;
+  goldCost: number;
+  researchCost: number;
 }
 
 export enum EffectTokenType {
@@ -29,7 +27,7 @@ export enum EffectTokenType {
   Stun = 'Stun',
   Confusion = 'Confusin',
   Poison = 'Poison',
-  Damage = 'Damage'
+  Damage = 'Damage',
 }
 
 export enum Region {
@@ -40,14 +38,14 @@ export enum Region {
   Badlands = 'Badlands',
   Mountains = 'Mountains',
   Water = 'Water',
-  Tundra = 'Tundra'
+  Tundra = 'Tundra',
 }
 
 export enum CastType {
   Normal = 'Normal',
   Instant = 'Instant',
   Prepared = 'Prepared',
-  Combat = 'Combat'
+  Combat = 'Combat',
 }
 
 export enum IconHtml {
@@ -66,4 +64,3 @@ export enum IconHtml {
   SlowHaste = "<img src='../../../assets/uprising_spell_icons/slow&haste.svg' name='slow-and-haste-icon' width='20px'>",
   StrengthenWeaken = "<img src='../../../assets/uprising_spell_icons/strengthen&weaken.svg' name='strengthen-and-weaken-icon' width='20px'>",
 }
-
