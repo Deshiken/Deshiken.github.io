@@ -238,7 +238,7 @@ export const versionedUprisingTacticsUnits: Array<VersionedUprisingTacticsUnits>
             attack: 5,
             speed: 0,
             health: 10,
-            attackDistance: 1,
+            attackDistance: 2,
             isBuilding: true,  
             specialAbilities: [SpecialAbilities.ARMORED],
         },

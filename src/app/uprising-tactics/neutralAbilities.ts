@@ -1,7 +1,7 @@
 import { IconHtml } from "../uprising/spell-cards/spell-card-data";
 
 export enum UprisingTacticsFaction {
-    TEMPLAR = 'TEMPLAR',
+    TEMPLAR = 'Templar',
     ORC = 'Orc',
     WOODELF = 'Wood Elf',
     ABOMINATIONS = 'Abominations',
@@ -127,13 +127,13 @@ export const neutralAbilities: NeutralAbility[] = [
     {
         name: 'Siphon Magic',
         cost: { technology: 2 },
-        description: `<p>Gain 1${IconHtml.Mana} when you destroy an enemy unit.</p>`,
+        description: `<p>Non-combat spells cost 1 less ${IconHtml.Mana} to cast.</p>`,
         factionSynergy: [UprisingTacticsFaction.DRAGONBORN],
     },
     {
-        name: 'Arcane Boost',
+        name: 'Arial Assault',
+        description: `<p>Units you control with the Flying ability gain +1${IconHtml.Attack}.</p>`,
         cost: { technology: 2 },
-        description: `<p>Once per martial action, you may give a mage unit you control +1${IconHtml.Range}.</p>`,
         factionSynergy: [UprisingTacticsFaction.DRAGONBORN],
     },
     {
@@ -186,7 +186,7 @@ export const neutralAbilities: NeutralAbility[] = [
         factionSynergy: [],
     },
     {
-        name: 'Homfield Advantage',
+        name: 'Homefield Advantage',
         cost: { technology: 2 },
         description: `<p>Units on a region that matches your factions favored region gain +1 ${IconHtml.Attack}.</p>`,
         factionSynergy: [],
@@ -219,6 +219,12 @@ export const neutralAbilities: NeutralAbility[] = [
         name: 'Circle of Life',
         cost: { technology: 2 },
         description: `<p>When a unit you control is destroyed, you may add a ${IconHtml.Entangle} token to the region they were in. Units you control gain +1${IconHtml.Attack} when attacking a unit in an entangled region.</p>`,
+        factionSynergy: [],
+    },
+    {
+        name: 'Studiousness',
+        cost: { technology: 2 },
+        description: `<p>You gain +1 Hand Size. Draw 1 additional card when performing a research action.</p>`,
         factionSynergy: [],
     },
     
