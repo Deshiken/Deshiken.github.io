@@ -51,15 +51,19 @@ export enum CastType {
 }
 
 export enum IconHtml {
+  Damage = "<img src='../../../assets/uprising_spell_icons/damage.svg' name='damage-icon' width='20px'>",
+  Range = "<img src='../../../assets/uprising_spell_icons/range.svg' name='range-icon' width='20px'>",
+  Mana = "<i class='bi bi-gem' name='mana-icon'></i>",
+  Gold = "<i class='bi bi-coin' name='coin-icon'></i>",
+  Research = "<i class='bi bi-gear' name='coin-icon'></i>",
+  Attack = "<img src='../../../assets/uprising_spell_icons/attack.svg' name='attack-icon' width='20px'>",
+
   Entangle = "<img src='../../../assets/uprising_spell_icons/entangle.svg' name='entangle-icon' width='20px'>",
   Bountiful = "<img src='../../../assets/uprising_spell_icons/bountiful.svg' name='bountiful' width='20px'>",
-  Damage = "<img src='../../../assets/uprising_spell_icons/damage.svg' name='damage-icon' width='20px'>",
   Mind = "<img src='../../../assets/uprising_spell_icons/mind.svg' name='mind-icon' width='22px'>",
   Shock = "<img src='../../../assets/uprising_spell_icons/shock.svg' name='shock-icon' width='20px'>",
   Poison = "<img src='../../../assets/uprising_spell_icons/poison.svg' name='poison-icon' width='20px'>",
   SlowHaste = "<img src='../../../assets/uprising_spell_icons/slow&haste.svg' name='slow-and-haste-icon' width='20px'>",
   StrengthenWeaken = "<img src='../../../assets/uprising_spell_icons/strengthen&weaken.svg' name='strengthen-and-weaken-icon' width='20px'>",
-  Attack = "<img src='../../../assets/uprising_spell_icons/attack.svg' name='attack-icon' width='20px'>",
-  Range = "<img src='../../../assets/uprising_spell_icons/range.svg' name='range-icon' width='20px'>",
 }
 
