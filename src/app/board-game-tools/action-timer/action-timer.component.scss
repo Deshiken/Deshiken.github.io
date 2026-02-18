@@ -46,8 +46,8 @@
 
     .progress-ring-circle {
       fill: none;
-      stroke: $body-color;
       stroke-width: 8;
+      stroke: url(#progressGradient);
       stroke-linecap: round;
       stroke-dasharray: 565.48;
       stroke-dashoffset: 0;
