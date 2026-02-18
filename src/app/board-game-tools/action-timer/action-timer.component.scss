@@ -1,3 +1,4 @@
+@import "../../../styles.scss";
 
 .radio-with-sample {
   display: flex;
@@ -45,7 +46,7 @@
 
     .progress-ring-circle {
       fill: none;
-      stroke: #05533c;
+      stroke: $body-color;
       stroke-width: 8;
       stroke-linecap: round;
       stroke-dasharray: 565.48;
