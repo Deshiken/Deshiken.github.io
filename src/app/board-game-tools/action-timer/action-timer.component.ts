@@ -14,6 +14,7 @@ export class ActionTimerComponent implements OnInit, OnDestroy {
   combatTacticTime: number = 60;
   
   currentTimer: number = 0
+  initialTimer: number = 0
   interval: number = 0;   
   
   audio = new Audio();
@@ -73,6 +74,7 @@ export class ActionTimerComponent implements OnInit, OnDestroy {
     window.clearInterval(this.interval);
 
     this.currentTimer = timerType
+    this.initialTimer = timerType
     
     this.interval = window.setInterval(() => {this.currentTimer > 0 ? this.currentTimer -- : this.timesUp()} , 1000);
   }
@@ -89,6 +91,11 @@ export class ActionTimerComponent implements OnInit, OnDestroy {
     window.setTimeout(() => {
       this.audio.pause();
     }, 5000);
+  }
+
+  getProgressPercentage(): number {
+    if (this.initialTimer === 0) return 100;
+    return (this.currentTimer / this.initialTimer) * 100;
   }
 }
 

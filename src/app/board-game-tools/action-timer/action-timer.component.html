@@ -118,6 +118,24 @@
   </button>
 
   <h2 class="mt-5">Current Timer: </h2>
-  <p style="font-size: 8rem; line-height: 5rem;" class="text-center" [ngClass]="{'text-danger' : currentTimer < 10}">{{currentTimer}}</p>
+
+  <div class="timer-display-container">
+    <div class="circular-progress">
+      <svg class="progress-ring" width="200" height="200">
+        <circle class="progress-ring-background" cx="100" cy="100" r="90" />
+        <circle 
+          class="progress-ring-circle" 
+          cx="100" 
+          cy="100" 
+          r="90"
+          [style.stroke-dashoffset]="565.48 - (565.48 * getProgressPercentage() / 100)"
+        />
+      </svg>
+      <div class="timer-text">
+        <p class="timer-value" [ngClass]="{'text-danger' : currentTimer < 10}">{{currentTimer}}</p>
+        <p class="timer-label">seconds</p>
+      </div>
+    </div>
+  </div>
 
 </div>

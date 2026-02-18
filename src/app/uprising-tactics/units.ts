@@ -24,12 +24,30 @@ enum SpecialAbilities {
   RANGED_ATTACK = 'Ranged Attack',
   SEIGE_ATTACK = 'Siege Attack',
   ARMORED = 'Armored',
+  CHARGE = 'Charge',
 }
 
 export interface VersionedUprisingTacticsUnits {
   version: string;
   units: Array<UprisingTacticsUnit>;
 }
+
+/* Exploration token ideas
+- +3 gold
+- +1 mana
+- +1 technology
+- Heal 2 to a unit or building
+- Place an entangle token on a region
+- Place a stun token on a unit
+- Place a strengthen token on a unit or building
+- Draw 2 spell cards
+- Place a haste token on a unit
+- Move an enemy unit to an adjacent region
+- Deal 1 damage to an enemy unit or building
+- Place a weaken token on an enemy unit or building
+- Place a slow token on an enemy unit or building
+*/
+
 
 export const versionedUprisingTacticsUnits: Array<VersionedUprisingTacticsUnits> =
   [
@@ -181,7 +199,7 @@ export const versionedUprisingTacticsUnits: Array<VersionedUprisingTacticsUnits>
           health: 3,
           attackDistance: 1,
           isBuilding: false,
-          specialAbilities: [SpecialAbilities.MAGIC_ATTACK],
+          specialAbilities: [SpecialAbilities.MAGIC_ATTACK, SpecialAbilities.RANGED_ATTACK],
         },
         {
           name: 'Cavalry',
@@ -191,14 +209,14 @@ export const versionedUprisingTacticsUnits: Array<VersionedUprisingTacticsUnits>
           health: 5,
           attackDistance: 1,
           isBuilding: false,
-          specialAbilities: [],
+          specialAbilities: [SpecialAbilities.CHARGE],
         },
         {
           name: 'Siege Engine',
-          cost: { gold: 5, technology: 2 },
-          attack: 4,
+          cost: { gold: 4, technology: 2 },
+          attack: 5,
           speed: 1,
-          health: 4,
+          health: 3,
           attackDistance: 3,
           isBuilding: false,
           specialAbilities: [SpecialAbilities.SEIGE_ATTACK],

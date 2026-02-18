@@ -1,9 +1,7 @@
 import { Route } from "@angular/router";
-import { UprisingTacticsHomeComponent } from "./uprising-tactics-home/uprising-tactics-home.component";
-import { MapBuilderOptionsComponent } from "../uprising/map-builder-options/map-builder-options.component";
-import { SpellCardsComponent } from "../uprising/spell-cards/spell-cards.component";
-import { NeutralAbilitiesViewComponent } from "./neutral-abilities-view/neutral-abilities-view.component";
 import { NeutralAbilitiesPrintSheetComponent } from "./neutral-abilities-print-sheet/neutral-abilities-print-sheet.component";
+import { NeutralAbilitiesViewComponent } from "./neutral-abilities-view/neutral-abilities-view.component";
+import { UprisingTacticsHomeComponent } from "./uprising-tactics-home/uprising-tactics-home.component";
 
 export const UPRISING_TACTICS_ROUTES: Route[] = [
     { 
