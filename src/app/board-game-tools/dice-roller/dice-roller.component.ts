@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import DiceBox from '@3d-dice/dice-box'
 
 @Component({
@@ -9,6 +9,7 @@ import DiceBox from '@3d-dice/dice-box'
 export class DiceRollerComponent implements OnInit {
   diceBox: any;
   DiceType = DiceType;
+  isRolling: boolean = false;
   diceToRoll: Array<DiceGroup> = [
     {numberOfDice: 0, diceType: DiceType.D4},
     {numberOfDice: 2, diceType: DiceType.D6},
@@ -16,7 +17,8 @@ export class DiceRollerComponent implements OnInit {
     {numberOfDice: 0, diceType: DiceType.D10},
     {numberOfDice: 2, diceType: DiceType.D12},
     {numberOfDice: 1, diceType: DiceType.D20}
-  ]
+  ];
+  diceRollResults: any;
   
   ngOnInit(): void {
     this.diceBox = new DiceBox({
@@ -29,8 +31,11 @@ export class DiceRollerComponent implements OnInit {
   }
 
   rollDice(): void {
+    this.isRolling = true;
     this.diceBox.roll(this.diceGroupToStringArray()).then((results: any) => {
       console.log('roll results:', results);
+      this.diceRollResults = results;
+      this.isRolling = false;
     });
   }
 
