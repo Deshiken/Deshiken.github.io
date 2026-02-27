@@ -7,7 +7,19 @@
     <!-- Button group -->
     <div class="d-flex flex-row">
 
-      <button class="btn btn-primary btn-sm me-2" (click)="mapTiles.push(1)">Add Map Tile</button>
+      <!-- <button class="btn btn-primary btn-sm me-2" (click)="mapTilesStandard.push(1)">Add Map Tile</button> -->
+
+      <div class="dropdown me-2">
+        <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Add Map Tile
+        </button>
+        <ul class="dropdown-menu">
+          <li class="dropdown-item pointer" (click)="mapTilesStandard.push(1)">Standard</li>
+          <li class="dropdown-item pointer" (click)="mapTilesLine.push(1)">Three Hex Line</li>
+          <li class="dropdown-item pointer" (click)="mapTilesFour.push(1)">Four Hex Group</li>
+        </ul>
+      </div>
+
       <div class="dropdown me-2">
         <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
           Add Flag
@@ -54,10 +66,26 @@
     (click)="trackClick($event)"
     class="draw-zone">
 
-    <div *ngFor="let map of mapTiles">
+    <div *ngFor="let map of mapTilesStandard">
       <img 
         class="drag-drop position-absolute bottom-0 start-0 z1"
         src="../../../assets/uprising_map_builder/MapSegment.svg" 
+        name='map-element'
+        width="190px"> 
+    </div>
+    
+    <div *ngFor="let map of mapTilesFour">
+      <img 
+        class="drag-drop position-absolute bottom-0 start-0 z1"
+        src="../../../assets/uprising_map_builder/FourHexGroup.svg" 
+        name='map-element'
+        width="190px"> 
+    </div>
+
+    <div *ngFor="let map of mapTilesLine">
+      <img 
+        class="drag-drop position-absolute bottom-0 start-0 z1"
+        src="../../../assets/uprising_map_builder/ThreeHexLine.svg" 
         name='map-element'
         width="190px"> 
     </div>

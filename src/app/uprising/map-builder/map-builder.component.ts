@@ -22,7 +22,9 @@ export class MapBuilderComponent implements OnInit {
   lastClickedElement: HTMLElement | null = null;
 
   // Map Elements
-  public mapTiles = new Array<number>(); // [1,1]
+  public mapTilesStandard = new Array<number>(); 
+  public mapTilesLine = new Array<number>(); 
+  public mapTilesFour = new Array<number>(); 
   public mapFlagsGreen = new Array<number>();
   public mapFlagsYellow = new Array<number>();
   public mapFlagsOrange = new Array<number>();
