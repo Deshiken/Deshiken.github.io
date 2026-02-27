@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, HostListener } from '@angular/core';
 import interact from 'interactjs';
 import * as htmlToImage from 'html-to-image';
 import { MapBuilderService, UprisingMap, UprisingMapSize } from '../map-builder.service';
@@ -18,7 +18,6 @@ export class MapBuilderComponent implements OnInit {
 
   public selectedMap: UprisingMap = {mapSize: UprisingMapSize.Medium, mapHTML: new Array<string>(), mapName: '', description: ''};
   public UprisingMapSize = UprisingMapSize;
-  lastClickedElementId: string | null = null;
   lastClickedElement: HTMLElement | null = null;
 
   // Map Elements
@@ -121,10 +120,11 @@ export class MapBuilderComponent implements OnInit {
   }
 
   trackClick(event: Event): void {
-    event.preventDefault();
+    // event.preventDefault();
     // Remove the 'selected' class from the previously clicked element, if it exists
     if (event.target && this.lastClickedElement) {
       this.lastClickedElement.classList.remove('selected');
+      this.lastClickedElement = null;
     }
 
     const clickedElement = event.target as HTMLElement;
@@ -136,6 +136,23 @@ export class MapBuilderComponent implements OnInit {
     }
   }
 
+  /**
+   * Listen for keyboard events on the window so that we can remove the currently
+   * selected map piece when the user hits the delete or backspace key. 
+   */
+  @HostListener('window:keydown', ['$event'])
+  handleKeydown(event: KeyboardEvent) {
+    if (event.key === 'Delete' || event.key === 'Backspace') {
+      if (this.lastClickedElement) {
+        this.lastClickedElement.remove();
+        this.lastClickedElement = null;
+      }
+    }
+  }
+
+  /**
+   * Rotate the currently selected map piece 60 degrees clockwise.
+   */
   public rotateClockwise() {
     if (this.lastClickedElement) {
       console.log('Rotating element: ', this.lastClickedElement);
