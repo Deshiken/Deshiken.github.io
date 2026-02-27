@@ -6,7 +6,6 @@
   width: 25%;
   min-height: 6.5em;
   margin: 1rem 0 0 1rem;
-  background-color: #29e;
   color: white;
   border-radius: 0.75em;
   padding: 4%;
@@ -68,6 +67,7 @@
 
 // Style of drop zone when element is dragged and able to be dropped
 .drop-target {
+  // background-color: #29e;
   background-color: #29e;
   border-color: #af1a1a;
   border-style: solid;
@@ -83,4 +83,8 @@
 // Style of elements that are dragged into the drop zone
 .drag-drop.can-drop {
   // background-color: #4e4;
+}
+
+.selected {
+  border: 2px solid #0b6e75;;
 }

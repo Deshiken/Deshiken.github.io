@@ -34,6 +34,10 @@
       <button class="btn btn-primary btn-sm me-2" (click)="mapWaterRegions.push(1)">Add Water Region</button>
     </div>
     
+    <button class="btn btn-primary" (click)="rotateClockwise()">
+      <i class="bi bi-arrow-clockwise"></i>
+    </button>
+
     <div>
       <i class="bi bi-trash dropzone" style="font-size: 2rem;"></i>
     </div>
@@ -47,6 +51,7 @@
       'map-huge' : selectedMap.mapSize === UprisingMapSize.Huge,
     }" 
     id="image-group" 
+    (click)="trackClick($event)"
     class="draw-zone">
 
     <div *ngFor="let map of mapTiles">
@@ -127,8 +132,8 @@
   </div>
 
   <div class="my-3">
-    <label for="exampleFormControlTextarea1" class="form-label">Map Description</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+    <label for="mapDescription" class="form-label">Map Description</label>
+    <textarea class="form-control" id="mapDescription" rows="3"
       [(ngModel)]="selectedMap.description" 
       placeholder="Add a description and any special instructions on playing this map here.">
     </textarea>

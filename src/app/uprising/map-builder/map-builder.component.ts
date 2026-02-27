@@ -18,19 +18,21 @@ export class MapBuilderComponent implements OnInit {
 
   public selectedMap: UprisingMap = {mapSize: UprisingMapSize.Medium, mapHTML: new Array<string>(), mapName: '', description: ''};
   public UprisingMapSize = UprisingMapSize;
+  lastClickedElementId: string | null = null;
+  lastClickedElement: HTMLElement | null = null;
 
   // Map Elements
-  public mapTiles = new Array<any>(); // [1,1]
-  public mapFlagsGreen: Array<any> = new Array<any>();
-  public mapFlagsYellow: Array<any> = new Array<any>();
-  public mapFlagsOrange: Array<any> = new Array<any>();
-  public mapFlagsRed: Array<any> = new Array<any>();
-  public mapPortalsBlue: Array<any> = new Array<any>();
-  public mapPortalsPurple: Array<any> = new Array<any>();
-  public mapPortalsTeal: Array<any> = new Array<any>();
-  public mapCapitols = new Array<any>();
-  public mapMountains = new Array<any>();
-  public mapWaterRegions = new Array<any>();
+  public mapTiles = new Array<number>(); // [1,1]
+  public mapFlagsGreen = new Array<number>();
+  public mapFlagsYellow = new Array<number>();
+  public mapFlagsOrange = new Array<number>();
+  public mapFlagsRed = new Array<number>();
+  public mapPortalsBlue = new Array<number>();
+  public mapPortalsPurple = new Array<number>();
+  public mapPortalsTeal = new Array<number>();
+  public mapCapitols = new Array<number>();
+  public mapMountains = new Array<number>();
+  public mapWaterRegions = new Array<number>();
 
   ngOnInit() {
     this.loadMap();
@@ -90,9 +92,10 @@ export class MapBuilderComponent implements OnInit {
           // keep the dragged position in the data-x/data-y attributes
           var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
           var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
+          var currentRotation = (parseFloat(target.getAttribute('data-rotation')) || 0) 
 
           // translate the element
-          target.style.transform = 'translate(' + x + 'px, ' + y + 'px)'
+          target.style.transform = `translate(${x}px, ${y}px) rotate(${currentRotation}deg)`;
 
           // update the posiion attributes
           target.setAttribute('data-x', x)
@@ -113,6 +116,46 @@ export class MapBuilderComponent implements OnInit {
         link.href = dataUrl;
         link.click();
       })
+  }
+
+  trackClick(event: Event): void {
+    event.preventDefault();
+    // Remove the 'selected' class from the previously clicked element, if it exists
+    if (event.target && this.lastClickedElement) {
+      this.lastClickedElement.classList.remove('selected');
+    }
+
+    const clickedElement = event.target as HTMLElement;
+
+    // Dont allow rotation of the container element
+    if (clickedElement.id !== 'image-group') {
+      this.lastClickedElement = clickedElement;
+      clickedElement.classList.add('selected');
+    }
+  }
+
+  public rotateClockwise() {
+    if (this.lastClickedElement) {
+      console.log('Rotating element: ', this.lastClickedElement);
+      // grab the current translation stored on the element (draggable sets these)
+      const x = parseFloat(this.lastClickedElement.getAttribute('data-x') || '0');
+      const y = parseFloat(this.lastClickedElement.getAttribute('data-y') || '0');
+
+      const currentRotation = parseFloat(this.lastClickedElement.getAttribute('data-rotation') || '0');
+      let newRotation = 0;
+      if (currentRotation === 300) {
+        // Do nothing and allow the rotation to reset to 0
+      } else {
+        newRotation = currentRotation + 60;
+      }
+
+      // apply the new transform with both translation and rotation
+      this.lastClickedElement.style.transform =
+        `translate(${x}px, ${y}px) rotate(${newRotation}deg)`;
+
+      // update the rotation attribute if you want to track it separately
+      this.lastClickedElement.setAttribute('data-rotation', newRotation.toString());
+    }
   }
 
   /** Add each map piece to the dom by injecting the html into a div inside the map builder area */
@@ -154,7 +197,7 @@ export class MapBuilderComponent implements OnInit {
   /** Load the map from the selected-map url parameter */
   loadMap(){
     let mapName = this.route.snapshot.paramMap.get('selected-map');
-    if (mapName) {
+    if (mapName && this.mapBuilderService.uprisingMaps.has(mapName)) {
       this.selectedMap = this.mapBuilderService.uprisingMaps.get(mapName) as UprisingMap;
       this.setMapHTML(this.selectedMap);
     }
