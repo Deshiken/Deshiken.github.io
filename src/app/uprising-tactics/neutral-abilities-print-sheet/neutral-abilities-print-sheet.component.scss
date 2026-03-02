@@ -1,0 +1,7 @@
+@media print {
+  /* ensure wrappers break after every 12th card */
+  .page-break-after {
+    page-break-after: always;
+    break-after: page;
+  }
+}

@@ -236,4 +236,10 @@ export const neutralAbilities: NeutralAbility[] = [
     description: `<p>You gain +1 Hand Size. Draw 1 additional card when performing a research action.</p>`,
     factionSynergy: [],
   },
+  {
+    name: 'Momentum',
+    cost: { technology: 2 },
+    description: `<p>Units you control have the <i>Charge</i> ability.</p>`,
+    factionSynergy: [],
+  },
 ];

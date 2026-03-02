@@ -1,5 +1,8 @@
 <div class="d-flex flex-wrap" style="width: 1100px;">
-  <ng-container *ngFor="let spellCard of spellCardService.spellCardsToPrint | keyvalue">
-    <app-printable-spell-card [spellCard]="spellCard.value"></app-printable-spell-card>
+  <!-- iterate cards with index so we can insert page breaks every 8 cards -->
+  <ng-container *ngFor="let spellCard of spellCardService.spellCardsToPrint | keyvalue; let i = index">
+    <div class="spell-card-wrapper" [class.page-break-after]="(i + 1) % 8 === 0">
+      <app-printable-spell-card [spellCard]="spellCard.value"></app-printable-spell-card>
+    </div>
   </ng-container>
 </div>
