@@ -1,5 +1,6 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component } from '@angular/core';
+import { trigger, transition, style, animate } from '@angular/animations';
 import { PlayerIcons } from 'src/app/shared/components/player-icon/player-icon.component';
 import { RandomService } from 'src/app/shared/services/random.service';
 import { ChessTimerService, PlayerTimer } from '../chess-timer.service';
@@ -8,6 +9,18 @@ import { ChessTimerService, PlayerTimer } from '../chess-timer.service';
   selector: 'app-multiplayer-chess-timer',
   templateUrl: './multiplayer-chess-timer.component.html',
   styleUrls: ['./multiplayer-chess-timer.component.scss'],
+  animations: [
+    trigger('fade', [
+      transition(':enter', [
+        style({ height: 0, opacity: 0, overflow: 'hidden' }),
+        animate('300ms ease-out', style({ height: '*', opacity: 1, overflow: 'hidden' }))
+      ]),
+      transition(':leave', [
+        style({ overflow: 'hidden' }),
+        animate('300ms ease-in', style({ height: 0, opacity: 0 }))
+      ])
+    ])
+  ]
 })
 export class MultiplayerChessTimerComponent {
   currentPlayerIndex: number = 0;

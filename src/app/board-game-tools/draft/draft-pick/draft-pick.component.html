@@ -9,7 +9,7 @@
       <div class="row">
         <p class="card-title h5">Player {{player.playerNumber}}</p>
         <p *ngIf="draftService.selectedDraft.teamDraft" class="card-text mb-1">Team {{player.team}}</p>
-        <ng-container *ngIf="player?.draftPicks?.length">
+        <ng-container *ngIf="player.draftPicks?.length">
           <p class="card-text mb-0">Previous Picks:</p>
           <ul>
             <li class="ms-4" *ngFor="let pick of player.draftPicks">
@@ -53,6 +53,5 @@
       <i class="bi bi-arrow-right"></i>
     </button>
   </div>
-
 
 </div>

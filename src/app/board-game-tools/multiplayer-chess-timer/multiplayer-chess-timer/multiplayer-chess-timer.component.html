@@ -1,6 +1,10 @@
 <div class='container'>
   <app-heading-with-back [title]="'Multiplayer Chess Timer'"></app-heading-with-back>
 
+  <p class="fst-italic text-muted mb-0" *ngIf="initialSetup || roundEnd" [@fade] style="overflow:hidden">
+    *All timers are paused. Player order can be adjusted now.*
+  </p>
+
   <div cdkDropList 
     [cdkDropListDisabled]="!roundEnd && !initialSetup"
     class="example-list" 
