@@ -22,15 +22,16 @@ export type NeutralAbility = {
   factionSynergy?: UprisingTacticsFaction[];
 };
 
-/* Faction Goals Reference
-    Elves Ranged attacks, entangle, forest synergy
-    Dwarves Armored, siege attacks, buildings synergy
-    Orcs added toughness, melee attacks, Hinder spells
-    Templars healing, Charge/Calvary
-    Abominations multiple units, weakness effects
-    Dragonborn flying, spell casting
-    Gnomes technology, harvest/farming
-    Drow combat spells, damage to own units
+/* 
+  Faction Goals Reference
+  Elves Ranged attacks, entangle, forest synergy
+  Dwarves Armored, siege attacks, buildings synergy
+  Orcs added toughness, melee attacks, Hinder spells
+  Templar healing, Charge/Calvary
+  Abominations multiple units, weakness effects
+  Dragonborn flying, spell casting
+  Gnomes technology, harvest/farming
+  Drow combat spells, damage to own units
 */
 
 export const neutralAbilities: NeutralAbility[] = [
@@ -184,7 +185,7 @@ export const neutralAbilities: NeutralAbility[] = [
   {
     name: 'Rewarding Pain',
     cost: { technology: 2 },
-    description: `<p>When a unit you control is dealt damage you may remove an effect token from that unit or from the region that unit is in and gain 1${IconHtml.Gold}.</p>`,
+    description: `<p>When a unit you control is dealt damage you may remove an effect token from that unit or from the region that unit is in. If an effect token is removed gain 1${IconHtml.Mana}.</p>`,
     factionSynergy: [UprisingTacticsFaction.DROW],
   },
   // Abilities not associated with a faction
@@ -240,6 +241,12 @@ export const neutralAbilities: NeutralAbility[] = [
     name: 'Momentum',
     cost: { technology: 2 },
     description: `<p>Units you control have the <i>Charge</i> ability.</p>`,
+    factionSynergy: [],
+  },
+  {
+    name: 'Chaos Dimension',
+    cost: { technology: 10 },
+    description: `<p>Units you control gain +3${IconHtml.Attack}, +2${IconHtml.SlowHaste}, +2${IconHtml.Health} and +1${IconHtml.Range}.</p>`,
     factionSynergy: [],
   },
 ];

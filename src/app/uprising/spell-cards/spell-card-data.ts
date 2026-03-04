@@ -53,7 +53,8 @@ export enum IconHtml {
   Range = "<img src='../../../assets/uprising_spell_icons/range.svg' name='range-icon' width='20px'>",
   Mana = "<i class='bi bi-gem' name='mana-icon'></i>",
   Gold = "<i class='bi bi-coin' name='coin-icon'></i>",
-  Research = "<i class='bi bi-gear' name='coin-icon'></i>",
+  Research = "<i class='bi bi-gear' name='research-icon'></i>",
+  Health = "<i class='bi bi-heart' name='health-icon'></i>",
   Attack = "<img src='../../../assets/uprising_spell_icons/attack.svg' name='attack-icon' width='20px'>",
 
   Entangle = "<img src='../../../assets/uprising_spell_icons/entangle.svg' name='entangle-icon' width='20px'>",
