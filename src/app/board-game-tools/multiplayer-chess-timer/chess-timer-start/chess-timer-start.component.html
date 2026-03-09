@@ -52,6 +52,7 @@
   <div class="form-check">
     <input
       [(ngModel)]="chessTimerService.playerOrderChange"
+      data-bs-toggle="collapse" data-bs-target="#roundEndOptions" aria-expanded="false" aria-controls="roundEndOptions"
       class="form-check-input"
       type="checkbox"
       id="teamDraft">
@@ -59,31 +60,29 @@
       Pause timers between rounds
     </label>
     <i class="bi m-3 bi-question-circle-fill"
-      data-bs-toggle="collapse" data-bs-target="#teamDraftToggle" aria-expanded="false" aria-controls="teamDraftToggle">
+      data-bs-toggle="collapse" data-bs-target="#timerRoundEndToggle" aria-expanded="false" aria-controls="timerRoundEndToggle">
     </i>
   </div>
-  <div class="collapse" id="teamDraftToggle">
+  <div class="collapse" id="timerRoundEndToggle">
     <div class="card card-body">
       At the end of a round, all timers will stop to allow end of round clean up and set up of the next round. Player order can also be adjusted durring this time.
     </div>
   </div>
 
-  <div class="wrapper" [ngClass]="{'is-open': chessTimerService.playerOrderChange}">
-    <div class="inner">
-      <label for="numberOfTurnsPerRound"
-        class="form-label">
-        Number of player turns per round
-      </label>
-      <input
-        [(ngModel)]="chessTimerService.numberOfTurnsPerRound"
-        style="max-width: 150px;"
-        type="number"
-        min="1"
-        max="10"
-        class="form-control"
-        id="numberOfTurnsPerRound"
-      >
-    </div>
+  <div class="collapse" id="roundEndOptions">
+    <label for="numberOfTurnsPerRound"
+      class="form-label">
+      Number of player turns per round
+    </label>
+    <input
+      [(ngModel)]="chessTimerService.numberOfTurnsPerRound"
+      style="max-width: 150px;"
+      type="number"
+      min="1"
+      max="10"
+      class="form-control"
+      id="numberOfTurnsPerRound"
+    >
   </div>
 
   <div>
