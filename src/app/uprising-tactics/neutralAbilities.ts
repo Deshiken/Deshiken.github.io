@@ -38,7 +38,7 @@ export const neutralAbilities: NeutralAbility[] = [
   {
     name: 'Eagle Eye',
     cost: { technology: 2 },
-    description: `<p>Units you control gain +1${IconHtml.Attack} when attacking a unit or building that is not adjacent.</p>`,
+    description: `<p>Units you control gain +1${IconHtml.Attack} when attacking a unit or building that is not adjacent to them.</p>`,
     factionSynergy: [UprisingTacticsFaction.WOODELF],
   },
   {
@@ -57,6 +57,12 @@ export const neutralAbilities: NeutralAbility[] = [
     factionSynergy: [UprisingTacticsFaction.WOODELF],
   },
   {
+    name: 'Brabmles',
+    cost: { technology: 2 },
+    description: `<p>Enemy units receive 1 damage when they start their turn in a region with an ${IconHtml.Entangle} token.</p>`,
+    factionSynergy: [UprisingTacticsFaction.WOODELF],
+  },
+  {
     name: 'Enraged',
     cost: { technology: 2 },
     description: `<p>Units you control gain +1${IconHtml.Attack} if they are not at their maximum health.</p>`,
@@ -65,7 +71,7 @@ export const neutralAbilities: NeutralAbility[] = [
   {
     name: 'Pillage',
     cost: { technology: 2 },
-    description: `<p>Gain 1${IconHtml.Gold} when you damage an enemy building. Gain 1${IconHtml.Mana} when you destroy an enemy building.</p>`,
+    description: `<p>Gain 1${IconHtml.Gold} when you damage an enemy building. Gain 1${IconHtml.Research} when you destroy an enemy building.</p>`,
     factionSynergy: [UprisingTacticsFaction.ORC],
   },
   {
@@ -78,7 +84,10 @@ export const neutralAbilities: NeutralAbility[] = [
     name: 'Cure Light Wounds',
     cost: { technology: 2 },
     description: `<p>Heal 1 on a unit you control after casting a non-combat spell.</p>`,
-    factionSynergy: [UprisingTacticsFaction.TEMPLAR],
+    factionSynergy: [
+      UprisingTacticsFaction.TEMPLAR, 
+      UprisingTacticsFaction.DRAGONBORN
+    ],
   },
   {
     name: 'Advanced Horsemanship',
@@ -176,7 +185,7 @@ export const neutralAbilities: NeutralAbility[] = [
   {
     name: 'Counterspell',
     cost: { technology: 2 },
-    description: `<p>After an opponent plays a combat spell (before it is revealed), you may pay the ${IconHtml.Mana} cost of that spell to discard it.</p>`,
+    description: `<p>After an opponent plays a combat spell (before it is activated), you may pay the ${IconHtml.Mana} cost of that spell to discard it.</p>`,
     factionSynergy: [
       UprisingTacticsFaction.DROW,
       UprisingTacticsFaction.DRAGONBORN,
@@ -247,6 +256,12 @@ export const neutralAbilities: NeutralAbility[] = [
     name: 'Chaos Dimension',
     cost: { technology: 10 },
     description: `<p>Units you control gain +3${IconHtml.Attack}, +2${IconHtml.SlowHaste}, +2${IconHtml.Health} and +1${IconHtml.Range}.</p>`,
+    factionSynergy: [],
+  },
+  {
+    name: 'Forceful Strike',
+    cost: { technology: 2 },
+    description: `<p>When you attack a unit, after the battle is complete you may move that unit 1 region away from the attacker (Must increase the distance between the attacker and defender by 1 region).</p>`,
     factionSynergy: [],
   },
 ];
