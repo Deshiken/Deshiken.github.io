@@ -12,17 +12,24 @@ import { Router } from '@angular/router';
   templateUrl: './neutral-abilities-view.component.html',
   styleUrl: './neutral-abilities-view.component.scss'
 })
+
 export class NeutralAbilitiesViewComponent {
   cardPrintService = inject(SpellCardService)
   router = inject(Router);
-  neutralAbilities: NeutralAbility[] = neutralAbilities
+  neutralAbilities: NeutralAbility[] = neutralAbilities;
+  // this.neutralAbilities.forEach((ability: NeutralAbility) => {
+  //   this.cardPrintService.neutralAbilitiesToPrint.set(ability.name, ability);
+  // });
 
   addCardToPrintList(ability: NeutralAbility) {
-    if (this.cardPrintService.neutralAbilitiesToPrint.has(ability.name)) {
-      this.cardPrintService.neutralAbilitiesToPrint.delete(ability.name)
-    } else {
+    // if (this.cardPrintService.neutralAbilitiesToPrint.has(ability.name)) {
+    //   this.cardPrintService.neutralAbilitiesToPrint.delete(ability.name)
+    // } else {
+    //   this.cardPrintService.neutralAbilitiesToPrint.set(ability.name, ability);
+    // }
+    neutralAbilities.forEach((ability: NeutralAbility) => {
       this.cardPrintService.neutralAbilitiesToPrint.set(ability.name, ability);
-    }
+    });
   }
 
 }

@@ -134,7 +134,7 @@ export const neutralAbilities: NeutralAbility[] = [
   {
     name: 'Curse of Decay',
     cost: { technology: 3 },
-    description: `<p>Enemy units with weaken or slow tokens take 1 damage at the end of your turn.</p>`,
+    description: `<p>Enemy units with -${IconHtml.StrengthenWeaken} or -${IconHtml.SlowHaste} tokens on them take 1 damage at the end of your turn.</p>`,
     factionSynergy: [UprisingTacticsFaction.ABOMINATIONS],
   },
   {
@@ -259,9 +259,9 @@ export const neutralAbilities: NeutralAbility[] = [
     factionSynergy: [],
   },
   {
-    name: 'Forceful Strike',
+    name: 'Water Walking',
     cost: { technology: 2 },
-    description: `<p>When you attack a unit, after the battle is complete you may move that unit 1 region away from the attacker (Must increase the distance between the attacker and defender by 1 region).</p>`,
+    description: `<p>You may move on to and build on water regions. Gain +1 Income for each unit and building you have on a water region.</p>`,
     factionSynergy: [],
   },
 ];

@@ -1,8 +1,8 @@
 <div class="spell-card p-2 m-1">
   <div class="card-body">
     
-    <div class="d-flex justify-content-between fs-4">
-      <div>
+    <div class="d-flex justify-content-between">
+      <div class="fs-4">
         @if (neutralAbility.cost.technology && neutralAbility.cost.technology > 3) {
           <span><i class="bi bi-gear ms-1">(x{{neutralAbility.cost.technology}})</i></span>
         }
@@ -12,7 +12,7 @@
           }
         }
       </div>
-      <p class="card-title fs-5 fw-bold text-center mb-3 segoe">{{neutralAbility.name}}</p>
+      <p class="card-title fs-5 fw-bold text-center segoe mb-1">{{neutralAbility.name}}</p>
     </div>
 
     <div class="card-text segoe fs-10 small-text"

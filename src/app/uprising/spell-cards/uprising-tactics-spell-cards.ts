@@ -323,7 +323,7 @@ export const UprisingTacticsSpellCards: Array<SpellCard> = [
     destructive: false,
   },
   {
-    name: "Shock",
+    name: `Shock`,
     spellCost: 2,
     htmlDescription: `<p>At the end of the battle, add a ${IconHtml.Shock} token to the attacking or defending unit.</p>`,
     effectTokens: [EffectTokenType.Stun],
@@ -332,7 +332,7 @@ export const UprisingTacticsSpellCards: Array<SpellCard> = [
     destructive: false,
   },
   {
-    name: "Dark Bargin",
+    name: `Dark Bargin`,
     spellCost: 1,
     htmlDescription: `<p>The attacking unit gains 3 ${IconHtml.Attack}. The attacking unit takes 1 damage at the end of the battle.</p>`,
     effectTokens: null,
@@ -341,7 +341,7 @@ export const UprisingTacticsSpellCards: Array<SpellCard> = [
     destructive: false,
   },
   {
-    name: 'Egress',
+    name: `Egress`,
     spellCost: 1,
     htmlDescription: `<p>Return the attacked unit to an unoccupied region adjacent to its controller's capitol.</p>`,
     effectTokens: null,
@@ -350,7 +350,7 @@ export const UprisingTacticsSpellCards: Array<SpellCard> = [
     destructive: false,
   },
   {
-    name: 'Frost Nova',
+    name: `Frost Nova`,
     spellCost: 4,
     htmlDescription: `<p>Choose a region. Attack each unit up to 2${IconHtml.Range} from the chosen region with 3${IconHtml.Attack}. Add a -${IconHtml.SlowHaste} token to each unit attacked using this spell that did not receive damage.</p>`,
     effectTokens: [EffectTokenType.Slow],
@@ -359,7 +359,7 @@ export const UprisingTacticsSpellCards: Array<SpellCard> = [
     destructive: true,
   },
   {
-    name: 'Elemental Mastery',
+    name: `Elemental Mastery`,
     spellCost: 4,
     htmlDescription: `<p>You may add a +${IconHtml.StrengthenWeaken} a unit. You may repeat this process for the following tokens: -${IconHtml.StrengthenWeaken}, -${IconHtml.SlowHaste}, +${IconHtml.SlowHaste}, ${IconHtml.Shock}</p>`,
     effectTokens: [EffectTokenType.Strengthen, EffectTokenType.Weaken, EffectTokenType.Slow, EffectTokenType.Haste, EffectTokenType.Stun],
@@ -368,7 +368,7 @@ export const UprisingTacticsSpellCards: Array<SpellCard> = [
     destructive: true,
   },
   {
-    name: 'Lightning Storm',
+    name: `Lightning Storm`,
     spellCost: 3,
     htmlDescription: `<p>Choose a region. Add a ${IconHtml.Shock} token to each unit up to 2${IconHtml.Range} from the chosen region.</p>`,
     effectTokens: null,
@@ -377,7 +377,7 @@ export const UprisingTacticsSpellCards: Array<SpellCard> = [
     destructive: true,
   },
   {
-    name: 'Fog',
+    name: `Fog`,
     spellCost: 2,
     htmlDescription: `<p>Time: 4. Enemy units and buildings do not perform <i>Opportunity Attacks</i> and have -1 ${IconHtml.Range} to a minimum of 1.</p>`,
     effectTokens: null,
@@ -386,7 +386,7 @@ export const UprisingTacticsSpellCards: Array<SpellCard> = [
     destructive: true,
   },
   {
-    name: 'Anti-Magic Field',
+    name: `Anti-Magic Field`,
     spellCost: 3,
     htmlDescription: `<p>Time: 4. Enemy spell attacks and <i>Magic Attacks</i> only hit when a 6 is rolled.</p>`,
     effectTokens: null,
@@ -395,7 +395,7 @@ export const UprisingTacticsSpellCards: Array<SpellCard> = [
     destructive: true,
   },
   {
-    name: "Healing Rain",
+    name: `Healing Rain`,
     spellCost: 4,
     htmlDescription: `<p>Time: 4. Each unit you control <i>Heals 1</i> at the start of your turn.</p>`,
     effectTokens: null,
@@ -404,7 +404,7 @@ export const UprisingTacticsSpellCards: Array<SpellCard> = [
     destructive: false,
   },
   {
-    name: 'Web',
+    name: `Web`,
     spellCost: 3,
     htmlDescription: `<p>Time: 4. Enemy units lose the <i>Flying</i> ability.</p>`,
     effectTokens: null,
@@ -413,7 +413,7 @@ export const UprisingTacticsSpellCards: Array<SpellCard> = [
     destructive: false,
   },
   {
-    name: 'Mythril Mail',
+    name: `Mythril Mail`,
     spellCost: 3,
     htmlDescription: `<p>Time: 3. Units you control have the <i>Armored</i> ability.</p>`,
     effectTokens: null,
@@ -422,7 +422,7 @@ export const UprisingTacticsSpellCards: Array<SpellCard> = [
     destructive: false,
   },
   {
-    name: 'Infernal Contract',
+    name: `Infernal Contract`,
     spellCost: 3,
     htmlDescription: `<p>Time: 3. Units you control gain +2 ${IconHtml.Attack} and +1 ${IconHtml.SlowHaste}. Deal 1 damage to each unit you control at the end of each of your turns.</p>`,
     effectTokens: null,
@@ -431,7 +431,7 @@ export const UprisingTacticsSpellCards: Array<SpellCard> = [
     destructive: false,
   },
   {
-    name: 'Acid Rain',
+    name: `Acid Rain`,
     spellCost: 4,
     htmlDescription: `<p>Time: 3. At the end of your turn, you may attack an enemy unit or building with 2 ${IconHtml.Attack}.</p>`,
     effectTokens: null,
@@ -440,7 +440,7 @@ export const UprisingTacticsSpellCards: Array<SpellCard> = [
     destructive: true,
   },
   {
-    name: 'Mind Control',
+    name: `Mind Control`,
     spellCost: 3,
     htmlDescription: `<p>Choose a unit. You may perform a free martial action using only the chosen unit.</p>`,
     effectTokens: null,
@@ -449,7 +449,7 @@ export const UprisingTacticsSpellCards: Array<SpellCard> = [
     destructive: false,
   },
   {
-    name: 'Living Walls',
+    name: `Living Walls`,
     spellCost: 1,
     htmlDescription: `<p>You may move each non-capitol building you control up to two regions away from it's current region.</p>`,
     effectTokens: null,
@@ -458,7 +458,7 @@ export const UprisingTacticsSpellCards: Array<SpellCard> = [
     destructive: false,
   },
   {
-    name: 'Instant Transmission',
+    name: `Instant Transmission`,
     spellCost: 3,
     htmlDescription: `<p>Choose a unit. Move this unit to any unoccupied region. If an enemy unit is chosen, you must pay 1 additional mana.</p>`,
     effectTokens: null,
@@ -467,7 +467,7 @@ export const UprisingTacticsSpellCards: Array<SpellCard> = [
     destructive: false,
   },
   {
-    name: 'Exchange Fates',
+    name: `Exchange Fates`,
     spellCost: 2,
     htmlDescription: `<p>Choose a unit you control. Exchange the chosen unit's position with the unit you control in this battle. The chosen unit is now the unit participating in this battle.</p>`,
     effectTokens: null,
@@ -476,7 +476,7 @@ export const UprisingTacticsSpellCards: Array<SpellCard> = [
     destructive: false,
   },
   {
-    name: 'Tranquility',
+    name: `Tranquility`,
     spellCost: 3,
     htmlDescription: `<p>Remove all <i>Effect Tokens</i> from all units and buildings.</p>`,
     effectTokens: null,
