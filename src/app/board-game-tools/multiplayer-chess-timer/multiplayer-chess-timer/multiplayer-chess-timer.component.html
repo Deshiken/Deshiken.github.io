@@ -11,17 +11,21 @@
     (cdkDropListDropped)="drop($event)">
     <div *ngFor='let playerTimer of chessTimerService.playerTimers'
       [ngStyle]="{'background-color': playerTimer.color}"
+      [ngClass]="{'move-cursor': roundEnd || initialSetup}"
       class="example-box"
       cdkDrag>
 
       <div class="d-flex flex-column"> 
 
         <div class="d-flex justify-content-end">
-          <i class="bi bi-pencil-square" 
+          <button type="button" style="color: white" class="btn" aria-label="Edit Player"
             (click)="playerTimerToEdit = playerTimer"
-            data-bs-toggle="modal" 
-            data-bs-target="#exampleModal">
-          </i>
+          >
+            <i class="bi bi-pencil-square" 
+              data-bs-toggle="modal" 
+              data-bs-target="#exampleModal">
+            </i>
+          </button>
         </div>
         <div class="d-flex align-items-center justify-content-between" style="font-size: 1.5rem;">
           <div class="d-flex">

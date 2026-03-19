@@ -261,7 +261,7 @@ export const neutralAbilities: NeutralAbility[] = [
   {
     name: 'Water Walking',
     cost: { technology: 2 },
-    description: `<p>You may move on to and build on water regions. Gain +1 Income for each unit and building you have on a water region.</p>`,
+    description: `<p>You may move on to and build on water regions. Gain +1${IconHtml.Gold} income for each unit and building you have on a water region.</p>`,
     factionSynergy: [],
   },
 ];

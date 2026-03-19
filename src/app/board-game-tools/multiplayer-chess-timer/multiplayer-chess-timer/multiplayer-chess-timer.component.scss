@@ -10,9 +10,15 @@
 .example-box {
   padding: 10px;
   border-bottom: solid 1px #ccc;
-  cursor: move;
+  // cursor: move;
   color: white;
 }
+
+.move-cursor {
+  cursor: move;
+}
+
+
 .cdk-drag-preview {
   border: none;
   box-sizing: border-box;
