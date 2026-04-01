@@ -1,0 +1,30 @@
+.uprising-actions-table {
+  margin: 1rem 0;
+}
+
+.uprising-actions-table h2 {
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+}
+
+.uprising-actions-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.uprising-actions-table th,
+.uprising-actions-table td {
+  border: 1px solid #ccc;
+  padding: 0.6rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.uprising-actions-table th {
+  background: #f4f4f4;
+  font-weight: 600;
+}
+
+.uprising-actions-table tbody tr:nth-child(odd) {
+  background: #fafafa;
+}

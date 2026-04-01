@@ -1,0 +1,17 @@
+<section class="uprising-actions-table">
+  <h2>Uprising Actions</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Action</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let action of actions">
+        <td>{{ action.name }}</td>
+        <td [innerHTML]="action.description"></td>
+      </tr>
+    </tbody>
+  </table>
+</section>

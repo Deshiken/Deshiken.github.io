@@ -9,7 +9,7 @@ export interface UprisingTacticsUnit {
   isBuilding: boolean;
   health: number;
   specialAbilities?: Array<SpecialAbilities>;
-  specialDescripton?: string;
+  specialDescription?: string;
 }
 
 interface UnitCost {
@@ -73,7 +73,7 @@ export const versionedUprisingTacticsUnits: Array<VersionedUprisingTacticsUnits>
           attackDistance: 2,
           isBuilding: false,
           specialAbilities: [SpecialAbilities.RANGED_ATTACK],
-          specialDescripton: `-1 ${IconHtml.Attack} when <i>engaged</i>.`,
+          specialDescription: `-1 ${IconHtml.Attack} when <i>engaged</i>.`,
         },
         {
           name: 'Air',
@@ -114,7 +114,7 @@ export const versionedUprisingTacticsUnits: Array<VersionedUprisingTacticsUnits>
           attackDistance: 3,
           isBuilding: false,
           specialAbilities: [SpecialAbilities.SEIGE_ATTACK],
-          specialDescripton: `-2 ${IconHtml.Attack} when <i>engaged</i>.`,
+          specialDescription: `-2 ${IconHtml.Attack} when <i>engaged</i>.`,
         },
         {
           name: 'Tower',
@@ -179,7 +179,7 @@ export const versionedUprisingTacticsUnits: Array<VersionedUprisingTacticsUnits>
           attackDistance: 2,
           isBuilding: false,
           specialAbilities: [SpecialAbilities.RANGED_ATTACK],
-          specialDescripton: `-1 ${IconHtml.Attack} when <i>engaged</i>.`,
+          specialDescription: `-1 ${IconHtml.Attack} when <i>engaged</i>.`,
         },
         {
           name: 'Air',
@@ -220,7 +220,7 @@ export const versionedUprisingTacticsUnits: Array<VersionedUprisingTacticsUnits>
           attackDistance: 3,
           isBuilding: false,
           specialAbilities: [SpecialAbilities.SEIGE_ATTACK],
-          specialDescripton: `-2 ${IconHtml.Attack} when <i>engaged</i>.`,
+          specialDescription: `-2 ${IconHtml.Attack} when <i>engaged</i>.`,
         },
         {
           name: 'Tower',
@@ -241,6 +241,7 @@ export const versionedUprisingTacticsUnits: Array<VersionedUprisingTacticsUnits>
           attackDistance: 1,
           isBuilding: true,
           specialAbilities: [SpecialAbilities.ARMORED],
+          specialDescription: `+1 ${IconHtml.Gold} income.`
         },
         {
           name: 'City',
