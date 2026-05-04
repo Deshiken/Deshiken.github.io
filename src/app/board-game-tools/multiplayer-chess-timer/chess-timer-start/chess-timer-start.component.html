@@ -51,6 +51,25 @@
 
   <div class="form-check">
     <input
+      [(ngModel)]="chessTimerService.resetPlayerTimeEachRound"
+      class="form-check-input"
+      type="checkbox"
+      id="resetPlayerTimeEachRound">
+    <label class="form-check-label" for="resetPlayerTimeEachRound">
+      Reset player time each round
+    </label>
+    <i class="bi m-3 bi-question-circle-fill"
+      data-bs-toggle="collapse" data-bs-target="#resetPlayerTimeEachRoundToggle" aria-expanded="false" aria-controls="resetPlayerTimeEachRoundToggle">
+    </i>
+  </div>
+  <div class="collapse" id="resetPlayerTimeEachRoundToggle">
+    <div class="card card-body">
+      After each round ends, the time for each player will be reset.
+    </div>
+  </div>
+
+  <div class="form-check">
+    <input
       [(ngModel)]="chessTimerService.playerOrderChange"
       data-bs-toggle="collapse" data-bs-target="#roundEndOptions" aria-expanded="false" aria-controls="roundEndOptions"
       class="form-check-input"
@@ -86,9 +105,7 @@
   </div>
 
   <div>
-    <button class="btn btn-primary my-3"
-      (click)="next()"
-    >
+    <button class="btn btn-primary my-3" (click)="next()">
       Next
       <i class="bi bi-arrow-right"></i>
     </button>

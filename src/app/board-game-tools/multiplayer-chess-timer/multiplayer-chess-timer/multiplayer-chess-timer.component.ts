@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { PlayerIcons } from 'src/app/shared/components/player-icon/player-icon.component';
 import { RandomService } from 'src/app/shared/services/random.service';
-import { ChessTimerService, PlayerTimer } from '../chess-timer.service';
+import { ChessTimerService, PlayerAudioSource, PlayerTimer } from '../chess-timer.service';
 
 @Component({
   selector: 'app-multiplayer-chess-timer',
@@ -27,6 +27,8 @@ export class MultiplayerChessTimerComponent {
   interval: number = 0;
   playerTimerToEdit: PlayerTimer = this.chessTimerService.playerTimers[0];
   PlayerIcons = PlayerIcons; // Make PlayerIcons available to template
+  PlayerAudioSource = PlayerAudioSource; // Make PlayerAudioSource available to template
+  audio = new Audio();
 
   initialSetup = true;
   roundEnd = false;
@@ -56,17 +58,31 @@ export class MultiplayerChessTimerComponent {
 
   next() {
     this.timerIsPaused = false;
-    // If stopping for additional round setup and all players have played a turn.
-    if (this.chessTimerService.playerOrderChange
-        && this.currentPlayerIndex + 1 == this.chessTimerService.playerTimers.length
+
+    // All players have taken turns equal to the number of turns per round
+    if (this.currentPlayerIndex + 1 == this.chessTimerService.playerTimers.length
         && this.chessTimerService.playerTimers[this.currentPlayerIndex].numberOfTurnsTaken == this.chessTimerService.numberOfTurnsPerRound) {
-      this.pause();
-      // Reset the number of turns taken this round to zero
-      this.chessTimerService.playerTimers.forEach(playerTimer => {
-        playerTimer.numberOfTurnsTaken = 0;
-      })
-      this.roundEnd = true;
-    } else { // If not stopping between rounds always go to the next player.
+      
+      // Reset the time for each player if the option is selected.
+      if (this.chessTimerService.resetPlayerTimeEachRound) {
+        this.chessTimerService.playerTimers.forEach(playerTimer => {
+          playerTimer.timeRemaining =  this.chessTimerService.minutesPerPlayer * 600;
+          playerTimer.numberOfTurnsTaken = 0;
+        })
+        this.startNextPlayer();
+      }
+
+      // Reset the number of turns taken this round to zero and pause the timr if player order changes between rounds.
+      if (this.chessTimerService.playerOrderChange) {
+        this.chessTimerService.playerTimers.forEach(playerTimer => {
+          playerTimer.numberOfTurnsTaken = 0;
+        })
+        
+        this.pause();
+        this.roundEnd = true;  
+      }
+      
+    } else{
       this.startNextPlayer();
     }
   }
@@ -107,6 +123,13 @@ export class MultiplayerChessTimerComponent {
         playerTimer.timeRemaining --;
       }
     }, 100);
+
+    if (playerTimer.enableBackgroundMusic) {
+      this.audio.src = playerTimer.chosenBackgroundMusic;
+      this.audio.loop = true;
+      this.audio.load();
+      this.audio.play();
+    }
   }
 
 }

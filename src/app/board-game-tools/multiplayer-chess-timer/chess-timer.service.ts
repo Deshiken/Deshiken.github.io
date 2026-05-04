@@ -9,6 +9,7 @@ export class ChessTimerService {
   public allowPause = true;
   public playerOrderChange = false;
   public numberOfTurnsPerRound = 2;
+  public resetPlayerTimeEachRound = false;
 
   public playerTimers: Array<PlayerTimer> = new Array<PlayerTimer>();
 
@@ -20,5 +21,14 @@ export interface PlayerTimer {
   icon: string;
   timeRemaining: number;
   color: string;
-  numberOfTurnsTaken: 0
+  numberOfTurnsTaken: number;
+  enableBackgroundMusic: boolean;
+  chosenBackgroundMusic: PlayerAudioSource;
+}
+
+export enum PlayerAudioSource {
+  ClassicAlarm = '../../assets/audio/classic-alarm.wav',
+  BattleshipAlarm = '../../assets/audio/battleship-alarm.wav',
+  DigitalRingAlarm = '../../assets/audio/alarm-tone.wav',
+  DigitalClockAlarm = '../../assets/audio/digital-clock-alarm.wav',
 }

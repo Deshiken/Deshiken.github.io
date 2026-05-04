@@ -91,6 +91,24 @@
               </i>
             </ng-container>
           </div>
+          <!-- Background Music -->
+          <!-- Cool, but I don't think we need this yet -->
+          <!-- <audio #audioPlayer controls class="w-100 mt-3">
+            <source src="assets/audio/chess-background-music.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio> -->
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" 
+              id="backgroundMusic" [(ngModel)]="playerTimerToEdit.enableBackgroundMusic">
+            <label class="form-check-label" for="backgroundMusic">Enable background music</label>
+          </div>
+          <select *ngIf="playerTimerToEdit.enableBackgroundMusic"
+            [disabled]="!playerTimerToEdit.enableBackgroundMusic"
+            [(ngModel)]="playerTimerToEdit.chosenBackgroundMusic" class="form-select" id="backgroundMusicSelect">
+            <option *ngFor="let audioOption of PlayerAudioSource | keyvalue" [ngValue]="audioOption.key">
+              {{audioOption.key}}
+            </option>
+          </select>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Done</button>

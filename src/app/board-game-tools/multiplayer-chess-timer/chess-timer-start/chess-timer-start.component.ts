@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { PlayerIcons } from 'src/app/shared/components/player-icon/player-icon.component';
 import { RandomService } from 'src/app/shared/services/random.service';
-import { ChessTimerService, PlayerTimer } from '../chess-timer.service';
+import { ChessTimerService, PlayerAudioSource, PlayerTimer } from '../chess-timer.service';
 
 @Component({
   selector: 'app-chess-timer-start',
@@ -21,9 +21,15 @@ export class ChessTimerStartComponent {
   next() {
     //Remove any old player timers
     this.chessTimerService.playerTimers = new Array<PlayerTimer>();
+
+    let playerAudioSources = Object.keys(PlayerAudioSource);
     
     //Initialize the array of player timers.
     for (let i = 0; i < this.chessTimerService.numberOfPlayers; i++) {
+
+      let randomAudioSourceKey = this.randomService.getRandomEntryFromArray(playerAudioSources);
+      this.randomService.deleteFromArray(playerAudioSources, randomAudioSourceKey);
+
       this.chessTimerService.playerTimers.push(
         {
           name: `Player ${i+1}`,
@@ -31,6 +37,9 @@ export class ChessTimerStartComponent {
           timeRemaining: this.chessTimerService.minutesPerPlayer * 60 * 10,
           icon: this.randomService.getRandomEntryFromArray(this.iconValuesArray),
           numberOfTurnsTaken: 0,
+          enableBackgroundMusic: false,
+          // Randomly select a default background music track for the player
+          chosenBackgroundMusic: randomAudioSourceKey
         }
       )
       this.router.navigate(['/tools/chess-clock'])
