@@ -1,5 +1,5 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { PlayerIcons } from 'src/app/shared/components/player-icon/player-icon.component';
 import { RandomService } from 'src/app/shared/services/random.service';
@@ -23,6 +23,9 @@ import { ChessTimerService, PlayerAudioSource, PlayerTimer } from '../chess-time
   ]
 })
 export class MultiplayerChessTimerComponent {
+  public chessTimerService = inject(ChessTimerService);
+  public randomService = inject(RandomService);
+
   currentPlayerIndex: number = 0;
   interval: number = 0;
   playerTimerToEdit: PlayerTimer = this.chessTimerService.playerTimers[0];
@@ -33,12 +36,6 @@ export class MultiplayerChessTimerComponent {
   initialSetup = true;
   roundEnd = false;
   timerIsPaused = false;
-
-  constructor(
-    public chessTimerService: ChessTimerService,
-    public randomService: RandomService,
-  ) { }
-
 
   drop(event: CdkDragDrop<string[], string, any>) {
     console.log(event);
@@ -59,33 +56,48 @@ export class MultiplayerChessTimerComponent {
   next() {
     this.timerIsPaused = false;
 
-    // All players have taken turns equal to the number of turns per round and we need to do end of round actions.
-    if (this.currentPlayerIndex + 1 == this.chessTimerService.playerTimers.length
-        && this.chessTimerService.playerTimers[this.currentPlayerIndex].numberOfTurnsTaken == this.chessTimerService.numberOfTurnsPerRound
-        && (this.chessTimerService.resetPlayerTimeEachRound || this.chessTimerService.playerOrderChange)) {
-      
-      // Reset the time for each player if the option is selected.
-      if (this.chessTimerService.resetPlayerTimeEachRound) {
-        this.chessTimerService.playerTimers.forEach(playerTimer => {
-          playerTimer.timeRemaining = this.chessTimerService.minutesPerPlayer * 600;
-          playerTimer.numberOfTurnsTaken = 0;
-        })
+    const isLastPlayer = this.currentPlayerIndex === this.chessTimerService.playerTimers.length - 1;
+    const currentPlayer = this.chessTimerService.playerTimers[this.currentPlayerIndex];
+    const completedRound = currentPlayer.numberOfTurnsTaken === this.chessTimerService.numberOfTurnsPerRound;
+    const needsRoundEndActions = this.chessTimerService.resetPlayerTimeEachRound || this.chessTimerService.playerOrderChange;
+
+    if (isLastPlayer && completedRound && needsRoundEndActions) {
+      this.handleRoundEnd();
+      return;
+    }
+    
+    this.startNextPlayer();
+  }
+
+  private handleRoundEnd() {
+    if (this.chessTimerService.resetPlayerTimeEachRound) {
+      this.resetPlayersForNewRound();
+
+      // Start the next player unless the timers will be paused for round end setup
+      if (!this.chessTimerService.playerOrderChange) {
         this.startNextPlayer();
       }
 
-      // Reset the number of turns taken this round to zero and pause the timr if player order changes between rounds.
-      if (this.chessTimerService.playerOrderChange) {
-        this.chessTimerService.playerTimers.forEach(playerTimer => {
-          playerTimer.numberOfTurnsTaken = 0;
-        })
-        
-        this.pause();
-        this.roundEnd = true;  
-      }
-      
-    } else{
-      this.startNextPlayer();
     }
+
+    if (this.chessTimerService.playerOrderChange) {
+      this.resetTurnsTaken();
+      this.pause();
+      this.roundEnd = true;
+    }
+  }
+
+  private resetPlayersForNewRound() {
+    this.chessTimerService.playerTimers.forEach(playerTimer => {
+      playerTimer.timeRemaining = this.chessTimerService.minutesPerPlayer * 600;
+      playerTimer.numberOfTurnsTaken = 0;
+    });
+  }
+
+  private resetTurnsTaken() {
+    this.chessTimerService.playerTimers.forEach(playerTimer => {
+      playerTimer.numberOfTurnsTaken = 0;
+    });
   }
 
   startNextPlayer() {
