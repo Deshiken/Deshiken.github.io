@@ -71,11 +71,10 @@
   <div class="form-check">
     <input
       [(ngModel)]="chessTimerService.playerOrderChange"
-      data-bs-toggle="collapse" data-bs-target="#roundEndOptions" aria-expanded="false" aria-controls="roundEndOptions"
       class="form-check-input"
       type="checkbox"
-      id="teamDraft">
-    <label class="form-check-label" for="teamDraft">
+      id="pauseBetweenRounds">
+    <label class="form-check-label" for="pauseBetweenRounds">
       Pause timers between rounds
     </label>
     <i class="bi m-3 bi-question-circle-fill"
@@ -88,7 +87,9 @@
     </div>
   </div>
 
-  <div class="collapse" id="roundEndOptions">
+  <div id="turnsPerRoundContainer" 
+    [@growHeight]
+    *ngIf="chessTimerService.playerOrderChange || chessTimerService.resetPlayerTimeEachRound">
     <label for="numberOfTurnsPerRound"
       class="form-label">
       Number of player turns per round

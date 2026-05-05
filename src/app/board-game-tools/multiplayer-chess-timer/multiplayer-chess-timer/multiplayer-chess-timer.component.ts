@@ -59,14 +59,15 @@ export class MultiplayerChessTimerComponent {
   next() {
     this.timerIsPaused = false;
 
-    // All players have taken turns equal to the number of turns per round
+    // All players have taken turns equal to the number of turns per round and we need to do end of round actions.
     if (this.currentPlayerIndex + 1 == this.chessTimerService.playerTimers.length
-        && this.chessTimerService.playerTimers[this.currentPlayerIndex].numberOfTurnsTaken == this.chessTimerService.numberOfTurnsPerRound) {
+        && this.chessTimerService.playerTimers[this.currentPlayerIndex].numberOfTurnsTaken == this.chessTimerService.numberOfTurnsPerRound
+        && (this.chessTimerService.resetPlayerTimeEachRound || this.chessTimerService.playerOrderChange)) {
       
       // Reset the time for each player if the option is selected.
       if (this.chessTimerService.resetPlayerTimeEachRound) {
         this.chessTimerService.playerTimers.forEach(playerTimer => {
-          playerTimer.timeRemaining =  this.chessTimerService.minutesPerPlayer * 600;
+          playerTimer.timeRemaining = this.chessTimerService.minutesPerPlayer * 600;
           playerTimer.numberOfTurnsTaken = 0;
         })
         this.startNextPlayer();
@@ -93,7 +94,7 @@ export class MultiplayerChessTimerComponent {
       this.currentPlayerIndex ++;
       this.chessTimerService.playerTimers[this.currentPlayerIndex].numberOfTurnsTaken ++;
       this.timerStart(this.chessTimerService.playerTimers[this.currentPlayerIndex])
-    } else { //Else start back at player 1
+    } else { // Else start back at player 1
       this.currentPlayerIndex = 0;
       this.timerStart(this.chessTimerService.playerTimers[this.currentPlayerIndex])
     }
@@ -102,7 +103,7 @@ export class MultiplayerChessTimerComponent {
   pause() {
     this.timerIsPaused = true;
 
-    //Stop the current interval (timer);
+    // Stop the current interval (timer);
     window.clearInterval(this.interval);
   }
 
@@ -114,7 +115,7 @@ export class MultiplayerChessTimerComponent {
   timerStart(playerTimer: PlayerTimer) {
     console.log('start timer for player: ', playerTimer);
 
-    // end any existing timers from continuing to count down
+    // End any existing timers from continuing to count down
     window.clearInterval(this.interval);
 
     // If the player has any time left, Start an interval that updates every 1/10th a second

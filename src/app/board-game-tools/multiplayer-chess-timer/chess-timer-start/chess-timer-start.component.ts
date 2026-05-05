@@ -3,11 +3,17 @@ import { Router } from '@angular/router';
 import { PlayerIcons } from 'src/app/shared/components/player-icon/player-icon.component';
 import { RandomService } from 'src/app/shared/services/random.service';
 import { ChessTimerService, PlayerAudioSource, PlayerTimer } from '../chess-timer.service';
+import { FadeInOutAnimation } from 'src/app/shared/animations/fadeInOutAnimation';
+import { growHeightAnimation } from 'src/app/shared/animations/growHeightAnimation';
 
 @Component({
   selector: 'app-chess-timer-start',
   templateUrl: './chess-timer-start.component.html',
-  styleUrls: ['./chess-timer-start.component.scss']
+  styleUrls: ['./chess-timer-start.component.scss'],
+  animations: [
+    growHeightAnimation,
+    FadeInOutAnimation
+  ]
 })
 export class ChessTimerStartComponent {
   iconValuesArray: Array<string> = Object.values(PlayerIcons) as Array<string>;
@@ -27,6 +33,7 @@ export class ChessTimerStartComponent {
     //Initialize the array of player timers.
     for (let i = 0; i < this.chessTimerService.numberOfPlayers; i++) {
 
+      //Randomly select a background music track and then remove it from the array so that no two players have the same track.
       let randomAudioSourceKey = this.randomService.getRandomEntryFromArray(playerAudioSources);
       this.randomService.deleteFromArray(playerAudioSources, randomAudioSourceKey);
 
@@ -38,7 +45,6 @@ export class ChessTimerStartComponent {
           icon: this.randomService.getRandomEntryFromArray(this.iconValuesArray),
           numberOfTurnsTaken: 0,
           enableBackgroundMusic: false,
-          // Randomly select a default background music track for the player
           chosenBackgroundMusic: randomAudioSourceKey
         }
       )
