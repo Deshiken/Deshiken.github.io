@@ -1,9 +1,10 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnDestroy } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { PlayerIcons } from 'src/app/shared/components/player-icon/player-icon.component';
 import { RandomService } from 'src/app/shared/services/random.service';
 import { ChessTimerService, PlayerAudioSource, PlayerTimer } from '../chess-timer.service';
+import { FadeInOutAnimation } from 'src/app/shared/animations/fadeInOutAnimation';
 
 @Component({
   selector: 'app-multiplayer-chess-timer',
@@ -22,7 +23,8 @@ import { ChessTimerService, PlayerAudioSource, PlayerTimer } from '../chess-time
     ])
   ]
 })
-export class MultiplayerChessTimerComponent {
+
+export class MultiplayerChessTimerComponent implements OnDestroy {
   public chessTimerService = inject(ChessTimerService);
   public randomService = inject(RandomService);
 
@@ -117,11 +119,19 @@ export class MultiplayerChessTimerComponent {
 
     // Stop the current interval (timer);
     window.clearInterval(this.interval);
+
+    // Stop any playing audio
+    this.audio.pause();
   }
 
   resume() {
     this.timerIsPaused = false;
     this.timerStart(this.chessTimerService.playerTimers[this.currentPlayerIndex])
+
+    // resume player turn audio if enabled
+    if (this.chessTimerService.playerTimers[this.currentPlayerIndex].enableBackgroundMusic) {
+      this.audio.play();
+    }
   }
 
   timerStart(playerTimer: PlayerTimer) {
@@ -138,11 +148,16 @@ export class MultiplayerChessTimerComponent {
     }, 100);
 
     if (playerTimer.enableBackgroundMusic) {
+      console.log('playing music: ', playerTimer.chosenBackgroundMusic);
       this.audio.src = playerTimer.chosenBackgroundMusic;
       this.audio.loop = true;
       this.audio.load();
       this.audio.play();
     }
+  }
+
+  ngOnDestroy() {
+    this.audio.pause();
   }
 
 }

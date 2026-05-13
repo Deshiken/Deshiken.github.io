@@ -28,7 +28,7 @@ export class ChessTimerStartComponent {
     //Remove any old player timers
     this.chessTimerService.playerTimers = new Array<PlayerTimer>();
 
-    let playerAudioSources = Object.keys(PlayerAudioSource);
+    let playerAudioSources = Object.values(PlayerAudioSource);
     
     //Initialize the array of player timers.
     for (let i = 0; i < this.chessTimerService.numberOfPlayers; i++) {
@@ -44,7 +44,7 @@ export class ChessTimerStartComponent {
           timeRemaining: this.chessTimerService.minutesPerPlayer * 60 * 10,
           icon: this.randomService.getRandomEntryFromArray(this.iconValuesArray),
           numberOfTurnsTaken: 0,
-          enableBackgroundMusic: false,
+          enableBackgroundMusic: this.chessTimerService.enableBackgroundMusicForAllPlayers ? true : false,
           chosenBackgroundMusic: randomAudioSourceKey
         }
       )

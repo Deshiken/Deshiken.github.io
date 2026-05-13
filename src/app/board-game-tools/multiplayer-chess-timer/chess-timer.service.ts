@@ -10,6 +10,7 @@ export class ChessTimerService {
   public playerOrderChange = false;
   public numberOfTurnsPerRound = 2;
   public resetPlayerTimeEachRound = false;
+  public enableBackgroundMusicForAllPlayers = false;
 
   public playerTimers: Array<PlayerTimer> = new Array<PlayerTimer>();
 
@@ -27,8 +28,15 @@ export interface PlayerTimer {
 }
 
 export enum PlayerAudioSource {
-  ClassicAlarm = '../../assets/audio/classic-alarm.wav',
-  BattleshipAlarm = '../../assets/audio/battleship-alarm.wav',
-  DigitalRingAlarm = '../../assets/audio/alarm-tone.wav',
-  DigitalClockAlarm = '../../assets/audio/digital-clock-alarm.wav',
+  BloodyTears = '.../../assets/audio/turn_background_music/Bloody-Tears.mp3',
+  BossFight = '../../assets/audio/turn_background_music/Boss-Fight.mp3',
+  DanceOfFlame = '../../assets/audio/turn_background_music/Dance-of-Flame.mp3',
+  EnemyAdvance = '../../assets/audio/turn_background_music/Enemy-Advance.mp3',
+  Guile = '../../assets/audio/turn_background_music/Guile.mp3',
+  Ken = '../../assets/audio/turn_background_music/Ken.mp3',
+  Ryu = '../../assets/audio/turn_background_music/Ryu.mp3',
+  MysticCave = '../../assets/audio/turn_background_music/Mystic-Cave.mp3',
+  RavagedVillage = '../../assets/audio/turn_background_music/Ravaged-Village.mp3',
+  TurtleVillage = '../../assets/audio/turn_background_music/Turtle-Village.mp3',
+  Warsong = '../../assets/audio/turn_background_music/Warsong.mp3',
 }
