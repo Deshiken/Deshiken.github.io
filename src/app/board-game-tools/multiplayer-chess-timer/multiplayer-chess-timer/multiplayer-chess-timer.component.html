@@ -110,7 +110,7 @@
             [disabled]="!playerTimerToEdit.enableBackgroundMusic"
             [(ngModel)]="playerTimerToEdit.chosenBackgroundMusic" class="form-select" id="backgroundMusicSelect">
             <option *ngFor="let audioOption of PlayerAudioSource | keyvalue" [ngValue]="audioOption.value">
-              {{audioOption.value}}
+              {{audioOption.key | reversePascalCase}}
             </option>
           </select>
         </div>

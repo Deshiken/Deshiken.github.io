@@ -19,6 +19,7 @@ import { ChessTimerStartComponent } from './multiplayer-chess-timer/chess-timer-
 import { CdkDropList, CdkDrag } from '@angular/cdk/drag-drop';
 import { MultiplayerChessTimerComponent } from './multiplayer-chess-timer/multiplayer-chess-timer/multiplayer-chess-timer.component';
 import { PlayerTimePipe } from './multiplayer-chess-timer/player-time.pipe';
+import { ReversePascalCasePipe } from "../shared/pipes/reverse-pascal-case.pipe";
 
 
 
@@ -46,7 +47,8 @@ import { PlayerTimePipe } from './multiplayer-chess-timer/player-time.pipe';
     SharedModule,
     CdkDrag,
     CdkDropList,
-    ToastComponent
-  ]
+    ToastComponent,
+    ReversePascalCasePipe
+]
 })
 export class BoardGameToolsModule { }

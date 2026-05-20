@@ -1,10 +1,9 @@
+import { animate, style, transition, trigger } from '@angular/animations';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, inject, OnDestroy } from '@angular/core';
-import { trigger, transition, style, animate } from '@angular/animations';
 import { PlayerIcons } from 'src/app/shared/components/player-icon/player-icon.component';
 import { RandomService } from 'src/app/shared/services/random.service';
 import { ChessTimerService, PlayerAudioSource, PlayerTimer } from '../chess-timer.service';
-import { FadeInOutAnimation } from 'src/app/shared/animations/fadeInOutAnimation';
 
 @Component({
   selector: 'app-multiplayer-chess-timer',
