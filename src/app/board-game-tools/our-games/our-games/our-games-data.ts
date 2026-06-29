@@ -1,5 +1,5 @@
 interface Game {
-  name: string, 
+  name: string,
   playerCount: string,
   length: GameLength
   gameStyles: Array<GameType>;
@@ -29,7 +29,7 @@ enum GameType {
   PushYourLuck = "Push Your Luck",
   Strategy = "Strategy",
   GarbageGame = "Complete Garbage Game",
-  Betting = "Betting", 
+  Betting = "Betting",
   OneVersusMany = "One Versus Many",
   EngineBuilding = "Engine Building",
   DiceCombat = "Dice Combat",
@@ -151,11 +151,18 @@ export const gameData: Array<Game> = [
     bggLink: 'https://boardgamegeek.com/boardgame/104162/descent-journeys-in-the-dark-second-edition'
   },
   {
-    name: 'Sword and Sorcery',
+    name: 'Sword and Sorcery: Immortal Souls',
     playerCount: '1-4',
     length: GameLength.Medium,
     gameStyles: [GameType.DungeonCrawler, GameType.Cooperative, GameType.RPG],
-    bggLink: 'https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Sword%20and%20sorcery'
+    bggLink: 'https://boardgamegeek.com/boardgame/170771/sword-and-sorcery-immortal-souls'
+  },
+  {
+    name: 'Sword and Sorcery: Ancient Chronicles',
+    playerCount: '1-4',
+    length: GameLength.Medium,
+    gameStyles: [GameType.DungeonCrawler, GameType.Cooperative, GameType.RPG],
+    bggLink: 'https://boardgamegeek.com/boardgame/262201/sword-and-sorcery-ancient-chronicles'
   },
   {
     name: 'Hero Realms',
