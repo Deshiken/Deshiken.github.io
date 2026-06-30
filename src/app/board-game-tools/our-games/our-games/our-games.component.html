@@ -32,6 +32,7 @@
           <a class="card-link" href="{{game.bggLink}}" target="_blank">BGG Link</a>
           <i class="bi bi-dash-circle-fill" (click)="removeGame(game)"></i>
         </div>
+        <img *ngIf="game.thumbnail" [src]="game.thumbnail" class="card-img-bottom mt-2" alt="{{game.name}} thumbnail">
       </div>
     </div>
   </div>
