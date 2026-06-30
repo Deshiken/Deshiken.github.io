@@ -1,4 +1,4 @@
-interface Game {
+export interface Game {
   name: string,
   playerCount: string,
   length: GameLength
@@ -184,6 +184,13 @@ export const gameData: Array<Game> = [
     length: GameLength.Long,
     gameStyles: [GameType.Deckbuilding, GameType.Cooperative],
     bggLink: 'https://boardgamegeek.com/boardgame/129437/legendary-a-marvel-deck-building-game'
+  },
+  {
+    name: 'Dice Wars: Heroes of Polyhedra',
+    playerCount: '2-4',
+    length: GameLength.Medium,
+    gameStyles: [GameType.Skirmish, GameType.DiceCombat, GameType.Wargame],
+    bggLink: 'https://boardgamegeek.com/boardgame/242818/dice-wars-heroes-of-polyhedra'
   },
   {
     name: 'Legendary Encounters: An Alien Deck Building Game',
