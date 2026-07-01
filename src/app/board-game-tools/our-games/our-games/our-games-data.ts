@@ -197,14 +197,15 @@ export const gameData: Array<Game> = [
     length: GameLength.Medium,
     gameStyles: [GameType.Drafting, GameType.EngineBuilding],
     bggLink: 'https://boardgamegeek.com/boardgame/316377/7-wonders-second-edition',
-    thumbnail: '',
+    thumbnail: 'https://cf.geekdo-images.com/Naw8y8J_s-8cvq1GoTON6w__itemrep/img/CYKZCsbpZRcpQNvYu4WLIuHC7tw=/fit-in/246x300/filters:strip_icc()/pic7416519.jpg',
   },
   {
     name: 'Legendary: A Marvel Deck Building Game',
     playerCount: '2-4',
     length: GameLength.Long,
     gameStyles: [GameType.Deckbuilding, GameType.Cooperative],
-    bggLink: 'https://boardgamegeek.com/boardgame/129437/legendary-a-marvel-deck-building-game'
+    bggLink: 'https://boardgamegeek.com/boardgame/129437/legendary-a-marvel-deck-building-game',
+    thumbnail: 'https://cf.geekdo-images.com/ZrRidumkzu62HuwKdgQpHA__itemrep/img/UnyZksyoMMyDktHj5nWWKh-N4Qc=/fit-in/246x300/filters:strip_icc()/pic1430769.jpg'
   },
   {
     name: 'Dice Wars: Heroes of Polyhedra',
@@ -220,90 +221,103 @@ export const gameData: Array<Game> = [
     playerCount: '2-4',
     length: GameLength.Long,
     gameStyles: [GameType.Deckbuilding, GameType.Cooperative],
-    bggLink: 'https://boardgamegeek.com/boardgame/146652/legendary-encounters-an-alien-deck-building-game'
+    bggLink: 'https://boardgamegeek.com/boardgame/146652/legendary-encounters-an-alien-deck-building-game',
+    thumbnail: 'https://cf.geekdo-images.com/jSz_KRUxsjGYitoqx9YH1Q__itemrep/img/ZMljy9r4vIEOH4mt8KIvO6aZqYw=/fit-in/246x300/filters:strip_icc()/pic2225180.jpg'
   },
   {
     name: 'Camel Up',
     playerCount: '2-8',
     length: GameLength.Short,
     gameStyles: [GameType.Betting],
-    bggLink: 'https://boardgamegeek.com/boardgame/146652/legendary-encounters-an-alien-deck-building-game'
+    bggLink: 'https://boardgamegeek.com/boardgame/153938/camel-up',
+    thumbnail: 'https://cf.geekdo-images.com/jVr1bGBQpshqVPcwvZ7CPg__itemrep/img/x6MB3P8fBoInmry8wwcgk9RbtKk=/fit-in/246x300/filters:strip_icc()/pic1918028.jpg'
   },
   {
     name: 'Conquest of Nerath',
     playerCount: '2-4',
     length: GameLength.Long,
     gameStyles: [GameType.Wargame, GameType.DiceCombat],
-    bggLink: 'https://boardgamegeek.com/boardgame/92044/dungeons-and-dragons-conquest-of-nerath-board-game'
+    bggLink: 'https://boardgamegeek.com/boardgame/92044/dungeons-and-dragons-conquest-of-nerath-board-game',
+    thumbnail: 'https://cf.geekdo-images.com/VZQV_rNlCd2EJiseYY8Ldg__itemrep/img/VbKPpc2lnFYH1mBq3eUzfEvvJ-Y=/fit-in/246x300/filters:strip_icc()/pic994288.jpg'
   },
   {
     name: 'King of Tokyo',
     playerCount: '2-6',
     length: GameLength.Short,
     gameStyles: [GameType.PushYourLuck],
-    bggLink: 'https://boardgamegeek.com/boardgame/336755/king-of-tokyo-monster-box'
+    bggLink: 'https://boardgamegeek.com/boardgame/336755/king-of-tokyo-monster-box',
+    thumbnail: 'https://cf.geekdo-images.com/wXdDbKqKdDpB4pBCWLToQw__itemrep/img/7iifVeuHMoLRdsXdbCCwVvyQf-Q=/fit-in/246x300/filters:strip_icc()/pic6125357.jpg',
   },
   {
     name: 'Battlelore',
     playerCount: '2',
     length: GameLength.Long,
     gameStyles: [GameType.Skirmish],
-    bggLink: 'https://boardgamegeek.com/boardgame/146439/battlelore-second-edition'
+    bggLink: 'https://boardgamegeek.com/boardgame/146439/battlelore-second-edition',
+    thumbnail: 'https://cf.geekdo-images.com/CWlHT1QMeB9hXaPcjE7cyw__itemrep/img/TBL1ygcfUS_SEEY6ohLhVKODZ0w=/fit-in/246x300/filters:strip_icc()/pic1854807.jpg'
   },
   {
     name: 'Gloomhaven: Jaws of the Lion',
     playerCount: '1-4',
     length: GameLength.Long,
     gameStyles: [GameType.RPG, GameType.DungeonCrawler],
-    bggLink: 'https://boardgamegeek.com/boardgame/291457/gloomhaven-jaws-of-the-lion'
+    bggLink: 'https://boardgamegeek.com/boardgame/291457/gloomhaven-jaws-of-the-lion',
+    thumbnail: 'https://cf.geekdo-images.com/_HhIdavYW-hid20Iq3hhmg__itemrep/img/a4ec0KY1ksmrKP_2lom7qzCQw_U=/fit-in/246x300/filters:strip_icc()/pic5055631.jpg'
   },
   {
     name: 'Evolution Climate',
     playerCount: '2-6',
     length: GameLength.Long,
     gameStyles: [GameType.EngineBuilding],
-    bggLink: 'https://boardgamegeek.com/boardgame/182134/evolution-climate'
+    bggLink: 'https://boardgamegeek.com/boardgame/182134/evolution-climate',
+    thumbnail: 'https://cf.geekdo-images.com/hs1P4qPgDKHXct3qs4JWGg__itemrep/img/lzH5SE_WuCSDlKDyVfdyi5pE8-I=/fit-in/246x300/filters:strip_icc()/pic2876816.jpg'
   },
   {
     name: 'Junk Art',
     playerCount: '2-6',
     length: GameLength.Short,
     gameStyles: [GameType.Dexterity],
-    bggLink: 'https://boardgamegeek.com/boardgame/193042/junk-art'
+    bggLink: 'https://boardgamegeek.com/boardgame/193042/junk-art',
+    thumbnail: 'https://cf.geekdo-images.com/5VDnpX_3ykgCjTJSmHdfCA__itemrep/img/Y_D45KylJZR2ZJE2W_pTT2eGogY=/fit-in/246x300/filters:strip_icc()/pic2884509.jpg',
   },
   {
     name: 'Burning Banners: Rage of the Witch Queen',
     playerCount: '2-6',
     length: GameLength.Long,
     gameStyles: [GameType.Wargame, GameType.DiceCombat],
-    bggLink: 'https://boardgamegeek.com/boardgame/389820/burning-banners'
+    bggLink: 'https://boardgamegeek.com/boardgame/389820/burning-banners',
+    thumbnail: 'https://cf.geekdo-images.com/XNbpOGwHR2PkoZ3TiIfxaw__itemrep/img/07N0xOAF1zoCpbPtUYlmzYrYe9I=/fit-in/246x300/filters:strip_icc()/pic7545827.png'
   },
   {
     name: 'Arackhan Wars',
     playerCount: '2-4',
     length: GameLength.Medium,
     gameStyles: [GameType.Deckbuilding, GameType.DeckBattler],
-    bggLink: 'https://boardgamegeek.com/boardgame/389820/burning-banners'
+    bggLink: 'https://boardgamegeek.com/boardgame/301387/arackhan-wars-rise-of-the-grey-order',
+    thumbnail: 'https://cf.geekdo-images.com/7qc9uI131e4V1gDq5RMVYw__itemrep/img/fvg1oxEJnHf1LBK0HnAzcz_t294=/fit-in/246x300/filters:strip_icc()/pic7887827.jpg'
   },
   {
     name: 'Mage Wars Academy',
     playerCount: '2-4',
     length: GameLength.Medium,
     gameStyles: [GameType.Deckbuilding, GameType.DeckBattler],
-    bggLink: 'https://boardgamegeek.com/boardgame/172503/mage-wars-academy'
+    bggLink: 'https://boardgamegeek.com/boardgame/172503/mage-wars-academy',
+    thumbnail: 'https://cf.geekdo-images.com/BXqdHw39CPenDAKWDm_Vxw__itemrep/img/-saiFdH8PBkiOwiawxME4O9MtGk=/fit-in/246x300/filters:strip_icc()/pic2555236.png'
   },
   {
     name: 'Marvel United',
     playerCount: '1-4',
     length: GameLength.Short,
     gameStyles: [GameType.Cooperative],
-    bggLink: 'https://boardgamegeek.com/boardgame/298047/marvel-united'
+    bggLink: 'https://boardgamegeek.com/boardgame/298047/marvel-united',
+    thumbnail: 'https://cf.geekdo-images.com/-19XPXmTn9QyyvqwpcFkBw__itemrep/img/vhkLyamyEJr6XvNl2WTTCPItISE=/fit-in/246x300/filters:strip_icc()/pic5231006.jpg'
   },
   {
     name: 'Epic Card Game',
     playerCount: '2-4',
     length: GameLength.Short,
     gameStyles: [GameType.Deckbuilding, GameType.DeckBattler, GameType.Drafting],
-    bggLink: 'https://boardgamegeek.com/boardgame/175621/epic-card-game'
+    bggLink: 'https://boardgamegeek.com/boardgame/175621/epic-card-game',
+    thumbnail: 'https://cf.geekdo-images.com/DfhQjeh-IzvUMFH__QUDXA__itemrep/img/V4v4f8cLLHMX9MUkim67ERCJLSM=/fit-in/246x300/filters:strip_icc()/pic2691347.jpg'
   },
 ]
