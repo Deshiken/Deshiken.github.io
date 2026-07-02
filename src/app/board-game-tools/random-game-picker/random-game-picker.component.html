@@ -1,0 +1,109 @@
+<div class='container'>
+  <app-heading-with-back [title]="'Random Game Picker'"></app-heading-with-back>
+
+  <p> Use the filters to remove games from consideration.
+    You can choose to manually add games to be selected from by clicking the "Select" button next to each game. 
+    If no games are manually selected, the random game will be picked from all games that have not been filtered out. 
+    When you're ready, click the "Pick a Random Game" button to get a suggestion for your next game night!
+  </p>
+
+  <button class="btn btn-primary" (click)="pickRandomGame()">Pick a Random Game</button>
+
+  <!-- Game Filters -->
+  <div class="accordion mt-2 mb-2" id="accordionExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          <i class="bi bi-filter me-2"></i>
+          Game List Filter Options
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse collapsed" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          
+          <!-- Game Length Filter -->
+          <label for="gameLengthFilter" class="form-label">Game Length</label>
+          <select (change)="filterByGameLength($event)" class="form-select mb-2" id="gameLengthFilter">
+            <option value="">Choose One</option>
+            @for (gameLength of GameLength | keyvalue; track gameLength.value; let i = $index) {
+              <option [value]="gameLength.value">{{gameLength.value}}</option>
+            }
+          </select>
+          
+          <!-- Game Type Filter -->
+          <div class="mb-2">
+            <label for="gameTypeFilter" class="form-label">Game Type</label>
+            <select (change)="addGameTypeFilter($event)" class="form-select mb-1" id="gameTypeFilter">
+              <option value="">Choose One</option>
+              @for (gameType of GameType | keyvalue; track gameType.value; let i = $index) {
+                <option [value]="gameType.value">{{gameType.value}}</option>
+              }
+            </select>
+            @for (gameType of filterOptions.gameType; track gameType; let i = $index) {
+              <span class="badge bg-primary me-1">
+                {{gameType}}
+                <i class="bi bi-x-circle ms-1" (click)="removeGameTypeFilter(gameType)"></i>
+              </span>
+            }
+          </div>
+
+          <!-- Number of Players Filter -->
+          <div class="mb-2">
+            <label for="numberOfPlayersFilter" class="form-label">Number of Players</label>
+            <div class="row">
+              <div class="col-md-6 form-floating mb-1">
+                <input 
+                  id="minimumNumberOfPlayers" 
+                  type="number" class="form-control" 
+                  min="1" max="99"
+                  placeholder="Minimum" 
+                  [(ngModel)]="filterOptions.numberOfPlayers.minimumNumberOfPlayers"
+                  (change)="applyAllFilters()"
+                >
+                <label for="minimumNumberOfPlayers">Minimum</label>
+              </div>
+              <div class="col-md-6 form-floating">
+                <input type="number" 
+                  class="form-control" 
+                  min="1" max="99" 
+                  id="maximumNumberOfPlayers"
+                  placeholder="Maximum" 
+                  [(ngModel)]="filterOptions.numberOfPlayers.maximumNumberOfPlayers"
+                  (change)="applyAllFilters()"
+                >
+                <label for="maximumNumberOfPlayers">Maximum</label>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ul>
+    @for (game of gameList; track game.name; let i = $index) {
+      <li class="mb-1">
+        {{game.name}}
+        <button class="btn btn-outline-primary btn-sm" (click)="gameList.splice(i, 1)">
+          Remove
+        </button>
+      </li>
+    }
+  </ul>
+
+  <!-- Random Game Modal -->
+  <ng-template #randomGameModal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">{{randomGame?.name}}</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <img [src]="randomGame?.thumbnail" class="img-fluid" alt="{{randomGame?.name}} image">
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="modal.dismiss('Cancel')">Close</button>
+    </div>
+  </ng-template>
+
+</div>

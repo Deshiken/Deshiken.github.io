@@ -14,6 +14,7 @@ import { OurGamesComponent } from './our-games/our-games/our-games.component';
 import { PointTrackerComponent } from './point-tracker/point-tracker.component';
 import { RandomizeTeamsResultsComponent } from './randomize-teams/randomize-teams-results/randomize-teams-results.component';
 import { RandomizeTeamsStartComponent } from './randomize-teams/randomize-teams-start/randomize-teams-start.component';
+import { RandomGamePickerComponent } from './random-game-picker/random-game-picker.component';
 
 const routes: Routes = [
   { 
@@ -63,6 +64,10 @@ const routes: Routes = [
   {
     path: 'our-games',
     component: OurGamesComponent
+  },
+  {
+    path: 'random-game-picker',
+    component: RandomGamePickerComponent
   },
   {
     path: 'chess-clock-start',

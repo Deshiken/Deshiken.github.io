@@ -1,20 +1,23 @@
 export interface Game {
   name: string,
-  playerCount: string,
+  playerCount: {
+    minimumNumberOfPlayers: number,
+    maximumNumberOfPlayers: number
+  },
   length: GameLength
   gameStyles: Array<GameType>;
   thumbnail?: string;
   bggLink: string
 }
 
-enum GameLength {
+export enum GameLength {
   Short = 'Short',
   Medium = 'Medium',
   Long = 'Long',
   ExtraLong = 'Extra Long'
 }
 
-enum GameType {
+export enum GameType {
   RPG = 'RPG',
   DungeonCrawler = 'Dungeon Crawler',
   AreaControl = 'Area Control',
@@ -41,7 +44,10 @@ enum GameType {
 export const gameData: Array<Game> = [
   {
     name: 'Heroes of Land, Air, and Sea',
-    playerCount: '1-7',
+    playerCount: {
+      minimumNumberOfPlayers: 1,
+      maximumNumberOfPlayers: 7
+    },
     length: GameLength.Long,
     gameStyles: [GameType.AreaControl],
     bggLink: 'https://boardgamegeek.com/boardgame/198830/heroes-of-land-air-and-sea',
@@ -49,7 +55,10 @@ export const gameData: Array<Game> = [
   },
   {
     name: 'Uprising',
-    playerCount: '1-6',
+    playerCount: {
+      minimumNumberOfPlayers: 2,
+      maximumNumberOfPlayers: 6
+    },
     length: GameLength.Long,
     gameStyles: [GameType.AreaControl, GameType.Wargame],
     bggLink: 'https://deshiken.github.io/#/uprising',
@@ -57,7 +66,10 @@ export const gameData: Array<Game> = [
   },
   {
     name: 'Primal: The Awakening',
-    playerCount: '1-4',
+    playerCount: {
+      minimumNumberOfPlayers: 1,
+      maximumNumberOfPlayers: 4
+    },
     length: GameLength.Long,
     gameStyles: [GameType.Cooperative, GameType.BossBattler],
     bggLink: 'https://boardgamegeek.com/boardgame/303731/primal-the-awakening',
@@ -65,7 +77,10 @@ export const gameData: Array<Game> = [
   },
   {
     name: 'Spirit Island',
-    playerCount: '1-6',
+    playerCount: {
+      minimumNumberOfPlayers: 1,
+      maximumNumberOfPlayers: 6
+    },
     length: GameLength.Long,
     gameStyles: [GameType.Cooperative, GameType.Deckbuilding],
     bggLink: 'https://boardgamegeek.com/boardgame/162886/spirit-island',
@@ -73,7 +88,10 @@ export const gameData: Array<Game> = [
   },
   {
     name: 'Oak',
-    playerCount: '1-4',
+    playerCount: {
+      minimumNumberOfPlayers: 1,
+      maximumNumberOfPlayers: 4
+    },
     length: GameLength.Medium,
     gameStyles: [GameType.WorkerPlacement, GameType.ResourceManagement],
     bggLink: 'https://boardgamegeek.com/boardgame/343362/oak',
@@ -81,7 +99,10 @@ export const gameData: Array<Game> = [
   },
   {
     name: 'Everdell',
-    playerCount: '1-4',
+    playerCount: {
+      minimumNumberOfPlayers: 1,
+      maximumNumberOfPlayers: 4
+    },
     length: GameLength.Medium,
     gameStyles: [GameType.WorkerPlacement, GameType.ResourceManagement],
     bggLink: 'https://boardgamegeek.com/boardgame/199792/everdell',
@@ -89,7 +110,10 @@ export const gameData: Array<Game> = [
   },
   {
     name: 'Mystic Vale',
-    playerCount: '1-6',
+    playerCount: {
+      minimumNumberOfPlayers: 1,
+      maximumNumberOfPlayers: 6
+    },
     length: GameLength.Medium,
     gameStyles: [GameType.Deckbuilding, GameType.PushYourLuck],
     bggLink: 'https://boardgamegeek.com/boardgame/194607/mystic-vale',
@@ -97,7 +121,10 @@ export const gameData: Array<Game> = [
   },
   {
     name: 'War of the Ring',
-    playerCount: '1-6',
+    playerCount: {
+      minimumNumberOfPlayers: 1,
+      maximumNumberOfPlayers: 6
+    },
     length: GameLength.ExtraLong,
     gameStyles: [GameType.Wargame, GameType.PushYourLuck, GameType.DiceCombat],
     bggLink: 'https://boardgamegeek.com/boardgame/115746/war-of-the-ring-second-edition',
@@ -105,7 +132,10 @@ export const gameData: Array<Game> = [
   },
   {
     name: 'Cairn',
-    playerCount: '2',
+    playerCount: {
+      minimumNumberOfPlayers: 2,
+      maximumNumberOfPlayers: 2
+    },
     length: GameLength.Short,
     gameStyles: [GameType.Strategy],
     bggLink: 'https://boardgamegeek.com/boardgame/275916/cairn',
@@ -113,7 +143,10 @@ export const gameData: Array<Game> = [
   },
   {
     name: 'Ankh: Gods of Egypt',
-    playerCount: '2-4',
+    playerCount: {
+      minimumNumberOfPlayers: 2,
+      maximumNumberOfPlayers: 4
+    },
     length: GameLength.Long,
     gameStyles: [GameType.AreaControl, GameType.CardCombat],
     bggLink: 'https://boardgamegeek.com/boardgame/285967/ankh-gods-of-egypt',
@@ -121,7 +154,10 @@ export const gameData: Array<Game> = [
   },
   {
     name: 'Blood Rage',
-    playerCount: '2-4',
+    playerCount: {
+      minimumNumberOfPlayers: 2,
+      maximumNumberOfPlayers: 4
+    },
     length: GameLength.Long,
     gameStyles: [GameType.AreaControl, GameType.Drafting, GameType.CardCombat],
     bggLink: 'https://boardgamegeek.com/boardgame/170216/blood-rage',
@@ -129,7 +165,10 @@ export const gameData: Array<Game> = [
   },
   {
     name: 'Inis',
-    playerCount: '2-4',
+    playerCount: {
+      minimumNumberOfPlayers: 2,
+      maximumNumberOfPlayers: 4
+    },
     length: GameLength.Long,
     gameStyles: [GameType.AreaControl, GameType.Drafting],
     bggLink: 'https://boardgamegeek.com/boardgame/155821/inis',
@@ -137,7 +176,10 @@ export const gameData: Array<Game> = [
   },
   {
     name: 'Kemet: Blood and Sand',
-    playerCount: '2-4',
+    playerCount: {
+      minimumNumberOfPlayers: 2,
+      maximumNumberOfPlayers: 4
+    },
     length: GameLength.Long,
     gameStyles: [GameType.AreaControl, GameType.CardCombat],
     bggLink: 'https://boardgamegeek.com/boardgame/297562/kemet-blood-and-sand',
@@ -145,7 +187,10 @@ export const gameData: Array<Game> = [
   },
   {
     name: 'Catan',
-    playerCount: '0 (Do not play it)',
+    playerCount: {
+      minimumNumberOfPlayers: 0,
+      maximumNumberOfPlayers: 0
+    },
     length: GameLength.Medium,
     gameStyles: [GameType.GarbageGame],
     bggLink: 'https://boardgamegeek.com/boardgame/13/catan',
@@ -153,7 +198,10 @@ export const gameData: Array<Game> = [
   },
   {
     name: 'Tiny Epic Dungeons',
-    playerCount: '1-4',
+    playerCount: {
+      minimumNumberOfPlayers: 1,
+      maximumNumberOfPlayers: 4
+    },
     length: GameLength.Medium,
     gameStyles: [GameType.DungeonCrawler, GameType.Cooperative, GameType.RPG],
     bggLink: 'https://boardgamegeek.com/boardgame/331787/tiny-epic-dungeons',
@@ -161,7 +209,10 @@ export const gameData: Array<Game> = [
   },
   {
     name: 'Descent: Journeys in the Dark',
-    playerCount: '1-4',
+    playerCount: {
+      minimumNumberOfPlayers: 1,
+      maximumNumberOfPlayers: 4
+    },
     length: GameLength.Medium,
     gameStyles: [GameType.DungeonCrawler, GameType.Cooperative, GameType.RPG, GameType.OneVersusMany],
     bggLink: 'https://boardgamegeek.com/boardgame/104162/descent-journeys-in-the-dark-second-edition',
@@ -169,7 +220,10 @@ export const gameData: Array<Game> = [
   },
   {
     name: 'Sword and Sorcery: Immortal Souls',
-    playerCount: '1-4',
+    playerCount: {
+      minimumNumberOfPlayers: 1,
+      maximumNumberOfPlayers: 4
+    },
     length: GameLength.Medium,
     gameStyles: [GameType.DungeonCrawler, GameType.Cooperative, GameType.RPG],
     bggLink: 'https://boardgamegeek.com/boardgame/170771/sword-and-sorcery-immortal-souls',
@@ -177,7 +231,10 @@ export const gameData: Array<Game> = [
   },
   {
     name: 'Sword and Sorcery: Ancient Chronicles',
-    playerCount: '1-4',
+    playerCount: {
+      minimumNumberOfPlayers: 1,
+      maximumNumberOfPlayers: 4
+    },
     length: GameLength.Medium,
     gameStyles: [GameType.DungeonCrawler, GameType.Cooperative, GameType.RPG],
     bggLink: 'https://boardgamegeek.com/boardgame/262201/sword-and-sorcery-ancient-chronicles',
@@ -185,7 +242,10 @@ export const gameData: Array<Game> = [
   },
   {
     name: 'Hero Realms',
-    playerCount: '1-4',
+    playerCount: {
+      minimumNumberOfPlayers: 1,
+      maximumNumberOfPlayers: 4
+    },
     length: GameLength.Short,
     gameStyles: [GameType.Deckbuilding, GameType.Cooperative],
     bggLink: 'https://boardgamegeek.com/boardgame/198994/hero-realms',
@@ -193,7 +253,10 @@ export const gameData: Array<Game> = [
   },
   {
     name: '7 Wonders',
-    playerCount: '2-4',
+    playerCount: {
+      minimumNumberOfPlayers: 2,
+      maximumNumberOfPlayers: 4
+    },
     length: GameLength.Medium,
     gameStyles: [GameType.Drafting, GameType.EngineBuilding],
     bggLink: 'https://boardgamegeek.com/boardgame/316377/7-wonders-second-edition',
@@ -201,7 +264,10 @@ export const gameData: Array<Game> = [
   },
   {
     name: 'Legendary: A Marvel Deck Building Game',
-    playerCount: '2-4',
+    playerCount: {
+      minimumNumberOfPlayers: 2,
+      maximumNumberOfPlayers: 4
+    },
     length: GameLength.Long,
     gameStyles: [GameType.Deckbuilding, GameType.Cooperative],
     bggLink: 'https://boardgamegeek.com/boardgame/129437/legendary-a-marvel-deck-building-game',
@@ -209,7 +275,10 @@ export const gameData: Array<Game> = [
   },
   {
     name: 'Dice Wars: Heroes of Polyhedra',
-    playerCount: '2-4',
+    playerCount: {
+      minimumNumberOfPlayers: 2,
+      maximumNumberOfPlayers: 4
+    },
     length: GameLength.Medium,
     gameStyles: [GameType.Skirmish, GameType.DiceCombat, GameType.Wargame],
     bggLink: 'https://boardgamegeek.com/boardgame/242818/dice-wars-heroes-of-polyhedra',
@@ -218,7 +287,10 @@ export const gameData: Array<Game> = [
   },
   {
     name: 'Legendary Encounters: An Alien Deck Building Game',
-    playerCount: '2-4',
+    playerCount: {
+      minimumNumberOfPlayers: 2,
+      maximumNumberOfPlayers: 4
+    },
     length: GameLength.Long,
     gameStyles: [GameType.Deckbuilding, GameType.Cooperative],
     bggLink: 'https://boardgamegeek.com/boardgame/146652/legendary-encounters-an-alien-deck-building-game',
@@ -226,7 +298,10 @@ export const gameData: Array<Game> = [
   },
   {
     name: 'Camel Up',
-    playerCount: '2-8',
+    playerCount: {
+      minimumNumberOfPlayers: 2,
+      maximumNumberOfPlayers: 8
+    },
     length: GameLength.Short,
     gameStyles: [GameType.Betting],
     bggLink: 'https://boardgamegeek.com/boardgame/153938/camel-up',
@@ -234,7 +309,10 @@ export const gameData: Array<Game> = [
   },
   {
     name: 'Conquest of Nerath',
-    playerCount: '2-4',
+    playerCount: {
+      minimumNumberOfPlayers: 2,
+      maximumNumberOfPlayers: 4
+    },
     length: GameLength.Long,
     gameStyles: [GameType.Wargame, GameType.DiceCombat],
     bggLink: 'https://boardgamegeek.com/boardgame/92044/dungeons-and-dragons-conquest-of-nerath-board-game',
@@ -242,7 +320,10 @@ export const gameData: Array<Game> = [
   },
   {
     name: 'King of Tokyo',
-    playerCount: '2-6',
+    playerCount: {
+      minimumNumberOfPlayers: 2,
+      maximumNumberOfPlayers: 6
+    },
     length: GameLength.Short,
     gameStyles: [GameType.PushYourLuck],
     bggLink: 'https://boardgamegeek.com/boardgame/336755/king-of-tokyo-monster-box',
@@ -250,7 +331,10 @@ export const gameData: Array<Game> = [
   },
   {
     name: 'Battlelore',
-    playerCount: '2',
+    playerCount: {
+      minimumNumberOfPlayers: 2,
+      maximumNumberOfPlayers: 2
+    },
     length: GameLength.Long,
     gameStyles: [GameType.Skirmish],
     bggLink: 'https://boardgamegeek.com/boardgame/146439/battlelore-second-edition',
@@ -258,7 +342,10 @@ export const gameData: Array<Game> = [
   },
   {
     name: 'Gloomhaven: Jaws of the Lion',
-    playerCount: '1-4',
+    playerCount: {
+      minimumNumberOfPlayers: 1,
+      maximumNumberOfPlayers: 4
+    },
     length: GameLength.Long,
     gameStyles: [GameType.RPG, GameType.DungeonCrawler],
     bggLink: 'https://boardgamegeek.com/boardgame/291457/gloomhaven-jaws-of-the-lion',
@@ -266,7 +353,10 @@ export const gameData: Array<Game> = [
   },
   {
     name: 'Evolution Climate',
-    playerCount: '2-6',
+    playerCount: {
+      minimumNumberOfPlayers: 2,
+      maximumNumberOfPlayers: 6
+    },
     length: GameLength.Long,
     gameStyles: [GameType.EngineBuilding],
     bggLink: 'https://boardgamegeek.com/boardgame/182134/evolution-climate',
@@ -274,7 +364,10 @@ export const gameData: Array<Game> = [
   },
   {
     name: 'Junk Art',
-    playerCount: '2-6',
+    playerCount: {
+      minimumNumberOfPlayers: 2,
+      maximumNumberOfPlayers: 6
+    },
     length: GameLength.Short,
     gameStyles: [GameType.Dexterity],
     bggLink: 'https://boardgamegeek.com/boardgame/193042/junk-art',
@@ -282,7 +375,10 @@ export const gameData: Array<Game> = [
   },
   {
     name: 'Burning Banners: Rage of the Witch Queen',
-    playerCount: '2-6',
+    playerCount: {
+      minimumNumberOfPlayers: 2,
+      maximumNumberOfPlayers: 6
+    },
     length: GameLength.Long,
     gameStyles: [GameType.Wargame, GameType.DiceCombat],
     bggLink: 'https://boardgamegeek.com/boardgame/389820/burning-banners',
@@ -290,7 +386,10 @@ export const gameData: Array<Game> = [
   },
   {
     name: 'Arackhan Wars',
-    playerCount: '2-4',
+    playerCount: {
+      minimumNumberOfPlayers: 2,
+      maximumNumberOfPlayers: 4
+    },
     length: GameLength.Medium,
     gameStyles: [GameType.Deckbuilding, GameType.DeckBattler],
     bggLink: 'https://boardgamegeek.com/boardgame/301387/arackhan-wars-rise-of-the-grey-order',
@@ -298,7 +397,10 @@ export const gameData: Array<Game> = [
   },
   {
     name: 'Mage Wars Academy',
-    playerCount: '2-4',
+    playerCount: {
+      minimumNumberOfPlayers: 2,
+      maximumNumberOfPlayers: 4
+    },
     length: GameLength.Medium,
     gameStyles: [GameType.Deckbuilding, GameType.DeckBattler],
     bggLink: 'https://boardgamegeek.com/boardgame/172503/mage-wars-academy',
@@ -306,7 +408,10 @@ export const gameData: Array<Game> = [
   },
   {
     name: 'Marvel United',
-    playerCount: '1-4',
+    playerCount: {
+      minimumNumberOfPlayers: 1,
+      maximumNumberOfPlayers: 4
+    },
     length: GameLength.Short,
     gameStyles: [GameType.Cooperative],
     bggLink: 'https://boardgamegeek.com/boardgame/298047/marvel-united',
@@ -314,7 +419,10 @@ export const gameData: Array<Game> = [
   },
   {
     name: 'Epic Card Game',
-    playerCount: '2-4',
+    playerCount: {
+      minimumNumberOfPlayers: 2,
+      maximumNumberOfPlayers: 4
+    },
     length: GameLength.Short,
     gameStyles: [GameType.Deckbuilding, GameType.DeckBattler, GameType.Drafting],
     bggLink: 'https://boardgamegeek.com/boardgame/175621/epic-card-game',
