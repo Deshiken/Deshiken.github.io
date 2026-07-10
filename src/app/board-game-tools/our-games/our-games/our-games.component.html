@@ -1,9 +1,25 @@
 
 <div class="container">
-  <app-heading-with-back [title]="'Our Games'"></app-heading-with-back>
+  <app-heading-with-back [title]="'My Games'"></app-heading-with-back>
+
+  <p>Here are the games you have added to your collection. You can view details about each game, including player count, game style, and length. Click on the BGG link to learn more about the game on BoardGameGeek.</p>
+
+  <button class="btn btn-primary m-2">Add Game</button>
+
+  <button class="btn btn-primary m-2">Import BGG Games</button>
+
+  <button class="btn btn-primary m-2">Save Game List</button>
+
+  <!-- <p>Sort Options</p>
+  <select class="form-select w-auto" 
+    (change)="sortOptionChangeEvent($event)">
+    <option
+        *ngFor="let option of sortOptions | keyvalue"
+        [ngValue]="option.value">{{option.value}}
+      </option>
+  </select> -->
 
   <div class="row d-flex justify-content-center">
-
     <div *ngFor="let game of gameData" class="card game-card card-shadow m-3 p-0">
       <div class="card-body">
         <p class="card-title h5">{{game.name}}</p>
@@ -13,7 +29,11 @@
           {{gameStyle}}<span *ngIf="i + 1 != game.gameStyles.length">, </span>
         </span>
         <p class="card-text"><b>Length: </b>{{game.length}}</p>
-        <a class="card-link" href="{{game.bggLink}}" target="_blank">BGG Link</a>
+        <div class="d-flex justify-content-between align-items-center">
+          <a class="card-link" href="{{game.bggLink}}" target="_blank">BGG Link</a>
+          <button class="btn btn-outline-primary btn-sm p-0" (click)="removeGame(game)">Remove</button>
+        </div>
+        <img *ngIf="game.thumbnail" [src]="game.thumbnail" class="card-img-bottom mt-2" alt="{{game.name}} thumbnail">
       </div>
     </div>
   </div>

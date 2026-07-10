@@ -11,7 +11,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./draft-items.component.scss']
 })
 export class DraftItemsComponent implements OnInit {
-  @ViewChild('deleteModal') deleteModal!: ElementRef;
+  // @ViewChild('deleteModal') deleteModal!: ElementRef;
   public newItemName = '';
   public newItemCategory = '';
   public newCategoryName = '';

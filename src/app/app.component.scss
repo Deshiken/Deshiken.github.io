@@ -2,3 +2,8 @@
   // height: 350px;
   width: 350px;
 }
+
+// Restore margin to dropdown carrot 
+.dropdown-toggle::after {
+  margin-left: 0.255em;
+}

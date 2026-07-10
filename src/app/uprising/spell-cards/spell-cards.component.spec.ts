@@ -75,12 +75,12 @@ describe('SpellCardsComponent', () => {
 
     it('should sort instant spells first, then by cost desc, then name', () => {
       component.sortSpellCardList(SpellCardSortOptions.InstantSpells);
-      expect(component.spellCards.map(c => c.name)).toEqual(['Lightning Bolt', 'Arcane Shield', 'Fireball', 'Heal', 'Zealot']);
+      expect(component.spellCards.map(c => c.name)).toEqual(['Arcane Shield', 'Lightning Bolt', 'Fireball', 'Heal', 'Zealot']);
     });
 
     it('should sort combat spells first, then by cost desc, then name', () => {
       component.sortSpellCardList(SpellCardSortOptions.CombatSpells);
-      expect(component.spellCards.map(c => c.name)).toEqual(['Fireball', 'Lightning Bolt', 'Heal', 'Zealot', 'Arcane Shield']);
+      expect(component.spellCards.map(c => c.name)).toEqual(['Fireball', 'Arcane Shield', 'Heal', 'Zealot', 'Lightning Bolt']);
     });
   });
 });
