@@ -2,25 +2,26 @@ import {ElementRef, HostBinding, Component, Input, OnChanges} from '@angular/cor
 import {animate, style, transition, trigger} from "@angular/animations";
 
 @Component({
-  selector: 'smooth-height',
-  template: `
+    selector: 'smooth-height',
+    template: `
     <ng-content></ng-content>
   `,
-  styles: [`
+    styles: [`
     :host {
       display: block;
       overflow: hidden;
     }
   `],
-  animations: [
-    trigger('grow', [
-      transition('void <=> *', []),
-      transition('* <=> *', [
-        style({height: '{{startHeight}}px', opacity: 0}),
-        animate('.5s ease'),
-      ], {params: {startHeight: 0}})
-    ])
-  ]
+    animations: [
+        trigger('grow', [
+            transition('void <=> *', []),
+            transition('* <=> *', [
+                style({ height: '{{startHeight}}px', opacity: 0 }),
+                animate('.5s ease'),
+            ], { params: { startHeight: 0 } })
+        ])
+    ],
+    standalone: false
 })
 export class SmoothHeightComponent implements OnChanges {
   @Input()

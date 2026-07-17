@@ -3,9 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { MapData, UprisingMapName, UprisingMaps } from '../maps-and-play-instructions/map-data';
 
 @Component({
-  selector: 'app-map-details',
-  templateUrl: './map-details.component.html',
-  styleUrls: ['./map-details.component.scss']
+    selector: 'app-map-details',
+    templateUrl: './map-details.component.html',
+    styleUrls: ['./map-details.component.scss'],
+    standalone: false
 })
 
 export class MapDetailsComponent implements OnInit {

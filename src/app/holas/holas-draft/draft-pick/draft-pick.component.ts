@@ -8,9 +8,10 @@ import { DraftStep } from '../models/draft-step';
 import { Player } from '../models/player';
 
 @Component({
-  selector: 'app-draft-pick',
-  templateUrl: './draft-pick.component.html',
-  styleUrls: ['./draft-pick.component.scss']
+    selector: 'app-draft-pick',
+    templateUrl: './draft-pick.component.html',
+    styleUrls: ['./draft-pick.component.scss'],
+    standalone: false
 })
 export class DraftPickComponent implements OnInit {
 

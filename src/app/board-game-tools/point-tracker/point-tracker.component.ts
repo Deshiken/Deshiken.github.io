@@ -3,9 +3,10 @@ import { PlayerIcons } from 'src/app/shared/components/player-icon/player-icon.c
 import { RandomService } from 'src/app/shared/services/random.service';
 
 @Component({
-  selector: 'app-point-tracker',
-  templateUrl: './point-tracker.component.html',
-  styleUrls: ['./point-tracker.component.scss']
+    selector: 'app-point-tracker',
+    templateUrl: './point-tracker.component.html',
+    styleUrls: ['./point-tracker.component.scss'],
+    standalone: false
 })
 export class PointTrackerComponent implements OnInit {
   PlayerIcons = PlayerIcons; // Make PlayerIcons available to template

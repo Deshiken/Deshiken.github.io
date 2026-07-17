@@ -7,11 +7,10 @@ import { KeyValuePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-random-game-picker',
-  standalone: true,
-  imports: [SharedModule, KeyValuePipe, FormsModule],
-  templateUrl: './random-game-picker.component.html',
-  styleUrl: './random-game-picker.component.scss'
+    selector: 'app-random-game-picker',
+    imports: [SharedModule, KeyValuePipe, FormsModule],
+    templateUrl: './random-game-picker.component.html',
+    styleUrl: './random-game-picker.component.scss'
 })
 export class RandomGamePickerComponent {
   public randomService = inject(RandomService);

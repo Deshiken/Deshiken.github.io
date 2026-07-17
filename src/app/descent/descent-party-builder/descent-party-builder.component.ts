@@ -11,11 +11,10 @@ import { ToastComponent } from 'src/app/shared/components/toast/toast.component'
 import { ToastService } from 'src/app/shared/services/toast.service';
 
 @Component({
-  selector: 'app-descent-party-builder',
-  standalone: true,
-  imports: [CommonModule, FormsModule, SharedModule, ToastComponent],
-  templateUrl: './descent-party-builder.component.html',
-  styleUrls: ['./descent-party-builder.component.scss']
+    selector: 'app-descent-party-builder',
+    imports: [CommonModule, FormsModule, SharedModule, ToastComponent],
+    templateUrl: './descent-party-builder.component.html',
+    styleUrls: ['./descent-party-builder.component.scss']
 })
 
 export class DescentPartyBuilderComponent implements OnInit {

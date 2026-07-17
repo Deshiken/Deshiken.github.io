@@ -16,9 +16,10 @@ enum SpellCardSortOptions {
 }
 
 @Component({
-  selector: 'app-spell-cards',
-  templateUrl: './spell-cards.component.html',
-  styleUrls: ['./spell-cards.component.scss']
+    selector: 'app-spell-cards',
+    templateUrl: './spell-cards.component.html',
+    styleUrls: ['./spell-cards.component.scss'],
+    standalone: false
 })
 
 export class SpellCardsComponent implements OnInit {

@@ -8,11 +8,10 @@ import { UprisingActionsComponent } from "../uprising-actions/uprising-actions.c
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-uprising-tactics-home',
-  standalone: true,
-  imports: [CommonModule, SharedModule, FormsModule, UprisingUnitsComponent, UprisingActionsComponent],
-  templateUrl: './uprising-tactics-home.component.html',
-  styleUrl: './uprising-tactics-home.component.scss'
+    selector: 'app-uprising-tactics-home',
+    imports: [CommonModule, SharedModule, FormsModule, UprisingUnitsComponent, UprisingActionsComponent],
+    templateUrl: './uprising-tactics-home.component.html',
+    styleUrl: './uprising-tactics-home.component.scss'
 })
 
 export class UprisingTacticsHomeComponent {

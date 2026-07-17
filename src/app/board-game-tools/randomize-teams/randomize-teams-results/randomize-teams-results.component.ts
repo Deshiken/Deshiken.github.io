@@ -6,9 +6,10 @@ import { RandomService } from 'src/app/shared/services/random.service';
 import { RandomizeTeamsService } from '../randomize-teams.service';
 
 @Component({
-  selector: 'app-randomize-teams-results',
-  templateUrl: './randomize-teams-results.component.html',
-  styleUrls: ['./randomize-teams-results.component.scss']
+    selector: 'app-randomize-teams-results',
+    templateUrl: './randomize-teams-results.component.html',
+    styleUrls: ['./randomize-teams-results.component.scss'],
+    standalone: false
 })
 export class RandomizeTeamsResultsComponent implements OnInit {
 

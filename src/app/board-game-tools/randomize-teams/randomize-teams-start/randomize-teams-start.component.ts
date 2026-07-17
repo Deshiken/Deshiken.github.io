@@ -3,9 +3,10 @@ import { Router } from '@angular/router';
 import { RandomizeTeamsService, TeamOption } from '../randomize-teams.service';
 
 @Component({
-  selector: 'app-randomize-teams-start',
-  templateUrl: './randomize-teams-start.component.html',
-  styleUrls: ['./randomize-teams-start.component.scss']
+    selector: 'app-randomize-teams-start',
+    templateUrl: './randomize-teams-start.component.html',
+    styleUrls: ['./randomize-teams-start.component.scss'],
+    standalone: false
 })
 export class RandomizeTeamsStartComponent implements OnInit {
 

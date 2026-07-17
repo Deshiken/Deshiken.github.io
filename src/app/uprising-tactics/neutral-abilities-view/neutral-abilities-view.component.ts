@@ -6,11 +6,10 @@ import { SpellCardService } from 'src/app/uprising/spell-cards/spell-cards.servi
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-neutral-abilities-view',
-  standalone: true,
-  imports: [SharedModule, CommonModule],
-  templateUrl: './neutral-abilities-view.component.html',
-  styleUrl: './neutral-abilities-view.component.scss'
+    selector: 'app-neutral-abilities-view',
+    imports: [SharedModule, CommonModule],
+    templateUrl: './neutral-abilities-view.component.html',
+    styleUrl: './neutral-abilities-view.component.scss'
 })
 
 export class NeutralAbilitiesViewComponent {

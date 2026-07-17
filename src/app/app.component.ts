@@ -3,12 +3,13 @@ import { ActivatedRoute, ChildrenOutletContexts, Router } from '@angular/router'
 import { SlideInOutAnimation } from './shared/animations/slideInOutAnimation';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  animations: [
-    SlideInOutAnimation
-  ]
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
+    animations: [
+        SlideInOutAnimation
+    ],
+    standalone: false
 })
 export class AppComponent {
   title = 'board-game-helper';

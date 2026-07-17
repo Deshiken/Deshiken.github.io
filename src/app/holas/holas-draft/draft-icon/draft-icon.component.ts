@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-draft-icon',
-  templateUrl: './draft-icon.component.html',
-  styleUrls: ['./draft-icon.component.scss'],
+    selector: 'app-draft-icon',
+    templateUrl: './draft-icon.component.html',
+    styleUrls: ['./draft-icon.component.scss'],
+    standalone: false
 })
 export class DraftIconComponent {
 

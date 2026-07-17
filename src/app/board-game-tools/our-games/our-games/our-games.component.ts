@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Game, gameData } from './our-games-data';
 
 @Component({
-  selector: 'app-our-games',
-  templateUrl: './our-games.component.html',
-  styleUrls: ['./our-games.component.scss']
+    selector: 'app-our-games',
+    templateUrl: './our-games.component.html',
+    styleUrls: ['./our-games.component.scss'],
+    standalone: false
 })
 
 export class OurGamesComponent implements OnInit {

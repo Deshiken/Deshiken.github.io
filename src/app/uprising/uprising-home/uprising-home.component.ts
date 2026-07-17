@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-uprising-home',
-  templateUrl: './uprising-home.component.html',
-  styleUrls: ['./uprising-home.component.scss']
+    selector: 'app-uprising-home',
+    templateUrl: './uprising-home.component.html',
+    styleUrls: ['./uprising-home.component.scss'],
+    standalone: false
 })
 export class UprisingHomeComponent implements OnInit {
 

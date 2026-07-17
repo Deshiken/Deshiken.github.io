@@ -8,11 +8,10 @@ import { TanaresDraftService } from '../tanares-draft-service.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-tanares-draft-start',
-  standalone: true,
-  imports: [CommonModule, SharedModule, FormsModule],
-  templateUrl: './tanares-draft-start.component.html',
-  styleUrls: ['./tanares-draft-start.component.scss']
+    selector: 'app-tanares-draft-start',
+    imports: [CommonModule, SharedModule, FormsModule],
+    templateUrl: './tanares-draft-start.component.html',
+    styleUrls: ['./tanares-draft-start.component.scss']
 })
 
 export class TanaresDraftStartComponent {

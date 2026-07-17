@@ -8,14 +8,13 @@ import { timer } from 'rxjs';
 import { FadeInOutAnimation } from 'src/app/shared/animations/fadeInOutAnimation';
 
 @Component({
-  selector: 'app-descent-party-builder-results',
-  standalone: true,
-  imports: [CommonModule, SharedModule],
-  templateUrl: './descent-party-builder-results.component.html',
-  styleUrls: ['./descent-party-builder-results.component.scss'],
-  animations: [
-    FadeInOutAnimation
-  ]
+    selector: 'app-descent-party-builder-results',
+    imports: [CommonModule, SharedModule],
+    templateUrl: './descent-party-builder-results.component.html',
+    styleUrls: ['./descent-party-builder-results.component.scss'],
+    animations: [
+        FadeInOutAnimation
+    ]
 })
 export class DescentPartyBuilderResultsComponent implements OnInit {
 

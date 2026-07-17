@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-holas',
-  templateUrl: './holas.component.html',
-  styleUrls: ['./holas.component.scss'],
+    selector: 'app-holas',
+    templateUrl: './holas.component.html',
+    styleUrls: ['./holas.component.scss'],
+    standalone: false
 })
 export class HolasComponent implements OnInit {
 

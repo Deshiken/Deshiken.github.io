@@ -1,7 +1,8 @@
 import { Directive, Input, SimpleChanges, ElementRef, OnInit, OnChanges } from '@angular/core';
 
 @Directive({
-  selector: '[appDynamicGrow]'
+    selector: '[appDynamicGrow]',
+    standalone: false
 })
 /**
  * Used to help animate elements that grow dynamically, ie if you have a list and add items directly to it. 

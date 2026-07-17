@@ -4,11 +4,10 @@ import { TanaresDraftService } from '../tanares-draft-service.service';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 @Component({
-  selector: 'app-tanares-draft-results',
-  standalone: true,
-  imports: [CommonModule, SharedModule],
-  templateUrl: './tanares-draft-results.component.html',
-  styleUrls: ['./tanares-draft-results.component.scss']
+    selector: 'app-tanares-draft-results',
+    imports: [CommonModule, SharedModule],
+    templateUrl: './tanares-draft-results.component.html',
+    styleUrls: ['./tanares-draft-results.component.scss']
 })
 
 export class TanaresDraftResultsComponent {

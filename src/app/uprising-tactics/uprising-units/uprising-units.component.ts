@@ -3,11 +3,10 @@ import { versionedUprisingTacticsUnits, UprisingTacticsUnit } from '../units';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-uprising-units',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './uprising-units.component.html',
-  styleUrl: './uprising-units.component.scss'
+    selector: 'app-uprising-units',
+    imports: [CommonModule],
+    templateUrl: './uprising-units.component.html',
+    styleUrl: './uprising-units.component.scss'
 })
 
 export class UprisingUnitsComponent {

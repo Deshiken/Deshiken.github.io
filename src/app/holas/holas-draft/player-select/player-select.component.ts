@@ -9,12 +9,13 @@ import { animate, state, style, transition, trigger, useAnimation } from '@angul
 import { FadeInOutAnimation } from 'src/app/shared/animations/fadeInOutAnimation';
 
 @Component({
-  selector: 'app-player-select',
-  templateUrl: './player-select.component.html',
-  styleUrls: ['./player-select.component.scss'],
-  animations: [
-    FadeInOutAnimation
-  ]
+    selector: 'app-player-select',
+    templateUrl: './player-select.component.html',
+    styleUrls: ['./player-select.component.scss'],
+    animations: [
+        FadeInOutAnimation
+    ],
+    standalone: false
 })
 export class PlayerSelectComponent implements OnInit {
   public showStar: boolean = true;

@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import DiceBox from '@3d-dice/dice-box'
 
 @Component({
-  selector: 'app-dice-roller',
-  templateUrl: './dice-roller.component.html',
-  styleUrls: ['./dice-roller.component.scss']
+    selector: 'app-dice-roller',
+    templateUrl: './dice-roller.component.html',
+    styleUrls: ['./dice-roller.component.scss'],
+    standalone: false
 })
 export class DiceRollerComponent implements OnInit {
   diceBox: any;

@@ -5,9 +5,10 @@ import { IconSize } from '../draft-icon/draft-icon.component';
 import { HolasDraftService, HolasFaction, Mercenary, SelectedFaction } from '../holas-draft.service';
 
 @Component({
-  selector: 'app-draft-start',
-  templateUrl: './draft-start.component.html',
-  styleUrls: ['./draft-start.component.scss'],
+    selector: 'app-draft-start',
+    templateUrl: './draft-start.component.html',
+    styleUrls: ['./draft-start.component.scss'],
+    standalone: false
 })
 export class DraftStartComponent implements OnInit {
 

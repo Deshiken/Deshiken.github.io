@@ -5,12 +5,13 @@ import { FadeInOutAnimation } from 'src/app/shared/animations/fadeInOutAnimation
 import { RandomService } from 'src/app/shared/services/random.service';
 
 @Component({
-  selector: 'app-upgrade-tiles',
-  templateUrl: './upgrade-tiles.component.html',
-  styleUrls: ['./upgrade-tiles.component.scss'],
-  animations: [
-    FadeInOutAnimation
-  ]
+    selector: 'app-upgrade-tiles',
+    templateUrl: './upgrade-tiles.component.html',
+    styleUrls: ['./upgrade-tiles.component.scss'],
+    animations: [
+        FadeInOutAnimation
+    ],
+    standalone: false
 })
 export class UpgradeTilesComponent {
   tooFewTileSetsSelected = false;

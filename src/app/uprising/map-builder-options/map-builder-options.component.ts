@@ -3,9 +3,10 @@ import { Router } from '@angular/router';
 import { MapBuilderService, UprisingMapSize, UprisingMap } from '../map-builder.service';
 
 @Component({
-  selector: 'app-map-builder-options',
-  templateUrl: './map-builder-options.component.html',
-  styleUrls: ['./map-builder-options.component.scss']
+    selector: 'app-map-builder-options',
+    templateUrl: './map-builder-options.component.html',
+    styleUrls: ['./map-builder-options.component.scss'],
+    standalone: false
 })
 export class MapBuilderOptionsComponent {
   public UprisingMapSize = UprisingMapSize;

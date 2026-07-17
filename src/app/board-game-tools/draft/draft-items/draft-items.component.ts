@@ -6,9 +6,10 @@ import { DraftItem, DraftService } from '../draft.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-draft-items',
-  templateUrl: './draft-items.component.html',
-  styleUrls: ['./draft-items.component.scss']
+    selector: 'app-draft-items',
+    templateUrl: './draft-items.component.html',
+    styleUrls: ['./draft-items.component.scss'],
+    standalone: false
 })
 export class DraftItemsComponent implements OnInit {
   // @ViewChild('deleteModal') deleteModal!: ElementRef;

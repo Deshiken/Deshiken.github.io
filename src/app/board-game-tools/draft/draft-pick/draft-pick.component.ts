@@ -4,9 +4,10 @@ import { RandomService } from 'src/app/shared/services/random.service';
 import { DraftItem, DraftService, Player } from '../draft.service';
 
 @Component({
-  selector: 'app-draft-pick',
-  templateUrl: './draft-pick.component.html',
-  styleUrls: ['./draft-pick.component.scss']
+    selector: 'app-draft-pick',
+    templateUrl: './draft-pick.component.html',
+    styleUrls: ['./draft-pick.component.scss'],
+    standalone: false
 })
 export class DraftPickComponent implements OnInit {
   public player: Player = {playerNumber: 1}; 

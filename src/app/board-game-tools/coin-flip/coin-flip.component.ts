@@ -2,9 +2,10 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { RandomService } from 'src/app/shared/services/random.service';
 
 @Component({
-  selector: 'app-coin-flip',
-  templateUrl: './coin-flip.component.html',
-  styleUrls: ['./coin-flip.component.scss']
+    selector: 'app-coin-flip',
+    templateUrl: './coin-flip.component.html',
+    styleUrls: ['./coin-flip.component.scss'],
+    standalone: false
 })
 export class CoinFlipComponent implements OnInit {
   

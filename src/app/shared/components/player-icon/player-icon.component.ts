@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-player-icon',
-  templateUrl: './player-icon.component.html',
-  styleUrls: ['./player-icon.component.scss']
+    selector: 'app-player-icon',
+    templateUrl: './player-icon.component.html',
+    styleUrls: ['./player-icon.component.scss'],
+    standalone: false
 })
 export class PlayerIconComponent {
   @Input() icon: string = '';

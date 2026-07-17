@@ -5,12 +5,13 @@ import { IconSize, PlayerIcons } from '../player-icon/player-icon.component';
 import { PlayerSelectService } from './player-select.service';
 
 @Component({
-  selector: 'app-player-select',
-  templateUrl: './player-select.component.html',
-  styleUrls: ['./player-select.component.scss'],
-  animations: [
-    FadeInOutAnimation
-  ]
+    selector: 'app-player-select',
+    templateUrl: './player-select.component.html',
+    styleUrls: ['./player-select.component.scss'],
+    animations: [
+        FadeInOutAnimation
+    ],
+    standalone: false
 })
 export class PlayerSelectComponent implements OnInit {
   playerSelectService = inject(PlayerSelectService);

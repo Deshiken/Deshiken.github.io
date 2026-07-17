@@ -5,12 +5,13 @@ import { FadeInOutAnimation } from 'src/app/shared/animations/fadeInOutAnimation
 import { RandomService } from 'src/app/shared/services/random.service';
 
 @Component({
-  selector: 'app-mercenary-picker',
-  templateUrl: './mercenary-picker.component.html',
-  styleUrls: ['./mercenary-picker.component.scss'],
-  animations: [
-    FadeInOutAnimation
-  ]
+    selector: 'app-mercenary-picker',
+    templateUrl: './mercenary-picker.component.html',
+    styleUrls: ['./mercenary-picker.component.scss'],
+    animations: [
+        FadeInOutAnimation
+    ],
+    standalone: false
 })
 
 export class MercenaryPickerComponent {

@@ -5,9 +5,10 @@ import { DraftItem, DraftOptions, DraftService } from '../draft.service';
 import { testDraftOptions } from '../draft.data';
 
 @Component({
-  selector: 'app-draft-start',
-  templateUrl: './draft-start.component.html',
-  styleUrls: ['./draft-start.component.scss']
+    selector: 'app-draft-start',
+    templateUrl: './draft-start.component.html',
+    styleUrls: ['./draft-start.component.scss'],
+    standalone: false
 })
 export class DraftStartComponent implements OnInit {
 

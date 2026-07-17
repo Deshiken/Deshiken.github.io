@@ -5,12 +5,13 @@ import { FadeInOutAnimation } from 'src/app/shared/animations/fadeInOutAnimation
 import { RandomService } from 'src/app/shared/services/random.service';
 
 @Component({
-  selector: 'app-tile-randomizer',
-  templateUrl: './tile-randomizer.component.html',
-  styleUrls: ['./tile-randomizer.component.scss'],
-  animations: [
-    FadeInOutAnimation
-  ]
+    selector: 'app-tile-randomizer',
+    templateUrl: './tile-randomizer.component.html',
+    styleUrls: ['./tile-randomizer.component.scss'],
+    animations: [
+        FadeInOutAnimation
+    ],
+    standalone: false
 })
 export class TileRandomizerComponent implements OnInit {
   useExpansionTiles: boolean = false;

@@ -3,9 +3,10 @@ import { SpellCard } from '../spell-card-data';
 import { UprisingSpellCards } from '../uprising-spell-cards';
 
 @Component({
-  selector: 'app-printable-spell-card',
-  templateUrl: './printable-spell-card.component.html',
-  styleUrls: ['./printable-spell-card.component.scss']
+    selector: 'app-printable-spell-card',
+    templateUrl: './printable-spell-card.component.html',
+    styleUrls: ['./printable-spell-card.component.scss'],
+    standalone: false
 })
 
 export class PrintableSpellCardComponent implements AfterViewInit {

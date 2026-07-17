@@ -6,21 +6,22 @@ import { RandomService } from 'src/app/shared/services/random.service';
 import { ChessTimerService, PlayerAudioSource, PlayerTimer } from '../chess-timer.service';
 
 @Component({
-  selector: 'app-multiplayer-chess-timer',
-  templateUrl: './multiplayer-chess-timer.component.html',
-  styleUrls: ['./multiplayer-chess-timer.component.scss'],
-  animations: [
-    trigger('fade', [
-      transition(':enter', [
-        style({ height: 0, opacity: 0, overflow: 'hidden' }),
-        animate('300ms ease-out', style({ height: '*', opacity: 1, overflow: 'hidden' }))
-      ]),
-      transition(':leave', [
-        style({ overflow: 'hidden' }),
-        animate('300ms ease-in', style({ height: 0, opacity: 0 }))
-      ])
-    ])
-  ]
+    selector: 'app-multiplayer-chess-timer',
+    templateUrl: './multiplayer-chess-timer.component.html',
+    styleUrls: ['./multiplayer-chess-timer.component.scss'],
+    animations: [
+        trigger('fade', [
+            transition(':enter', [
+                style({ height: 0, opacity: 0, overflow: 'hidden' }),
+                animate('300ms ease-out', style({ height: '*', opacity: 1, overflow: 'hidden' }))
+            ]),
+            transition(':leave', [
+                style({ overflow: 'hidden' }),
+                animate('300ms ease-in', style({ height: 0, opacity: 0 }))
+            ])
+        ])
+    ],
+    standalone: false
 })
 
 export class MultiplayerChessTimerComponent implements OnDestroy {

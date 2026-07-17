@@ -6,9 +6,10 @@ import { ActivatedRoute } from '@angular/router';
 import { ToastService } from 'src/app/shared/services/toast.service';
 
 @Component({
-  selector: 'app-map-builder',
-  templateUrl: './map-builder.component.html',
-  styleUrls: ['./map-builder.component.scss']
+    selector: 'app-map-builder',
+    templateUrl: './map-builder.component.html',
+    styleUrls: ['./map-builder.component.scss'],
+    standalone: false
 })
 
 export class MapBuilderComponent implements OnInit {

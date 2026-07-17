@@ -2,9 +2,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 
 @Component({
-  selector: 'app-heading-with-back',
-  templateUrl: './heading-with-back.component.html',
-  styleUrls: ['./heading-with-back.component.scss']
+    selector: 'app-heading-with-back',
+    templateUrl: './heading-with-back.component.html',
+    styleUrls: ['./heading-with-back.component.scss'],
+    standalone: false
 })
 export class HeadingWithBackComponent {
 

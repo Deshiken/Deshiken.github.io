@@ -1,9 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-action-timer',
-  templateUrl: './action-timer.component.html',
-  styleUrls: ['./action-timer.component.scss']
+    selector: 'app-action-timer',
+    templateUrl: './action-timer.component.html',
+    styleUrls: ['./action-timer.component.scss'],
+    standalone: false
 })
 export class ActionTimerComponent implements OnInit, OnDestroy {
 

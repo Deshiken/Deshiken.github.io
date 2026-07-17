@@ -3,9 +3,10 @@ import { IconSize } from '../draft-icon/draft-icon.component';
 import { HolasDraftService } from '../holas-draft.service';
 
 @Component({
-  selector: 'app-draft-summary',
-  templateUrl: './draft-summary.component.html',
-  styleUrls: ['./draft-summary.component.scss']
+    selector: 'app-draft-summary',
+    templateUrl: './draft-summary.component.html',
+    styleUrls: ['./draft-summary.component.scss'],
+    standalone: false
 })
 export class DraftSummaryComponent implements OnInit {
 

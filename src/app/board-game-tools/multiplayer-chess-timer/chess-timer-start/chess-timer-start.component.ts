@@ -7,13 +7,14 @@ import { FadeInOutAnimation } from 'src/app/shared/animations/fadeInOutAnimation
 import { growHeightAnimation } from 'src/app/shared/animations/growHeightAnimation';
 
 @Component({
-  selector: 'app-chess-timer-start',
-  templateUrl: './chess-timer-start.component.html',
-  styleUrls: ['./chess-timer-start.component.scss'],
-  animations: [
-    growHeightAnimation,
-    FadeInOutAnimation
-  ]
+    selector: 'app-chess-timer-start',
+    templateUrl: './chess-timer-start.component.html',
+    styleUrls: ['./chess-timer-start.component.scss'],
+    animations: [
+        growHeightAnimation,
+        FadeInOutAnimation
+    ],
+    standalone: false
 })
 export class ChessTimerStartComponent {
   iconValuesArray: Array<string> = Object.values(PlayerIcons) as Array<string>;
