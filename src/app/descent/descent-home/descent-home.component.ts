@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { Router, RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 @Component({
     selector: 'app-descent-home',
-    imports: [CommonModule, RouterModule, SharedModule],
+    imports: [RouterModule, SharedModule],
     templateUrl: './descent-home.component.html',
     styleUrls: ['./descent-home.component.scss']
 })

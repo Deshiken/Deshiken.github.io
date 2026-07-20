@@ -10,53 +10,79 @@
       </div>
       <div class="col-8 card-body">
         <p class="mb-1"><b>Player:</b> {{currentPlayer.playerNumber}}</p>
-        <p class="mb-1" *ngIf="draftService.teamDraft"><b>Team: </b> {{currentPlayer.team}}</p>
-        <b class="mb-0 h6" *ngIf="currentPlayer.mercenaryPick || currentPlayer.factionPick">Previous pick:</b>
-        <p class="mb-1" *ngIf="currentPlayer.factionPick">
-          Faction - {{currentPlayer.factionPick.faction}}
-          <span *ngIf="draftService.randomBuilding">with {{currentPlayer.factionPick.building}}</span>
-        </p>
-        <p class="mb-1" *ngIf="currentPlayer.mercenaryPick">Mercenary - {{currentPlayer.mercenaryPick}}</p>
+        @if (draftService.teamDraft) {
+          <p class="mb-1"><b>Team: </b> {{currentPlayer.team}}</p>
+        }
+        @if (currentPlayer.mercenaryPick || currentPlayer.factionPick) {
+          <b class="mb-0 h6">Previous pick:</b>
+        }
+        @if (currentPlayer.factionPick) {
+          <p class="mb-1">
+            Faction - {{currentPlayer.factionPick.faction}}
+            @if (draftService.randomBuilding) {
+              <span>with {{currentPlayer.factionPick.building}}</span>
+            }
+          </p>
+        }
+        @if (currentPlayer.mercenaryPick) {
+          <p class="mb-1">Mercenary - {{currentPlayer.mercenaryPick}}</p>
+        }
       </div>
     </div>
   </div>
 
   <p>Please choose one of the following factions or mercenaries as your pick for this round.</p>
 
-  <div *ngIf="!currentPlayer.factionPick">
-    <p class='h5 mb-0 mt-3'>Available Factions:</p>
-    <ul class="list-group" >
-      <ng-container *ngFor="let faction of draftService.selectedFactions">
-        <li class="list-group-item" [ngClass]="{'selected-item' : faction === factionChoice}" (click)="chooseFaction(faction) ">
-          <p class="mb-0" [ngClass]="{'selected-item' : faction === factionChoice}">{{faction.faction}}
-            <span *ngIf="draftService.randomBuilding">with {{faction.building}}</span>
-          </p>
-        </li>
-      </ng-container>
-    </ul>
-  </div>
+  @if (!currentPlayer.factionPick) {
+    <div>
+      <p class='h5 mb-0 mt-3'>Available Factions:</p>
+      <ul class="list-group" >
+        @for (faction of draftService.selectedFactions; track faction) {
+          <li class="list-group-item" [ngClass]="{'selected-item' : faction === factionChoice}" (click)="chooseFaction(faction) ">
+            <p class="mb-0" [ngClass]="{'selected-item' : faction === factionChoice}">{{faction.faction}}
+              @if (draftService.randomBuilding) {
+                <span>with {{faction.building}}</span>
+              }
+            </p>
+          </li>
+        }
+      </ul>
+    </div>
+  }
 
-  <div *ngIf="!currentPlayer.mercenaryPick && draftService.availableMercs.length">
-    <p class='h5 mb-0 mt-3'>Available Mercenaries:</p>
-    <ul class="list-group">
-      <ng-container *ngFor="let merc of draftService.selectedMercs">
-        <li class="list-group-item" [ngClass]="{'selected-item' : merc === mercenaryChoice}" (click)="chooseMercenary(merc)">
-          <p class="mb-0">{{merc}}</p>
-        </li>
-      </ng-container>
-    </ul>
-  </div>
+  @if (!currentPlayer.mercenaryPick && draftService.availableMercs.length) {
+    <div>
+      <p class='h5 mb-0 mt-3'>Available Mercenaries:</p>
+      <ul class="list-group">
+        @for (merc of draftService.selectedMercs; track merc) {
+          <li class="list-group-item" [ngClass]="{'selected-item' : merc === mercenaryChoice}" (click)="chooseMercenary(merc)">
+            <p class="mb-0">{{merc}}</p>
+          </li>
+        }
+      </ul>
+    </div>
+  }
 
-  <div *ngIf="choiceType">
-    <p class="h5 mb-0 mt-3">Your pick for this round:</p>
-    <p class="mb-2" *ngIf="this.choiceType === 'faction'">Faction: {{factionChoice?.faction}} <span *ngIf="draftService.randomBuilding">with {{factionChoice?.building}}</span></p>
-    <p class="mb-2" *ngIf="this.choiceType === 'mercenary'">Mercenary: {{mercenaryChoice}}</p>
-  </div>
+  @if (choiceType) {
+    <div>
+      <p class="h5 mb-0 mt-3">Your pick for this round:</p>
+      @if (this.choiceType === 'faction') {
+        <p class="mb-2">Faction: {{factionChoice?.faction}} @if (draftService.randomBuilding) {
+          <span>with {{factionChoice?.building}}</span>
+        }</p>
+      }
+      @if (this.choiceType === 'mercenary') {
+        <p class="mb-2">Mercenary: {{mercenaryChoice}}</p>
+      }
+    </div>
+  }
 
-  <div *ngIf="noPickError"
-       class="alert alert-warning fade-in mt-3 mb-0" role="alert">
-    Please select an item from the list of available picks.
-  </div>
+  @if (noPickError) {
+    <div
+      class="alert alert-warning fade-in mt-3 mb-0" role="alert">
+      Please select an item from the list of available picks.
+    </div>
+  }
 
   <div>
     <button class="btn btn-primary m-3" (click)="undo()">

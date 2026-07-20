@@ -1,10 +1,10 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { ToastService } from '../../services/toast.service';
 
 @Component({
     selector: 'app-toast',
-    imports: [CommonModule],
+    imports: [],
     templateUrl: './toast.component.html',
     styleUrls: ['./toast.component.scss']
 })

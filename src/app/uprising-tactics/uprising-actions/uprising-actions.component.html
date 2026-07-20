@@ -8,10 +8,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let action of actions">
-        <td>{{ action.name }}</td>
-        <td [innerHTML]="action.description"></td>
-      </tr>
+      @for (action of actions; track action) {
+        <tr>
+          <td>{{ action.name }}</td>
+          <td [innerHTML]="action.description"></td>
+        </tr>
+      }
     </tbody>
   </table>
 </section>

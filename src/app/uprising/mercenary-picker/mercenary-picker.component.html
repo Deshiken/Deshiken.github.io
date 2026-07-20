@@ -22,7 +22,7 @@
       Mercenary Pack 1
     </label>
     <i class="bi m-3 bi-question-circle-fill"
-       data-bs-toggle="collapse" data-bs-target="#pack1Units" aria-expanded="false" aria-controls="pack1Units">
+      data-bs-toggle="collapse" data-bs-target="#pack1Units" aria-expanded="false" aria-controls="pack1Units">
     </i>
   </div>
 
@@ -30,7 +30,9 @@
     <div class="card card-body">
       <div>
         This pack contains the units
-        <span class="comma-list" *ngFor="let unit of packOneMercenaries">{{unit}}</span>
+        @for (unit of packOneMercenaries; track unit) {
+          <span class="comma-list">{{unit}}</span>
+        }
         .
       </div>
     </div>
@@ -45,7 +47,7 @@
       Mercenary Pack 2
     </label>
     <i class="bi m-3 bi-question-circle-fill"
-       data-bs-toggle="collapse" data-bs-target="#pack2Units" aria-expanded="false" aria-controls="pack2Units">
+      data-bs-toggle="collapse" data-bs-target="#pack2Units" aria-expanded="false" aria-controls="pack2Units">
     </i>
   </div>
 
@@ -53,7 +55,9 @@
     <div class="card card-body">
       <div>
         This pack contains the units
-        <span class="comma-list" *ngFor="let unit of packTwoMercenaries">{{unit}}</span>
+        @for (unit of packTwoMercenaries; track unit) {
+          <span class="comma-list">{{unit}}</span>
+        }
         .
       </div>
     </div>
@@ -68,7 +72,7 @@
       Mercenary Pack 3
     </label>
     <i class="bi m-3 bi-question-circle-fill"
-       data-bs-toggle="collapse" data-bs-target="#pack3Units" aria-expanded="false" aria-controls="pack3Units">
+      data-bs-toggle="collapse" data-bs-target="#pack3Units" aria-expanded="false" aria-controls="pack3Units">
     </i>
   </div>
 
@@ -76,7 +80,9 @@
     <div class="card card-body">
       <div>
         This pack contains the units
-        <span class="comma-list" *ngFor="let unit of packThreeMercenaries">{{unit}}</span>
+        @for (unit of packThreeMercenaries; track unit) {
+          <span class="comma-list">{{unit}}</span>
+        }
         .
       </div>
     </div>
@@ -84,17 +90,17 @@
 
   <button class="btn btn-primary mt-4" (click)="generateMercenaries()">Generate Mercenaries</button>
 
-  <ng-container *ngIf="generatedMercenaries.length > 0">
+  @if (generatedMercenaries.length > 0) {
     <p class='mb-0 mt-4 h6'>Randomly Selected Mercenaries:</p>
-
     <ul>
-      <li
-        [@simpleFadeAnimation]="'in'"
-        *ngFor="let merc of generatedMercenaries">
-        {{merc}}
-      </li>
+      @for (merc of generatedMercenaries; track merc) {
+        <li
+          [@simpleFadeAnimation]="'in'"
+          >
+          {{merc}}
+        </li>
+      }
     </ul>
-
-  </ng-container>
+  }
 
 </div>

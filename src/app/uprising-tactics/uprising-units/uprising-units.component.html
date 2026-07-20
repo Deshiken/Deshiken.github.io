@@ -14,20 +14,28 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let unit of units">
-      <td>{{ unit.name }}</td>
-      <td>
-        <span *ngIf="unit.cost?.gold">{{unit.cost?.gold}}<i class="bi bi-coin"></i> </span>
-        <span *ngIf="unit.cost?.mana">{{unit.cost?.mana}}<i class="bi bi-gem"></i> </span>
-        <span *ngIf="unit.cost?.technology">{{unit.cost?.technology}}<i class="bi bi-gear"></i> </span>
-      </td>
-      <td>{{ unit.attack }}</td>
-      <td>{{ unit.speed }}</td>
-      <td>{{ unit.health }}</td>
-      <td>{{ unit.attackDistance }}</td>
-      <td>{{ unit.isBuilding ? 'Yes' : 'No' }}</td>
-      <td>{{ unit.specialAbilities?.join(', ') }}</td>
-      <td [innerHTML]="unit.specialDescription"></td>
-    </tr>
+    @for (unit of units; track unit) {
+      <tr>
+        <td>{{ unit.name }}</td>
+        <td>
+          @if (unit.cost?.gold) {
+            <span>{{unit.cost?.gold}}<i class="bi bi-coin"></i> </span>
+          }
+          @if (unit.cost?.mana) {
+            <span>{{unit.cost?.mana}}<i class="bi bi-gem"></i> </span>
+          }
+          @if (unit.cost?.technology) {
+            <span>{{unit.cost?.technology}}<i class="bi bi-gear"></i> </span>
+          }
+        </td>
+        <td>{{ unit.attack }}</td>
+        <td>{{ unit.speed }}</td>
+        <td>{{ unit.health }}</td>
+        <td>{{ unit.attackDistance }}</td>
+        <td>{{ unit.isBuilding ? 'Yes' : 'No' }}</td>
+        <td>{{ unit.specialAbilities?.join(', ') }}</td>
+        <td [innerHTML]="unit.specialDescription"></td>
+      </tr>
+    }
   </tbody>
 </table>

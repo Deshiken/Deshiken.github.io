@@ -1,42 +1,43 @@
 <div class="container">
   <app-heading-with-back [title]="'Player Point Tracker'"></app-heading-with-back>
-  
-  <div *ngFor="let player of players" [ngStyle]="{'background-color': player.color}"
-    class="player-card mt-3 d-flex justify-content-between">
-    <div class="d-flex justify-content-between flex-column">
-      <div class="point-adjust point-adjust-top-left px-4 d-flex align-items-center justify-content-center" 
-        (click)="adjustPlayerPoints(player, -1)">
-        <p class="mb-0 h4">-1</p>
-      </div>
-      <div class="point-adjust point-adjust-bottom-left px-4 d-flex align-items-center justify-content-center" 
-        (click)="adjustPlayerPoints(player, -5)">
-        <p class="mb-0 h4">-5</p>
-      </div>
-    </div>
-    <div class="d-flex flex-column align-items-center">
-      <div class="d-flex">
-        <p class="mb-0">{{player.name}}</p>
-        <i class="ms-2 bi bi-pencil-square" (click)="playerToEdit = player"
-          data-bs-toggle="modal" data-bs-target="#exampleModal">
-        </i>
-      </div>
-      <div class="d-flex align-items-center">
-        <i class="bi me-5" style="font-size: 4rem;" [class]="player.icon"></i>
-        <p style="font-size: 4rem" class="mb-0">{{player.points}}</p>
-      </div>
-    </div>
 
-    <div class="d-flex justify-content-between flex-column">
-      <div class="point-adjust point-adjust-top-right d-flex align-items-center justify-content-center" 
-        (click)="adjustPlayerPoints(player, 1)">
-        <p class="mb-0 h4">+1</p>
+  @for (player of players; track player) {
+    <div [ngStyle]="{'background-color': player.color}"
+      class="player-card mt-3 d-flex justify-content-between">
+      <div class="d-flex justify-content-between flex-column">
+        <div class="point-adjust point-adjust-top-left px-4 d-flex align-items-center justify-content-center"
+          (click)="adjustPlayerPoints(player, -1)">
+          <p class="mb-0 h4">-1</p>
+        </div>
+        <div class="point-adjust point-adjust-bottom-left px-4 d-flex align-items-center justify-content-center"
+          (click)="adjustPlayerPoints(player, -5)">
+          <p class="mb-0 h4">-5</p>
+        </div>
       </div>
-      <div class="point-adjust point-adjust-bottom-right point-adjust d-flex align-items-center justify-content-center" 
-        (click)="adjustPlayerPoints(player, 5)">
-        <p class="mb-0 h4">+5</p>
+      <div class="d-flex flex-column align-items-center">
+        <div class="d-flex">
+          <p class="mb-0">{{player.name}}</p>
+          <i class="ms-2 bi bi-pencil-square" (click)="playerToEdit = player"
+            data-bs-toggle="modal" data-bs-target="#exampleModal">
+          </i>
+        </div>
+        <div class="d-flex align-items-center">
+          <i class="bi me-5" style="font-size: 4rem;" [class]="player.icon"></i>
+          <p style="font-size: 4rem" class="mb-0">{{player.points}}</p>
+        </div>
+      </div>
+      <div class="d-flex justify-content-between flex-column">
+        <div class="point-adjust point-adjust-top-right d-flex align-items-center justify-content-center"
+          (click)="adjustPlayerPoints(player, 1)">
+          <p class="mb-0 h4">+1</p>
+        </div>
+        <div class="point-adjust point-adjust-bottom-right point-adjust d-flex align-items-center justify-content-center"
+          (click)="adjustPlayerPoints(player, 5)">
+          <p class="mb-0 h4">+5</p>
+        </div>
       </div>
     </div>
-  </div>
+  }
 
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -46,23 +47,23 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          
+
           <label for="playerName" class="form-label">Player Name</label>
           <input type="text" class="form-control" id="playerName" [(ngModel)]="playerToEdit.name">
-          
+
           <label for="playerColor" class="form-label mt-2">Player Color</label>
-          <input type="color" id="playerColor" class="form-control form-control-color" 
+          <input type="color" id="playerColor" class="form-control form-control-color"
             [(ngModel)]="playerToEdit.color" style="width:85%;">
 
           <label class="form-label mt-2">Player Icon</label>
           <div>
-            <ng-container *ngFor="let icon of PlayerIcons | keyvalue">
+            @for (icon of PlayerIcons | keyvalue; track icon) {
               <i class="bi ms-2" style="font-size: 1.75rem;"
-                [class]="icon.value" 
-                [ngClass]="{'icon-selected' : playerToEdit.icon === icon.value}" 
+                [class]="icon.value"
+                [ngClass]="{'icon-selected' : playerToEdit.icon === icon.value}"
                 (click)="playerToEdit.icon = icon.value">
               </i>
-            </ng-container>
+            }
           </div>
         </div>
         <div class="modal-footer">
@@ -75,7 +76,7 @@
   <button (click)="addNewPlayer()" type="button"   class="btn btn-primary m-3">
     Add New Player
   </button>
-  
+
   <button (click)="resetAllPoints()" type="button" class="btn btn-primary m-3">
     Reset all Points
   </button>

@@ -7,64 +7,79 @@
     <select (change)="sortOptionChangeEvent($event)"
       class="form-select mb-3"
       style="max-width: 300px;"
-      id="spellCardSort" 
+      id="spellCardSort"
       aria-label="How would you like to sort the spell card list?">
-      <option
-        *ngFor="let option of SpellCardSortOptions | keyvalue"
-        [ngValue]="option.value">{{option.value}}
-      </option>
+      @for (option of SpellCardSortOptions | keyvalue; track option) {
+        <option
+          [ngValue]="option.value">{{option.value}}
+        </option>
+      }
     </select>
   </div>
 
-  <button *ngIf="spellCardService.spellCardsToPrint.size > 0"
-    class="btn btn-primary sticky-top fade-in mb-2"
-    style="top: 5px"
-    (click)="router.navigate(['uprising/spell-cards-print-sheet'])"
-    [attr.aria-label]="'Print ' + spellCardService.spellCardsToPrint.size + ' selected spell cards'"
-  >
-    Print {{spellCardService.spellCardsToPrint.size}} Spell Card{{spellCardService.spellCardsToPrint.size > 1 ? 's' : ''}}
-  </button>
+  @if (spellCardService.spellCardsToPrint.size > 0) {
+    <button
+      class="btn btn-primary sticky-top fade-in mb-2"
+      style="top: 5px"
+      (click)="router.navigate(['uprising/spell-cards-print-sheet'])"
+      [attr.aria-label]="'Print ' + spellCardService.spellCardsToPrint.size + ' selected spell cards'"
+      >
+      Print {{spellCardService.spellCardsToPrint.size}} Spell Card{{spellCardService.spellCardsToPrint.size > 1 ? 's' : ''}}
+    </button>
+  }
 
 
   <div class="row ms-0">
-    <div *ngFor="let card of spellCards; index as i"
-      [ngClass]="{'selected' : spellCardService.spellCardsToPrint.has(card.name)}"
-      class="card mb-2 me-2"
-      style="max-width: 20rem;">
-      <div class="card-body">
-        <div class="d-flex justify-content-between">
-          <i *ngIf="card.castType == 'Prepared'" class="bi bi-clock" aria-hidden="true"></i>
-          <i *ngIf="card.castType == 'Instant'" class="bi bi-lightning-fill" aria-hidden="true"></i>
-          <img *ngIf="card.castType == 'Combat'" src="../../../../assets/uprising_spell_icons/attack.svg" aria-hidden="true" height="18px">
-          <p class="card-title fs-6 fw-bold">{{card.name}}</p>
-          <div>
-            <i *ngFor="let item of [].constructor(card.spellCost)" class="bi bi-gem ms-1" aria-hidden="true"></i>
+    @for (card of spellCards; track card; let i = $index) {
+      <div
+        [ngClass]="{'selected' : spellCardService.spellCardsToPrint.has(card.name)}"
+        class="card mb-2 me-2"
+        style="max-width: 20rem;">
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            @if (card.castType == 'Prepared') {
+              <i class="bi bi-clock" aria-hidden="true"></i>
+            }
+            @if (card.castType == 'Instant') {
+              <i class="bi bi-lightning-fill" aria-hidden="true"></i>
+            }
+            @if (card.castType == 'Combat') {
+              <img src="../../../../assets/uprising_spell_icons/attack.svg" aria-hidden="true" height="18px">
+            }
+            <p class="card-title fs-6 fw-bold">{{card.name}}</p>
+            <div>
+              @for (item of [].constructor(card.spellCost); track item) {
+                <i class="bi bi-gem ms-1" aria-hidden="true"></i>
+              }
+            </div>
           </div>
+          <div class="card-text" [innerHTML]="card.htmlDescription"></div>
         </div>
-        <div class="card-text" [innerHTML]="card.htmlDescription"></div>
+        <div class="card-footer row">
+          <button class="btn btn-link p-0"
+            (click)="addCardToPrintList(card)"
+            [attr.aria-label]="'Add ' + card.name + ' to print list'">
+            <i class="bi bi-printer ms-1" aria-hidden="true"></i>
+          </button>
+          @if (spellCardService.spellCardsToPrint.has(card.name)) {
+            <span>
+              *Added to print list
+            </span>
+          }
+        </div>
       </div>
-      <div class="card-footer row">
-        <button class="btn btn-link p-0" 
-          (click)="addCardToPrintList(card)" 
-          [attr.aria-label]="'Add ' + card.name + ' to print list'">
-          <i class="bi bi-printer ms-1" aria-hidden="true"></i>
-        </button>
-        <span *ngIf="spellCardService.spellCardsToPrint.has(card.name)">
-          *Added to print list
-        </span>
-      </div>
-    </div>
+    }
   </div>
 
   <button (click)="showSpellStats = !showSpellStats"
     class="btn btn-link p-0 d-flex align-items-center"
-    data-bs-toggle="collapse" 
+    data-bs-toggle="collapse"
     data-bs-target="#timeNameCollapse"
     [attr.aria-expanded]="showSpellStats"
     aria-controls="timeNameCollapse"
     aria-label="Toggle spell card stats">
     <h2 id="spellStatsHeading" class="mb-0">Spell Card Stats</h2>
-    <i [ngClass]="{'rotate-clockwise' : showSpellStats}" 
+    <i [ngClass]="{'rotate-clockwise' : showSpellStats}"
       class="bi ms-3 bi-chevron-up med-icon rotate-transition"
       aria-hidden="true">
     </i>

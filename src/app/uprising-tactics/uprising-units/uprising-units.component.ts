@@ -1,10 +1,10 @@
 import { Component, Input, SimpleChanges } from '@angular/core';
 import { versionedUprisingTacticsUnits, UprisingTacticsUnit } from '../units';
-import { CommonModule } from '@angular/common';
+
 
 @Component({
     selector: 'app-uprising-units',
-    imports: [CommonModule],
+    imports: [],
     templateUrl: './uprising-units.component.html',
     styleUrl: './uprising-units.component.scss'
 })

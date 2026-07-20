@@ -9,23 +9,26 @@
       <p><b>Game Mode: </b>{{uprisingMap?.objective}} </p>
       <p><b>Number of Players: </b>{{uprisingMap?.numberOfPlayers}} </p>
       <p><b>Description: </b>{{uprisingMap?.description}} </p>
-      <a class="mb-3" [href]="uprisingMap?.image" target="_blank"> 
+      <a class="mb-3" [href]="uprisingMap?.image" target="_blank">
         <b>Map Details</b>
         <i class="bi ms-1 bi-box-arrow-up-right"></i>
-      </a> 
-      <ng-container *ngIf="uprisingMap?.specialRules">
+      </a>
+      @if (uprisingMap?.specialRules) {
         <b>Special Rules: </b>
-        <ul class="list-group" > 
-          <li *ngFor="let rule of uprisingMap?.specialRules" class="ms-4">{{rule}}</li>
+        <ul class="list-group" >
+          @for (rule of uprisingMap?.specialRules; track rule) {
+            <li class="ms-4">{{rule}}</li>
+          }
         </ul>
-      </ng-container>
-      <ng-container *ngIf="uprisingMap?.variants">
+      }
+      @if (uprisingMap?.variants) {
         <b>Variants</b>
-        <ul class="list-group" > 
-          <li class="ms-4" *ngFor="let variant of uprisingMap?.variants">{{variant}}</li>
+        <ul class="list-group" >
+          @for (variant of uprisingMap?.variants; track variant) {
+            <li class="ms-4">{{variant}}</li>
+          }
         </ul>
-
-      </ng-container>
+      }
 
     </div>
 

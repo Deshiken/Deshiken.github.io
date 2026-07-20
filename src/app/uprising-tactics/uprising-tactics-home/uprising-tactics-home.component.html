@@ -1,5 +1,5 @@
 <div id="main-content" class="container">
-  
+
   <app-heading-with-back [title]="'Uprising Tactics Tools'"></app-heading-with-back>
 
   <div class="d-flex align-items-center justify-content-between nav-help">
@@ -17,8 +17,8 @@
   </div>
 
   <div class="d-flex align-items-center justify-content-between nav-help">
-    <button id="unitsDisplayBtn" type="button" class="btn btn-primary btn-lg my-3" data-bs-toggle="collapse" 
-      data-bs-target="#unitsCollapse" aria-expanded="false" aria-controls="unitsCollapse" 
+    <button id="unitsDisplayBtn" type="button" class="btn btn-primary btn-lg my-3" data-bs-toggle="collapse"
+      data-bs-target="#unitsCollapse" aria-expanded="false" aria-controls="unitsCollapse"
       aria-label="Help: Game Modes and Setup Instructions">
       Units Stats and Abilities.
     </button>
@@ -28,21 +28,23 @@
     <select
       id="unitsVersion"
       [(ngModel)]="uprisingTacticsUnitsVersion"
-      class="form-select" 
+      class="form-select"
       id="numberOfPlayersSelect"
       style="max-width: 150px;"
-    >
-      <option *ngFor='let versionedUprisingTacticsUnits of versionedUprisingTacticsUnits' 
-        [ngValue]="versionedUprisingTacticsUnits.version">
-        {{versionedUprisingTacticsUnits.version}}
-      </option>
+      >
+      @for (versionedUprisingTacticsUnits of versionedUprisingTacticsUnits; track versionedUprisingTacticsUnits) {
+        <option
+          [ngValue]="versionedUprisingTacticsUnits.version">
+          {{versionedUprisingTacticsUnits.version}}
+        </option>
+      }
     </select>
     <app-uprising-units [version]="uprisingTacticsUnitsVersion"></app-uprising-units>
   </div>
 
   <div class="d-flex align-items-center justify-content-between nav-help">
-    <button id="unitsDisplayBtn" type="button" class="btn btn-primary btn-lg my-3" data-bs-toggle="collapse" 
-      data-bs-target="#actionsCollapse" aria-expanded="false" aria-controls="actionsCollapse" 
+    <button id="unitsDisplayBtn" type="button" class="btn btn-primary btn-lg my-3" data-bs-toggle="collapse"
+      data-bs-target="#actionsCollapse" aria-expanded="false" aria-controls="actionsCollapse"
       aria-label="Help: Game Modes and Setup Instructions">
       Uprising Tactics Actions
     </button>
@@ -82,13 +84,13 @@
   </div>
 
   <div class="d-flex align-items-center justify-content-between nav-help">
-    <button type="button" class="btn btn-primary btn-lg my-3" 
-      (click)="router.navigate(['uprising-tactics/neutral-abilities'])" 
+    <button type="button" class="btn btn-primary btn-lg my-3"
+      (click)="router.navigate(['uprising-tactics/neutral-abilities'])"
       aria-label="View Neutral Abilities for Uprising Tactics">
       Neutral Abilities
     </button>
-    <button id="neutralAbilitiesHelpBtn" type="button" class="btn btn-link p-0 m-3" 
-      data-bs-toggle="collapse" data-bs-target="#neutralAbilities" 
+    <button id="neutralAbilitiesHelpBtn" type="button" class="btn btn-link p-0 m-3"
+      data-bs-toggle="collapse" data-bs-target="#neutralAbilities"
       aria-expanded="false" aria-controls="neutralAbilities" aria-label="Help: Neutral Abilities">
       <i class="bi bi-question-circle-fill" style="font-size: 2.4rem;" aria-hidden="true"></i>
     </button>

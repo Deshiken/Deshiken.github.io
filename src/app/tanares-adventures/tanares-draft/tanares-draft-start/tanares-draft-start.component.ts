@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { RandomService } from 'src/app/shared/services/random.service';
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-tanares-draft-start',
-    imports: [CommonModule, SharedModule, FormsModule],
+    imports: [SharedModule, FormsModule],
     templateUrl: './tanares-draft-start.component.html',
     styleUrls: ['./tanares-draft-start.component.scss']
 })

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { DescentPartyBuilderService } from '../descent-party-builder.service';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { DescentHero } from '../descent-data';
@@ -9,7 +9,7 @@ import { FadeInOutAnimation } from 'src/app/shared/animations/fadeInOutAnimation
 
 @Component({
     selector: 'app-descent-party-builder-results',
-    imports: [CommonModule, SharedModule],
+    imports: [SharedModule],
     templateUrl: './descent-party-builder-results.component.html',
     styleUrls: ['./descent-party-builder-results.component.scss'],
     animations: [

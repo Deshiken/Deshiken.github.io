@@ -82,23 +82,25 @@
     </div>
   </div>
 
-  <div *ngIf="tooFewTileSetsSelected" class="text-danger">
-    Please select at least {{numberOfTileSets}} Tile Colors.
-  </div>
+  @if (tooFewTileSetsSelected) {
+    <div class="text-danger">
+      Please select at least {{numberOfTileSets}} Tile Colors.
+    </div>
+  }
 
   <button class="btn btn-primary mt-4" (click)="submit()">Generate Tiles</button>
 
-  <ng-container *ngIf="generatedTiles.length > 0">
+  @if (generatedTiles.length > 0) {
     <p class='mb-0 mt-4 h6'>Randomly Selected Tiles:</p>
-
     <ul>
-      <li
-        [@simpleFadeAnimation]="'in'"
-        *ngFor="let tile of generatedTiles">
-        {{tile}}
-      </li>
+      @for (tile of generatedTiles; track tile) {
+        <li
+          [@simpleFadeAnimation]="'in'"
+          >
+          {{tile}}
+        </li>
+      }
     </ul>
-
-  </ng-container>
+  }
 
 </div>

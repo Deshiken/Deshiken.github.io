@@ -19,52 +19,56 @@
   </ng-template>
 
   <div class="accordion mt-3" id="accordionPanelsStayOpenExample">
-  
-    <div class="accordion-item" *ngIf="draftService.selectedDraft.useItemCategories">
-      <h2 class="accordion-header" id="headingOne">
-        <button class="accordion-button collapsed" type="button" 
-          data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Draft Categories
-        </button>
-      </h2>
-      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <div class="row">
-            <div class="col">
-              <input 
-                [(ngModel)]="newCategoryName"
-                [ngClass]="{'is-invalid' : errors.get('categoryNameMissing') === true}"
-                type="email" 
-                class="form-control" 
-                id="addDraftChoice" 
-                placeholder="ex: Faction"
-              >
-              <div class="invalid-feedback">
-                Please enter a category name.
+
+    @if (draftService.selectedDraft.useItemCategories) {
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button collapsed" type="button"
+            data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Draft Categories
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <div class="row">
+              <div class="col">
+                <input
+                  [(ngModel)]="newCategoryName"
+                  [ngClass]="{'is-invalid' : errors.get('categoryNameMissing') === true}"
+                  type="email"
+                  class="form-control"
+                  id="addDraftChoice"
+                  placeholder="ex: Faction"
+                  >
+                <div class="invalid-feedback">
+                  Please enter a category name.
+                </div>
+              </div>
+              <div class="col">
+                <button class="btn btn-primary" (click)="addNewItemCategory()">
+                  Add Category
+                  <i class="bi bi-plus-circle"></i>
+                </button>
               </div>
             </div>
-            <div class="col">
-              <button class="btn btn-primary" (click)="addNewItemCategory()">
-                Add Category
-                <i class="bi bi-plus-circle"></i>
-              </button>
-            </div>
-          </div>
-          <strong class="mb-0">Available Categories</strong>
-          <div class="d-flex align-items-center" *ngFor="let category of draftService.selectedDraft.draftItemCategories">
-            <span style="min-width: 100px;">{{category}}</span>
-            <i (click)="deleteDraftCategoryModal(category, content)"
-              data-bs-toggle="modal" data-bs-target="#exampleModal" 
-              class="bi bi-trash-fill mx-3 med-icon">
-            </i>
+            <strong class="mb-0">Available Categories</strong>
+            @for (category of draftService.selectedDraft.draftItemCategories; track category) {
+              <div class="d-flex align-items-center">
+                <span style="min-width: 100px;">{{category}}</span>
+                <i (click)="deleteDraftCategoryModal(category, content)"
+                  data-bs-toggle="modal" data-bs-target="#exampleModal"
+                  class="bi bi-trash-fill mx-3 med-icon">
+                </i>
+              </div>
+            }
           </div>
         </div>
       </div>
-    </div>
+    }
 
     <div class="accordion-item">
       <h2 class="accordion-header" id="headingOne">
-        <button class="accordion-button collapsed" type="button" 
+        <button class="accordion-button collapsed" type="button"
           data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
           Draft Items
         </button>
@@ -74,36 +78,40 @@
           <div class="row">
             <div class="col">
               <label for="newItemName" class="form-label">Item Name</label>
-              <input 
+              <input
                 id="newItemName"
                 [(ngModel)]="newItemName"
                 [ngClass]="{'is-invalid' : errors.get('itemNameMissing') === true}"
-                type="email" 
-                class="form-control" id="addDraftChoice" 
+                type="email"
+                class="form-control" id="addDraftChoice"
                 placeholder="ex: Orcs "
-              >
+                >
               <div class="invalid-feedback">
                 Please enter an item name.
               </div>
             </div>
-            <div class="col-sm" *ngIf="draftService.selectedDraft.useItemCategories">
-              <label for="newItemCategory" class="form-label">Item Category</label>
-              <select
-                id="newItemCategory"
-                [(ngModel)]="newItemCategory"
-                [ngClass]="{'is-invalid' : errors.get('itemCategoryMissing') === true}"
-                class="form-select" 
-                id="numberOfPlayersSelect"
-              >
-                <option value=''>Select a category</option>
-                <option *ngFor='let category of draftService.selectedDraft.draftItemCategories'>{{category}}</option>
-              </select>
-              <div class="invalid-feedback">
-                Please select a category.
+            @if (draftService.selectedDraft.useItemCategories) {
+              <div class="col-sm">
+                <label for="newItemCategory" class="form-label">Item Category</label>
+                <select
+                  id="newItemCategory"
+                  [(ngModel)]="newItemCategory"
+                  [ngClass]="{'is-invalid' : errors.get('itemCategoryMissing') === true}"
+                  class="form-select"
+                  id="numberOfPlayersSelect"
+                  >
+                  <option value=''>Select a category</option>
+                  @for (category of draftService.selectedDraft.draftItemCategories; track category) {
+                    <option>{{category}}</option>
+                  }
+                </select>
+                <div class="invalid-feedback">
+                  Please select a category.
+                </div>
               </div>
-            </div>
+            }
           </div>
-          <button class="btn btn-primary mt-2" 
+          <button class="btn btn-primary mt-2"
             (click)="addDraftItem()">
             Add This Item
             <i class="bi bi-plus-circle"></i>
@@ -111,24 +119,25 @@
 
           <div class="row">
             <strong class="mb-0 mt-3">Available Items</strong>
-            <div class="col-md-5 d-flex flex-nowrap align-items-center justify-content-between draft-item m-1" 
-              *ngFor="let item of draftService.selectedDraft.draftItems"
-              style="max-width: 500px;">
-              <span style="min-width: 100px;">{{item.itemName}}</span>
-              <span style="min-width: 50px;">{{item.itemCategory}}</span>
-              <i (click)="deleteDraftItem(item)" 
-                data-bs-toggle="modal" data-bs-target="#exampleModal" 
-                class="bi bi-trash-fill mx-3 med-icon">
-              </i>
-            </div>
+            @for (item of draftService.selectedDraft.draftItems; track item) {
+              <div class="col-md-5 d-flex flex-nowrap align-items-center justify-content-between draft-item m-1"
+                style="max-width: 500px;">
+                <span style="min-width: 100px;">{{item.itemName}}</span>
+                <span style="min-width: 50px;">{{item.itemCategory}}</span>
+                <i (click)="deleteDraftItem(item)"
+                  data-bs-toggle="modal" data-bs-target="#exampleModal"
+                  class="bi bi-trash-fill mx-3 med-icon">
+                </i>
+              </div>
+            }
           </div>
         </div>
       </div>
     </div>
 
-    <div class="accordion-item"> 
+    <div class="accordion-item">
       <h2 class="accordion-header" id="headingOne">
-        <button class="accordion-button collapsed" type="button" 
+        <button class="accordion-button collapsed" type="button"
           data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
           Save this Draft
         </button>
@@ -142,16 +151,16 @@
           <div class="row mt-3">
             <label for="draftName"  class="form-label">Draft Name</label>
             <div class="col">
-              <input type="text" 
-                class="form-control" 
+              <input type="text"
+                class="form-control"
                 id="draftName"
-                [(ngModel)]="draftService.selectedDraft.draftName" 
+                [(ngModel)]="draftService.selectedDraft.draftName"
                 placeholder="ex: Everdell Draft"
-              >
+                >
             </div>
             <div class="col">
               <button
-                type="button" class="btn btn-primary" 
+                type="button" class="btn btn-primary"
                 (click)="saveDraft()">
                 Save this Draft
               </button>
@@ -162,34 +171,40 @@
     </div>
 
   </div>
-  
+
 
   <hr>
 
-  <div *ngIf="errors.get('tooFewItems')"
-    class="alert alert-warning fade-in mt-3 mb-0" role="alert">
-    You do not have enough draft items for your current number of players and picks per player options. 
-    Please add more items or adjust your Draft Options.
-  </div>
-  <div *ngIf="errors.get('tooFewItemsPerCategory')"
-    class="alert alert-warning fade-in mt-3 mb-0" role="alert">
-    For each category you have, you must add enough items for each player to draft 1 item of that category. 
-    Please add more items or adjust the player count.
-  </div>
-  <div *ngIf="errors.get('tooFewCategories')"
-    class="alert alert-warning fade-in mt-3 mb-0" role="alert">
-    In order for each player to have {{draftService.selectedDraft.picksPerPlayer}} picks, 
-    they must have items of at least {{draftService.selectedDraft.picksPerPlayer}} categories to pick from. 
-    Please add additional categories and the corresponding items for those categores.
-  </div>
+    @if (errors.get('tooFewItems')) {
+      <div
+        class="alert alert-warning fade-in mt-3 mb-0" role="alert">
+        You do not have enough draft items for your current number of players and picks per player options.
+        Please add more items or adjust your Draft Options.
+      </div>
+    }
+    @if (errors.get('tooFewItemsPerCategory')) {
+      <div
+        class="alert alert-warning fade-in mt-3 mb-0" role="alert">
+        For each category you have, you must add enough items for each player to draft 1 item of that category.
+        Please add more items or adjust the player count.
+      </div>
+    }
+    @if (errors.get('tooFewCategories')) {
+      <div
+        class="alert alert-warning fade-in mt-3 mb-0" role="alert">
+        In order for each player to have {{draftService.selectedDraft.picksPerPlayer}} picks,
+        they must have items of at least {{draftService.selectedDraft.picksPerPlayer}} categories to pick from.
+        Please add additional categories and the corresponding items for those categores.
+      </div>
+    }
 
-  <div>
-    <button class="btn btn-primary my-3"
-      (click)="startDraft()"
-    >
-      Start Drafting
-      <i class="bi bi-arrow-right"></i>
-    </button>
-  </div>
+    <div>
+      <button class="btn btn-primary my-3"
+        (click)="startDraft()"
+        >
+        Start Drafting
+        <i class="bi bi-arrow-right"></i>
+      </button>
+    </div>
 
-</div>
+  </div>

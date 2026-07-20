@@ -2,7 +2,7 @@
   <app-heading-with-back [title]="'Uprising Map Builder'"></app-heading-with-back>
 
   <app-toast [message]="'Your map has been saved.'"></app-toast>
-  
+
   <div class="d-flex justify-content-between">
     <!-- Button group -->
     <div class="d-flex flex-row">
@@ -45,7 +45,7 @@
       <button class="btn btn-primary btn-sm me-2" (click)="mapMountains.push(1)">Add Mountain Region</button>
       <button class="btn btn-primary btn-sm me-2" (click)="mapWaterRegions.push(1)">Add Water Region</button>
     </div>
-    
+
     <button class="btn btn-primary" (click)="rotateClockwise()">
       <i class="bi bi-arrow-clockwise"></i>
     </button>
@@ -62,121 +62,147 @@
       'map-large' : selectedMap.mapSize === UprisingMapSize.Large,
       'map-huge' : selectedMap.mapSize === UprisingMapSize.Huge,
     }" 
-    id="image-group" 
+    id="image-group"
     (click)="trackClick($event)"
     class="draw-zone">
 
-    <div *ngFor="let map of mapTilesStandard">
-      <img 
-        class="drag-drop position-absolute bottom-0 start-0 z1"
-        src="../../../assets/uprising_map_builder/MapSegment.svg" 
-        name='map-element'
-        height="200px"> 
-    </div>
-    
-    <div *ngFor="let map of mapTilesFour">
-      <img 
-        class="drag-drop position-absolute bottom-0 start-0 z1"
-        src="../../../assets/uprising_map_builder/FourHexGroup.svg" 
-        name='map-element'
-        height="158px"> 
-    </div>
+    @for (map of mapTilesStandard; track map) {
+      <div>
+        <img
+          class="drag-drop position-absolute bottom-0 start-0 z1"
+          src="../../../assets/uprising_map_builder/MapSegment.svg"
+          name='map-element'
+          height="200px">
+        </div>
+      }
 
-    <div *ngFor="let map of mapTilesLine">
-      <img 
-        class="drag-drop position-absolute bottom-0 start-0 z1"
-        src="../../../assets/uprising_map_builder/ThreeHexLine.svg" 
-        name='map-element'
-        height="200px"> 
-    </div>
-  
-    <div *ngFor="let flag of mapCapitols"> 
-      <img class="drag-drop position-absolute bottom-0 start-0 z2"
-        src="../../../assets/uprising_map_builder/Castle.svg" 
-        name='map-element'
-        width="50px">
-    </div>
-  
-    <div *ngFor="let mountain of mapMountains"> 
-      <img class="drag-drop position-absolute bottom-0 start-0 z2" 
-        src="../../../assets/uprising_map_builder/Mountains.svg"
-        name='map-element'
-        width="50px">
-    </div>
-  
-    <div *ngFor="let water of mapWaterRegions"> 
-      <img class="drag-drop position-absolute bottom-0 start-0 z2" 
-        src="../../../assets/uprising_map_builder/Water.svg"
-        name='map-element' 
-        width="65px">
-    </div>
+      @for (map of mapTilesFour; track map) {
+        <div>
+          <img
+            class="drag-drop position-absolute bottom-0 start-0 z1"
+            src="../../../assets/uprising_map_builder/FourHexGroup.svg"
+            name='map-element'
+            height="158px">
+          </div>
+        }
 
-    <div *ngFor="let flag of mapFlagsGreen"> 
-      <img class="drag-drop position-absolute bottom-0 start-0 z2"
-        src="../../../assets/uprising_map_builder/FlagGreen.svg"
-        name='map-element' 
-        width="30px">
-    </div>
-    <div *ngFor="let flag of mapFlagsYellow"> 
-      <img class="drag-drop position-absolute bottom-0 start-0 z2"
-        src="../../../assets/uprising_map_builder/FlagYellow.svg"
-        name='map-element' 
-        width="30px">
-    </div>
-    <div *ngFor="let flag of mapFlagsOrange"> 
-      <img class="drag-drop position-absolute bottom-0 start-0 z2"
-        src="../../../assets/uprising_map_builder/FlagOrange.svg"
-        name='map-element' 
-        width="30px">
-    </div>
-    <div *ngFor="let flag of mapFlagsRed"> 
-      <img class="drag-drop position-absolute bottom-0 start-0 z2"
-        src="../../../assets/uprising_map_builder/FlagRed.svg"
-        name='map-element' 
-        width="30px">
-    </div>
+        @for (map of mapTilesLine; track map) {
+          <div>
+            <img
+              class="drag-drop position-absolute bottom-0 start-0 z1"
+              src="../../../assets/uprising_map_builder/ThreeHexLine.svg"
+              name='map-element'
+              height="200px">
+            </div>
+          }
 
-    <div *ngFor="let portal of mapPortalsBlue"> 
-      <img class="drag-drop position-absolute bottom-0 start-0 z2"
-        src="../../../assets/uprising_map_builder/PortalBlue.svg"
-        name='map-element' 
-        width="50px">
-    </div>
-    <div *ngFor="let portal of mapPortalsPurple"> 
-      <img class="drag-drop position-absolute bottom-0 start-0 z2"
-        src="../../../assets/uprising_map_builder/PortalPurple.svg"
-        name='map-element' 
-        width="50px">
-    </div>
-    <div *ngFor="let portal of mapPortalsTeal"> 
-      <img class="drag-drop position-absolute bottom-0 start-0 z2"
-        src="../../../assets/uprising_map_builder/PortalTeal.svg"
-        name='map-element' 
-        width="50px">
-    </div>
+          @for (flag of mapCapitols; track flag) {
+            <div>
+              <img class="drag-drop position-absolute bottom-0 start-0 z2"
+                src="../../../assets/uprising_map_builder/Castle.svg"
+                name='map-element'
+                width="50px">
+            </div>
+          }
 
-    <!-- HTML from saved maps is injected here -->
-    <div id='inner-div'></div>
-  </div>
+          @for (mountain of mapMountains; track mountain) {
+            <div>
+              <img class="drag-drop position-absolute bottom-0 start-0 z2"
+                src="../../../assets/uprising_map_builder/Mountains.svg"
+                name='map-element'
+                width="50px">
+            </div>
+          }
 
-  <div class="my-3">
-    <label for="mapDescription" class="form-label">Map Description</label>
-    <textarea class="form-control" id="mapDescription" rows="3"
-      [(ngModel)]="selectedMap.description" 
-      placeholder="Add a description and any special instructions on playing this map here.">
-    </textarea>
-  </div>
+          @for (water of mapWaterRegions; track water) {
+            <div>
+              <img class="drag-drop position-absolute bottom-0 start-0 z2"
+                src="../../../assets/uprising_map_builder/Water.svg"
+                name='map-element'
+                width="65px">
+            </div>
+          }
 
-  <div class="mb-3">
-    <button class='btn btn-primary me-2'
-      (click)="saveAsImage()">
-      Save Map Image
-    </button>
-  
-    <button class='btn btn-primary me-2'
-      (click)="saveToLocalStorage()">
-      Save Map To Browser
-    </button>
-  </div>
+          @for (flag of mapFlagsGreen; track flag) {
+            <div>
+              <img class="drag-drop position-absolute bottom-0 start-0 z2"
+                src="../../../assets/uprising_map_builder/FlagGreen.svg"
+                name='map-element'
+                width="30px">
+            </div>
+          }
+          @for (flag of mapFlagsYellow; track flag) {
+            <div>
+              <img class="drag-drop position-absolute bottom-0 start-0 z2"
+                src="../../../assets/uprising_map_builder/FlagYellow.svg"
+                name='map-element'
+                width="30px">
+            </div>
+          }
+          @for (flag of mapFlagsOrange; track flag) {
+            <div>
+              <img class="drag-drop position-absolute bottom-0 start-0 z2"
+                src="../../../assets/uprising_map_builder/FlagOrange.svg"
+                name='map-element'
+                width="30px">
+            </div>
+          }
+          @for (flag of mapFlagsRed; track flag) {
+            <div>
+              <img class="drag-drop position-absolute bottom-0 start-0 z2"
+                src="../../../assets/uprising_map_builder/FlagRed.svg"
+                name='map-element'
+                width="30px">
+            </div>
+          }
 
-</div>
+          @for (portal of mapPortalsBlue; track portal) {
+            <div>
+              <img class="drag-drop position-absolute bottom-0 start-0 z2"
+                src="../../../assets/uprising_map_builder/PortalBlue.svg"
+                name='map-element'
+                width="50px">
+            </div>
+          }
+          @for (portal of mapPortalsPurple; track portal) {
+            <div>
+              <img class="drag-drop position-absolute bottom-0 start-0 z2"
+                src="../../../assets/uprising_map_builder/PortalPurple.svg"
+                name='map-element'
+                width="50px">
+            </div>
+          }
+          @for (portal of mapPortalsTeal; track portal) {
+            <div>
+              <img class="drag-drop position-absolute bottom-0 start-0 z2"
+                src="../../../assets/uprising_map_builder/PortalTeal.svg"
+                name='map-element'
+                width="50px">
+            </div>
+          }
+
+          <!-- HTML from saved maps is injected here -->
+          <div id='inner-div'></div>
+        </div>
+
+        <div class="my-3">
+          <label for="mapDescription" class="form-label">Map Description</label>
+          <textarea class="form-control" id="mapDescription" rows="3"
+            [(ngModel)]="selectedMap.description"
+            placeholder="Add a description and any special instructions on playing this map here.">
+          </textarea>
+        </div>
+
+        <div class="mb-3">
+          <button class='btn btn-primary me-2'
+            (click)="saveAsImage()">
+            Save Map Image
+          </button>
+
+          <button class='btn btn-primary me-2'
+            (click)="saveToLocalStorage()">
+            Save Map To Browser
+          </button>
+        </div>
+
+      </div>

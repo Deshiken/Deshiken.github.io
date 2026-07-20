@@ -2,70 +2,69 @@
   <app-heading-with-back [title]="'Multiplayer Chess Timer'"></app-heading-with-back>
 
   @if(initialSetup || roundEnd) {
-    <p class="fst-italic text-muted mb-0" 
-      [@fade] 
+    <p class="fst-italic text-muted mb-0"
+      [@fade]
       style="overflow:hidden">
       *All timers are paused. Player order can be adjusted now.*
     </p>
   }
 
-  <div cdkDropList 
+  <div cdkDropList
     [cdkDropListDisabled]="!roundEnd && !initialSetup"
     [ngClass]="{'move-cursor': roundEnd || initialSetup}"
-    class="example-list" 
+    class="example-list"
     (cdkDropListDropped)="drop($event)">
-    <div *ngFor='let playerTimer of chessTimerService.playerTimers'
-      [ngStyle]="{'background-color': playerTimer.color}"
-      class="example-box"
-      cdkDrag>
-
-      <div class="d-flex flex-column"> 
-        <div class="d-flex justify-content-end">
-          <button type="button" style="color: white" class="btn" aria-label="Edit Player"
-            (click)="playerTimerToEdit = playerTimer"
-          >
-            <i class="bi bi-pencil-square" 
-              data-bs-toggle="modal" 
-              data-bs-target="#exampleModal">
-            </i>
-          </button>
-        </div>
-        <div class="d-flex align-items-center justify-content-between" style="font-size: 1.5rem;">
-          <div class="d-flex">
-            <i class="bi me-3 mb-0" [class]="playerTimer.icon"></i>
-            <p class="mb-0 me-5">{{playerTimer.name}}</p>
+    @for (playerTimer of chessTimerService.playerTimers; track playerTimer) {
+      <div
+        [ngStyle]="{'background-color': playerTimer.color}"
+        class="example-box"
+        cdkDrag>
+        <div class="d-flex flex-column">
+          <div class="d-flex justify-content-end">
+            <button type="button" style="color: white" class="btn" aria-label="Edit Player"
+              (click)="playerTimerToEdit = playerTimer"
+              >
+              <i class="bi bi-pencil-square"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal">
+              </i>
+            </button>
           </div>
-          <p class="mb-0">{{playerTimer.timeRemaining | playerTime}}</p>
+          <div class="d-flex align-items-center justify-content-between" style="font-size: 1.5rem;">
+            <div class="d-flex">
+              <i class="bi me-3 mb-0" [class]="playerTimer.icon"></i>
+              <p class="mb-0 me-5">{{playerTimer.name}}</p>
+            </div>
+            <p class="mb-0">{{playerTimer.timeRemaining | playerTime}}</p>
+          </div>
         </div>
       </div>
-
-    </div>
+    }
   </div>
 
   <div class='d-flex gap-3 mt-3'>
-    <button class="btn btn-primary btn-lg" 
-      *ngIf="initialSetup || roundEnd" 
-      (click)="start()">
-      Start
-    </button>
-  
-    <ng-container *ngIf="!initialSetup && !roundEnd">
+    @if (initialSetup || roundEnd) {
+      <button class="btn btn-primary btn-lg"
+        (click)="start()">
+        Start
+      </button>
+    }
+
+    @if (!initialSetup && !roundEnd) {
       <button class="btn btn-primary btn-lg" (click)="next()">
         Next Player
       </button>
-    
-      <ng-container *ngIf="this.chessTimerService.allowPause">
+      @if (this.chessTimerService.allowPause) {
         <button class="btn btn-primary btn-lg" (click)="pause()">
           Pause
         </button>
-      
-        <button class="btn btn-primary btn-lg" 
+        <button class="btn btn-primary btn-lg"
           [disabled]="!timerIsPaused"
           (click)="resume()">
           Resume
         </button>
-      </ng-container>
-    </ng-container>
+      }
+    }
   </div>
 
   <!-- Modal to display player customization options -->
@@ -77,48 +76,52 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          
+
           <label for="playerName" class="form-label">Player Name</label>
           <input type="text" class="form-control" id="playerName" [(ngModel)]="playerTimerToEdit.name">
-          
+
           <label for="playerColor" class="form-label mt-2">Player Color</label>
-          <input type="color" id="playerColor" class="form-control form-control-color" 
+          <input type="color" id="playerColor" class="form-control form-control-color"
             [(ngModel)]="playerTimerToEdit.color" style="width:85%;">
 
-          <label class="form-label mt-2">Player Icon</label>
-          <div>
-            <ng-container *ngFor="let icon of PlayerIcons | keyvalue">
-              <i class="bi ms-2" style="font-size: 1.75rem;"
-                [class]="icon.value" 
-                [ngClass]="{'icon-selected' : playerTimerToEdit.icon === icon.value}" 
-                (click)="playerTimerToEdit.icon = icon.value">
-              </i>
-            </ng-container>
-          </div>
-          <!-- Background Music -->
-          <!-- Cool, but I don't think we need this yet -->
-          <!-- <audio #audioPlayer controls class="w-100 mt-3">
+            <label class="form-label mt-2">Player Icon</label>
+            <div>
+              @for (icon of PlayerIcons | keyvalue; track icon) {
+                <i class="bi ms-2" style="font-size: 1.75rem;"
+                  [class]="icon.value"
+                  [ngClass]="{'icon-selected' : playerTimerToEdit.icon === icon.value}"
+                  (click)="playerTimerToEdit.icon = icon.value">
+                </i>
+              }
+            </div>
+            <!-- Background Music -->
+            <!-- Cool, but I don't think we need this yet -->
+            <!-- <audio #audioPlayer controls class="w-100 mt-3">
             <source src="assets/audio/chess-background-music.mp3" type="audio/mpeg">
             Your browser does not support the audio element.
           </audio> -->
           <div class="form-check">
-            <input type="checkbox" class="form-check-input" 
+            <input type="checkbox" class="form-check-input"
               id="backgroundMusic" [(ngModel)]="playerTimerToEdit.enableBackgroundMusic">
-            <label class="form-check-label" for="backgroundMusic">Enable background music</label>
+              <label class="form-check-label" for="backgroundMusic">Enable background music</label>
+            </div>
+            @if (playerTimerToEdit.enableBackgroundMusic) {
+              <select
+                [disabled]="!playerTimerToEdit.enableBackgroundMusic"
+                [(ngModel)]="playerTimerToEdit.chosenBackgroundMusic" class="form-select" id="backgroundMusicSelect">
+                @for (audioOption of PlayerAudioSource | keyvalue; track audioOption) {
+                  <option [ngValue]="audioOption.value">
+                    {{audioOption.key | reversePascalCase}}
+                  </option>
+                }
+              </select>
+            }
           </div>
-          <select *ngIf="playerTimerToEdit.enableBackgroundMusic"
-            [disabled]="!playerTimerToEdit.enableBackgroundMusic"
-            [(ngModel)]="playerTimerToEdit.chosenBackgroundMusic" class="form-select" id="backgroundMusicSelect">
-            <option *ngFor="let audioOption of PlayerAudioSource | keyvalue" [ngValue]="audioOption.value">
-              {{audioOption.key | reversePascalCase}}
-            </option>
-          </select>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Done</button>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Done</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-</div>
+  </div>

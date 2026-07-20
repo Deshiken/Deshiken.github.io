@@ -1,21 +1,29 @@
 <div class="spell-card p-2 m-1">
   <div class="card-body">
-    
+
     <!-- Top Row -->
     <div class="d-flex justify-content-between fs-4">
       <div>
-        <i *ngIf="spellCard.castType == 'Instant'" class="bi bi-lightning-fill"></i>
-        <i *ngIf="spellCard.castType == 'Prepared'" class="bi bi-clock"></i>
-        <img *ngIf="spellCard.castType == 'Combat'" src="../../../../assets/uprising_spell_icons/attack.svg" aria-hidden="true" height="18px">
+        @if (spellCard.castType == 'Instant') {
+          <i class="bi bi-lightning-fill"></i>
+        }
+        @if (spellCard.castType == 'Prepared') {
+          <i class="bi bi-clock"></i>
+        }
+        @if (spellCard.castType == 'Combat') {
+          <img src="../../../../assets/uprising_spell_icons/attack.svg" aria-hidden="true" height="18px">
+        }
       </div>
       <div class="align-self-end">
-        <i *ngFor="let item of [].constructor(spellCard.spellCost)" class="bi bi-gem ms-1"></i>
+        @for (item of [].constructor(spellCard.spellCost); track item) {
+          <i class="bi bi-gem ms-1"></i>
+        }
       </div>
     </div>
 
-    <p class="card-title fs-5 fw-bold text-center mb-3 segoe">{{spellCard.name}}</p> 
+    <p class="card-title fs-5 fw-bold text-center mb-3 segoe">{{spellCard.name}}</p>
 
-    <div class="card-text segoe" 
+    <div class="card-text segoe"
       #cardText
       [innerHTML]="spellCard.htmlDescription">
     </div>

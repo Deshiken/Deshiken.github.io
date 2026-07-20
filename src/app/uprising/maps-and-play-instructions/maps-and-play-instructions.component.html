@@ -3,62 +3,68 @@
 
   <div (click)="showTwoPlayerMaps = !showTwoPlayerMaps"
     class="d-flex align-items-center"
-    data-bs-toggle="collapse" 
+    data-bs-toggle="collapse"
     data-bs-target="#twoPlayerMapsColapse">
     <legend style="width: auto;" class="mb-0 fs-5">Two Player Maps:</legend>
-    <i [ngClass]="{'rotate-clockwise' : showTwoPlayerMaps}" 
+    <i [ngClass]="{'rotate-clockwise' : showTwoPlayerMaps}"
       class="bi ms-3 bi-chevron-down med-icon rotate-transition">
     </i>
   </div>
   <div class="collapse" id="twoPlayerMapsColapse">
     <div class="d-flex flex-column">
-      <a *ngFor="let map of twoPlayerMaps" [routerLink]="['/uprising/map-details', map.mapName]">{{map.mapName}}</a>
+      @for (map of twoPlayerMaps; track map) {
+        <a [routerLink]="['/uprising/map-details', map.mapName]">{{map.mapName}}</a>
+      }
     </div>
   </div>
 
   <div (click)="showThreePlayerMaps = !showThreePlayerMaps"
     class="d-flex align-items-center"
-    data-bs-toggle="collapse" 
+    data-bs-toggle="collapse"
     data-bs-target="#threePlayerMapsColapse">
     <legend style="width: auto;" class="mb-0 fs-5">Three Player Maps:</legend>
-    <i [ngClass]="{'rotate-clockwise' : showThreePlayerMaps}" 
+    <i [ngClass]="{'rotate-clockwise' : showThreePlayerMaps}"
       class="bi ms-3 bi-chevron-down med-icon rotate-transition">
     </i>
   </div>
   <div class="collapse" id="threePlayerMapsColapse">
     <div class="d-flex flex-column">
-      <a *ngFor="let map of threePlayerMaps" [routerLink]="['/uprising/map-details', map.mapName]">{{map.mapName}}</a>
+      @for (map of threePlayerMaps; track map) {
+        <a [routerLink]="['/uprising/map-details', map.mapName]">{{map.mapName}}</a>
+      }
     </div>
   </div>
 
   <div (click)="showFourPlayerMaps = !showFourPlayerMaps"
     class="d-flex align-items-center"
-    data-bs-toggle="collapse" 
+    data-bs-toggle="collapse"
     data-bs-target="#fourPlayerMapsColapse">
     <legend style="width: auto;" class="mb-0 fs-5">Four Player Maps:</legend>
-    <i [ngClass]="{'rotate-clockwise' : showFourPlayerMaps}" 
+    <i [ngClass]="{'rotate-clockwise' : showFourPlayerMaps}"
       class="bi ms-3 bi-chevron-down med-icon rotate-transition">
     </i>
   </div>
   <div class="collapse" id="fourPlayerMapsColapse">
     <div class="d-flex flex-column">
-      <a *ngFor="let map of fourPlayerMaps" [routerLink]="['/uprising/map-details', map.mapName]">{{map.mapName}}</a>
+      @for (map of fourPlayerMaps; track map) {
+        <a [routerLink]="['/uprising/map-details', map.mapName]">{{map.mapName}}</a>
+      }
     </div>
   </div>
 
   <!-- <div (click)="showFivePlayerMaps = !showFivePlayerMaps"
-    class="d-flex align-items-center"
-    data-bs-toggle="collapse" 
-    data-bs-target="#fivePlayerMapsColapse">
-    <legend style="width: auto;" class="mb-0 fs-5">Five Player Maps:</legend>
-    <i [ngClass]="{'rotate-clockwise' : showFivePlayerMaps}" 
-      class="bi ms-3 bi-chevron-down med-icon rotate-transition">
-    </i>
+  class="d-flex align-items-center"
+  data-bs-toggle="collapse"
+  data-bs-target="#fivePlayerMapsColapse">
+  <legend style="width: auto;" class="mb-0 fs-5">Five Player Maps:</legend>
+  <i [ngClass]="{'rotate-clockwise' : showFivePlayerMaps}"
+    class="bi ms-3 bi-chevron-down med-icon rotate-transition">
+  </i>
+</div>
+<div class="collapse" id="fivePlayerMapsColapse">
+  <div class="d-flex flex-column">
+    <a *ngFor="let map of fivePlayerMaps" [routerLink]="['/uprising/map-details', map.mapName]">{{map.mapName}}</a>
   </div>
-  <div class="collapse" id="fivePlayerMapsColapse">
-    <div class="d-flex flex-column">
-      <a *ngFor="let map of fivePlayerMaps" [routerLink]="['/uprising/map-details', map.mapName]">{{map.mapName}}</a>
-    </div>
-  </div> -->
+</div> -->
 
 </div>

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { uprisingTacticsAction, uprisingTacticsActions } from '../actions';
 
 @Component({
     selector: 'app-uprising-actions',
-    imports: [CommonModule],
+    imports: [],
     templateUrl: './uprising-actions.component.html',
     styleUrl: './uprising-actions.component.scss'
 })

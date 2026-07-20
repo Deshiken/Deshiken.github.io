@@ -3,20 +3,24 @@
   <p class="h2">
     Currently Picking:
   </p>
-  
+
   <div class="card mb-4 card-shadow__light" style="max-width: 350px;">
     <div class="card-body">
       <div class="row">
         <p class="card-title h5">Player {{player.playerNumber}}</p>
-        <p *ngIf="draftService.selectedDraft.teamDraft" class="card-text mb-1">Team {{player.team}}</p>
-        <ng-container *ngIf="player.draftPicks?.length">
+        @if (draftService.selectedDraft.teamDraft) {
+          <p class="card-text mb-1">Team {{player.team}}</p>
+        }
+        @if (player.draftPicks?.length) {
           <p class="card-text mb-0">Previous Picks:</p>
           <ul>
-            <li class="ms-4" *ngFor="let pick of player.draftPicks">
-              {{pick.itemName}} {{pick.itemCategory}}
-            </li>
+            @for (pick of player.draftPicks; track pick) {
+              <li class="ms-4">
+                {{pick.itemName}} {{pick.itemCategory}}
+              </li>
+            }
           </ul>
-        </ng-container>
+        }
       </div>
     </div>
   </div>
@@ -26,26 +30,30 @@
   </h2>
 
   <ul class="list-group" >
-    <ng-container *ngFor="let item of this.draftService.selectedDraft.draftItems">
-      <li class="list-group-item" 
+    @for (item of this.draftService.selectedDraft.draftItems; track item) {
+      <li class="list-group-item"
         (click)="selectedItem = item"
-        [ngClass]="{'selected-item' : item === selectedItem}" 
-      >
+        [ngClass]="{'selected-item' : item === selectedItem}"
+        >
         <p class="mb-0">{{item.itemName}} {{item.itemCategory}}</p>
       </li>
-    </ng-container>
+    }
   </ul>
 
-  <div *ngIf="errors.get('noItemSelected')"
-    class="alert alert-warning fade-in mt-3 mb-0" role="alert">
-    Please select an item from the list of available picks.
-  </div>
+  @if (errors.get('noItemSelected')) {
+    <div
+      class="alert alert-warning fade-in mt-3 mb-0" role="alert">
+      Please select an item from the list of available picks.
+    </div>
+  }
 
-  <div *ngIf="errors.get('itemWithThisCategoryAlreadyPicked')"
-    class="alert alert-warning fade-in mt-3 mb-0" role="alert">
-    You have previously picked an item with the category of {{selectedItemCategory}}. 
-    Please pick an item of a different category.
-  </div>
+  @if (errors.get('itemWithThisCategoryAlreadyPicked')) {
+    <div
+      class="alert alert-warning fade-in mt-3 mb-0" role="alert">
+      You have previously picked an item with the category of {{selectedItemCategory}}.
+      Please pick an item of a different category.
+    </div>
+  }
 
   <div>
     <button class="btn btn-primary my-3" (click)="next()">

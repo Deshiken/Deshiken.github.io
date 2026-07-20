@@ -10,7 +10,7 @@
     id="numberOfPlayersSelect"
     aria-label="Number of Players Select"
     style="max-width: 150px;"
-  >
+    >
     <option [ngValue]="2">Two</option>
     <option [ngValue]="3">Three</option>
     <option [ngValue]="4">Four</option>
@@ -27,7 +27,7 @@
     class="form-control"
     id="playerMinutes"
     style="max-width: 150px;"
-  >
+    >
 
   <div class="form-check">
     <input
@@ -98,23 +98,25 @@
     </label>
   </div>
 
-  <div id="turnsPerRoundContainer" 
-    [@growHeight]
-    *ngIf="chessTimerService.playerOrderChange || chessTimerService.resetPlayerTimeEachRound">
-    <label for="numberOfTurnsPerRound"
-      class="form-label">
-      Number of player turns per round
-    </label>
-    <input
-      [(ngModel)]="chessTimerService.numberOfTurnsPerRound"
-      style="max-width: 150px;"
-      type="number"
-      min="1"
-      max="10"
-      class="form-control"
-      id="numberOfTurnsPerRound"
-    >
-  </div>
+  @if (chessTimerService.playerOrderChange || chessTimerService.resetPlayerTimeEachRound) {
+    <div id="turnsPerRoundContainer"
+      [@growHeight]
+      >
+      <label for="numberOfTurnsPerRound"
+        class="form-label">
+        Number of player turns per round
+      </label>
+      <input
+        [(ngModel)]="chessTimerService.numberOfTurnsPerRound"
+        style="max-width: 150px;"
+        type="number"
+        min="1"
+        max="10"
+        class="form-control"
+        id="numberOfTurnsPerRound"
+        >
+    </div>
+  }
 
   <div>
     <button class="btn btn-primary my-3" (click)="next()">
