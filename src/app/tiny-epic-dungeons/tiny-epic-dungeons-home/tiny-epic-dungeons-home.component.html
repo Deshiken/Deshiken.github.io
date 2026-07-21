@@ -1,0 +1,105 @@
+<div class="container">
+  
+  <app-heading-with-back [title]="'Tiny Epic Dungeons'"></app-heading-with-back>
+
+  <fieldset>
+    <div (click)="showChooseItemSetsOptions = !showChooseItemSetsOptions"
+      class="d-flex align-items-center"
+      data-bs-toggle="collapse" 
+      data-bs-target="#timeNameColapse">
+      <legend style="width: auto;" class="mb-0 fs-5">Choose Item Sets:</legend>
+      <i [class.rotate-clockwise]="showChooseItemSetsOptions" 
+        class="bi ms-3 bi-chevron-down med-icon rotate-transition">
+      </i>
+    </div>
+    <div class="collapse" id="timeNameColapse">
+
+      <label for="item-set-number" class="form-label h6 mb-0">Number of Item Sets to Use</label>
+      <input type="number" min="1" max="6" class="form-control select-small" id="item-set-number" [(ngModel)]="itemSetNumber">
+
+      <p class="mt-4 h6 mb-0">Tiny Epic Dungeons games/expansions to include:</p>
+      <div class="d-flex flex-column">
+        <div>
+          <input class="form-check-input" type="checkbox"
+              [(ngModel)]="setsToInclude.baseGame"
+              id="elvesCheckbox" checked>
+          <label class="form-check-label" for="elvesCheckbox">
+              Base Game
+          </label>
+        </div>
+        <div>
+          <input class="form-check-input" type="checkbox"
+              [(ngModel)]="setsToInclude.stories"
+              id="storiesCheckbox" checked>
+          <label class="form-check-label" for="storiesCheckbox">
+              Stories
+          </label>
+        </div>
+        <div>
+          <input class="form-check-input" type="checkbox"
+              [(ngModel)]="setsToInclude.potions"
+              id="potionsCheckbox" checked>
+          <label class="form-check-label" for="potionsCheckbox  ">
+              Potions
+          </label>
+        </div>
+        <div>
+          <input class="form-check-input" type="checkbox"
+              [(ngModel)]="setsToInclude.echoesOfAughmoore"
+              id="echoesOfAughmooreCheckbox" checked>
+          <label class="form-check-label" for="echoesOfAughmooreCheckbox">
+              Echoes of Aughmoore
+          </label>
+        </div>
+        <div>
+          <input class="form-check-input" type="checkbox"
+              [(ngModel)]="setsToInclude.phantomVoyage"
+              id="phantomVoyageCheckbox" checked>
+          <label class="form-check-label" for="phantomVoyageCheckbox">
+              Phantom Voyage
+          </label>
+        </div>
+
+      </div>
+      
+      @if (notEnoughItemSets) {
+        <div class="text-danger">
+          The game versions/expansions you have selected do not have enough item sets available.
+        </div>
+      }
+
+      <button class="btn btn-primary mt-4" (click)="chooseItemSets()">
+        Choose Item Sets
+      </button>
+      
+      <!-- Results -->
+       @if (chosenItemSets.length > 0) {
+        <p class="mt-4 h6 mb-0">Chosen Item Sets:</p>
+       }
+       @for (itemSet of chosenItemSets; track itemSet) {
+         <p class="mb-0">{{itemSet.name}} Set</p>
+       }
+      <div>
+
+      </div>
+
+    </div>
+    
+  </fieldset>
+
+  <fieldset>
+    <div (click)="showChooseHeroesOptions = !showChooseHeroesOptions"
+      class="d-flex align-items-center"
+      data-bs-toggle="collapse" 
+      data-bs-target="#heroOptionsColapse">
+      <legend style="width: auto;" class="mb-0 fs-5">Choose Heroes</legend>
+      <i [class.rotate-clockwise]="showChooseHeroesOptions" 
+        class="bi ms-3 bi-chevron-down med-icon rotate-transition">
+      </i>
+    </div>
+    <div class="collapse" id="heroOptionsColapse">
+      <p>Work in progress...</p>
+    </div>
+  </fieldset>
+
+</div>

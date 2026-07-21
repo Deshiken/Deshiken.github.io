@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { TinyEpicDungeonsHomeComponent } from './tiny-epic-dungeons/tiny-epic-dungeons-home/tiny-epic-dungeons-home.component';
 
 const routes: Routes = [
   { 
@@ -49,6 +50,14 @@ const routes: Routes = [
   {
     path: 'tanares',
     loadChildren: () => import('./tanares-adventures/tanares-routes').then(mod => mod.TANARES_ROUTES)
+  },
+  {
+    path: 'tanares',
+    loadChildren: () => import('./tanares-adventures/tanares-routes').then(mod => mod.TANARES_ROUTES)
+  },
+  {
+    path: 'tiny-epic-dungeons',
+    component: TinyEpicDungeonsHomeComponent,
   }
 ];
 
