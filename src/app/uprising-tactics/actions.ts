@@ -31,11 +31,26 @@ export const uprisingTacticsActions: Array<uprisingTacticsAction> = [
         description: `Create a building adjacent to a unit you control in an unoccupied region after paying its cost.` 
     },
     {
-        name: 'Harvest',
-        description: `Gain the resources shown on from one resource token on a farm you control. Then, flip that token to it's depleted side.` 
+        name: 'Mine',
+        description: `Gain the resources shown on from one resource token on a mine you control. Then, flip that token to it's depleted side.` 
     },
     {
         name: 'Study',
         description: `Draw three cards from the spell deck. Then, discard down to your max hand size.`
     },
+    {
+        name: 'Bid',
+        description: `Place a bid on a technology card or card upgrade.`
+    }
 ]
+
+export const startOfGame: Array<string> = [
+    `Gain 20 ${IconHtml.Gold}, 2 ${IconHtml.Mana}, and 2 ${IconHtml.Research}.`
+];
+
+export const startOfRound: Array<string> = [
+    `If you are at your max hand size, draw 1 card then discard down to your max hand size.`,
+    `If you are below your max hand size, draw up to your max hand size.`,
+    `Gain 12 ${IconHtml.Gold}. Pay 1 ${IconHtml.Gold} for each unit you control and building you control.`,
+    `For each mine you control, gain 3 ${IconHtml.Gold} or 1 ${IconHtml.Mana} or 1 ${IconHtml.Research}.`,
+];
