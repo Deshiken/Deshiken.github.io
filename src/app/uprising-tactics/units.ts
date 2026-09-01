@@ -22,10 +22,12 @@ enum SpecialAbilities {
   FLYING = 'Flying',
   MAGIC_ATTACK = 'Magic Attack',
   RANGED_ATTACK = 'Ranged Attack',
+  AREA_ATTACK = 'Area Attack',
   SEIGE_ATTACK = 'Siege Attack',
   ARMORED = 'Armored',
   FORTIFIED = 'Fortified',
   CHARGE = 'Charge',
+  PUSH = 'Push',
 }
 
 export interface VersionedUprisingTacticsUnits {
@@ -490,7 +492,7 @@ export const versionedUprisingTacticsUnits: Array<VersionedUprisingTacticsUnits>
           health: 3,
           attackDistance: 1,
           isBuilding: false,
-          specialAbilities: [SpecialAbilities.ARMORED],
+          specialAbilities: [SpecialAbilities.ARMORED, SpecialAbilities.PUSH],
         },
         {
           name: 'Archer',
@@ -516,12 +518,12 @@ export const versionedUprisingTacticsUnits: Array<VersionedUprisingTacticsUnits>
         {
           name: 'Mage',
           cost: { gold: 6, mana: 2 },
-          attack: 6,
+          attack: 5,
           speed: 3,
           health: 3,
           attackDistance: 2,
           isBuilding: false,
-          specialAbilities: [SpecialAbilities.MAGIC_ATTACK, SpecialAbilities.RANGED_ATTACK],
+          specialAbilities: [SpecialAbilities.MAGIC_ATTACK, SpecialAbilities.RANGED_ATTACK, SpecialAbilities.AREA_ATTACK],
         },
         {
           name: 'Cavalry',
